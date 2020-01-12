@@ -31,7 +31,7 @@ class TDClient:
         :returns: request builder instance
         :rtype: StocksListRequestBuilder
         """
-        return StocksListRequestBuilder(ctx=self.ctx)
+        return StocksListEndpoint(ctx=self.ctx)
 
     def get_stock_exchanges_list(self):
         """
@@ -43,7 +43,7 @@ class TDClient:
         :returns: request builder instance
         :rtype: StockExchangesListRequestBuilder
         """
-        return StockExchangesListRequestBuilder(ctx=self.ctx)
+        return StockExchangesListEndpoint(ctx=self.ctx)
 
     def get_forex_pairs_list(self):
         """
@@ -55,7 +55,7 @@ class TDClient:
         :returns: request builder instance
         :rtype: ForexPairsListRequestBuilder
         """
-        return ForexPairsListRequestBuilder(ctx=self.ctx)
+        return ForexPairsListEndpoint(ctx=self.ctx)
 
     def get_cryptocurrencies_list(self):
         """
@@ -67,7 +67,7 @@ class TDClient:
         :returns: request builder instance
         :rtype: CryptocurrenciesListRequestBuilder
         """
-        return CryptocurrenciesListRequestBuilder(ctx=self.ctx)
+        return CryptocurrenciesListEndpoint(ctx=self.ctx)
 
     def get_cryptocurrency_exchanges_list(self):
         """
@@ -79,7 +79,7 @@ class TDClient:
         :returns: request builder instance
         :rtype: CryptocurrencyExchangesListRequestBuilder
         """
-        return CryptocurrencyExchangesListRequestBuilder(ctx=self.ctx)
+        return CryptocurrencyExchangesListEndpoint(ctx=self.ctx)
 
     def time_series(self, **defaults):
         """

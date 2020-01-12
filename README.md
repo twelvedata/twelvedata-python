@@ -4,16 +4,16 @@
 
 # Twelve Data API
 
-Official python library for Twelve Data API. This package supports all main features of API:
+Official python library for Twelve Data API. This package supports all main features of the API:
 
 * Get stock, forex and cryptocurrency OHLC time series.
 * Get over 90+ technical indicators.
 * Output data as: `json`, `csv`, `pandas`
 * Full support for static and dynamic charts.
 
-![chart example](asset/chart-example.gif)
+![chart example](https://github.com/twelvedata/twelvedata-python/blob/master/asset/chart-example.gif)
 
-Free **API Key** is requiered. It might be requested [here](https://twelvedata.com/apikey)
+Free **API Key** is required. It might be requested [here](https://twelvedata.com/apikey)
 
 ## Installation
 
@@ -57,7 +57,7 @@ pip install twelvedata[pandas,matplotlib,plotly]
 
 ### Time series
 
-* `TDClient` requires `api_key` parameter. It accepts all common parameteres.
+* `TDClient` requires `api_key` parameter. It accepts all common parameters.
 * `TDClient.time_series()` accepts all common parameters. Time series may be converted to several formats:
   * `TDClient.time_series().as_json()` - will return JSON array
   * `TDClient.time_series().as_csv()` - will return CSV with header
@@ -84,7 +84,7 @@ This Python library supports all indicators implemented by Twelve Data. Full lis
 
 * Technical indicators are part of `TDClient.time_series()` object.
 * It has universal format `TDClient.time_series().with_{Technical Indicator Name}`, e.g. `.with_bbands()`, `.with_percent_b()`, `.with_macd()`
-* Indicator object accepts all parameters according to it's specification in [API Documentation](https://twelvedata.com/docs), e.g. `.with_bbands()` accepts: `series_type`, `time_period`, `sd`, `ma_type`. If parameter is not provided it wil be set to default.
+* Indicator object accepts all parameters according to its specification in [API Documentation](https://twelvedata.com/docs), e.g. `.with_bbands()` accepts: `series_type`, `time_period`, `sd`, `ma_type`. If parameter is not provided it will be set to default.
 * Indicators may be used in arbitrary order and conjugated, e.g. `TDClient.time_series().with_aroon().with_adx().with_ema()`
 * By default, technical indicator will output with OHLC values. If you do not need OHLC, specify `TDClient.time_series().without_ohlc()`
 
@@ -159,7 +159,7 @@ ts.with_ema(time_period=7).with_mama().with_mom().with_macd().as_plotly_figure()
 
 ## Support
 
-Visit official website [https://twelvedata.com](https://twelvedata.com) or reach out Twelve Data team at [info@twelvedata.com](mailto:info@twelvedata.com?subject=Python%20library%20question).
+Visit our official website [https://twelvedata.com](https://twelvedata.com) or reach out to the Twelve Data team at [info@twelvedata.com](mailto:info@twelvedata.com?subject=Python%20library%20question).
 
 ## Roadmap
 
