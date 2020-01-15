@@ -27,7 +27,7 @@ class CachedHttpClient(DefaultHttpClient, object):
 
 def _init_client():
     return TDClient(
-        "581ac79badee4d67bf613474081998db",
+        "demo",
         http_client=CachedHttpClient("https://api.twelvedata.com"),
     )
 
