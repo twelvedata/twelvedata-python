@@ -187,6 +187,7 @@ class LineRender(ChartRender):
 
     def render_matplotlib(self, ctx, df, ax, **kwargs):
 
+        kwargs.pop("candle_width", None)
         df = self._slice(df)
         for col in df.columns:
             df[col].plot(

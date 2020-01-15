@@ -244,7 +244,7 @@ class TimeSeries(object):
         # Draw main plot
         if self.price_endpoint_enabled:
             price_traces = self.price_endpoint.render_plotly(fig=fig)
-            fig.append_trace(price_traces[0], 1, 1)
+            fig.add_trace(price_traces[0], 1, 1)
 
             for trace in price_traces[1:]:
                 fig.add_trace(trace)
@@ -267,7 +267,7 @@ class TimeSeries(object):
         for idx, ep in enumerate(separate_endpoints, start=start_index):
             postfix = next(postfixes[ep.__class__])
             for ep_trace in ep.render_plotly(postfix=postfix):
-                fig.append_trace(ep_trace, idx, 1)
+                fig.add_trace(ep_trace, idx, 1)
 
         # Move all ticks on Y-axis to the right
         for yaxis in (fig.layout[attr] for attr in fig.layout if attr[:5] == "yaxis"):
