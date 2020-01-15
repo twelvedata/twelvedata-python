@@ -1,6 +1,11 @@
-<p align="center"><img src="https://res.cloudinary.com/dnz8pwg9r/image/upload/v1577895073/logo-python_xjrv79.png" width="400"></p>
+<p align="center"><img src="https://res.cloudinary.com/dnz8pwg9r/image/upload/v1579110518/logo-python_pgvee0.png" width="400"></p>
 
-
+<p align="center">
+<a href="https://travis-ci.org/twelvedata/twelvedata-python"><img src="https://travis-ci.org/twelvedata/twelvedata-python.svg?branch=master" alt="Build Status"></a>
+<a href="https://github.com/twelvedata/twelvedata-python/issues"><img src="https://img.shields.io/github/issues/twelvedata/twelvedata-python" alt="Open Issues"></a>
+<a href="https://github.com/twelvedata/twelvedata-python/releases"><img src="https://badge.fury.io/py/twelvedata.svg" alt="Latest Stable Version"></a>
+<a href="https://github.com/twelvedata/twelvedata-python/blob/master/LICENSE.txt"><img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="License"></a>
+</p>
 
 # Twelve Data API
 
@@ -11,7 +16,7 @@ Official python library for Twelve Data API. This package supports all main feat
 * Output data as: `json`, `csv`, `pandas`
 * Full support for static and dynamic charts.
 
-![chart example](https://github.com/twelvedata/twelvedata-python/blob/master/asset/chart-example.gif)
+![chart example](https://res.cloudinary.com/dnz8pwg9r/image/upload/v1579111588/interactive_chart_yy2bsk.png)
 
 Free **API Key** is required. It might be requested [here](https://twelvedata.com/apikey)
 
