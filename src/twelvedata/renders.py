@@ -2,7 +2,7 @@
 
 from .endpoints import *
 
-VOL_CHART_HEIGHT = 0.45
+VOL_CHART_HEIGHT = 0.15
 CANDLE_WIDTH = 0.0002
 BAR_WIDTH = 0.0002
 COLOR_UP = "#26a69a"

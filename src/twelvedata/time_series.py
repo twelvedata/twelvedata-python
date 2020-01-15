@@ -46,7 +46,7 @@ class TimeSeries(object):
             for row in ep.as_json():
                 if postfix:
                     row = {
-                        (k if k == "datetime" else "{}{}".format(k, postfix)): v
+                        (k if k == "datetime" else "{}_{}".format(k, postfix)): v
                         for k, v in row.items()
                     }
                 out.setdefault(row["datetime"], {}).update(row)
@@ -115,7 +115,7 @@ class TimeSeries(object):
 
     def _chart_title(self):
         return "{} - {}".format(
-            self.ctx.defaults.get("symbol"), self.ctx.defaults.get("interval")
+            self.ctx.defaults.get("symbol").upper(), self.ctx.defaults.get("interval")
         )
 
     def _generate_postfixes(self):
