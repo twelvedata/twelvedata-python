@@ -62,7 +62,7 @@ pip install twelvedata[pandas,matplotlib,plotly]
 
 ### Time series
 
-* `TDClient` requires `api_key` parameter. It accepts all common parameters.
+* `TDClient` requires `apikey` parameter. It accepts all common parameters.
 * `TDClient.time_series()` accepts all common parameters. Time series may be converted to several formats:
   * `TDClient.time_series().as_json()` - will return JSON array
   * `TDClient.time_series().as_csv()` - will return CSV with header
@@ -70,7 +70,7 @@ pip install twelvedata[pandas,matplotlib,plotly]
 
 ```python
 from twelvedata import TDClient
-# Initialize client - api_key parameter is requiered
+# Initialize client - apikey parameter is requiered
 td = TDClient(apikey="YOUR_API_KEY_HERE")
 # Construct the necessary time serie
 ts = td.time_series(
