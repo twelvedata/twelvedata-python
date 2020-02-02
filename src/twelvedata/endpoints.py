@@ -16,8 +16,8 @@ __all__ = (
     "BOPEndpoint",
     "CCIEndpoint",
     "CEILEndpoint",
-    "CEILEndpoint",
     "CMOEndpoint",
+    "COPPOCKEndpoint",
     "CryptocurrenciesListEndpoint",
     "CryptocurrencyExchangesListEndpoint",
     "DEMAEndpoint",
@@ -1222,6 +1222,78 @@ class CMOEndpoint(AsMixin, Endpoint):
         params["format"] = format
         params["apikey"] = self.ctx.apikey
         return self.ctx.http_client.get("/cmo", params=params)
+
+
+class COPPOCKEndpoint(AsMixin, Endpoint):
+    _name = "coppock"
+
+    def __init__(
+        self,
+        ctx,
+        symbol,
+        interval,
+        exchange=None,
+        country=None,
+        series_type="close",
+        long_roc_period=14,
+        short_roc_period=11,
+        wma_period=0,
+        outputsize=30,
+        start_date=None,
+        end_date=None,
+        dp=5,
+        timezone="Exchange",
+    ):
+        self.is_indicator = True
+        self.meta_name = "cmo"
+        self.ctx = ctx
+        self.symbol = symbol
+        self.interval = interval
+        self.exchange = exchange
+        self.country = country
+        self.series_type = series_type
+        self.long_roc_period = long_roc_period
+        self.short_roc_period = short_roc_period
+        self.wma_period = wma_period
+        self.outputsize = outputsize
+        self.start_date = start_date
+        self.end_date = end_date
+        self.dp = dp
+        self.timezone = timezone
+
+    def execute(self, format="JSON"):
+
+        params = {}
+        if self.symbol is not None:
+            params["symbol"] = self.symbol
+        if self.interval is not None:
+            params["interval"] = self.interval
+        if self.exchange is not None:
+            params["exchange"] = self.exchange
+        if self.country is not None:
+            params["country"] = self.country
+        if self.series_type is not None:
+            params["series_type"] = self.series_type
+        if self.long_roc_period is not None:
+            params["long_roc_period"] = self.long_roc_period
+        if self.short_roc_period is not None:
+            params["short_roc_period"] = self.short_roc_period
+        if self.wma_period is not None:
+            params["wma_period"] = self.wma_period
+        if self.outputsize is not None:
+            params["outputsize"] = self.outputsize
+        if self.start_date is not None:
+            params["start_date"] = self.start_date
+        if self.end_date is not None:
+            params["end_date"] = self.end_date
+        if self.dp is not None:
+            params["dp"] = self.dp
+        if self.timezone is not None:
+            params["timezone"] = self.timezone
+
+        params["format"] = format
+        params["apikey"] = self.ctx.apikey
+        return self.ctx.http_client.get("/coppock", params=params)
 
 
 class CEILEndpoint(AsMixin, Endpoint):

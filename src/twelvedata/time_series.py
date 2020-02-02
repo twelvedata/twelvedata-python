@@ -1297,6 +1297,77 @@ class TimeSeries(object):
 
     @force_use_kwargs
     @apply_context_defaults
+    def with_coppock(
+            self,
+            exchange=None,
+            country=None,
+            series_type="close",
+            long_roc_period=14,
+            short_roc_period=11,
+            wma_period=10,
+            outputsize=30,
+            start_date=None,
+            end_date=None,
+            dp=5,
+            timezone="Exchange",
+    ):
+        """
+        Add request builder of COPPOCK to chart builder
+
+        Coppock Curve(COPPOCK) is usually used to detect long-term trend changes, typically on monthly charts.
+
+        This API call returns meta and time series values of CMO. Meta object
+        consists of general information about requested technical indicator.
+        Time series is the array of objects ordered by time desceding updated
+        realtime.
+
+        :param symbol: Instrument symbol, can be any stock, forex or
+            cryptocurrency E.g. AAPL, EUR/USD, ETH/BTC, ...
+        :param interval: Interval between two consecutive points in time series
+        :param exchange: Only is applicable to stocks and cryptocurrencies
+        otherwise is ignored
+            Exchange where instrument is traded
+        :param country: Only is applicable to stocks otherwise is ignored
+            Country where instrument is traded
+        :param series_type: Price type on which technical indicator is
+        calculated
+        :param long_roc_period: Number of periods for long term rate of change. Takes values in the range from 1 to 500
+        :param short_roc_period: Number of periods for short term rate of change. Takes values in the range from 1 to 500
+        :param wma_period: Number of periods for weighted moving average. Takes values in the range from 1 to 500
+        :param outputsize: Number of last datapoints to retrieve
+        :param start_date: Start date of selection, accepts "yyyy-MM-dd hh:mm:ss" and "yyyy-MM-dd" formats
+        :param end_date: End date of selection, accepts "yyyy-MM-dd hh:mm:ss" and "yyyy-MM-dd" formats
+        :param dp: Specifies number of decimal places for floating values
+        :param timezone: Timezone at which output datetime will be displayed
+            Exchange for local exchange time2. UTC for datetime at universal
+            UTC standard3. Timezone name according to IANA Time Zone
+            Database. E.g. America/New_York, Asia/Singapore. Full list of
+            timezones can be found here.Take note that IANA Timezone name is
+            case-sensitive.
+
+        :returns: chart builder
+        :rtype: ChartEndpoint
+        """
+        ep = COPPOCKEndpoint(
+            ctx=self.ctx,
+            symbol=self.ctx.defaults["symbol"],
+            interval=self.ctx.defaults["interval"],
+            exchange=exchange,
+            country=country,
+            series_type=series_type,
+            long_roc_period=long_roc_period,
+            short_roc_period=short_roc_period,
+            wma_period=wma_period,
+            outputsize=outputsize,
+            start_date=start_date,
+            end_date=end_date,
+            dp=dp,
+            timezone=timezone,
+        )
+        return self._with_endpoint(ep)
+
+    @force_use_kwargs
+    @apply_context_defaults
     def with_ceil(
         self,
         exchange=None,

@@ -221,6 +221,16 @@ def test_time_series_get_cmo():
     plt.close()
 
 
+def test_time_series_get_coppock():
+    ts = _init_ts()
+    ts.with_coppock().as_json()
+    ts.with_coppock().as_csv()
+    ts.with_coppock().as_pandas()
+    ts.with_coppock().as_pyplot_figure()
+    ts.with_coppock().as_plotly_figure()
+    plt.close()
+
+
 def test_time_series_get_dema():
     ts = _init_ts()
     ts.with_dema().as_json()
@@ -880,6 +890,7 @@ def _init_chart():
         .with_cci()
         .with_ceil()
         .with_cmo()
+        .with_coppock()
         .with_ceil()
         .with_dema()
         .with_dx()
