@@ -292,6 +292,20 @@ class CryptocurrencyExchangesListEndpoint(AsMixin, Endpoint):
         return self.ctx.http_client.get("/cryptocurrency_exchanges", params=params)
 
 
+class TechnicalIndicatorsListEndpoint(AsMixin, Endpoint):
+    _name = "technical_indicators"
+
+    def __init__(self, ctx):
+        self.ctx = ctx
+
+    def execute(self, format="JSON"):
+
+        params = {}
+
+        params["apikey"] = self.ctx.apikey
+        return self.ctx.http_client.get("/technical_indicators", params=params)
+
+
 class ADEndpoint(AsMixin, Endpoint):
     _name = "ad"
 

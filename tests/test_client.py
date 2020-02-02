@@ -61,6 +61,11 @@ def test_get_cryptocurrencies_list():
     td.get_cryptocurrencies_list().as_csv()
 
 
+def test_get_technical_indicators_list():
+    td = _init_client()
+    td.get_technical_indicators_list().as_json()
+
+
 def test_time_series():
     ts = _init_ts()
     ts.as_json()

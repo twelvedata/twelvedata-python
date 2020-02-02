@@ -5,6 +5,7 @@ from .endpoints import (
     ForexPairsListEndpoint,
     CryptocurrenciesListEndpoint,
     CryptocurrencyExchangesListEndpoint,
+    TechnicalIndicatorsListEndpoint,
 )
 from .http_client import DefaultHttpClient
 from .time_series import TimeSeries
@@ -80,6 +81,18 @@ class TDClient:
         :rtype: CryptocurrencyExchangesListRequestBuilder
         """
         return CryptocurrencyExchangesListEndpoint(ctx=self.ctx)
+
+    def get_technical_indicators_list(self):
+        """
+        Creates request builder for Technical Indicators List
+
+        This API call return array of objects with available technical indicators. This endpoint might be used to build
+        an abstract interface to make more convenient API calls from the application.
+
+        :returns: request builder instance
+        :rtype: TechnicalIndicatorsListRequestBuilder
+        """
+        return TechnicalIndicatorsListEndpoint(ctx=self.ctx)
 
     def time_series(self, **defaults):
         """
