@@ -93,15 +93,35 @@ __all__ = (
 )
 
 
+def purify_symbol(symbol):
+    return "".join(symbol.split()).strip(',')
+
+
+def get_symbol(symbol) -> (str, bool):
+    if isinstance(symbol, str):
+        purified_symbol = purify_symbol(symbol)
+        if ',' in symbol and len(purified_symbol.split(',')) > 1:
+            return purified_symbol, True
+        return purified_symbol, False
+    elif isinstance(symbol, list):
+        if len(symbol) == 1:
+            return symbol, False
+        elif len(symbol) > 1:
+            return ','.join(symbol), True
+
+
 class Endpoint(object):
     # This flag indicates that the current endpoint is a price chart
     is_price = False
 
-    # This flag indicates that the current ednpoint is a technical indicator
+    # This flag indicates that the current endpoint is a technical indicator
     is_indicator = False
 
     # This flag indicates that the chart should be drawn on the price chart
     is_overlay = False
+
+    # This flag indicates that the current request is a batch request
+    is_batch = False
 
     # Colors for chart
     colormap = {}
@@ -181,7 +201,7 @@ class TimeSeriesEndpoint(AsMixin, Endpoint):
 
         params = {}
         if self.symbol is not None:
-            params["symbol"] = self.symbol
+            params["symbol"], self.is_batch = get_symbol(self.symbol)
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -339,7 +359,7 @@ class ADEndpoint(AsMixin, Endpoint):
 
         params = {}
         if self.symbol is not None:
-            params["symbol"] = self.symbol
+            params["symbol"], self.is_batch = get_symbol(self.symbol)
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -399,7 +419,7 @@ class ADOSCEndpoint(AsMixin, Endpoint):
 
         params = {}
         if self.symbol is not None:
-            params["symbol"] = self.symbol
+            params["symbol"], self.is_batch = get_symbol(self.symbol)
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -461,7 +481,7 @@ class ADXEndpoint(AsMixin, Endpoint):
 
         params = {}
         if self.symbol is not None:
-            params["symbol"] = self.symbol
+            params["symbol"], self.is_batch = get_symbol(self.symbol)
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -521,7 +541,7 @@ class ADXREndpoint(AsMixin, Endpoint):
 
         params = {}
         if self.symbol is not None:
-            params["symbol"] = self.symbol
+            params["symbol"], self.is_batch = get_symbol(self.symbol)
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -587,7 +607,7 @@ class APOEndpoint(AsMixin, Endpoint):
 
         params = {}
         if self.symbol is not None:
-            params["symbol"] = self.symbol
+            params["symbol"], self.is_batch = get_symbol(self.symbol)
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -653,7 +673,7 @@ class AROONEndpoint(AsMixin, Endpoint):
 
         params = {}
         if self.symbol is not None:
-            params["symbol"] = self.symbol
+            params["symbol"], self.is_batch = get_symbol(self.symbol)
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -713,7 +733,7 @@ class AROONOSCEndpoint(AsMixin, Endpoint):
 
         params = {}
         if self.symbol is not None:
-            params["symbol"] = self.symbol
+            params["symbol"], self.is_batch = get_symbol(self.symbol)
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -773,7 +793,7 @@ class ATREndpoint(AsMixin, Endpoint):
 
         params = {}
         if self.symbol is not None:
-            params["symbol"] = self.symbol
+            params["symbol"], self.is_batch = get_symbol(self.symbol)
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -831,7 +851,7 @@ class AVGPRICEEndpoint(AsMixin, Endpoint):
 
         params = {}
         if self.symbol is not None:
-            params["symbol"] = self.symbol
+            params["symbol"], self.is_batch = get_symbol(self.symbol)
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -895,7 +915,7 @@ class BBANDSEndpoint(AsMixin, Endpoint):
 
         params = {}
         if self.symbol is not None:
-            params["symbol"] = self.symbol
+            params["symbol"], self.is_batch = get_symbol(self.symbol)
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -967,7 +987,7 @@ class PercentBEndpoint(AsMixin, Endpoint):
 
         params = {}
         if self.symbol is not None:
-            params["symbol"] = self.symbol
+            params["symbol"], self.is_batch = get_symbol(self.symbol)
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -1031,7 +1051,7 @@ class BOPEndpoint(AsMixin, Endpoint):
 
         params = {}
         if self.symbol is not None:
-            params["symbol"] = self.symbol
+            params["symbol"], self.is_batch = get_symbol(self.symbol)
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -1089,7 +1109,7 @@ class CCIEndpoint(AsMixin, Endpoint):
 
         params = {}
         if self.symbol is not None:
-            params["symbol"] = self.symbol
+            params["symbol"], self.is_batch = get_symbol(self.symbol)
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -1149,7 +1169,7 @@ class CEILEndpoint(AsMixin, Endpoint):
 
         params = {}
         if self.symbol is not None:
-            params["symbol"] = self.symbol
+            params["symbol"], self.is_batch = get_symbol(self.symbol)
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -1211,7 +1231,7 @@ class CMOEndpoint(AsMixin, Endpoint):
 
         params = {}
         if self.symbol is not None:
-            params["symbol"] = self.symbol
+            params["symbol"], self.is_batch = get_symbol(self.symbol)
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -1279,7 +1299,7 @@ class COPPOCKEndpoint(AsMixin, Endpoint):
 
         params = {}
         if self.symbol is not None:
-            params["symbol"] = self.symbol
+            params["symbol"], self.is_batch = get_symbol(self.symbol)
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -1345,7 +1365,7 @@ class CEILEndpoint(AsMixin, Endpoint):
 
         params = {}
         if self.symbol is not None:
-            params["symbol"] = self.symbol
+            params["symbol"], self.is_batch = get_symbol(self.symbol)
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -1407,7 +1427,7 @@ class DEMAEndpoint(AsMixin, Endpoint):
 
         params = {}
         if self.symbol is not None:
-            params["symbol"] = self.symbol
+            params["symbol"], self.is_batch = get_symbol(self.symbol)
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -1469,7 +1489,7 @@ class DXEndpoint(AsMixin, Endpoint):
 
         params = {}
         if self.symbol is not None:
-            params["symbol"] = self.symbol
+            params["symbol"], self.is_batch = get_symbol(self.symbol)
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -1531,7 +1551,7 @@ class EMAEndpoint(AsMixin, Endpoint):
 
         params = {}
         if self.symbol is not None:
-            params["symbol"] = self.symbol
+            params["symbol"], self.is_batch = get_symbol(self.symbol)
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -1593,7 +1613,7 @@ class EXPEndpoint(AsMixin, Endpoint):
 
         params = {}
         if self.symbol is not None:
-            params["symbol"] = self.symbol
+            params["symbol"], self.is_batch = get_symbol(self.symbol)
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -1653,7 +1673,7 @@ class FLOOREndpoint(AsMixin, Endpoint):
 
         params = {}
         if self.symbol is not None:
-            params["symbol"] = self.symbol
+            params["symbol"], self.is_batch = get_symbol(self.symbol)
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -1711,7 +1731,7 @@ class HEIKINASHICANDLESEndpoint(AsMixin, Endpoint):
 
         params = {}
         if self.symbol is not None:
-            params["symbol"] = self.symbol
+            params["symbol"], self.is_batch = get_symbol(self.symbol)
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -1767,7 +1787,7 @@ class HLC3Endpoint(AsMixin, Endpoint):
 
         params = {}
         if self.symbol is not None:
-            params["symbol"] = self.symbol
+            params["symbol"], self.is_batch = get_symbol(self.symbol)
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -1825,7 +1845,7 @@ class HT_DCPERIODEndpoint(AsMixin, Endpoint):
 
         params = {}
         if self.symbol is not None:
-            params["symbol"] = self.symbol
+            params["symbol"], self.is_batch = get_symbol(self.symbol)
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -1885,7 +1905,7 @@ class HT_DCPHASEEndpoint(AsMixin, Endpoint):
 
         params = {}
         if self.symbol is not None:
-            params["symbol"] = self.symbol
+            params["symbol"], self.is_batch = get_symbol(self.symbol)
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -1945,7 +1965,7 @@ class HT_PHASOREndpoint(AsMixin, Endpoint):
 
         params = {}
         if self.symbol is not None:
-            params["symbol"] = self.symbol
+            params["symbol"], self.is_batch = get_symbol(self.symbol)
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -2005,7 +2025,7 @@ class HT_SINEEndpoint(AsMixin, Endpoint):
 
         params = {}
         if self.symbol is not None:
-            params["symbol"] = self.symbol
+            params["symbol"], self.is_batch = get_symbol(self.symbol)
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -2065,7 +2085,7 @@ class HT_TRENDLINEEndpoint(AsMixin, Endpoint):
 
         params = {}
         if self.symbol is not None:
-            params["symbol"] = self.symbol
+            params["symbol"], self.is_batch = get_symbol(self.symbol)
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -2125,7 +2145,7 @@ class HT_TRENDMODEEndpoint(AsMixin, Endpoint):
 
         params = {}
         if self.symbol is not None:
-            params["symbol"] = self.symbol
+            params["symbol"], self.is_batch = get_symbol(self.symbol)
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -2187,7 +2207,7 @@ class KAMAEndpoint(AsMixin, Endpoint):
 
         params = {}
         if self.symbol is not None:
-            params["symbol"] = self.symbol
+            params["symbol"], self.is_batch = get_symbol(self.symbol)
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -2251,7 +2271,7 @@ class LINEARREGEndpoint(AsMixin, Endpoint):
 
         params = {}
         if self.symbol is not None:
-            params["symbol"] = self.symbol
+            params["symbol"], self.is_batch = get_symbol(self.symbol)
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -2315,7 +2335,7 @@ class LINEARREGANGLEEndpoint(AsMixin, Endpoint):
 
         params = {}
         if self.symbol is not None:
-            params["symbol"] = self.symbol
+            params["symbol"], self.is_batch = get_symbol(self.symbol)
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -2379,7 +2399,7 @@ class LINEARREGINTERCEPTEndpoint(AsMixin, Endpoint):
 
         params = {}
         if self.symbol is not None:
-            params["symbol"] = self.symbol
+            params["symbol"], self.is_batch = get_symbol(self.symbol)
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -2443,7 +2463,7 @@ class LINEARREGSLOPEEndpoint(AsMixin, Endpoint):
 
         params = {}
         if self.symbol is not None:
-            params["symbol"] = self.symbol
+            params["symbol"], self.is_batch = get_symbol(self.symbol)
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -2505,7 +2525,7 @@ class LNEndpoint(AsMixin, Endpoint):
 
         params = {}
         if self.symbol is not None:
-            params["symbol"] = self.symbol
+            params["symbol"], self.is_batch = get_symbol(self.symbol)
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -2565,7 +2585,7 @@ class LOG10Endpoint(AsMixin, Endpoint):
 
         params = {}
         if self.symbol is not None:
-            params["symbol"] = self.symbol
+            params["symbol"], self.is_batch = get_symbol(self.symbol)
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -2629,7 +2649,7 @@ class MAEndpoint(AsMixin, Endpoint):
 
         params = {}
         if self.symbol is not None:
-            params["symbol"] = self.symbol
+            params["symbol"], self.is_batch = get_symbol(self.symbol)
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -2699,7 +2719,7 @@ class MACDEndpoint(AsMixin, Endpoint):
 
         params = {}
         if self.symbol is not None:
-            params["symbol"] = self.symbol
+            params["symbol"], self.is_batch = get_symbol(self.symbol)
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -2777,7 +2797,7 @@ class MACDEXTEndpoint(AsMixin, Endpoint):
 
         params = {}
         if self.symbol is not None:
-            params["symbol"] = self.symbol
+            params["symbol"], self.is_batch = get_symbol(self.symbol)
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -2853,7 +2873,7 @@ class MAMAEndpoint(AsMixin, Endpoint):
 
         params = {}
         if self.symbol is not None:
-            params["symbol"] = self.symbol
+            params["symbol"], self.is_batch = get_symbol(self.symbol)
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -2919,7 +2939,7 @@ class MAXEndpoint(AsMixin, Endpoint):
 
         params = {}
         if self.symbol is not None:
-            params["symbol"] = self.symbol
+            params["symbol"], self.is_batch = get_symbol(self.symbol)
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -2983,7 +3003,7 @@ class MAXINDEXEndpoint(AsMixin, Endpoint):
 
         params = {}
         if self.symbol is not None:
-            params["symbol"] = self.symbol
+            params["symbol"], self.is_batch = get_symbol(self.symbol)
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -3047,7 +3067,7 @@ class MEDPRICEEndpoint(AsMixin, Endpoint):
 
         params = {}
         if self.symbol is not None:
-            params["symbol"] = self.symbol
+            params["symbol"], self.is_batch = get_symbol(self.symbol)
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -3109,7 +3129,7 @@ class MFIEndpoint(AsMixin, Endpoint):
 
         params = {}
         if self.symbol is not None:
-            params["symbol"] = self.symbol
+            params["symbol"], self.is_batch = get_symbol(self.symbol)
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -3171,7 +3191,7 @@ class MIDPOINTEndpoint(AsMixin, Endpoint):
 
         params = {}
         if self.symbol is not None:
-            params["symbol"] = self.symbol
+            params["symbol"], self.is_batch = get_symbol(self.symbol)
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -3233,7 +3253,7 @@ class MIDPRICEEndpoint(AsMixin, Endpoint):
 
         params = {}
         if self.symbol is not None:
-            params["symbol"] = self.symbol
+            params["symbol"], self.is_batch = get_symbol(self.symbol)
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -3295,7 +3315,7 @@ class MINEndpoint(AsMixin, Endpoint):
 
         params = {}
         if self.symbol is not None:
-            params["symbol"] = self.symbol
+            params["symbol"], self.is_batch = get_symbol(self.symbol)
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -3359,7 +3379,7 @@ class MININDEXEndpoint(AsMixin, Endpoint):
 
         params = {}
         if self.symbol is not None:
-            params["symbol"] = self.symbol
+            params["symbol"], self.is_batch = get_symbol(self.symbol)
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -3423,7 +3443,7 @@ class MINMAXEndpoint(AsMixin, Endpoint):
 
         params = {}
         if self.symbol is not None:
-            params["symbol"] = self.symbol
+            params["symbol"], self.is_batch = get_symbol(self.symbol)
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -3487,7 +3507,7 @@ class MINMAXINDEXEndpoint(AsMixin, Endpoint):
 
         params = {}
         if self.symbol is not None:
-            params["symbol"] = self.symbol
+            params["symbol"], self.is_batch = get_symbol(self.symbol)
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -3549,7 +3569,7 @@ class MINUS_DIEndpoint(AsMixin, Endpoint):
 
         params = {}
         if self.symbol is not None:
-            params["symbol"] = self.symbol
+            params["symbol"], self.is_batch = get_symbol(self.symbol)
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -3609,7 +3629,7 @@ class MINUS_DMEndpoint(AsMixin, Endpoint):
 
         params = {}
         if self.symbol is not None:
-            params["symbol"] = self.symbol
+            params["symbol"], self.is_batch = get_symbol(self.symbol)
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -3671,7 +3691,7 @@ class MOMEndpoint(AsMixin, Endpoint):
 
         params = {}
         if self.symbol is not None:
-            params["symbol"] = self.symbol
+            params["symbol"], self.is_batch = get_symbol(self.symbol)
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -3733,7 +3753,7 @@ class NATREndpoint(AsMixin, Endpoint):
 
         params = {}
         if self.symbol is not None:
-            params["symbol"] = self.symbol
+            params["symbol"], self.is_batch = get_symbol(self.symbol)
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -3793,7 +3813,7 @@ class OBVEndpoint(AsMixin, Endpoint):
 
         params = {}
         if self.symbol is not None:
-            params["symbol"] = self.symbol
+            params["symbol"], self.is_batch = get_symbol(self.symbol)
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -3853,7 +3873,7 @@ class PLUS_DIEndpoint(AsMixin, Endpoint):
 
         params = {}
         if self.symbol is not None:
-            params["symbol"] = self.symbol
+            params["symbol"], self.is_batch = get_symbol(self.symbol)
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -3913,7 +3933,7 @@ class PLUS_DMEndpoint(AsMixin, Endpoint):
 
         params = {}
         if self.symbol is not None:
-            params["symbol"] = self.symbol
+            params["symbol"], self.is_batch = get_symbol(self.symbol)
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -3979,7 +3999,7 @@ class PPOEndpoint(AsMixin, Endpoint):
 
         params = {}
         if self.symbol is not None:
-            params["symbol"] = self.symbol
+            params["symbol"], self.is_batch = get_symbol(self.symbol)
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -4047,7 +4067,7 @@ class ROCEndpoint(AsMixin, Endpoint):
 
         params = {}
         if self.symbol is not None:
-            params["symbol"] = self.symbol
+            params["symbol"], self.is_batch = get_symbol(self.symbol)
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -4111,7 +4131,7 @@ class ROCPEndpoint(AsMixin, Endpoint):
 
         params = {}
         if self.symbol is not None:
-            params["symbol"] = self.symbol
+            params["symbol"], self.is_batch = get_symbol(self.symbol)
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -4175,7 +4195,7 @@ class ROCREndpoint(AsMixin, Endpoint):
 
         params = {}
         if self.symbol is not None:
-            params["symbol"] = self.symbol
+            params["symbol"], self.is_batch = get_symbol(self.symbol)
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -4239,7 +4259,7 @@ class ROCR100Endpoint(AsMixin, Endpoint):
 
         params = {}
         if self.symbol is not None:
-            params["symbol"] = self.symbol
+            params["symbol"], self.is_batch = get_symbol(self.symbol)
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -4303,7 +4323,7 @@ class RSIEndpoint(AsMixin, Endpoint):
 
         params = {}
         if self.symbol is not None:
-            params["symbol"] = self.symbol
+            params["symbol"], self.is_batch = get_symbol(self.symbol)
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -4367,7 +4387,7 @@ class SAREndpoint(AsMixin, Endpoint):
 
         params = {}
         if self.symbol is not None:
-            params["symbol"] = self.symbol
+            params["symbol"], self.is_batch = get_symbol(self.symbol)
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -4431,7 +4451,7 @@ class SMAEndpoint(AsMixin, Endpoint):
 
         params = {}
         if self.symbol is not None:
-            params["symbol"] = self.symbol
+            params["symbol"], self.is_batch = get_symbol(self.symbol)
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -4493,7 +4513,7 @@ class SQRTEndpoint(AsMixin, Endpoint):
 
         params = {}
         if self.symbol is not None:
-            params["symbol"] = self.symbol
+            params["symbol"], self.is_batch = get_symbol(self.symbol)
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -4557,7 +4577,7 @@ class STDDEVEndpoint(AsMixin, Endpoint):
 
         params = {}
         if self.symbol is not None:
-            params["symbol"] = self.symbol
+            params["symbol"], self.is_batch = get_symbol(self.symbol)
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -4629,7 +4649,7 @@ class STOCHEndpoint(AsMixin, Endpoint):
 
         params = {}
         if self.symbol is not None:
-            params["symbol"] = self.symbol
+            params["symbol"], self.is_batch = get_symbol(self.symbol)
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -4701,7 +4721,7 @@ class STOCHFEndpoint(AsMixin, Endpoint):
 
         params = {}
         if self.symbol is not None:
-            params["symbol"] = self.symbol
+            params["symbol"], self.is_batch = get_symbol(self.symbol)
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -4773,7 +4793,7 @@ class STOCHRSIEndpoint(AsMixin, Endpoint):
 
         params = {}
         if self.symbol is not None:
-            params["symbol"] = self.symbol
+            params["symbol"], self.is_batch = get_symbol(self.symbol)
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -4845,7 +4865,7 @@ class T3MAEndpoint(AsMixin, Endpoint):
 
         params = {}
         if self.symbol is not None:
-            params["symbol"] = self.symbol
+            params["symbol"], self.is_batch = get_symbol(self.symbol)
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -4911,7 +4931,7 @@ class TEMAEndpoint(AsMixin, Endpoint):
 
         params = {}
         if self.symbol is not None:
-            params["symbol"] = self.symbol
+            params["symbol"], self.is_batch = get_symbol(self.symbol)
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -4971,7 +4991,7 @@ class TRANGEEndpoint(AsMixin, Endpoint):
 
         params = {}
         if self.symbol is not None:
-            params["symbol"] = self.symbol
+            params["symbol"], self.is_batch = get_symbol(self.symbol)
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -5031,7 +5051,7 @@ class TRIMAEndpoint(AsMixin, Endpoint):
 
         params = {}
         if self.symbol is not None:
-            params["symbol"] = self.symbol
+            params["symbol"], self.is_batch = get_symbol(self.symbol)
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -5095,7 +5115,7 @@ class TSFEndpoint(AsMixin, Endpoint):
 
         params = {}
         if self.symbol is not None:
-            params["symbol"] = self.symbol
+            params["symbol"], self.is_batch = get_symbol(self.symbol)
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -5155,7 +5175,7 @@ class TYPPRICEEndpoint(AsMixin, Endpoint):
 
         params = {}
         if self.symbol is not None:
-            params["symbol"] = self.symbol
+            params["symbol"], self.is_batch = get_symbol(self.symbol)
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -5217,7 +5237,7 @@ class ULTOSCEndpoint(AsMixin, Endpoint):
 
         params = {}
         if self.symbol is not None:
-            params["symbol"] = self.symbol
+            params["symbol"], self.is_batch = get_symbol(self.symbol)
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -5283,7 +5303,7 @@ class VAREndpoint(AsMixin, Endpoint):
 
         params = {}
         if self.symbol is not None:
-            params["symbol"] = self.symbol
+            params["symbol"], self.is_batch = get_symbol(self.symbol)
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -5343,7 +5363,7 @@ class WCLPRICEEndpoint(AsMixin, Endpoint):
 
         params = {}
         if self.symbol is not None:
-            params["symbol"] = self.symbol
+            params["symbol"], self.is_batch = get_symbol(self.symbol)
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -5401,7 +5421,7 @@ class WILLREndpoint(AsMixin, Endpoint):
 
         params = {}
         if self.symbol is not None:
-            params["symbol"] = self.symbol
+            params["symbol"], self.is_batch = get_symbol(self.symbol)
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -5463,7 +5483,7 @@ class WMAEndpoint(AsMixin, Endpoint):
 
         params = {}
         if self.symbol is not None:
-            params["symbol"] = self.symbol
+            params["symbol"], self.is_batch = get_symbol(self.symbol)
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:

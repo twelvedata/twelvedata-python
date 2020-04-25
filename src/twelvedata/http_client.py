@@ -26,7 +26,13 @@ class DefaultHttpClient(object):
 
         resp = requests.get("{}{}".format(self.base_url, relative_url), *args, **kwargs)
 
-        if resp.ok:
+        if ('Is_batch' in resp.headers and resp.headers['Is_batch'] == 'true') or (resp.headers['Content-Type'] == 'text/csv'):
+            return resp
+
+        status = resp.json()['status']
+        if status == 'error':
+            error_code = resp.json()['code']
+        else:
             return resp
 
         try:
@@ -34,13 +40,13 @@ class DefaultHttpClient(object):
         except ValueError:
             message = resp.text
 
-        if resp.status_code == 401:
+        if error_code == 401:
             raise InvalidApiKeyError(message)
 
-        if resp.status_code == 400:
+        if error_code == 400:
             raise BadRequestError(message)
 
-        if resp.status_code >= 500:
+        if error_code >= 500:
             raise InternalServerError(message)
 
         raise TwelveDataError(message)

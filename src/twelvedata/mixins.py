@@ -1,7 +1,7 @@
 # coding: utf-8
 
 import csv
-from .utils import convert_collection_to_pandas, convert_pandas_to_plotly
+from .utils import convert_collection_to_pandas, convert_collection_to_pandas_multi_index, convert_pandas_to_plotly
 
 
 __all__ = ("AsJsonMixin", "AsCsvMixin", "AsPandasMixin", "AsPlotMixin", "AsMixin")
@@ -11,6 +11,8 @@ class AsJsonMixin(object):
     def as_json(self):
         resp = self.execute(format="JSON")
         json = resp.json()
+        if hasattr(self, 'is_batch') and self.is_batch:
+            return json
         if json.get("status") == "ok":
             return json.get("data") or json.get("values") or []
 
@@ -36,13 +38,17 @@ class AsPandasMixin(object):
         import pandas as pd
 
         assert hasattr(self, "as_json")
-        df = convert_collection_to_pandas(self.as_json(), **kwargs)
 
-        df = df.set_index("datetime")
-        df.index = pd.to_datetime(df.index, infer_datetime_format=True)
+        data = self.as_json()
+        if hasattr(self, 'is_batch') and self.is_batch:
+            df = convert_collection_to_pandas_multi_index(data)
+        else:
+            df = convert_collection_to_pandas(data, **kwargs)
+            df = df.set_index("datetime")
+            df.index = pd.to_datetime(df.index, infer_datetime_format=True)
 
-        for col in df.columns:
-            df[col] = pd.to_numeric(df[col], errors="ignore")
+            for col in df.columns:
+                df[col] = pd.to_numeric(df[col], errors="ignore")
 
         return df
 

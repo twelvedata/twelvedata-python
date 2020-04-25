@@ -140,6 +140,38 @@ def convert_collection_to_pandas(val, indexing_type=None):
         raise ValueError("Expected list, tuple or dict, but {} found".format(type(val)))
 
 
+def convert_collection_to_pandas_multi_index(val):
+    try:
+        import pandas
+    except ImportError:
+        raise ImportError(
+            textwrap.dedent(
+                """
+                    No module named 'pandas'. You can install it with follow command:
+
+                    > pip install twelvedata[pandas] 
+
+                    or 
+
+                    > pip install pandas
+                """
+            ).strip()
+        )
+
+    columns = tuple(val[list(val)[0]]['values'][0].keys())[1:]
+
+    arr = []
+    for symbol, data in val.items():
+        for quote in data['values']:
+            arr.append(tuple(quote.values())[1:])
+
+    major_idx = val.keys()
+    minor_idx = [d['datetime'] for d in val[list(major_idx)[0]]['values']]
+    idx = pandas.MultiIndex.from_product([major_idx, minor_idx])
+
+    return pandas.DataFrame(arr, index=idx, columns=columns)
+
+
 def parse_interval_in_minutes(interval):
     """
     Parses the interval and tries to return its value as minutes.

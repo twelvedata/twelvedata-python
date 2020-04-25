@@ -34,22 +34,47 @@ class TimeSeries(object):
 
     def as_json(self):
         out = OrderedDict()
+        is_batch = False
         postfixes = self._generate_postfixes()
 
         if self.price_endpoint_enabled:
-            for row in self.price_endpoint.as_json():
-                out.setdefault(row["datetime"], {}).update(row)
+            time_series_json = self.price_endpoint.as_json()
+            is_batch = self.price_endpoint.is_batch
+            for row in time_series_json:
+                if self.price_endpoint.is_batch:
+                    values = OrderedDict()
+                    for v in time_series_json[row]['values']:
+                        values.setdefault(v["datetime"], {}).update(v)
+                    out[row] = values
+                else:
+                    out.setdefault(row["datetime"], {}).update(row)
 
         for ep in self.endpoints:
             postfix = str(next(postfixes[ep.__class__]))
+            indicator_json = ep.as_json()
+            for row in indicator_json:
+                if ep.is_batch:
+                    values = out[row]
+                    for v in indicator_json[row]['values']:
+                        if postfix:
+                            v = {
+                                (k if k == "datetime" else "{}_{}".format(k, postfix)): v
+                                for k, v in v.items()
+                            }
+                        values.setdefault(v["datetime"], {}).update(v)
+                    out[row] = values
+                else:
+                    if postfix:
+                        row = {
+                            (k if k == "datetime" else "{}_{}".format(k, postfix)): v
+                            for k, v in row.items()
+                        }
+                    out.setdefault(row["datetime"], {}).update(row)
 
-            for row in ep.as_json():
-                if postfix:
-                    row = {
-                        (k if k == "datetime" else "{}_{}".format(k, postfix)): v
-                        for k, v in row.items()
-                    }
-                out.setdefault(row["datetime"], {}).update(row)
+        if is_batch:
+            for k, v in out.items():
+                out[k] = tuple(v.values())
+            return dict(out)
 
         return tuple(out.values())
 

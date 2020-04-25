@@ -37,6 +37,11 @@ def _init_ts():
     return td.time_series(symbol="AAPL", interval="1min", outputsize=1)
 
 
+def _init_batch_ts(symbols):
+    td = _init_client()
+    return td.time_series(symbol=symbols, interval="1min", outputsize=1)
+
+
 def test_get_stocks_list():
     td = _init_client()
     td.get_stocks_list().as_json()
@@ -984,3 +989,15 @@ def test_chart_plot():
     chart.as_pyplot_figure()
     chart.as_plotly_figure()
     plt.close()
+
+
+def test_string_batch():
+    batch_ts = _init_batch_ts('AAPL,RY,EUR/USD,BTC/USD:Huobi,')
+    batch_ts.with_macd().with_stoch().as_json()
+    batch_ts.with_ema().with_bbands().as_pandas()
+
+
+def test_list_batch():
+    batch_ts = _init_batch_ts(['AAPL', 'RY', 'EUR/USD', 'BTC/USD:Huobi'])
+    batch_ts.with_macd().with_stoch().as_json()
+    batch_ts.with_ema().with_bbands().as_pandas()

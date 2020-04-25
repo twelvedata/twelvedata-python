@@ -44,6 +44,7 @@ pip install twelvedata[pandas,matplotlib,plotly]
 
 * [Time series](#Time-series)
 * [Technical Indicators](#Technical-indicators)
+* [Batch requests](#Batch-requests)
 * [Charts](#Charts)
 
 ##### Supported parameters
@@ -62,7 +63,7 @@ pip install twelvedata[pandas,matplotlib,plotly]
 
 ### Time series
 
-* `TDClient` requires `api_key` parameter. It accepts all common parameters.
+* `TDClient` requires `apikey` parameter. It accepts all common parameters.
 * `TDClient.time_series()` accepts all common parameters. Time series may be converted to several formats:
   * `TDClient.time_series().as_json()` - will return JSON array
   * `TDClient.time_series().as_csv()` - will return CSV with header
@@ -70,7 +71,7 @@ pip install twelvedata[pandas,matplotlib,plotly]
 
 ```python
 from twelvedata import TDClient
-# Initialize client - api_key parameter is requiered
+# Initialize client - apikey parameter is requiered
 td = TDClient(apikey="YOUR_API_KEY_HERE")
 # Construct the necessary time serie
 ts = td.time_series(
@@ -110,6 +111,69 @@ ts.with_bbands(ma_type="EMA").with_plus_di().with_wma(time_period=20).with_wma(t
 # Returns: STOCH(14, 1, 3, SMA, SMA), TSF(close, 9)
 ts.without_ohlc().with_stoch().with_tsf().as_json()
 ```
+
+### Batch requests
+
+With batch requests up to 120 symbols might be returned per single API call. There are two options on how to do this:
+
+```python
+# 1. Pass instruments symbols as a string delimited by comma (,)
+ts = td.time_series(
+    symbol="V, RY, AUD/CAD, BTC/USD:Huobi"
+)
+
+# 2. Pass as a list of symbols 
+ts = td.time_series(
+    symbol=["V", "RY", "AUD/CAD", "BTC/USD:Huobi"]
+)
+```
+
+**Important.** Batch requests are only supported with `.as_json()` and `.as_pandas()` formats.
+
+With `.as_json()` the output will be a dictionary with passed symbols as keys. The value will be a tuple with quotes, just the same as with a single request.
+```python
+ts = td.time_series(symbol='AAPL,MSFT', interval="1min", outputsize=3)
+df = ts.with_macd().with_macd(fast_period=10).with_stoch().as_json()
+
+{
+    "AAPL": ({'datetime': '2020-04-23 15:59:00', 'open': '275.23001', 'high': '275.25000', 'low': '274.92999', 'close': '275.01001', 'volume': '393317', 'macd_1': '-0.33538', 'macd_signal_1': '-0.24294', 'macd_hist_1': '-0.09244', 'macd_2': '-0.40894', 'macd_signal_2': '-0.29719', 'macd_hist_2': '-0.11175', 'slow_k': '4.52069', 'slow_d': '7.92871'}, {'datetime': '2020-04-23 15:58:00', 'open': '275.07001', 'high': '275.26999', 'low': '275.00000', 'close': '275.25000', 'volume': '177685', 'macd_1': '-0.31486', 'macd_signal_1': '-0.21983', 'macd_hist_1': '-0.09503', 'macd_2': '-0.38598', 'macd_signal_2': '-0.26925', 'macd_hist_2': '-0.11672', 'slow_k': '14.70578', 'slow_d': '6.82079'}, {'datetime': '2020-04-23 15:57:00', 'open': '275.07001', 'high': '275.16000', 'low': '275.00000', 'close': '275.07751', 'volume': '151169', 'macd_1': '-0.30852', 'macd_signal_1': '-0.19607', 'macd_hist_1': '-0.11245', 'macd_2': '-0.38293', 'macd_signal_2': '-0.24007', 'macd_hist_2': '-0.14286', 'slow_k': '4.55965', 'slow_d': '2.75237'}),
+    "MSFT": ({'datetime': '2020-04-23 15:59:00', 'open': '171.59000', 'high': '171.64000', 'low': '171.22000', 'close': '171.42000', 'volume': '477631', 'macd_1': '-0.12756', 'macd_signal_1': '-0.10878', 'macd_hist_1': '-0.01878', 'macd_2': '-0.15109', 'macd_signal_2': '-0.12915', 'macd_hist_2': '-0.02193', 'slow_k': '20.95244', 'slow_d': '26.34919'}, {'datetime': '2020-04-23 15:58:00', 'open': '171.41000', 'high': '171.61000', 'low': '171.33501', 'close': '171.61000', 'volume': '209594', 'macd_1': '-0.12440', 'macd_signal_1': '-0.10408', 'macd_hist_1': '-0.02032', 'macd_2': '-0.14786', 'macd_signal_2': '-0.12367', 'macd_hist_2': '-0.02419', 'slow_k': '39.04785', 'slow_d': '23.80945'}, {'datetime': '2020-04-23 15:57:00', 'open': '171.34500', 'high': '171.48000', 'low': '171.25999', 'close': '171.39999', 'volume': '142450', 'macd_1': '-0.13791', 'macd_signal_1': '-0.09900', 'macd_hist_1': '-0.03891', 'macd_2': '-0.16800', 'macd_signal_2': '-0.11762', 'macd_hist_2': '-0.05037', 'slow_k': '19.04727', 'slow_d': '14.92063'})
+}
+
+```
+
+With `.as_pandas()` the output will be a 3D DataFrame with MultiIndex for (symbol, datetime).
+```python
+ts = td.time_series(symbol='AAPL,MSFT', interval="1min", outputsize=3)
+df = ts.with_macd().with_macd(fast_period=10).with_stoch().as_pandas()
+
+#                                open       high  ...    slow_k    slow_d
+# AAPL 2020-04-23 15:59:00  275.23001  275.25000  ...   4.52069   7.92871
+#      2020-04-23 15:58:00  275.07001  275.26999  ...  14.70578   6.82079
+#      2020-04-23 15:57:00  275.07001  275.16000  ...   4.55965   2.75237
+# MSFT 2020-04-23 15:59:00  171.59000  171.64000  ...  20.95244  26.34919
+#      2020-04-23 15:58:00  171.41000  171.61000  ...  39.04785  23.80945
+#      2020-04-23 15:57:00  171.34500  171.48000  ...  19.04727  14.92063
+# 
+# [6 rows x 13 columns]
+
+df.loc['AAPL']
+
+#                           open       high  ...    slow_k   slow_d
+# 2020-04-23 15:59:00  275.23001  275.25000  ...   4.52069  7.92871
+# 2020-04-23 15:58:00  275.07001  275.26999  ...  14.70578  6.82079
+# 2020-04-23 15:57:00  275.07001  275.16000  ...   4.55965  2.75237
+# 
+# [3 rows x 13 columns]
+
+df.columns
+
+# Index(['open', 'high', 'low', 'close', 'volume', 'macd1', 'macd_signal1',
+#        'macd_hist1', 'macd2', 'macd_signal2', 'macd_hist2', 'slow_k',
+#        'slow_d'],
+#       dtype='object')
+```
+
 
 ### Charts
 
@@ -166,10 +230,15 @@ ts.with_ema(time_period=7).with_mama().with_mom().with_macd().as_plotly_figure()
 
 Visit our official website [https://twelvedata.com](https://twelvedata.com) or reach out to the Twelve Data team at [info@twelvedata.com](mailto:info@twelvedata.com?subject=Python%20library%20question).
 
+## Announcements
+
+Follow [@TwelveData](https://twitter.com/TwelveData) on Twitter for announcements and updates about this library.
+
 ## Roadmap
 
 - [ ] Save-load chart templates
 - [ ] Auto-update charts
+- [x] Batch requests
 - [x] Custom plots coloring
 - [x] Interactive charts (plotly)
 - [x] Static charts (matplotlib)
