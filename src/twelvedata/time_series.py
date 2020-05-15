@@ -37,12 +37,18 @@ class TimeSeries(object):
         is_batch = False
         postfixes = self._generate_postfixes()
 
+        error_symbols = []
         if self.price_endpoint_enabled:
             time_series_json = self.price_endpoint.as_json()
             is_batch = self.price_endpoint.is_batch
             for row in time_series_json:
                 if self.price_endpoint.is_batch:
                     values = OrderedDict()
+                    print(time_series_json[row])
+                    if time_series_json[row]['status'] == 'error':
+                        err_symbol = re.findall('(?<=:)(.*?)(?=\.)', time_series_json[row]['message'])[0].strip()
+                        error_symbols.append(err_symbol)
+                        continue
                     for v in time_series_json[row]['values']:
                         values.setdefault(v["datetime"], {}).update(v)
                     out[row] = values
@@ -54,6 +60,8 @@ class TimeSeries(object):
             indicator_json = ep.as_json()
             for row in indicator_json:
                 if ep.is_batch:
+                    if row.upper() in error_symbols:
+                        continue
                     values = out[row]
                     for v in indicator_json[row]['values']:
                         if postfix:
