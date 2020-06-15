@@ -381,6 +381,16 @@ def test_time_series_get_kama():
     plt.close()
 
 
+def test_time_series_get_kst():
+    ts = _init_ts()
+    ts.with_kst().as_json()
+    ts.with_kst().as_csv()
+    ts.with_kst().as_pandas()
+    ts.with_kst().as_pyplot_figure()
+    ts.with_kst().as_plotly_figure()
+    plt.close()
+
+
 def test_time_series_get_linearreg():
     ts = _init_ts()
     ts.with_linearreg().as_json()
@@ -498,6 +508,16 @@ def test_time_series_get_maxindex():
     ts.with_maxindex().as_pandas()
     ts.with_maxindex().as_pyplot_figure()
     ts.with_maxindex().as_plotly_figure()
+    plt.close()
+
+
+def test_time_series_get_mcginley_dynamic():
+    ts = _init_ts()
+    ts.with_mcginley_dynamic().as_json()
+    ts.with_mcginley_dynamic().as_csv()
+    ts.with_mcginley_dynamic().as_pandas()
+    ts.with_mcginley_dynamic().as_pyplot_figure()
+    ts.with_mcginley_dynamic().as_plotly_figure()
     plt.close()
 
 
@@ -771,6 +791,16 @@ def test_time_series_get_stochrsi():
     plt.close()
 
 
+def test_time_series_get_supertrend():
+    ts = _init_ts()
+    ts.with_supertrend().as_json()
+    ts.with_supertrend().as_csv()
+    ts.with_supertrend().as_pandas()
+    ts.with_supertrend().as_pyplot_figure()
+    ts.with_supertrend().as_plotly_figure()
+    plt.close()
+
+
 def test_time_series_get_t3ma():
     ts = _init_ts()
     ts.with_t3ma().as_json()
@@ -851,6 +881,16 @@ def test_time_series_get_var():
     plt.close()
 
 
+def test_time_series_get_vwap():
+    ts = _init_ts()
+    ts.with_vwap().as_json()
+    ts.with_vwap().as_csv()
+    ts.with_vwap().as_pandas()
+    ts.with_vwap().as_pyplot_figure()
+    ts.with_vwap().as_plotly_figure()
+    plt.close()
+
+
 def test_time_series_get_wclprice():
     ts = _init_ts()
     ts.with_wclprice().as_json()
@@ -916,6 +956,7 @@ def _init_chart():
         .with_ht_trendline()
         .with_ht_trendmode()
         .with_kama()
+        .with_kst()
         .with_linearreg()
         .with_linearregangle()
         .with_linearregintercept()
@@ -928,6 +969,7 @@ def _init_chart():
         .with_mama()
         .with_max()
         .with_maxindex()
+        .with_mcginley_dynamic()
         .with_medprice()
         .with_midpoint()
         .with_midprice()
@@ -955,6 +997,7 @@ def _init_chart():
         .with_stoch()
         .with_stochf()
         .with_stochrsi()
+        .with_supertrend()
         .with_t3ma()
         .with_tema()
         .with_trange()
@@ -963,6 +1006,7 @@ def _init_chart():
         .with_typprice()
         .with_ultosc()
         .with_var()
+        .with_vwap()
         .with_wclprice()
         .with_willr()
         .with_wma()

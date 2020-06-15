@@ -35,6 +35,7 @@ __all__ = (
     "HT_TRENDLINEEndpoint",
     "HT_TRENDMODEEndpoint",
     "KAMAEndpoint",
+    "KSTEndpoint",
     "LINEARREGANGLEEndpoint",
     "LINEARREGINTERCEPTEndpoint",
     "LINEARREGEndpoint",
@@ -47,6 +48,7 @@ __all__ = (
     "MAEndpoint",
     "MAXINDEXEndpoint",
     "MAXEndpoint",
+    "McGinleyDynamicEndpoint",
     "MEDPRICEEndpoint",
     "MIDPOINTEndpoint",
     "MIDPRICEEndpoint",
@@ -77,6 +79,7 @@ __all__ = (
     "STOCHEndpoint",
     "StockExchangesListEndpoint",
     "StocksListEndpoint",
+    "SuperTrendEndpoint",
     "T3MAEndpoint",
     "TEMAEndpoint",
     "TRANGEEndpoint",
@@ -87,6 +90,7 @@ __all__ = (
     "TimeSeriesEndpoint",
     "ULTOSCEndpoint",
     "VAREndpoint",
+    "VWAPEndpoint",
     "WCLPRICEEndpoint",
     "WILLREndpoint",
     "WMAEndpoint",
@@ -2234,6 +2238,98 @@ class KAMAEndpoint(AsMixin, Endpoint):
         return self.ctx.http_client.get("/kama", params=params)
 
 
+class KSTEndpoint(AsMixin, Endpoint):
+    _name = "kst"
+
+    def __init__(
+        self,
+        ctx,
+        symbol,
+        interval,
+        exchange=None,
+        country=None,
+        roc_period_1=10,
+        roc_period_2=15,
+        roc_period_3=20,
+        roc_period_4=30,
+        signal_period=9,
+        sma_period_1=10,
+        sma_period_2=10,
+        sma_period_3=10,
+        sma_period_4=15,
+        outputsize=30,
+        start_date=None,
+        end_date=None,
+        dp=5,
+        timezone="Exchange",
+    ):
+        self.is_indicator = True
+        self.meta_name = "kst"
+        self.ctx = ctx
+        self.symbol = symbol
+        self.interval = interval
+        self.exchange = exchange
+        self.country = country
+        self.roc_period_1 = roc_period_1
+        self.roc_period_2 = roc_period_2
+        self.roc_period_3 = roc_period_3
+        self.roc_period_4 = roc_period_4
+        self.signal_period = signal_period
+        self.sma_period_1 = sma_period_1
+        self.sma_period_2 = sma_period_2
+        self.sma_period_3 = sma_period_3
+        self.sma_period_4 = sma_period_4
+        self.outputsize = outputsize
+        self.start_date = start_date
+        self.end_date = end_date
+        self.dp = dp
+        self.timezone = timezone
+
+    def execute(self, format="JSON"):
+
+        params = {}
+        if self.symbol is not None:
+            params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.interval is not None:
+            params["interval"] = self.interval
+        if self.exchange is not None:
+            params["exchange"] = self.exchange
+        if self.country is not None:
+            params["country"] = self.country
+        if self.roc_period_1 is not None:
+            params["roc_period_1"] = self.roc_period_1
+        if self.roc_period_2 is not None:
+            params["roc_period_2"] = self.roc_period_2
+        if self.roc_period_3 is not None:
+            params["roc_period_3"] = self.roc_period_3
+        if self.roc_period_4 is not None:
+            params["roc_period_4"] = self.roc_period_4
+        if self.signal_period is not None:
+            params["signal_period"] = self.signal_period
+        if self.sma_period_1 is not None:
+            params["sma_period_1"] = self.sma_period_1
+        if self.sma_period_2 is not None:
+            params["sma_period_2"] = self.sma_period_2
+        if self.sma_period_3 is not None:
+            params["sma_period_3"] = self.sma_period_3
+        if self.sma_period_4 is not None:
+            params["sma_period_4"] = self.sma_period_4
+        if self.outputsize is not None:
+            params["outputsize"] = self.outputsize
+        if self.start_date is not None:
+            params["start_date"] = self.start_date
+        if self.end_date is not None:
+            params["end_date"] = self.end_date
+        if self.dp is not None:
+            params["dp"] = self.dp
+        if self.timezone is not None:
+            params["timezone"] = self.timezone
+
+        params["format"] = format
+        params["apikey"] = self.ctx.apikey
+        return self.ctx.http_client.get("/kst", params=params)
+
+
 class LINEARREGEndpoint(AsMixin, Endpoint):
     _name = "linearreg"
 
@@ -3028,6 +3124,66 @@ class MAXINDEXEndpoint(AsMixin, Endpoint):
         params["format"] = format
         params["apikey"] = self.ctx.apikey
         return self.ctx.http_client.get("/maxindex", params=params)
+
+
+class McGinleyDynamicEndpoint(AsMixin, Endpoint):
+    _name = "mcginley_dynamic"
+
+    def __init__(
+        self,
+        ctx,
+        symbol,
+        interval,
+        exchange=None,
+        country=None,
+        time_period=14,
+        outputsize=30,
+        start_date=None,
+        end_date=None,
+        dp=5,
+        timezone="Exchange",
+    ):
+        self.is_indicator = True
+        self.meta_name = "mcginley_dynamic"
+        self.ctx = ctx
+        self.symbol = symbol
+        self.interval = interval
+        self.exchange = exchange
+        self.country = country
+        self.time_period = time_period
+        self.outputsize = outputsize
+        self.start_date = start_date
+        self.end_date = end_date
+        self.dp = dp
+        self.timezone = timezone
+
+    def execute(self, format="JSON"):
+
+        params = {}
+        if self.symbol is not None:
+            params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.interval is not None:
+            params["interval"] = self.interval
+        if self.exchange is not None:
+            params["exchange"] = self.exchange
+        if self.country is not None:
+            params["country"] = self.country
+        if self.time_period is not None:
+            params["time_period"] = self.time_period
+        if self.outputsize is not None:
+            params["outputsize"] = self.outputsize
+        if self.start_date is not None:
+            params["start_date"] = self.start_date
+        if self.end_date is not None:
+            params["end_date"] = self.end_date
+        if self.dp is not None:
+            params["dp"] = self.dp
+        if self.timezone is not None:
+            params["timezone"] = self.timezone
+
+        params["format"] = format
+        params["apikey"] = self.ctx.apikey
+        return self.ctx.http_client.get("/mcginley_dynamic", params=params)
 
 
 class MEDPRICEEndpoint(AsMixin, Endpoint):
@@ -4826,6 +4982,70 @@ class STOCHRSIEndpoint(AsMixin, Endpoint):
         return self.ctx.http_client.get("/stochrsi", params=params)
 
 
+class SuperTrendEndpoint(AsMixin, Endpoint):
+    _name = "supertrend"
+
+    def __init__(
+        self,
+        ctx,
+        symbol,
+        interval,
+        exchange=None,
+        country=None,
+        outputsize=30,
+        multiplier=3,
+        period=10,
+        start_date=None,
+        end_date=None,
+        dp=5,
+        timezone="Exchange",
+    ):
+        self.is_indicator = True
+        self.meta_name = "supertrend"
+        self.ctx = ctx
+        self.symbol = symbol
+        self.interval = interval
+        self.exchange = exchange
+        self.country = country
+        self.outputsize = outputsize
+        self.multiplier = multiplier
+        self.period = period
+        self.start_date = start_date
+        self.end_date = end_date
+        self.dp = dp
+        self.timezone = timezone
+
+    def execute(self, format="JSON"):
+
+        params = {}
+        if self.symbol is not None:
+            params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.interval is not None:
+            params["interval"] = self.interval
+        if self.exchange is not None:
+            params["exchange"] = self.exchange
+        if self.country is not None:
+            params["country"] = self.country
+        if self.multiplier is not None:
+            params["multiplier"] = self.multiplier
+        if self.period is not None:
+            params["period"] = self.period
+        if self.outputsize is not None:
+            params["outputsize"] = self.outputsize
+        if self.start_date is not None:
+            params["start_date"] = self.start_date
+        if self.end_date is not None:
+            params["end_date"] = self.end_date
+        if self.dp is not None:
+            params["dp"] = self.dp
+        if self.timezone is not None:
+            params["timezone"] = self.timezone
+
+        params["format"] = format
+        params["apikey"] = self.ctx.apikey
+        return self.ctx.http_client.get("/supertrend", params=params)
+
+
 class T3MAEndpoint(AsMixin, Endpoint):
     _name = "t3ma"
 
@@ -5328,6 +5548,62 @@ class VAREndpoint(AsMixin, Endpoint):
         params["format"] = format
         params["apikey"] = self.ctx.apikey
         return self.ctx.http_client.get("/var", params=params)
+
+
+class VWAPEndpoint(AsMixin, Endpoint):
+    _name = "vwap"
+
+    def __init__(
+        self,
+        ctx,
+        symbol,
+        interval,
+        exchange=None,
+        country=None,
+        outputsize=30,
+        start_date=None,
+        end_date=None,
+        dp=5,
+        timezone="Exchange",
+    ):
+        self.is_indicator = True
+        self.meta_name = "vwap"
+        self.ctx = ctx
+        self.symbol = symbol
+        self.interval = interval
+        self.exchange = exchange
+        self.country = country
+        self.outputsize = outputsize
+        self.start_date = start_date
+        self.end_date = end_date
+        self.dp = dp
+        self.timezone = timezone
+
+    def execute(self, format="JSON"):
+
+        params = {}
+        if self.symbol is not None:
+            params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.interval is not None:
+            params["interval"] = self.interval
+        if self.exchange is not None:
+            params["exchange"] = self.exchange
+        if self.country is not None:
+            params["country"] = self.country
+        if self.outputsize is not None:
+            params["outputsize"] = self.outputsize
+        if self.start_date is not None:
+            params["start_date"] = self.start_date
+        if self.end_date is not None:
+            params["end_date"] = self.end_date
+        if self.dp is not None:
+            params["dp"] = self.dp
+        if self.timezone is not None:
+            params["timezone"] = self.timezone
+
+        params["format"] = format
+        params["apikey"] = self.ctx.apikey
+        return self.ctx.http_client.get("/vwap", params=params)
 
 
 class WCLPRICEEndpoint(AsMixin, Endpoint):

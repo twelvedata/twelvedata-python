@@ -2358,6 +2358,91 @@ class TimeSeries(object):
 
     @force_use_kwargs
     @apply_context_defaults
+    def with_kst(
+            self,
+            exchange=None,
+            country=None,
+            roc_period_1=10,
+            roc_period_2=15,
+            roc_period_3=20,
+            roc_period_4=30,
+            signal_period=9,
+            sma_period_1=10,
+            sma_period_2=10,
+            sma_period_3=10,
+            sma_period_4=15,
+            outputsize=30,
+            start_date=None,
+            end_date=None,
+            dp=5,
+            timezone="Exchange",
+    ):
+        """
+        Add request builder of KST to chart builder
+
+        Know Sure Thing(KST) calculates price momentum for four distinct price cycles(ROC).
+
+        This API call returns meta and time series values of KST. Meta object
+        consists of general information about requested technical indicator.
+        Time series is the array of objects ordered by time desceding updated
+        realtime.
+
+        :param symbol: Instrument symbol, can be any stock, forex or
+            cryptocurrency E.g. AAPL, EUR/USD, ETH/BTC, ...
+        :param interval: Interval between two consecutive points in time series
+        :param exchange: Only is applicable to stocks and cryptocurrencies
+        otherwise is ignored
+            Exchange where instrument is traded
+        :param country: Only is applicable to stocks otherwise is ignored
+            Country where instrument is traded
+        :param roc_period_1:
+        :param roc_period_2:
+        :param roc_period_3:
+        :param roc_period_4:
+        :param signal_period:
+        :param sma_period_1:
+        :param sma_period_2:
+        :param sma_period_3:
+        :param sma_period_4:
+        :param outputsize: Number of last datapoints to retrieve
+        :param start_date: Start date of selection, accepts "yyyy-MM-dd hh:mm:ss" and "yyyy-MM-dd" formats
+        :param end_date: End date of selection, accepts "yyyy-MM-dd hh:mm:ss" and "yyyy-MM-dd" formats
+        :param dp: Specifies number of decimal places for floating values
+        :param timezone: Timezone at which output datetime will be displayed
+            Exchange for local exchange time2. UTC for datetime at universal
+            UTC standard3. Timezone name according to IANA Time Zone
+            Database. E.g. America/New_York, Asia/Singapore. Full list of
+            timezones can be found here.Take note that IANA Timezone name is
+            case-sensitive.
+
+        :returns: chart builder
+        :rtype: ChartEndpoint
+        """
+        ep = KSTEndpoint(
+            ctx=self.ctx,
+            symbol=self.ctx.defaults["symbol"],
+            interval=self.ctx.defaults["interval"],
+            exchange=exchange,
+            country=country,
+            roc_period_1=roc_period_1,
+            roc_period_2=roc_period_2,
+            roc_period_3=roc_period_3,
+            roc_period_4=roc_period_4,
+            signal_period=signal_period,
+            sma_period_1=sma_period_1,
+            sma_period_2=sma_period_2,
+            sma_period_3=sma_period_3,
+            sma_period_4=sma_period_4,
+            outputsize=outputsize,
+            start_date=start_date,
+            end_date=end_date,
+            dp=dp,
+            timezone=timezone,
+        )
+        return self._with_endpoint(ep)
+
+    @force_use_kwargs
+    @apply_context_defaults
     def with_linearreg(
         self,
         exchange=None,
@@ -3174,6 +3259,67 @@ class TimeSeries(object):
             exchange=exchange,
             country=country,
             series_type=series_type,
+            time_period=time_period,
+            outputsize=outputsize,
+            start_date=start_date,
+            end_date=end_date,
+            dp=dp,
+            timezone=timezone,
+        )
+        return self._with_endpoint(ep)
+
+    @force_use_kwargs
+    @apply_context_defaults
+    def with_mcginley_dynamic(
+            self,
+            exchange=None,
+            country=None,
+            time_period=14,
+            outputsize=30,
+            start_date=None,
+            end_date=None,
+            dp=5,
+            timezone="Exchange",
+    ):
+        """
+        Add request builder of MCGINLEY_DYNAMIC to chart builder
+
+        McGinley Dynamic(MCGINLEY_DYNAMIC) keeps all the benefits from the moving averages but adds an adjustment to market speed.
+
+        This API call returns meta and time series values of MCGINLEY_DYNAMIC. Meta object
+        consists of general information about requested technical indicator.
+        Time series is the array of objects ordered by time desceding updated
+        realtime.
+
+        :param symbol: Instrument symbol, can be any stock, forex or
+            cryptocurrency E.g. AAPL, EUR/USD, ETH/BTC, ...
+        :param interval: Interval between two consecutive points in time series
+        :param exchange: Only is applicable to stocks and cryptocurrencies
+        otherwise is ignored
+            Exchange where instrument is traded
+        :param country: Only is applicable to stocks otherwise is ignored
+            Country where instrument is traded
+        :param time_period: Number of periods to average over
+        :param outputsize: Number of last datapoints to retrieve
+        :param start_date: Start date of selection, accepts "yyyy-MM-dd hh:mm:ss" and "yyyy-MM-dd" formats
+        :param end_date: End date of selection, accepts "yyyy-MM-dd hh:mm:ss" and "yyyy-MM-dd" formats
+        :param dp: Specifies number of decimal places for floating values
+        :param timezone: Timezone at which output datetime will be displayed
+            Exchange for local exchange time2. UTC for datetime at universal
+            UTC standard3. Timezone name according to IANA Time Zone
+            Database. E.g. America/New_York, Asia/Singapore. Full list of
+            timezones can be found here.Take note that IANA Timezone name is
+            case-sensitive.
+
+        :returns: chart builder
+        :rtype: ChartEndpoint
+        """
+        ep = McGinleyDynamicEndpoint(
+            ctx=self.ctx,
+            symbol=self.ctx.defaults["symbol"],
+            interval=self.ctx.defaults["interval"],
+            exchange=exchange,
+            country=country,
             time_period=time_period,
             outputsize=outputsize,
             start_date=start_date,
@@ -4988,6 +5134,71 @@ class TimeSeries(object):
 
     @force_use_kwargs
     @apply_context_defaults
+    def with_supertrend(
+            self,
+            exchange=None,
+            country=None,
+            multiplier=3,
+            period=10,
+            outputsize=30,
+            start_date=None,
+            end_date=None,
+            dp=5,
+            timezone="Exchange",
+    ):
+        """
+        Add request builder of SuperTrend to chart builder
+
+        SuperTrend Indicator(SUPERTREND) is mostly used on intraday timeframes to detect
+        the price upward or downward direction in the trending market.
+
+        This API call returns meta and time series values of SuperTrend. Meta object
+        consists of general information about requested technical indicator.
+        Time series is the array of objects ordered by time desceding updated
+        realtime.
+
+        :param symbol: Instrument symbol, can be any stock, forex or
+            cryptocurrency E.g. AAPL, EUR/USD, ETH/BTC, ...
+        :param interval: Interval between two consecutive points in time series
+        :param exchange: Only is applicable to stocks and cryptocurrencies
+        otherwise is ignored
+            Exchange where instrument is traded
+        :param country: Only is applicable to stocks otherwise is ignored
+            Country where instrument is traded
+        :param multiplier: Multiplier is the number by which the range is multiplied
+        :param period: Period of the ATR indicator
+        :param outputsize: Number of last datapoints to retrieve
+        :param start_date: Start date of selection, accepts "yyyy-MM-dd hh:mm:ss" and "yyyy-MM-dd" formats
+        :param end_date: End date of selection, accepts "yyyy-MM-dd hh:mm:ss" and "yyyy-MM-dd" formats
+        :param dp: Specifies number of decimal places for floating values
+        :param timezone: Timezone at which output datetime will be displayed
+            Exchange for local exchange time2. UTC for datetime at universal
+            UTC standard3. Timezone name according to IANA Time Zone
+            Database. E.g. America/New_York, Asia/Singapore. Full list of
+            timezones can be found here.Take note that IANA Timezone name is
+            case-sensitive.
+
+        :returns: chart builder
+        :rtype: ChartEndpoint
+        """
+        ep = SuperTrendEndpoint(
+            ctx=self.ctx,
+            symbol=self.ctx.defaults["symbol"],
+            interval=self.ctx.defaults["interval"],
+            exchange=exchange,
+            country=country,
+            multiplier=multiplier,
+            period=period,
+            outputsize=outputsize,
+            start_date=start_date,
+            end_date=end_date,
+            dp=dp,
+            timezone=timezone,
+        )
+        return self._with_endpoint(ep)
+
+    @force_use_kwargs
+    @apply_context_defaults
     def with_t3ma(
         self,
         exchange=None,
@@ -5514,6 +5725,65 @@ class TimeSeries(object):
 
     @force_use_kwargs
     @apply_context_defaults
+    def with_vwap(
+            self,
+            exchange=None,
+            country=None,
+            outputsize=30,
+            start_date=None,
+            end_date=None,
+            dp=5,
+            timezone="Exchange",
+    ):
+        """
+        Add request builder of VWAP to chart builder
+
+        Volume Weighted Average Price(VWAP) is commonly used as a trading benchmark
+        that gives an average price at which the instrument has been trading during the day.
+
+        This API call returns meta and time series values of VWAP. Meta object
+        consists of general information about requested technical indicator.
+        Time series is the array of objects ordered by time desceding updated
+        realtime.
+
+        :param symbol: Instrument symbol, can be any stock, forex or
+            cryptocurrency E.g. AAPL, EUR/USD, ETH/BTC, ...
+        :param interval: Interval between two consecutive points in time series
+        :param exchange: Only is applicable to stocks and cryptocurrencies
+        otherwise is ignored
+            Exchange where instrument is traded
+        :param country: Only is applicable to stocks otherwise is ignored
+            Country where instrument is traded
+        :param outputsize: Number of last datapoints to retrieve
+        :param start_date: Start date of selection, accepts "yyyy-MM-dd hh:mm:ss" and "yyyy-MM-dd" formats
+        :param end_date: End date of selection, accepts "yyyy-MM-dd hh:mm:ss" and "yyyy-MM-dd" formats
+        :param dp: Specifies number of decimal places for floating values
+        :param timezone: Timezone at which output datetime will be displayed
+            Exchange for local exchange time2. UTC for datetime at universal
+            UTC standard3. Timezone name according to IANA Time Zone
+            Database. E.g. America/New_York, Asia/Singapore. Full list of
+            timezones can be found here.Take note that IANA Timezone name is
+            case-sensitive.
+
+        :returns: chart builder
+        :rtype: ChartEndpoint
+        """
+        ep = VWAPEndpoint(
+            ctx=self.ctx,
+            symbol=self.ctx.defaults["symbol"],
+            interval=self.ctx.defaults["interval"],
+            exchange=exchange,
+            country=country,
+            outputsize=outputsize,
+            start_date=start_date,
+            end_date=end_date,
+            dp=dp,
+            timezone=timezone,
+        )
+        return self._with_endpoint(ep)
+
+    @force_use_kwargs
+    @apply_context_defaults
     def with_wclprice(
         self,
         exchange=None,
@@ -5610,10 +5880,10 @@ class TimeSeries(object):
         :param end_date: End date of selection, accepts "yyyy-MM-dd hh:mm:ss" and "yyyy-MM-dd" formats
         :param dp: Specifies number of decimal places for floating values
         :param timezone: Timezone at which output datetime will be displayed
-            Exchange for local exchange time2. UTC for datetime at universal 
-            UTC standard3. Timezone name according to IANA Time Zone 
-            Database. E.g. America/New_York, Asia/Singapore. Full list of 
-            timezones can be found here.Take note that IANA Timezone name is 
+            Exchange for local exchange time2. UTC for datetime at universal
+            UTC standard3. Timezone name according to IANA Time Zone
+            Database. E.g. America/New_York, Asia/Singapore. Full list of
+            timezones can be found here.Take note that IANA Timezone name is
             case-sensitive.
 
         :returns: chart builder
@@ -5659,27 +5929,27 @@ class TimeSeries(object):
         Time series is the array of objects ordered by time desceding updated
         realtime.
 
-        :param symbol: Instrument symbol, can be any stock, forex or 
+        :param symbol: Instrument symbol, can be any stock, forex or
             cryptocurrency E.g. AAPL, EUR/USD, ETH/BTC, ...
         :param interval: Interval between two consecutive points in time series
-        :param exchange: Only is applicable to stocks and cryptocurrencies 
+        :param exchange: Only is applicable to stocks and cryptocurrencies
         otherwise is ignored
             Exchange where instrument is traded
         :param country: Only is applicable to stocks otherwise is ignored
             Country where instrument is traded
-        :param series_type: Price type on which technical indicator is 
+        :param series_type: Price type on which technical indicator is
             calculated
-        :param time_period: Number of periods to average over. Must be at 
+        :param time_period: Number of periods to average over. Must be at
             least 1
         :param outputsize: Number of last datapoints to retrieve
         :param start_date: Start date of selection, accepts "yyyy-MM-dd hh:mm:ss" and "yyyy-MM-dd" formats
         :param end_date: End date of selection, accepts "yyyy-MM-dd hh:mm:ss" and "yyyy-MM-dd" formats
         :param dp: Specifies number of decimal places for floating values
         :param timezone: Timezone at which output datetime will be displayed
-            Exchange for local exchange time2. UTC for datetime at universal 
-            UTC standard3. Timezone name according to IANA Time Zone 
-            Database. E.g. America/New_York, Asia/Singapore. Full list of 
-            timezones can be found here.Take note that IANA Timezone name is 
+            Exchange for local exchange time2. UTC for datetime at universal
+            UTC standard3. Timezone name according to IANA Time Zone
+            Database. E.g. America/New_York, Asia/Singapore. Full list of
+            timezones can be found here.Take note that IANA Timezone name is
             case-sensitive.
 
         :returns: chart builder
