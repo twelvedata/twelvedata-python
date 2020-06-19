@@ -6,6 +6,8 @@ import functools
 import textwrap
 import pytimeparse
 
+from .exceptions import BadRequestError
+
 
 def patch_endpoints_meta(ctx):
     """
@@ -158,7 +160,12 @@ def convert_collection_to_pandas_multi_index(val):
             ).strip()
         )
 
-    columns = tuple(val[list(val)[0]]['values'][0].keys())[1:]
+    columns = ()
+    for symbol, data in val.items():
+        if data['status'] == 'error':
+            raise BadRequestError(data['message'])
+        columns = list(data['values'][0].keys())[1:]
+        break
 
     arr = []
     for symbol, data in val.items():
