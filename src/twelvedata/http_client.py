@@ -25,8 +25,11 @@ class DefaultHttpClient(object):
         kwargs["params"] = params
 
         resp = requests.get("{}{}".format(self.base_url, relative_url), *args, **kwargs)
+        if ('Is_batch' in resp.headers and resp.headers['Is_batch'] == 'true') or \
+                ('Content-Type' in resp.headers and resp.headers['Content-Type'] == 'text/csv'):
+            return resp
 
-        if ('Is_batch' in resp.headers and resp.headers['Is_batch'] == 'true') or (resp.headers['Content-Type'] == 'text/csv'):
+        if 'status' not in resp.json():
             return resp
 
         status = resp.json()['status']

@@ -168,11 +168,14 @@ def convert_collection_to_pandas_multi_index(val):
         break
 
     arr = []
-    for symbol, data in val.items():
-        for quote in data['values']:
-            arr.append(tuple(quote.values())[1:])
+    major_idx = []
+    for idx, key in enumerate(val):
+        response = val[key]
+        if 'values' in response:
+            major_idx.append(key)
+            for quote in response['values']:
+                arr.append(tuple(quote.values())[1:])
 
-    major_idx = val.keys()
     minor_idx = [d['datetime'] for d in val[list(major_idx)[0]]['values']]
     idx = pandas.MultiIndex.from_product([major_idx, minor_idx])
 

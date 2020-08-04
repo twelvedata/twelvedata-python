@@ -66,9 +66,37 @@ def test_get_cryptocurrencies_list():
     td.get_cryptocurrencies_list().as_csv()
 
 
+def test_get_etf_list():
+    td = _init_client()
+    td.get_etf_list().as_json()
+    td.get_etf_list().as_csv()
+
+
+def test_get_indices_list():
+    td = _init_client()
+    td.get_indices_list().as_json()
+    td.get_indices_list().as_csv()
+
+
 def test_get_technical_indicators_list():
     td = _init_client()
     td.get_technical_indicators_list().as_json()
+
+
+def test_get_exchanges_list():
+    td = _init_client()
+    td.get_exchanges_list().as_json()
+    td.get_exchanges_list().as_csv()
+
+
+def test_symbol_search():
+    td = _init_client()
+    td.symbol_search().as_json()
+
+
+def test_earliest_timestamp():
+    td = _init_client()
+    td.get_earliest_timestamp(symbol="AAPL", interval="1day").as_json()
 
 
 def test_time_series():
@@ -378,6 +406,16 @@ def test_time_series_get_kama():
     ts.with_kama().as_pandas()
     ts.with_kama().as_pyplot_figure()
     ts.with_kama().as_plotly_figure()
+    plt.close()
+
+
+def test_time_series_get_keltner():
+    ts = _init_ts()
+    ts.with_keltner().as_json()
+    ts.with_keltner().as_csv()
+    ts.with_keltner().as_pandas()
+    ts.with_keltner().as_pyplot_figure()
+    ts.with_keltner().as_plotly_figure()
     plt.close()
 
 
@@ -956,6 +994,7 @@ def _init_chart():
         .with_ht_trendline()
         .with_ht_trendmode()
         .with_kama()
+        .with_keltner()
         .with_kst()
         .with_linearreg()
         .with_linearregangle()

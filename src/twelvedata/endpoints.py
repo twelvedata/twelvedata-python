@@ -22,7 +22,10 @@ __all__ = (
     "CryptocurrencyExchangesListEndpoint",
     "DEMAEndpoint",
     "DXEndpoint",
+    "EarliestTimestampEndpoint",
     "EMAEndpoint",
+    "ETFListEndpoint",
+    "ExchangesListEndpoint",
     "EXPEndpoint",
     "FLOOREndpoint",
     "ForexPairsListEndpoint",
@@ -34,7 +37,9 @@ __all__ = (
     "HT_SINEEndpoint",
     "HT_TRENDLINEEndpoint",
     "HT_TRENDMODEEndpoint",
+    "IndicesListEndpoint",
     "KAMAEndpoint",
+    "KELTNEREndpoint",
     "KSTEndpoint",
     "LINEARREGANGLEEndpoint",
     "LINEARREGINTERCEPTEndpoint",
@@ -77,6 +82,7 @@ __all__ = (
     "STOCHFEndpoint",
     "STOCHRSIEndpoint",
     "STOCHEndpoint",
+    "SymbolSearchEndpoint",
     "StockExchangesListEndpoint",
     "StocksListEndpoint",
     "SuperTrendEndpoint",
@@ -244,12 +250,30 @@ class TechIndicatorsMetaEndpoint(AsMixin, Endpoint):
 class StocksListEndpoint(AsMixin, Endpoint):
     _name = "stocks"
 
-    def __init__(self, ctx):
+    def __init__(self,
+                 ctx,
+                 symbol=None,
+                 exchange=None,
+                 country=None,
+                 type=None,
+    ):
         self.ctx = ctx
+        self.symbol = symbol
+        self.exchange = exchange
+        self.country = country
+        self.type = type
 
     def execute(self, format="JSON"):
 
         params = {}
+        if self.symbol is not None:
+            params["symbol"] = self.symbol
+        if self.exchange is not None:
+            params["exchange"] = self.exchange
+        if self.country is not None:
+            params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -274,12 +298,26 @@ class StockExchangesListEndpoint(AsMixin, Endpoint):
 class ForexPairsListEndpoint(AsMixin, Endpoint):
     _name = "forex_pairs"
 
-    def __init__(self, ctx):
+    def __init__(self,
+                 ctx,
+                 symbol=None,
+                 currency_base=None,
+                 currency_quote=None,
+    ):
         self.ctx = ctx
+        self.symbol = symbol
+        self.currency_base = currency_base
+        self.currency_quote = currency_quote
 
     def execute(self, format="JSON"):
 
         params = {}
+        if self.symbol is not None:
+            params["symbol"] = self.symbol
+        if self.currency_base is not None:
+            params["currency_base"] = self.currency_base
+        if self.currency_quote is not None:
+            params["currency_quote"] = self.currency_quote
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -289,16 +327,117 @@ class ForexPairsListEndpoint(AsMixin, Endpoint):
 class CryptocurrenciesListEndpoint(AsMixin, Endpoint):
     _name = "cryptocurrencies"
 
-    def __init__(self, ctx):
+    def __init__(self,
+                 ctx,
+                 symbol=None,
+                 exchange=None,
+                 currency_base=None,
+                 currency_quote=None,
+    ):
         self.ctx = ctx
+        self.symbol = symbol
+        self.exchange = exchange
+        self.currency_base = currency_base
+        self.currency_quote = currency_quote
 
     def execute(self, format="JSON"):
 
         params = {}
+        if self.symbol is not None:
+            params["symbol"] = self.symbol
+        if self.exchange is not None:
+            params["exchange"] = self.exchange
+        if self.currency_base is not None:
+            params["currency_base"] = self.currency_base
+        if self.currency_quote is not None:
+            params["currency_quote"] = self.currency_quote
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
         return self.ctx.http_client.get("/cryptocurrencies", params=params)
+
+
+class ETFListEndpoint(AsMixin, Endpoint):
+    _name = "etf"
+
+    def __init__(self,
+                 ctx,
+                 symbol=None,
+                 exchange=None,
+    ):
+        self.ctx = ctx
+        self.symbol = symbol
+        self.exchange = exchange
+
+    def execute(self, format="JSON"):
+
+        params = {}
+        if self.symbol is not None:
+            params["symbol"] = self.symbol
+        if self.exchange is not None:
+            params["exchange"] = self.exchange
+
+        params["format"] = format
+        params["apikey"] = self.ctx.apikey
+        return self.ctx.http_client.get("/etf", params=params)
+
+
+class IndicesListEndpoint(AsMixin, Endpoint):
+    _name = "indices"
+
+    def __init__(self,
+                 ctx,
+                 symbol=None,
+                 exchange=None,
+    ):
+        self.ctx = ctx
+        self.symbol = symbol
+        self.exchange = exchange
+
+    def execute(self, format="JSON"):
+
+        params = {}
+        if self.symbol is not None:
+            params["symbol"] = self.symbol
+        if self.exchange is not None:
+            params["exchange"] = self.exchange
+
+        params["format"] = format
+        params["apikey"] = self.ctx.apikey
+        return self.ctx.http_client.get("/indices", params=params)
+
+
+class ExchangesListEndpoint(AsMixin, Endpoint):
+    _name = "exchanges"
+
+    def __init__(self,
+                 ctx,
+                 type=None,
+                 name=None,
+                 code=None,
+                 country=None,
+    ):
+        self.ctx = ctx
+        self.type = type
+        self.name = name
+        self.code = code
+        self.country = country
+
+    def execute(self, format="JSON"):
+
+        params = {}
+        if self.type is not None:
+            params["type"] = self.type
+        if self.name is not None:
+            params["name"] = self.name
+        if self.code is not None:
+            params["code"] = self.code
+        if self.country is not None:
+            params["country"] = self.country
+
+        params["format"] = format
+        params["apikey"] = self.ctx.apikey
+        return self.ctx.http_client.get("/exchanges", params=params)
 
 
 class CryptocurrencyExchangesListEndpoint(AsMixin, Endpoint):
@@ -328,6 +467,60 @@ class TechnicalIndicatorsListEndpoint(AsMixin, Endpoint):
 
         params["apikey"] = self.ctx.apikey
         return self.ctx.http_client.get("/technical_indicators", params=params)
+
+
+class SymbolSearchEndpoint(AsMixin, Endpoint):
+    _name = "indices"
+
+    def __init__(self,
+                 ctx,
+                 symbol=None,
+                 outputsize=None,
+    ):
+        self.ctx = ctx
+        self.symbol = symbol
+        self.outputsize = outputsize
+
+    def execute(self, format="JSON"):
+
+        params = {}
+        if self.symbol is not None:
+            params["symbol"] = self.symbol
+        if self.outputsize is not None:
+            params["outputsize"] = self.outputsize
+
+        params["format"] = "JSON"
+        params["apikey"] = self.ctx.apikey
+        return self.ctx.http_client.get("/symbol_search", params=params)
+
+
+class EarliestTimestampEndpoint(AsMixin, Endpoint):
+    _name = "earliest_timestamp"
+
+    def __init__(self,
+                 ctx,
+                 symbol=None,
+                 interval=None,
+                 exchange=None,
+    ):
+        self.ctx = ctx
+        self.symbol = symbol
+        self.interval = interval
+        self.exchange = exchange
+
+    def execute(self, format="JSON"):
+
+        params = {}
+        if self.symbol is not None:
+            params["symbol"] = self.symbol
+        if self.interval is not None:
+            params["interval"] = self.interval
+        if self.exchange is not None:
+            params["exchange"] = self.exchange
+
+        params["format"] = format
+        params["apikey"] = self.ctx.apikey
+        return self.ctx.http_client.get("/earliest_timestamp", params=params)
 
 
 class ADEndpoint(AsMixin, Endpoint):
@@ -2236,6 +2429,82 @@ class KAMAEndpoint(AsMixin, Endpoint):
         params["format"] = format
         params["apikey"] = self.ctx.apikey
         return self.ctx.http_client.get("/kama", params=params)
+
+
+class KELTNEREndpoint(AsMixin, Endpoint):
+    _name = "keltner"
+
+    def __init__(
+        self,
+        ctx,
+        symbol,
+        interval,
+        exchange=None,
+        country=None,
+        series_type="close",
+        time_period=20,
+        atr_time_period=10,
+        multiplier=2,
+        ma_type="SMA",
+        outputsize=30,
+        start_date=None,
+        end_date=None,
+        dp=5,
+        timezone="Exchange",
+    ):
+        self.is_indicator = True
+        self.meta_name = "keltner"
+        self.ctx = ctx
+        self.symbol = symbol
+        self.interval = interval
+        self.exchange = exchange
+        self.country = country
+        self.series_type = series_type
+        self.time_period = time_period
+        self.atr_time_period = atr_time_period
+        self.multiplier = multiplier
+        self.ma_type = ma_type
+        self.outputsize = outputsize
+        self.start_date = start_date
+        self.end_date = end_date
+        self.dp = dp
+        self.timezone = timezone
+
+    def execute(self, format="JSON"):
+
+        params = {}
+        if self.symbol is not None:
+            params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.interval is not None:
+            params["interval"] = self.interval
+        if self.exchange is not None:
+            params["exchange"] = self.exchange
+        if self.country is not None:
+            params["country"] = self.country
+        if self.series_type is not None:
+            params["series_type"] = self.series_type
+        if self.time_period is not None:
+            params["time_period"] = self.time_period
+        if self.atr_time_period is not None:
+            params["atr_time_period"] = self.atr_time_period
+        if self.multiplier is not None:
+            params["multiplier"] = self.multiplier
+        if self.ma_type is not None:
+            params["ma_type"] = self.ma_type
+        if self.outputsize is not None:
+            params["outputsize"] = self.outputsize
+        if self.start_date is not None:
+            params["start_date"] = self.start_date
+        if self.end_date is not None:
+            params["end_date"] = self.end_date
+        if self.dp is not None:
+            params["dp"] = self.dp
+        if self.timezone is not None:
+            params["timezone"] = self.timezone
+
+        params["format"] = format
+        params["apikey"] = self.ctx.apikey
+        return self.ctx.http_client.get("/keltner", params=params)
 
 
 class KSTEndpoint(AsMixin, Endpoint):

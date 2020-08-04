@@ -375,6 +375,7 @@ RENDERS_MAPPING = {
     HT_TRENDLINEEndpoint: [LR],
     HT_TRENDMODEEndpoint: [LR],
     KAMAEndpoint: [LR],
+    KELTNEREndpoint: [LR],
     KSTEndpoint: [LR],
     LINEARREGANGLEEndpoint: [LR],
     LINEARREGINTERCEPTEndpoint: [LR],

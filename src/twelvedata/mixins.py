@@ -15,6 +15,7 @@ class AsJsonMixin(object):
             return json
         if json.get("status") == "ok":
             return json.get("data") or json.get("values") or []
+        return json
 
     def as_raw_json(self):
         resp = self.execute(format="JSON")

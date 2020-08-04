@@ -3,9 +3,14 @@ from .endpoints import (
     StocksListEndpoint,
     StockExchangesListEndpoint,
     ForexPairsListEndpoint,
+    ETFListEndpoint,
+    IndicesListEndpoint,
+    ExchangesListEndpoint,
     CryptocurrenciesListEndpoint,
     CryptocurrencyExchangesListEndpoint,
     TechnicalIndicatorsListEndpoint,
+    SymbolSearchEndpoint,
+    EarliestTimestampEndpoint,
 )
 from .http_client import DefaultHttpClient
 from .time_series import TimeSeries
@@ -22,7 +27,7 @@ class TDClient:
 
         patch_endpoints_meta(self.ctx)
 
-    def get_stocks_list(self):
+    def get_stocks_list(self, **defaults):
         """
         Creates request builder for Stocks List
 
@@ -32,7 +37,9 @@ class TDClient:
         :returns: request builder instance
         :rtype: StocksListRequestBuilder
         """
-        return StocksListEndpoint(ctx=self.ctx)
+        ctx = Context.from_context(self.ctx)
+        ctx.defaults.update(defaults)
+        return StocksListEndpoint(ctx, **ctx.defaults)
 
     def get_stock_exchanges_list(self):
         """
@@ -46,7 +53,7 @@ class TDClient:
         """
         return StockExchangesListEndpoint(ctx=self.ctx)
 
-    def get_forex_pairs_list(self):
+    def get_forex_pairs_list(self, **defaults):
         """
         Creates request builder for Forex Pairs List
 
@@ -56,9 +63,11 @@ class TDClient:
         :returns: request builder instance
         :rtype: ForexPairsListRequestBuilder
         """
-        return ForexPairsListEndpoint(ctx=self.ctx)
+        ctx = Context.from_context(self.ctx)
+        ctx.defaults.update(defaults)
+        return ForexPairsListEndpoint(ctx, **ctx.defaults)
 
-    def get_cryptocurrencies_list(self):
+    def get_cryptocurrencies_list(self, **defaults):
         """
         Creates request builder for Cryptocurrencies List
 
@@ -68,9 +77,53 @@ class TDClient:
         :returns: request builder instance
         :rtype: CryptocurrenciesListRequestBuilder
         """
-        return CryptocurrenciesListEndpoint(ctx=self.ctx)
+        ctx = Context.from_context(self.ctx)
+        ctx.defaults.update(defaults)
+        return CryptocurrenciesListEndpoint(ctx, **ctx.defaults)
 
-    def get_cryptocurrency_exchanges_list(self):
+    def get_etf_list(self, **defaults):
+        """
+        Creates request builder for ETF List
+
+        This API call return array of ETFs available at Twelve Data API. This list is daily updated.
+        This list is daily updated.
+
+        :returns: request builder instance
+        :rtype: ETFListRequestBuilder
+        """
+        ctx = Context.from_context(self.ctx)
+        ctx.defaults.update(defaults)
+        return ETFListEndpoint(ctx, **ctx.defaults)
+
+    def get_indices_list(self, **defaults):
+        """
+        Creates request builder for Indices List
+
+        This API call return array of indices available at Twelve Data API. This list is daily updated.
+        This list is daily updated.
+
+        :returns: request builder instance
+        :rtype: IndicesListRequestBuilder
+        """
+        ctx = Context.from_context(self.ctx)
+        ctx.defaults.update(defaults)
+        return IndicesListEndpoint(ctx, **ctx.defaults)
+
+    def get_exchanges_list(self, **defaults):
+        """
+        Creates request builder for Exchanges List
+
+        This API call return array of stock, ETF or index exchanges available at Twelve Data API.
+        This list is daily updated.
+
+        :returns: request builder instance
+        :rtype: ExchangesListRequestBuilder
+        """
+        ctx = Context.from_context(self.ctx)
+        ctx.defaults.update(defaults)
+        return ExchangesListEndpoint(ctx, **ctx.defaults)
+
+    def get_cryptocurrency_exchanges_list(self, **defaults):
         """
         Creates request builder for Cryptocurrency Exchanges List
 
@@ -80,7 +133,9 @@ class TDClient:
         :returns: request builder instance
         :rtype: CryptocurrencyExchangesListRequestBuilder
         """
-        return CryptocurrencyExchangesListEndpoint(ctx=self.ctx)
+        ctx = Context.from_context(self.ctx)
+        ctx.defaults.update(defaults)
+        return CryptocurrencyExchangesListEndpoint(ctx, **ctx.defaults)
 
     def get_technical_indicators_list(self):
         """
@@ -93,6 +148,33 @@ class TDClient:
         :rtype: TechnicalIndicatorsListRequestBuilder
         """
         return TechnicalIndicatorsListEndpoint(ctx=self.ctx)
+
+    def symbol_search(self, **defaults):
+        """
+        Creates request builder for Symbol Search
+
+        This method helps to find the best matching symbol. It can be used as the base for custom lookups.
+        The response is returned in descending order, with the most relevant instrument at the beginning.
+
+        :returns: request builder instance
+        :rtype: SymbolSearchRequestBuilder
+        """
+        ctx = Context.from_context(self.ctx)
+        ctx.defaults.update(defaults)
+        return SymbolSearchEndpoint(ctx, **ctx.defaults)
+
+    def get_earliest_timestamp(self, **defaults):
+        """
+        Creates request builder for Earliest Timestamp
+
+        This method returns the first available DateTime for a given instrument at the specific interval.
+
+        :returns: request builder instance
+        :rtype: EarliestTimestampRequestBuilder
+        """
+        ctx = Context.from_context(self.ctx)
+        ctx.defaults.update(defaults)
+        return EarliestTimestampEndpoint(ctx, **ctx.defaults)
 
     def time_series(self, **defaults):
         """
