@@ -11,6 +11,8 @@ from .endpoints import (
     TechnicalIndicatorsListEndpoint,
     SymbolSearchEndpoint,
     EarliestTimestampEndpoint,
+    EarningsEndpoint,
+    EarningsCalendarEndpoint,
 )
 from .http_client import DefaultHttpClient
 from .time_series import TimeSeries
@@ -186,3 +188,31 @@ class TDClient:
         ctx = Context.from_context(self.ctx)
         ctx.defaults.update(defaults)
         return TimeSeries(ctx)
+
+    def get_earnings(self, **defaults):
+        """
+        Creates request builder for Earnings
+
+        This API call returns earnings data for a given company, including EPS estimate and EPS actual.
+        Earnings are available for complete company history.
+
+        :returns: request builder instance
+        :rtype: EarningsRequestBuilder
+        """
+        ctx = Context.from_context(self.ctx)
+        ctx.defaults.update(defaults)
+        return EarningsEndpoint(ctx, **ctx.defaults)
+
+    def get_earnings_calendar(self, **defaults):
+        """
+        Creates request builder for Earnings Calendar
+
+        This API method returns earning data as a calendar for a given date range. By default today's earning is returned.
+        To call custom period, use start_date and end_date parameters.
+
+        :returns: request builder instance
+        :rtype: EarningsCalendarRequestBuilder
+        """
+        ctx = Context.from_context(self.ctx)
+        ctx.defaults.update(defaults)
+        return EarningsCalendarEndpoint(ctx, **ctx.defaults)

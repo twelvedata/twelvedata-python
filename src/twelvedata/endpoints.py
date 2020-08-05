@@ -23,6 +23,8 @@ __all__ = (
     "DEMAEndpoint",
     "DXEndpoint",
     "EarliestTimestampEndpoint",
+    "EarningsCalendarEndpoint",
+    "EarningsEndpoint",
     "EMAEndpoint",
     "ETFListEndpoint",
     "ExchangesListEndpoint",
@@ -521,6 +523,102 @@ class EarliestTimestampEndpoint(AsMixin, Endpoint):
         params["format"] = format
         params["apikey"] = self.ctx.apikey
         return self.ctx.http_client.get("/earliest_timestamp", params=params)
+
+
+class EarningsEndpoint(AsMixin, Endpoint):
+    _name = "earnings"
+
+    def __init__(self,
+                 ctx,
+                 symbol=None,
+                 exchange=None,
+                 country=None,
+                 type=None,
+                 period=None,
+                 outputsize=None,
+                 start_date=None,
+                 end_date=None,
+    ):
+        self.ctx = ctx
+        self.symbol = symbol
+        self.exchange = exchange
+        self.country = country
+        self.type = type
+        self.period = period
+        self.outputsize = outputsize
+        self.start_date = start_date
+        self.end_date = end_date
+        self.method = "earnings"
+
+    def execute(self, format="JSON"):
+
+        params = {}
+        if self.symbol is not None:
+            params["symbol"] = self.symbol
+        if self.exchange is not None:
+            params["exchange"] = self.exchange
+        if self.country is not None:
+            params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
+        if self.period is not None:
+            params["period"] = self.period
+        if self.outputsize is not None:
+            params["outputsize"] = self.outputsize
+        if self.start_date is not None:
+            params["start_date"] = self.start_date
+        if self.end_date is not None:
+            params["end_date"] = self.end_date
+
+        params["format"] = format
+        params["apikey"] = self.ctx.apikey
+        return self.ctx.http_client.get("/earnings", params=params)
+
+
+class EarningsCalendarEndpoint(AsMixin, Endpoint):
+    _name = "earnings_calendar"
+
+    def __init__(self,
+                 ctx,
+                 symbol=None,
+                 exchange=None,
+                 country=None,
+                 type=None,
+                 period=None,
+                 start_date=None,
+                 end_date=None,
+    ):
+        self.ctx = ctx
+        self.symbol = symbol
+        self.exchange = exchange
+        self.country = country
+        self.type = type
+        self.period = period
+        self.start_date = start_date
+        self.end_date = end_date
+        self.method = "earnings_calendar"
+
+    def execute(self, format="JSON"):
+
+        params = {}
+        if self.symbol is not None:
+            params["symbol"] = self.symbol
+        if self.exchange is not None:
+            params["exchange"] = self.exchange
+        if self.country is not None:
+            params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
+        if self.period is not None:
+            params["period"] = self.period
+        if self.start_date is not None:
+            params["start_date"] = self.start_date
+        if self.end_date is not None:
+            params["end_date"] = self.end_date
+
+        params["format"] = format
+        params["apikey"] = self.ctx.apikey
+        return self.ctx.http_client.get("/earnings_calendar", params=params)
 
 
 class ADEndpoint(AsMixin, Endpoint):
