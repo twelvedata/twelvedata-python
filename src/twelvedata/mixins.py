@@ -61,7 +61,6 @@ class AsPandasMixin(object):
 
     @staticmethod
     def create_basic_df(data, pd, index_column="datetime", **kwargs):
-        print(len(data), data)
         df = convert_collection_to_pandas(data, **kwargs)
         df = df.set_index(index_column)
         df.index = pd.to_datetime(df.index, infer_datetime_format=True)
