@@ -374,6 +374,7 @@ RENDERS_MAPPING = {
     HT_SINEEndpoint: [LR],
     HT_TRENDLINEEndpoint: [LR],
     HT_TRENDMODEEndpoint: [LR],
+    ICHIMOKUEndpoint: [LR],
     KAMAEndpoint: [LR],
     KELTNEREndpoint: [LR],
     KSTEndpoint: [LR],

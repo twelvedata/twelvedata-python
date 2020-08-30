@@ -399,6 +399,16 @@ def test_time_series_get_ht_trendmode():
     plt.close()
 
 
+def test_time_series_get_ichimoku():
+    ts = _init_ts()
+    ts.with_ichimoku().as_json()
+    ts.with_ichimoku().as_csv()
+    ts.with_ichimoku().as_pandas()
+    ts.with_ichimoku().as_pyplot_figure()
+    ts.with_ichimoku().as_plotly_figure()
+    plt.close()
+
+
 def test_time_series_get_kama():
     ts = _init_ts()
     ts.with_kama().as_json()
@@ -993,6 +1003,7 @@ def _init_chart():
         .with_ht_sine()
         .with_ht_trendline()
         .with_ht_trendmode()
+        .with_ichimoku()
         .with_kama()
         .with_keltner()
         .with_kst()

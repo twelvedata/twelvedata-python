@@ -39,6 +39,7 @@ __all__ = (
     "HT_SINEEndpoint",
     "HT_TRENDLINEEndpoint",
     "HT_TRENDMODEEndpoint",
+    "ICHIMOKUEndpoint",
     "IndicesListEndpoint",
     "KAMAEndpoint",
     "KELTNEREndpoint",
@@ -2463,6 +2464,82 @@ class HT_TRENDMODEEndpoint(AsMixin, Endpoint):
         params["format"] = format
         params["apikey"] = self.ctx.apikey
         return self.ctx.http_client.get("/ht_trendmode", params=params)
+
+
+class ICHIMOKUEndpoint(AsMixin, Endpoint):
+    _name = "ichimoku"
+
+    def __init__(
+        self,
+        ctx,
+        symbol,
+        interval,
+        exchange=None,
+        country=None,
+        conversion_line_period=9,
+        base_line_period=26,
+        leading_span_b_period=52,
+        lagging_span_period=26,
+        include_ahead_span_period=True,
+        outputsize=30,
+        start_date=None,
+        end_date=None,
+        dp=5,
+        timezone="Exchange",
+    ):
+        self.is_indicator = True
+        self.meta_name = "vwap"
+        self.ctx = ctx
+        self.symbol = symbol
+        self.interval = interval
+        self.exchange = exchange
+        self.country = country
+        self.conversion_line_period = conversion_line_period
+        self.base_line_period = base_line_period
+        self.leading_span_b_period = leading_span_b_period
+        self.lagging_span_period = lagging_span_period
+        self.include_ahead_span_period = include_ahead_span_period
+        self.outputsize = outputsize
+        self.start_date = start_date
+        self.end_date = end_date
+        self.dp = dp
+        self.timezone = timezone
+
+    def execute(self, format="JSON"):
+
+        params = {}
+        if self.symbol is not None:
+            params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.interval is not None:
+            params["interval"] = self.interval
+        if self.exchange is not None:
+            params["exchange"] = self.exchange
+        if self.country is not None:
+            params["country"] = self.country
+        if self.conversion_line_period is not None:
+            params["conversion_line_period"] = self.conversion_line_period
+        if self.base_line_period is not None:
+            params["base_line_period"] = self.base_line_period
+        if self.leading_span_b_period is not None:
+            params["leading_span_b_period"] = self.leading_span_b_period
+        if self.lagging_span_period is not None:
+            params["lagging_span_period"] = self.lagging_span_period
+        if self.include_ahead_span_period is not None:
+            params["include_ahead_span_period"] = self.include_ahead_span_period
+        if self.outputsize is not None:
+            params["outputsize"] = self.outputsize
+        if self.start_date is not None:
+            params["start_date"] = self.start_date
+        if self.end_date is not None:
+            params["end_date"] = self.end_date
+        if self.dp is not None:
+            params["dp"] = self.dp
+        if self.timezone is not None:
+            params["timezone"] = self.timezone
+
+        params["format"] = format
+        params["apikey"] = self.ctx.apikey
+        return self.ctx.http_client.get("/ichimoku", params=params)
 
 
 class KAMAEndpoint(AsMixin, Endpoint):

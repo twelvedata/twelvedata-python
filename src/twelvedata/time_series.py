@@ -125,7 +125,7 @@ class TimeSeries(object):
                 continue
 
             df = pandas.merge(
-                df, tmp_df, how="inner", left_index=True, right_index=True
+                df, tmp_df, how="left", left_index=True, right_index=True
             )
 
         return df
@@ -2279,6 +2279,80 @@ class TimeSeries(object):
             exchange=exchange,
             country=country,
             series_type=series_type,
+            outputsize=outputsize,
+            start_date=start_date,
+            end_date=end_date,
+            dp=dp,
+            timezone=timezone,
+        )
+        return self._with_endpoint(ep)
+
+    @force_use_kwargs
+    @apply_context_defaults
+    def with_ichimoku(
+            self,
+            exchange=None,
+            country=None,
+            conversion_line_period=9,
+            base_line_period=26,
+            leading_span_b_period=52,
+            lagging_span_period=26,
+            include_ahead_span_period=True,
+            outputsize=30,
+            start_date=None,
+            end_date=None,
+            dp=5,
+            timezone="Exchange",
+    ):
+        """
+        Add request builder of ICHIMOKU to chart builder
+
+        Ichimoku Kinkō Hyō(ICHIMOKU) is a group of technical indicators that shows trend direction, momentum,
+        and support & resistance levels. Overall it tends to improve the accuracy of forecasts.
+
+        This API call returns meta and time series values of HT_TRENDLINE.
+        Meta object consists of general information about requested technical
+        indicator. Time series is the array of objects ordered by time
+        desceding updated realtime.
+
+        :param symbol: Instrument symbol, can be any stock, forex or
+            cryptocurrency E.g. AAPL, EUR/USD, ETH/BTC, ...
+        :param interval: Interval between two consecutive points in time series
+        :param exchange: Only is applicable to stocks and cryptocurrencies
+        otherwise is ignored
+            Exchange where instrument is traded
+        :param country: Only is applicable to stocks otherwise is ignored
+            Country where instrument is traded
+        :param conversion_line_period: Takes values in the range from 1 to 800
+        :param base_line_period: Takes values in the range from 1 to 800
+        :param leading_span_b_period: Takes values in the range from 1 to 800
+        :param lagging_span_period: Takes values in the range from 1 to 800
+        :param include_ahead_span_period: Specifies if the span values ahead the current moment should be returned
+        :param outputsize: Number of last datapoints to retrieve
+        :param start_date: Start date of selection, accepts "yyyy-MM-dd hh:mm:ss" and "yyyy-MM-dd" formats
+        :param end_date: End date of selection, accepts "yyyy-MM-dd hh:mm:ss" and "yyyy-MM-dd" formats
+        :param dp: Specifies number of decimal places for floating values
+        :param timezone: Timezone at which output datetime will be displayed
+            Exchange for local exchange time2. UTC for datetime at universal
+            UTC standard3. Timezone name according to IANA Time Zone
+            Database. E.g. America/New_York, Asia/Singapore. Full list of
+            timezones can be found here.Take note that IANA Timezone name is
+            case-sensitive.
+
+        :returns: chart builder
+        :rtype: ChartEndpoint
+        """
+        ep = ICHIMOKUEndpoint(
+            ctx=self.ctx,
+            symbol=self.ctx.defaults["symbol"],
+            interval=self.ctx.defaults["interval"],
+            exchange=exchange,
+            country=country,
+            conversion_line_period=conversion_line_period,
+            base_line_period=base_line_period,
+            leading_span_b_period=leading_span_b_period,
+            lagging_span_period=lagging_span_period,
+            include_ahead_span_period=include_ahead_span_period,
             outputsize=outputsize,
             start_date=start_date,
             end_date=end_date,

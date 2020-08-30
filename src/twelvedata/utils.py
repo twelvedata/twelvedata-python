@@ -100,6 +100,13 @@ def convert_pandas_to_plotly(df, **kwargs):
     return go.Figure(traces)
 
 
+def add_null_obj_values(obj, columns) -> dict:
+    for col in columns:
+        if col not in obj:
+            obj[col] = None
+    return obj
+
+
 def convert_collection_to_pandas(val, indexing_type=None):
     """
     Converts list/dict to DataFrame
@@ -128,9 +135,13 @@ def convert_collection_to_pandas(val, indexing_type=None):
         if len(val) == 0:
             return pandas.DataFrame()
         else:
-            columns = tuple(val[0].keys())
-            get_row = operator.itemgetter(*columns)
-            return pandas.DataFrame([get_row(obj) for obj in val], columns=columns)
+            columns_beg = tuple(val[0].keys())
+            columns_end = tuple(val[-1].keys())
+            get_row = operator.itemgetter(*columns_end)
+            data = [get_row(add_null_obj_values(obj, columns_end)) if
+                    columns_beg != columns_end else
+                    get_row(obj) for obj in val]
+            return pandas.DataFrame(data, columns=columns_end)
     elif isinstance(val, dict):
         try:
             return pandas.DataFrame.from_dict(val, orient="index", dtype="float")
@@ -164,7 +175,7 @@ def convert_collection_to_pandas_multi_index(val):
     for symbol, data in val.items():
         if data['status'] == 'error':
             raise BadRequestError(data['message'])
-        columns = list(data['values'][0].keys())[1:]
+        columns = list(data['values'][-1].keys())[1:]
         break
 
     arr = []
