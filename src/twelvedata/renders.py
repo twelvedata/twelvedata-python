@@ -96,75 +96,25 @@ class CandlestickRender(ChartRender):
         return data
 
     def render_matplotlib(self, ctx, df, ax, **kwargs):
-        import matplotlib
-        import matplotlib.dates as mdates
-        import matplotlib.ticker as mticker
-        from matplotlib import pyplot as plt
-        from mpl_finance import candlestick_ohlc
+        import mplfinance as mpf
+        import pandas as pd
 
-        candle_width = kwargs.get("candle_width", CANDLE_WIDTH) * ctx.interval_minutes
-        bar_width = candle_width * 1.5
-
-        opens, highs, lows, closes = self.ohlc
-        df.reset_index(level=0, inplace=True)
-
+        df.index = pd.to_datetime(df.index)
         if self.volume and self.volume in df:
-            vol = self.volume
-
-            cols = ["datetime"]
-            cols.extend(self.ohlc)
-            cols.append(self.volume)
-
-            df = df.loc[:, cols]
-            candlestick_ohlc(
-                ax=ax,
-                quotes=df.values,
-                width=candle_width,
-                colorup=COLOR_UP,
-                colordown=COLOR_DOWN,
-            )
-
-            ylim = ax.get_ylim()
-            ax.set_ylim(ylim[0] - (ylim[1] - ylim[0]) * VOL_CHART_HEIGHT, ylim[1])
-
-            vol_ax = ax.twinx()
-            dates = df["datetime"].values
-            volume = df[vol].values
-
-            _sub_result = df[opens].values - df[closes].values
-            pos = _sub_result < 0
-            neg = _sub_result > 0
-
-            vol_ax.bar(
-                dates[pos],
-                volume[pos],
-                color=COLOR_UP,
-                align="center",
-                width=bar_width,
-                alpha=0.7,
-            )
-            vol_ax.bar(
-                dates[neg],
-                volume[neg],
-                color=COLOR_DOWN,
-                align="center",
-                width=bar_width,
-                alpha=0.7,
-            )
-            vol_ax.set_ylim(0, max(volume) / VOL_CHART_HEIGHT)
-            vol_ax.yaxis.set_ticks([])
+            mc = mpf.make_marketcolors(up=COLOR_UP, down=COLOR_DOWN,
+                                       edge='inherit',
+                                       wick='black',
+                                       ohlc='i',
+                                       volume='in')
+            s = mpf.make_mpf_style(marketcolors=mc)
+            mpf.plot(df, type='candle', volume=True, style=s)
         else:
-            cols = ["datetime"]
-            cols.extend(self.ohlc)
-
-            ohlc = df.loc[:, cols]
-            candlestick_ohlc(
-                ax=ax,
-                quotes=ohlc.values,
-                width=candle_width,
-                colorup=COLOR_UP,
-                colordown=COLOR_DOWN,
-            )
+            mc = mpf.make_marketcolors(up=COLOR_UP, down=COLOR_DOWN,
+                                       edge='inherit',
+                                       wick='black',
+                                       ohlc='i')
+            s = mpf.make_mpf_style(marketcolors=mc)
+            mpf.plot(df, type='candle', volume=False, style=s)
 
 
 class LineRender(ChartRender):
@@ -186,7 +136,6 @@ class LineRender(ChartRender):
         ]
 
     def render_matplotlib(self, ctx, df, ax, **kwargs):
-
         kwargs.pop("candle_width", None)
         df = self._slice(df)
         for col in df.columns:

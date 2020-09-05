@@ -163,7 +163,6 @@ class TimeSeries(object):
         return postfixes
 
     def as_pyplot_figure(self, figsize=(16, 8), candle_width=0.0002):
-        import pandas as pd
         import matplotlib.dates as mdates
         import matplotlib.pyplot as plt
         import matplotlib.ticker as mticker
@@ -217,26 +216,26 @@ class TimeSeries(object):
             price_ax = next(ax_iter)
 
         # Render tech indicators
-        postfixes = self._generate_postfixes()
-        for ep in self.endpoints:
-            if ep.is_overlay:
-                ax = price_ax
-            else:
-                ax = next(ax_iter)
-                ax.margins(0.25)
-
-            ax.yaxis.tick_right()
-            ax.yaxis.set_label_position("right")
-
-            postfix = next(postfixes[ep.__class__])
-            ep.render_matplotlib(
-                ax=ax, interval_minutes=interval_minutes, postfix=postfix
-            )
-
-            if not ep.is_overlay:
-                mark_xaxis_as_date(ax)
-
-            ax.legend(loc="upper left")
+        # postfixes = self._generate_postfixes()
+        # for ep in self.endpoints:
+        #     if ep.is_overlay:
+        #         ax = price_ax
+        #     else:
+        #         ax = next(ax_iter)
+        #         ax.margins(0.25)
+        #
+        #     ax.yaxis.tick_right()
+        #     ax.yaxis.set_label_position("right")
+        #
+        #     postfix = next(postfixes[ep.__class__])
+        #     ep.render_matplotlib(
+        #         ax=ax, interval_minutes=interval_minutes, postfix=postfix
+        #     )
+        #
+        #     if not ep.is_overlay:
+        #         mark_xaxis_as_date(ax)
+        #
+        #     ax.legend(loc="upper left")
 
         plt.subplots_adjust(wspace=0, hspace=0, left=0.1, right=0.8)
         plt.xlabel("Time")

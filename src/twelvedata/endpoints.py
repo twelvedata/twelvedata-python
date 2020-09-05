@@ -149,7 +149,7 @@ class Endpoint(object):
         df = self.as_pandas()
 
         df.reset_index(level=0, inplace=True)
-        df["datetime"] = df["datetime"].apply(mdates.date2num)
+        df["datetime"] = df["datetime"]
         df.set_index("datetime", inplace=True)
 
         ctx = RenderContext()
