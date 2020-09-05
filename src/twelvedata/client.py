@@ -17,6 +17,7 @@ from .endpoints import (
 from .http_client import DefaultHttpClient
 from .time_series import TimeSeries
 from .utils import patch_endpoints_meta
+from .websocket import TDWebSocket
 
 
 class TDClient:
@@ -28,6 +29,11 @@ class TDClient:
         self.ctx.defaults = defaults
 
         patch_endpoints_meta(self.ctx)
+
+    def websocket(self, **defaults):
+        ctx = Context.from_context(self.ctx)
+        ctx.defaults.update(defaults)
+        return TDWebSocket(ctx)
 
     def get_stocks_list(self, **defaults):
         """

@@ -7,16 +7,15 @@
 <a href="https://github.com/twelvedata/twelvedata-python/blob/master/LICENSE.txt"><img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="License"></a>
 </p>
 
-# Twelve Data API
+# Twelve Data Python Client for APIs & WebSockets
 
-Official python library for Twelve Data API. This package supports all main features of the API:
+Official python library for Twelve Data. This package supports all main features of the service:
 
 * Get stock, forex and cryptocurrency OHLC time series.
-* Get over 90+ technical indicators.
+* Get over 100+ technical indicators.
 * Output data as: `json`, `csv`, `pandas`
 * Full support for static and dynamic charts.
-
-![chart example](https://res.cloudinary.com/dnz8pwg9r/image/upload/v1579111588/interactive_chart_yy2bsk.png)
+* Real-time WebSockets data stream.
 
 Free **API Key** is required. It might be requested [here](https://twelvedata.com/apikey)
 
@@ -46,6 +45,7 @@ pip install twelvedata[pandas,matplotlib,plotly]
 * [Technical Indicators](#Technical-indicators)
 * [Batch requests](#Batch-requests)
 * [Charts](#Charts)
+* [WebSocket](#Websocket)
 
 ##### Supported parameters
 
@@ -61,13 +61,14 @@ pip install twelvedata[pandas,matplotlib,plotly]
 | start_date | start date and time of sampling period, accepts `yyyy-MM-dd` or `yyyy-MM-dd hh:mm:ss` format | string | no       |
 | end_date   | end date and time of sampling period, accepts `yyyy-MM-dd` or `yyyy-MM-dd hh:mm:ss` format | string | no       |
 
+The basis for all methods is the `TDClient` object that takes the required `apikey` parameter.
+
 ### Time series
 
-* `TDClient` requires `apikey` parameter. It accepts all common parameters.
 * `TDClient.time_series()` accepts all common parameters. Time series may be converted to several formats:
-  * `TDClient.time_series().as_json()` - will return JSON array
-  * `TDClient.time_series().as_csv()` - will return CSV with header
-  * `TDClient.time_series().as_pandas()` - will return pandas.DataFrame
+  * `ts.as_json()` - will return JSON array
+  * `ts.as_csv()` - will return CSV with header
+  * `ts.as_pandas()` - will return pandas.DataFrame
 
 ```python
 from twelvedata import TDClient
@@ -86,11 +87,11 @@ ts.as_pandas()
 
 ### Technical indicators
 
-This Python library supports all indicators implemented by Twelve Data. Full list of 90+ technical indicators   may be found in [API Documentation](https://twelvedata.com/docs).
+This Python library supports all indicators implemented by Twelve Data. Full list of 100+ technical indicators   may be found in [API Documentation](https://twelvedata.com/docs).
 
 * Technical indicators are part of `TDClient.time_series()` object.
-* It has universal format `TDClient.time_series().with_{Technical Indicator Name}`, e.g. `.with_bbands()`, `.with_percent_b()`, `.with_macd()`
-* Indicator object accepts all parameters according to its specification in [API Documentation](https://twelvedata.com/docs), e.g. `.with_bbands()` accepts: `series_type`, `time_period`, `sd`, `ma_type`. If parameter is not provided it will be set to default.
+* It shares the universal format `TDClient.time_series().with_{Technical Indicator Name}`, e.g. `.with_bbands()`, `.with_percent_b()`, `.with_macd()`
+* Indicator object accepts all parameters according to its specification in [API Documentation](https://twelvedata.com/docs), e.g. `.with_bbands()` accepts: `series_type`, `time_period`, `sd`, `ma_type`. If parameter is not provided it will be set to default value.
 * Indicators may be used in arbitrary order and conjugated, e.g. `TDClient.time_series().with_aroon().with_adx().with_ema()`
 * By default, technical indicator will output with OHLC values. If you do not need OHLC, specify `TDClient.time_series().without_ohlc()`
 
@@ -184,7 +185,9 @@ Charts support OHLC, technical indicators and custom bars.
 
 #### Static
 
-Static charting is based on `matplotlib` library. Make sure you have installed it.
+Static charts are based on `matplotlib` library.
+
+![static chart example](https://res.cloudinary.com/dnz8pwg9r/image/upload/v1599339609/matplotlib-chart.png)
 
 * Use `.as_pyplot_figure()`
 
@@ -206,9 +209,13 @@ ts.with_bbands().with_percent_b().with_stoch(slow_k_period=3).as_pyplot_figure()
 
 #### Interactive
 
-Interactive charting is based on `plotly` library. Make sure you have installed it.
+Interactive charts are built on top of `plotly` library.
 
-* Use `.as_plotly_figure()`
+![interactive chart example](https://res.cloudinary.com/dnz8pwg9r/image/upload/v1599329727/plotly-chart.gif)
+
+* Use `.as_plotly_figure().show()`
+
+![AAPL interactive chart example](assets/chart-example.gif)
 
 ```python
 from twelvedata import TDClient
@@ -223,8 +230,50 @@ ts = td.time_series(
 ts.as_plotly_figure()
 
 # 2. Returns OHLCV + EMA(close, 7) + MAMA(close, 0.5, 0.05) + MOM(close, 9) + MACD(close, 12, 26, 9)
-ts.with_ema(time_period=7).with_mama().with_mom().with_macd().as_plotly_figure()
+ts.with_ema(time_period=7).with_mama().with_mom().with_macd().as_plotly_figure().show()
 ```
+
+### WebSocket
+
+With the WebSocket, a duplex communication channel with the server is established.
+
+![websocket example](https://res.cloudinary.com/dnz8pwg9r/image/upload/v1599327800/python-ws-example_empvj2.gif)
+
+#### Features
+* Real-time low latency stream of financial quotes.
+* You might subscribe to stocks, forex, and crypto.
+
+#### Example
+```python
+from twelvedata import TDClient
+
+def on_event(e):
+    # do whatever is needed with data
+    print(e)
+    
+td = TDClient(apikey="YOUR_API_KEY_HERE")
+ws = td.websocket(symbols="BTC/USD", on_event=on_event)
+ws.subscribe(['ETH/BTC', 'AAPL'])
+ws.connect()
+ws.keep_alive()
+```
+
+Parameters accepted by the `.websocket()` object:
+* **symbols** list of symbols to subscribe
+* **on_event** function that invokes when event from server is received
+* **logger** instance of logger, otherwise set to default
+* **max_queue_size** maximum size of queue, default `12000`
+* **log_level** accepts `debug` or `info`, otherwise not set
+
+Applicable methods on `.websocket()` object:
+* `ws.subscribe([list of symbols])`: get data from the symbols passed
+* `ws.unsubscribe([list of symbols])`: stop receiving data from the symbols passed
+* `ws.reset()`: unsubscribe from all symbols
+* `ws.connect()`: establish connection with WebSocket server
+* `ws.disconnect()`: close connection with WebSocket server
+* `ws.keep_alive()`: run connection forever until closed
+
+**Important**. Do not forget that WebSockets are only available for Twelve Data Prime [members](https://twelvedata.com/prime)
 
 ## Support
 
@@ -236,8 +285,7 @@ Follow [@TwelveData](https://twitter.com/TwelveData) on Twitter for announcement
 
 ## Roadmap
 
-- [ ] Save-load chart templates
-- [ ] Auto-update charts
+- [x] WebSocket
 - [x] Batch requests
 - [x] Custom plots coloring
 - [x] Interactive charts (plotly)
