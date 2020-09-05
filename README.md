@@ -211,11 +211,9 @@ ts.with_bbands().with_percent_b().with_stoch(slow_k_period=3).as_pyplot_figure()
 
 Interactive charts are built on top of `plotly` library.
 
-![interactive chart example](https://res.cloudinary.com/dnz8pwg9r/image/upload/v1599329727/plotly-chart.gif)
+![interactive chart example](https://res.cloudinary.com/dnz8pwg9r/image/upload/v1599349681/plotly-chart.gif)
 
 * Use `.as_plotly_figure().show()`
-
-![AAPL interactive chart example](assets/chart-example.gif)
 
 ```python
 from twelvedata import TDClient
@@ -237,7 +235,7 @@ ts.with_ema(time_period=7).with_mama().with_mom().with_macd().as_plotly_figure()
 
 With the WebSocket, a duplex communication channel with the server is established.
 
-![websocket example](https://res.cloudinary.com/dnz8pwg9r/image/upload/v1599327800/python-ws-example_empvj2.gif)
+![websocket example](https://res.cloudinary.com/dnz8pwg9r/image/upload/v1599349899/ws-example.gif)
 
 #### Features
 * Real-time low latency stream of financial quotes.
@@ -273,7 +271,7 @@ Applicable methods on `.websocket()` object:
 * `ws.disconnect()`: close connection with WebSocket server
 * `ws.keep_alive()`: run connection forever until closed
 
-**Important**. Do not forget that WebSockets are only available for Twelve Data Prime [members](https://twelvedata.com/prime)
+**Important**. Do not forget that WebSockets are only available for Twelve Data Prime [members](https://twelvedata.com/prime).
 
 ## Support
 
