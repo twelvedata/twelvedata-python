@@ -1,7 +1,5 @@
 [packages]
-twelvedata = {path = "./",extras = [ "pandas", "matplotlib", "plotly", "websocket-client"],editable = true}
-websocket-client = "*"
-mplfinance = "*"
+twelvedata = {path = "./",extras = [ "pandas", "matplotlib", "plotly"],editable = true}
 
 [dev-packages]
 jupyter = "*"
