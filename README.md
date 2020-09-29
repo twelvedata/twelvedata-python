@@ -9,7 +9,7 @@
 
 # Twelve Data Python Client for APIs & WebSockets
 
-Official python library for Twelve Data. This package supports all main features of the service:
+Official python library for [Twelve Data](https://twelvedata.com). This package supports all main features of the service:
 
 * Get stock, forex and cryptocurrency OHLC time series.
 * Get over 100+ technical indicators.
