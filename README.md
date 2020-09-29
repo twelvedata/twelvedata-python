@@ -185,9 +185,9 @@ Charts support OHLC, technical indicators and custom bars.
 
 #### Static
 
-Static charts are based on `matplotlib` library.
+Static charts are based on `matplotlib` library and require `mplfinance` package to be installed.
 
-![static chart example](https://res.cloudinary.com/dnz8pwg9r/image/upload/v1599339609/matplotlib-chart.png)
+![static chart example](https://res.cloudinary.com/dnz8pwg9r/image/upload/v1601394338/matplotlib_chart.png)
 
 * Use `.as_pyplot_figure()`
 
@@ -234,6 +234,8 @@ ts.with_ema(time_period=7).with_mama().with_mom().with_macd().as_plotly_figure()
 ### WebSocket
 
 With the WebSocket, a duplex communication channel with the server is established.
+
+Make sure to have `websocket_client` package [installed](https://pypi.org/project/websocket_client/).
 
 ![websocket example](https://res.cloudinary.com/dnz8pwg9r/image/upload/v1599349899/ws-example.gif)
 

@@ -147,9 +147,8 @@ class Endpoint(object):
         from .renders import RENDERS_MAPPING, RenderContext
 
         df = self.as_pandas()
-
+        df = df.iloc[::-1]
         df.reset_index(level=0, inplace=True)
-        df["datetime"] = df["datetime"]
         df.set_index("datetime", inplace=True)
 
         ctx = RenderContext()
