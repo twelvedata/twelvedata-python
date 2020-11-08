@@ -93,10 +93,13 @@ class TDWebSocket:
             self.ws.close()
             time.sleep(1)
 
-    @staticmethod
-    def keep_alive():
-        while True:
-            pass
+    def keep_alive(self):
+        time.sleep(10)
+        self.heartbeat()
+        self.keep_alive()
+
+    def heartbeat(self):
+        self.ws.send('{"action": "heartbeat"}')
 
     def refresh_websocket(self):
         self.event_receiver = EventReceiver(self)
