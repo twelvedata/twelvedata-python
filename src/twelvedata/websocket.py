@@ -71,7 +71,6 @@ class TDWebSocket:
 
     def connect(self):
         self.logger.info("Connecting...")
-
         self.ready = False
         self.subscribed_symbols = set()
 
@@ -79,11 +78,13 @@ class TDWebSocket:
             self.ws.close()
             time.sleep(1)
 
-        try:
-            self.refresh_websocket()
-        except Exception as e:
-            self.logger.error("Cannot connect: {}".format(e))
-            return self.self_heal()
+        while True:
+            try:
+                self.refresh_websocket()
+                break
+            except Exception as e:
+                self.logger.error("Cannot connect: {}. Retrying...".format(e))
+                time.sleep(SELF_HEAL_TIME)
 
     def disconnect(self):
         self.ready = False

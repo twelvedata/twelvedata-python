@@ -44,8 +44,8 @@ def _init_batch_ts(symbols):
 
 def test_get_stocks_list():
     td = _init_client()
-    td.get_stocks_list().as_json()
-    td.get_stocks_list().as_csv()
+    td.get_stocks_list(exchange='NASDAQ').as_json()
+    td.get_stocks_list(exchange='NASDAQ').as_csv()
 
 
 def test_get_stock_exchanges_list():
