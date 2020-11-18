@@ -95,9 +95,9 @@ class TDWebSocket:
             time.sleep(1)
 
     def keep_alive(self):
-        time.sleep(10)
-        self.heartbeat()
-        self.keep_alive()
+        while True:
+            time.sleep(10)
+            self.heartbeat()
 
     def heartbeat(self):
         self.ws.send('{"action": "heartbeat"}')
