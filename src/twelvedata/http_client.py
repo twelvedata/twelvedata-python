@@ -24,7 +24,7 @@ class DefaultHttpClient(object):
         params["source"] = "python"
         kwargs["params"] = params
 
-        resp = requests.get("{}{}".format(self.base_url, relative_url), *args, **kwargs)
+        resp = requests.get("{}{}".format(self.base_url, relative_url), timeout=30, *args, **kwargs)
         if ('Is_batch' in resp.headers and resp.headers['Is_batch'] == 'true') or \
                 ('Content-Type' in resp.headers and resp.headers['Content-Type'] == 'text/csv'):
             return resp
