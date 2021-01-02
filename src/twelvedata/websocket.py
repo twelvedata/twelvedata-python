@@ -157,7 +157,7 @@ class TDWebSocket:
         remove_symbols = self.subscribed_symbols - self.symbols
         if len(remove_symbols) > 0:
             self.logger.debug("Removed symbols: {}".format(remove_symbols))
-            ev = self.subscribe_event(remove_symbols)
+            ev = self.unsubscribe_event(remove_symbols)
             self.ws.send(json.dumps(ev))
 
         self.subscribed_symbols = self.symbols.copy()
