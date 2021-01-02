@@ -341,6 +341,7 @@ RENDERS_MAPPING = {
     MAXEndpoint: [LR],
     McGinleyDynamicEndpoint: [LR],
     MEDPRICEEndpoint: [LR],
+    MFIEndpoint: [LR],
     MIDPOINTEndpoint: [LR],
     MIDPRICEEndpoint: [LR],
     MININDEXEndpoint: [LR],

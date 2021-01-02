@@ -58,6 +58,7 @@ __all__ = (
     "MAXEndpoint",
     "McGinleyDynamicEndpoint",
     "MEDPRICEEndpoint",
+    "MFIEndpoint",
     "MIDPOINTEndpoint",
     "MIDPRICEEndpoint",
     "MININDEXEndpoint",

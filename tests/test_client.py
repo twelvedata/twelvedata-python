@@ -531,6 +531,15 @@ def test_time_series_get_medprice():
     plt.close()
 
 
+def test_time_series_get_mfi():
+    ts = _init_ts()
+    ts.with_mfi().as_json()
+    ts.with_mfi().as_csv()
+    ts.with_mfi().as_pandas()
+    ts.with_mfi().as_plotly_figure()
+    plt.close()
+
+
 def test_time_series_get_midpoint():
     ts = _init_ts()
     ts.with_midpoint().as_json()

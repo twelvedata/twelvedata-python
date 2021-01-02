@@ -6,7 +6,6 @@ import re
 import itertools
 from collections import OrderedDict, Counter
 
-
 from .endpoints import *
 from .utils import apply_context_defaults, force_use_kwargs, parse_interval_in_minutes
 
@@ -15,7 +14,7 @@ __all__ = ("TimeSeries",)
 
 class TimeSeries(object):
     def __init__(
-        self, ctx, endpoints=(), price_endpoint=None, price_endpoint_enabled=True
+            self, ctx, endpoints=(), price_endpoint=None, price_endpoint_enabled=True
     ):
         self.ctx = ctx
         self.price_endpoint_enabled = price_endpoint_enabled
@@ -351,14 +350,14 @@ class TimeSeries(object):
     @force_use_kwargs
     @apply_context_defaults
     def with_ad(
-        self,
-        exchange=None,
-        country=None,
-        outputsize=30,
-        start_date=None,
-        end_date=None,
-        dp=5,
-        timezone="Exchange",
+            self,
+            exchange=None,
+            country=None,
+            outputsize=30,
+            start_date=None,
+            end_date=None,
+            dp=5,
+            timezone="Exchange",
     ):
         """
         Add request builder of AD to chart builder
@@ -411,16 +410,16 @@ class TimeSeries(object):
     @force_use_kwargs
     @apply_context_defaults
     def with_adosc(
-        self,
-        exchange=None,
-        country=None,
-        fast_period=12,
-        slow_period=26,
-        outputsize=30,
-        start_date=None,
-        end_date=None,
-        dp=5,
-        timezone="Exchange",
+            self,
+            exchange=None,
+            country=None,
+            fast_period=12,
+            slow_period=26,
+            outputsize=30,
+            start_date=None,
+            end_date=None,
+            dp=5,
+            timezone="Exchange",
     ):
         """
         Add request builder of ADOSC to chart builder
@@ -481,15 +480,15 @@ class TimeSeries(object):
     @force_use_kwargs
     @apply_context_defaults
     def with_adx(
-        self,
-        exchange=None,
-        country=None,
-        time_period=14,
-        outputsize=30,
-        start_date=None,
-        end_date=None,
-        dp=5,
-        timezone="Exchange",
+            self,
+            exchange=None,
+            country=None,
+            time_period=14,
+            outputsize=30,
+            start_date=None,
+            end_date=None,
+            dp=5,
+            timezone="Exchange",
     ):
         """
         Add request builder of ADX to chart builder
@@ -544,15 +543,15 @@ class TimeSeries(object):
     @force_use_kwargs
     @apply_context_defaults
     def with_adxr(
-        self,
-        exchange=None,
-        country=None,
-        time_period=14,
-        outputsize=30,
-        start_date=None,
-        end_date=None,
-        dp=5,
-        timezone="Exchange",
+            self,
+            exchange=None,
+            country=None,
+            time_period=14,
+            outputsize=30,
+            start_date=None,
+            end_date=None,
+            dp=5,
+            timezone="Exchange",
     ):
         """
         Add request builder of ADXR to chart builder
@@ -607,18 +606,18 @@ class TimeSeries(object):
     @force_use_kwargs
     @apply_context_defaults
     def with_apo(
-        self,
-        exchange=None,
-        country=None,
-        time_period=9,
-        fast_period="12",
-        slow_period="26",
-        ma_type="SMA",
-        outputsize=30,
-        start_date=None,
-        end_date=None,
-        dp=5,
-        timezone="Exchange",
+            self,
+            exchange=None,
+            country=None,
+            time_period=9,
+            fast_period="12",
+            slow_period="26",
+            ma_type="SMA",
+            outputsize=30,
+            start_date=None,
+            end_date=None,
+            dp=5,
+            timezone="Exchange",
     ):
         """
         Add request builder of APO to chart builder
@@ -681,15 +680,15 @@ class TimeSeries(object):
     @force_use_kwargs
     @apply_context_defaults
     def with_aroon(
-        self,
-        exchange=None,
-        country=None,
-        time_period=14,
-        outputsize=30,
-        start_date=None,
-        end_date=None,
-        dp=5,
-        timezone="Exchange",
+            self,
+            exchange=None,
+            country=None,
+            time_period=14,
+            outputsize=30,
+            start_date=None,
+            end_date=None,
+            dp=5,
+            timezone="Exchange",
     ):
         """
         Add request builder of AROON to chart builder
@@ -744,15 +743,15 @@ class TimeSeries(object):
     @force_use_kwargs
     @apply_context_defaults
     def with_aroonosc(
-        self,
-        exchange=None,
-        country=None,
-        time_period=14,
-        outputsize=30,
-        start_date=None,
-        end_date=None,
-        dp=5,
-        timezone="Exchange",
+            self,
+            exchange=None,
+            country=None,
+            time_period=14,
+            outputsize=30,
+            start_date=None,
+            end_date=None,
+            dp=5,
+            timezone="Exchange",
     ):
         """
         Add request builder of AROONOSC to chart builder
@@ -808,15 +807,15 @@ class TimeSeries(object):
     @force_use_kwargs
     @apply_context_defaults
     def with_atr(
-        self,
-        exchange=None,
-        country=None,
-        time_period=14,
-        outputsize=30,
-        start_date=None,
-        end_date=None,
-        dp=5,
-        timezone="Exchange",
+            self,
+            exchange=None,
+            country=None,
+            time_period=14,
+            outputsize=30,
+            start_date=None,
+            end_date=None,
+            dp=5,
+            timezone="Exchange",
     ):
         """
         Add request builder of ATR to chart builder
@@ -871,14 +870,14 @@ class TimeSeries(object):
     @force_use_kwargs
     @apply_context_defaults
     def with_avgprice(
-        self,
-        exchange=None,
-        country=None,
-        outputsize=30,
-        start_date=None,
-        end_date=None,
-        dp=5,
-        timezone="Exchange",
+            self,
+            exchange=None,
+            country=None,
+            outputsize=30,
+            start_date=None,
+            end_date=None,
+            dp=5,
+            timezone="Exchange",
     ):
         """
         Add request builder of AVGPRICE to chart builder
@@ -929,18 +928,18 @@ class TimeSeries(object):
     @force_use_kwargs
     @apply_context_defaults
     def with_bbands(
-        self,
-        exchange=None,
-        country=None,
-        series_type="close",
-        time_period=20,
-        sd="2",
-        ma_type="SMA",
-        outputsize=30,
-        start_date=None,
-        end_date=None,
-        dp=5,
-        timezone="Exchange",
+            self,
+            exchange=None,
+            country=None,
+            series_type="close",
+            time_period=20,
+            sd="2",
+            ma_type="SMA",
+            outputsize=30,
+            start_date=None,
+            end_date=None,
+            dp=5,
+            timezone="Exchange",
     ):
         """
         Add request builder of BBANDS to chart builder
@@ -1003,18 +1002,18 @@ class TimeSeries(object):
     @force_use_kwargs
     @apply_context_defaults
     def with_percent_b(
-        self,
-        exchange=None,
-        country=None,
-        series_type="close",
-        time_period=20,
-        sd="2",
-        ma_type="SMA",
-        outputsize=30,
-        start_date=None,
-        end_date=None,
-        dp=5,
-        timezone="Exchange",
+            self,
+            exchange=None,
+            country=None,
+            series_type="close",
+            time_period=20,
+            sd="2",
+            ma_type="SMA",
+            outputsize=30,
+            start_date=None,
+            end_date=None,
+            dp=5,
+            timezone="Exchange",
     ):
         """
         Creates request builder for %B
@@ -1076,14 +1075,14 @@ class TimeSeries(object):
     @force_use_kwargs
     @apply_context_defaults
     def with_bop(
-        self,
-        exchange=None,
-        country=None,
-        outputsize=30,
-        start_date=None,
-        end_date=None,
-        dp=5,
-        timezone="Exchange",
+            self,
+            exchange=None,
+            country=None,
+            outputsize=30,
+            start_date=None,
+            end_date=None,
+            dp=5,
+            timezone="Exchange",
     ):
         """
         Add request builder of BOP to chart builder
@@ -1135,15 +1134,15 @@ class TimeSeries(object):
     @force_use_kwargs
     @apply_context_defaults
     def with_cci(
-        self,
-        exchange=None,
-        country=None,
-        time_period=20,
-        outputsize=30,
-        start_date=None,
-        end_date=None,
-        dp=5,
-        timezone="Exchange",
+            self,
+            exchange=None,
+            country=None,
+            time_period=20,
+            outputsize=30,
+            start_date=None,
+            end_date=None,
+            dp=5,
+            timezone="Exchange",
     ):
         """
         Add request builder of CCI to chart builder
@@ -1198,15 +1197,15 @@ class TimeSeries(object):
     @force_use_kwargs
     @apply_context_defaults
     def with_ceil(
-        self,
-        exchange=None,
-        country=None,
-        series_type="close",
-        outputsize=30,
-        start_date=None,
-        end_date=None,
-        dp=5,
-        timezone="Exchange",
+            self,
+            exchange=None,
+            country=None,
+            series_type="close",
+            outputsize=30,
+            start_date=None,
+            end_date=None,
+            dp=5,
+            timezone="Exchange",
     ):
         """
         Add request builder of CEIL to chart builder
@@ -1261,16 +1260,16 @@ class TimeSeries(object):
     @force_use_kwargs
     @apply_context_defaults
     def with_cmo(
-        self,
-        exchange=None,
-        country=None,
-        series_type="close",
-        time_period=9,
-        outputsize=30,
-        start_date=None,
-        end_date=None,
-        dp=5,
-        timezone="Exchange",
+            self,
+            exchange=None,
+            country=None,
+            series_type="close",
+            time_period=9,
+            outputsize=30,
+            start_date=None,
+            end_date=None,
+            dp=5,
+            timezone="Exchange",
     ):
         """
         Add request builder of CMO to chart builder
@@ -1399,15 +1398,15 @@ class TimeSeries(object):
     @force_use_kwargs
     @apply_context_defaults
     def with_ceil(
-        self,
-        exchange=None,
-        country=None,
-        series_type="close",
-        outputsize=30,
-        start_date=None,
-        end_date=None,
-        dp=5,
-        timezone="Exchange",
+            self,
+            exchange=None,
+            country=None,
+            series_type="close",
+            outputsize=30,
+            start_date=None,
+            end_date=None,
+            dp=5,
+            timezone="Exchange",
     ):
         """
         Add request builder of CEIL to chart builder
@@ -1462,16 +1461,16 @@ class TimeSeries(object):
     @force_use_kwargs
     @apply_context_defaults
     def with_dema(
-        self,
-        exchange=None,
-        country=None,
-        series_type="close",
-        time_period=9,
-        outputsize=30,
-        start_date=None,
-        end_date=None,
-        dp=5,
-        timezone="Exchange",
+            self,
+            exchange=None,
+            country=None,
+            series_type="close",
+            time_period=9,
+            outputsize=30,
+            start_date=None,
+            end_date=None,
+            dp=5,
+            timezone="Exchange",
     ):
         """
         Add request builder of DEMA to chart builder
@@ -1529,15 +1528,15 @@ class TimeSeries(object):
     @force_use_kwargs
     @apply_context_defaults
     def with_dx(
-        self,
-        exchange=None,
-        country=None,
-        time_period=14,
-        outputsize=30,
-        start_date=None,
-        end_date=None,
-        dp=5,
-        timezone="Exchange",
+            self,
+            exchange=None,
+            country=None,
+            time_period=14,
+            outputsize=30,
+            start_date=None,
+            end_date=None,
+            dp=5,
+            timezone="Exchange",
     ):
         """
         Add request builder of DX to chart builder
@@ -1592,16 +1591,16 @@ class TimeSeries(object):
     @force_use_kwargs
     @apply_context_defaults
     def with_ema(
-        self,
-        exchange=None,
-        country=None,
-        series_type="close",
-        time_period=9,
-        outputsize=30,
-        start_date=None,
-        end_date=None,
-        dp=5,
-        timezone="Exchange",
+            self,
+            exchange=None,
+            country=None,
+            series_type="close",
+            time_period=9,
+            outputsize=30,
+            start_date=None,
+            end_date=None,
+            dp=5,
+            timezone="Exchange",
     ):
         """
         Add request builder of EMA to chart builder
@@ -1659,15 +1658,15 @@ class TimeSeries(object):
     @force_use_kwargs
     @apply_context_defaults
     def with_exp(
-        self,
-        exchange=None,
-        country=None,
-        series_type="close",
-        outputsize=30,
-        start_date=None,
-        end_date=None,
-        dp=5,
-        timezone="Exchange",
+            self,
+            exchange=None,
+            country=None,
+            series_type="close",
+            outputsize=30,
+            start_date=None,
+            end_date=None,
+            dp=5,
+            timezone="Exchange",
     ):
         """
         Add request builder of EXP to chart builder
@@ -1722,15 +1721,15 @@ class TimeSeries(object):
     @force_use_kwargs
     @apply_context_defaults
     def with_floor(
-        self,
-        exchange=None,
-        country=None,
-        series_type="close",
-        outputsize=30,
-        start_date=None,
-        end_date=None,
-        dp=5,
-        timezone="Exchange",
+            self,
+            exchange=None,
+            country=None,
+            series_type="close",
+            outputsize=30,
+            start_date=None,
+            end_date=None,
+            dp=5,
+            timezone="Exchange",
     ):
         """
         Add request builder of FLOOR to chart builder
@@ -1785,14 +1784,14 @@ class TimeSeries(object):
     @force_use_kwargs
     @apply_context_defaults
     def with_heikinashicandles(
-        self,
-        exchange=None,
-        country=None,
-        outputsize=30,
-        start_date=None,
-        end_date=None,
-        dp=5,
-        timezone="Exchange",
+            self,
+            exchange=None,
+            country=None,
+            outputsize=30,
+            start_date=None,
+            end_date=None,
+            dp=5,
+            timezone="Exchange",
     ):
         """
         Add request builder of HEIKINASHICANDLES to chart builder
@@ -1845,14 +1844,14 @@ class TimeSeries(object):
     @force_use_kwargs
     @apply_context_defaults
     def with_hlc3(
-        self,
-        exchange=None,
-        country=None,
-        outputsize=30,
-        start_date=None,
-        end_date=None,
-        dp=5,
-        timezone="Exchange",
+            self,
+            exchange=None,
+            country=None,
+            outputsize=30,
+            start_date=None,
+            end_date=None,
+            dp=5,
+            timezone="Exchange",
     ):
         """
         Add request builder of HLC3 to chart builder
@@ -1904,15 +1903,15 @@ class TimeSeries(object):
     @force_use_kwargs
     @apply_context_defaults
     def with_ht_dcperiod(
-        self,
-        exchange=None,
-        country=None,
-        series_type="close",
-        outputsize=30,
-        start_date=None,
-        end_date=None,
-        dp=5,
-        timezone="Exchange",
+            self,
+            exchange=None,
+            country=None,
+            series_type="close",
+            outputsize=30,
+            start_date=None,
+            end_date=None,
+            dp=5,
+            timezone="Exchange",
     ):
         """
         Add request builder of HT_DCPERIOD to chart builder
@@ -1968,15 +1967,15 @@ class TimeSeries(object):
     @force_use_kwargs
     @apply_context_defaults
     def with_ht_dcphase(
-        self,
-        exchange=None,
-        country=None,
-        series_type="close",
-        outputsize=30,
-        start_date=None,
-        end_date=None,
-        dp=5,
-        timezone="Exchange",
+            self,
+            exchange=None,
+            country=None,
+            series_type="close",
+            outputsize=30,
+            start_date=None,
+            end_date=None,
+            dp=5,
+            timezone="Exchange",
     ):
         """
         Add request builder of HT_DCPHASE to chart builder
@@ -2032,15 +2031,15 @@ class TimeSeries(object):
     @force_use_kwargs
     @apply_context_defaults
     def with_ht_phasor(
-        self,
-        exchange=None,
-        country=None,
-        series_type="close",
-        outputsize=30,
-        start_date=None,
-        end_date=None,
-        dp=5,
-        timezone="Exchange",
+            self,
+            exchange=None,
+            country=None,
+            series_type="close",
+            outputsize=30,
+            start_date=None,
+            end_date=None,
+            dp=5,
+            timezone="Exchange",
     ):
         """
         Add request builder of HT_PHASOR to chart builder
@@ -2096,15 +2095,15 @@ class TimeSeries(object):
     @force_use_kwargs
     @apply_context_defaults
     def with_ht_sine(
-        self,
-        exchange=None,
-        country=None,
-        series_type="close",
-        outputsize=30,
-        start_date=None,
-        end_date=None,
-        dp=5,
-        timezone="Exchange",
+            self,
+            exchange=None,
+            country=None,
+            series_type="close",
+            outputsize=30,
+            start_date=None,
+            end_date=None,
+            dp=5,
+            timezone="Exchange",
     ):
         """
         Add request builder of HT_SINE to chart builder
@@ -2160,15 +2159,15 @@ class TimeSeries(object):
     @force_use_kwargs
     @apply_context_defaults
     def with_ht_trendline(
-        self,
-        exchange=None,
-        country=None,
-        series_type="close",
-        outputsize=30,
-        start_date=None,
-        end_date=None,
-        dp=5,
-        timezone="Exchange",
+            self,
+            exchange=None,
+            country=None,
+            series_type="close",
+            outputsize=30,
+            start_date=None,
+            end_date=None,
+            dp=5,
+            timezone="Exchange",
     ):
         """
         Add request builder of HT_TRENDLINE to chart builder
@@ -2225,15 +2224,15 @@ class TimeSeries(object):
     @force_use_kwargs
     @apply_context_defaults
     def with_ht_trendmode(
-        self,
-        exchange=None,
-        country=None,
-        series_type="close",
-        outputsize=30,
-        start_date=None,
-        end_date=None,
-        dp=5,
-        timezone="Exchange",
+            self,
+            exchange=None,
+            country=None,
+            series_type="close",
+            outputsize=30,
+            start_date=None,
+            end_date=None,
+            dp=5,
+            timezone="Exchange",
     ):
         """
         Add request builder of HT_TRENDMODE to chart builder
@@ -2363,16 +2362,16 @@ class TimeSeries(object):
     @force_use_kwargs
     @apply_context_defaults
     def with_kama(
-        self,
-        exchange=None,
-        country=None,
-        series_type="close",
-        time_period=9,
-        outputsize=30,
-        start_date=None,
-        end_date=None,
-        dp=5,
-        timezone="Exchange",
+            self,
+            exchange=None,
+            country=None,
+            series_type="close",
+            time_period=9,
+            outputsize=30,
+            start_date=None,
+            end_date=None,
+            dp=5,
+            timezone="Exchange",
     ):
         """
         Add request builder of KAMA to chart builder
@@ -2589,16 +2588,16 @@ class TimeSeries(object):
     @force_use_kwargs
     @apply_context_defaults
     def with_linearreg(
-        self,
-        exchange=None,
-        country=None,
-        series_type="close",
-        time_period=9,
-        outputsize=30,
-        start_date=None,
-        end_date=None,
-        dp=5,
-        timezone="Exchange",
+            self,
+            exchange=None,
+            country=None,
+            series_type="close",
+            time_period=9,
+            outputsize=30,
+            start_date=None,
+            end_date=None,
+            dp=5,
+            timezone="Exchange",
     ):
         """
         Add request builder of LINEARREG to chart builder
@@ -2656,16 +2655,16 @@ class TimeSeries(object):
     @force_use_kwargs
     @apply_context_defaults
     def with_linearregangle(
-        self,
-        exchange=None,
-        country=None,
-        series_type="close",
-        time_period=9,
-        outputsize=30,
-        start_date=None,
-        end_date=None,
-        dp=5,
-        timezone="Exchange",
+            self,
+            exchange=None,
+            country=None,
+            series_type="close",
+            time_period=9,
+            outputsize=30,
+            start_date=None,
+            end_date=None,
+            dp=5,
+            timezone="Exchange",
     ):
         """
         Add request builder of LINEARREGANGLE to chart builder
@@ -2723,16 +2722,16 @@ class TimeSeries(object):
     @force_use_kwargs
     @apply_context_defaults
     def with_linearregintercept(
-        self,
-        exchange=None,
-        country=None,
-        series_type="close",
-        time_period=9,
-        outputsize=30,
-        start_date=None,
-        end_date=None,
-        dp=5,
-        timezone="Exchange",
+            self,
+            exchange=None,
+            country=None,
+            series_type="close",
+            time_period=9,
+            outputsize=30,
+            start_date=None,
+            end_date=None,
+            dp=5,
+            timezone="Exchange",
     ):
         """
         Add request builder of LINEARREGINTERCEPT to chart builder
@@ -2790,16 +2789,16 @@ class TimeSeries(object):
     @force_use_kwargs
     @apply_context_defaults
     def with_linearregslope(
-        self,
-        exchange=None,
-        country=None,
-        series_type="close",
-        time_period=9,
-        outputsize=30,
-        start_date=None,
-        end_date=None,
-        dp=5,
-        timezone="Exchange",
+            self,
+            exchange=None,
+            country=None,
+            series_type="close",
+            time_period=9,
+            outputsize=30,
+            start_date=None,
+            end_date=None,
+            dp=5,
+            timezone="Exchange",
     ):
         """
         Add request builder of LINEARREGSLOPE to chart builder
@@ -2857,15 +2856,15 @@ class TimeSeries(object):
     @force_use_kwargs
     @apply_context_defaults
     def with_ln(
-        self,
-        exchange=None,
-        country=None,
-        series_type="close",
-        outputsize=30,
-        start_date=None,
-        end_date=None,
-        dp=5,
-        timezone="Exchange",
+            self,
+            exchange=None,
+            country=None,
+            series_type="close",
+            outputsize=30,
+            start_date=None,
+            end_date=None,
+            dp=5,
+            timezone="Exchange",
     ):
         """
         Add request builder of LN to chart builder
@@ -2920,15 +2919,15 @@ class TimeSeries(object):
     @force_use_kwargs
     @apply_context_defaults
     def with_log10(
-        self,
-        exchange=None,
-        country=None,
-        series_type="close",
-        outputsize=30,
-        start_date=None,
-        end_date=None,
-        dp=5,
-        timezone="Exchange",
+            self,
+            exchange=None,
+            country=None,
+            series_type="close",
+            outputsize=30,
+            start_date=None,
+            end_date=None,
+            dp=5,
+            timezone="Exchange",
     ):
         """
         Add request builder of LOG10 to chart builder
@@ -2983,17 +2982,17 @@ class TimeSeries(object):
     @force_use_kwargs
     @apply_context_defaults
     def with_ma(
-        self,
-        exchange=None,
-        country=None,
-        series_type="close",
-        time_period=9,
-        ma_type="SMA",
-        outputsize=30,
-        start_date=None,
-        end_date=None,
-        dp=5,
-        timezone="Exchange",
+            self,
+            exchange=None,
+            country=None,
+            series_type="close",
+            time_period=9,
+            ma_type="SMA",
+            outputsize=30,
+            start_date=None,
+            end_date=None,
+            dp=5,
+            timezone="Exchange",
     ):
         """
         Add request builder of MA to chart builder
@@ -3053,18 +3052,18 @@ class TimeSeries(object):
     @force_use_kwargs
     @apply_context_defaults
     def with_macd(
-        self,
-        exchange=None,
-        country=None,
-        series_type="close",
-        fast_period="12",
-        slow_period="26",
-        signal_period="9",
-        outputsize=30,
-        start_date=None,
-        end_date=None,
-        dp=5,
-        timezone="Exchange",
+            self,
+            exchange=None,
+            country=None,
+            series_type="close",
+            fast_period="12",
+            slow_period="26",
+            signal_period="9",
+            outputsize=30,
+            start_date=None,
+            end_date=None,
+            dp=5,
+            timezone="Exchange",
     ):
         """
         Add request builder of MACD to chart builder
@@ -3129,21 +3128,21 @@ class TimeSeries(object):
     @force_use_kwargs
     @apply_context_defaults
     def with_macdext(
-        self,
-        exchange=None,
-        country=None,
-        series_type="close",
-        fast_period="12",
-        fast_ma_type="SMA",
-        slow_period="26",
-        slow_ma_type="SMA",
-        signal_period="9",
-        signal_ma_type="SMA",
-        outputsize=30,
-        start_date=None,
-        end_date=None,
-        dp=5,
-        timezone="Exchange",
+            self,
+            exchange=None,
+            country=None,
+            series_type="close",
+            fast_period="12",
+            fast_ma_type="SMA",
+            slow_period="26",
+            slow_ma_type="SMA",
+            signal_period="9",
+            signal_ma_type="SMA",
+            outputsize=30,
+            start_date=None,
+            end_date=None,
+            dp=5,
+            timezone="Exchange",
     ):
         """
         Add request builder of MACDEXT to chart builder
@@ -3214,17 +3213,17 @@ class TimeSeries(object):
     @force_use_kwargs
     @apply_context_defaults
     def with_mama(
-        self,
-        exchange=None,
-        country=None,
-        series_type="close",
-        fast_limit="0.5",
-        slow_limit="0.05",
-        outputsize=30,
-        start_date=None,
-        end_date=None,
-        dp=5,
-        timezone="Exchange",
+            self,
+            exchange=None,
+            country=None,
+            series_type="close",
+            fast_limit="0.5",
+            slow_limit="0.05",
+            outputsize=30,
+            start_date=None,
+            end_date=None,
+            dp=5,
+            timezone="Exchange",
     ):
         """
         Add request builder of MAMA to chart builder
@@ -3284,16 +3283,16 @@ class TimeSeries(object):
     @force_use_kwargs
     @apply_context_defaults
     def with_max(
-        self,
-        exchange=None,
-        country=None,
-        series_type="close",
-        time_period=9,
-        outputsize=30,
-        start_date=None,
-        end_date=None,
-        dp=5,
-        timezone="Exchange",
+            self,
+            exchange=None,
+            country=None,
+            series_type="close",
+            time_period=9,
+            outputsize=30,
+            start_date=None,
+            end_date=None,
+            dp=5,
+            timezone="Exchange",
     ):
         """
         Add request builder of MAX to chart builder
@@ -3350,16 +3349,16 @@ class TimeSeries(object):
     @force_use_kwargs
     @apply_context_defaults
     def with_maxindex(
-        self,
-        exchange=None,
-        country=None,
-        series_type="close",
-        time_period=9,
-        outputsize=30,
-        start_date=None,
-        end_date=None,
-        dp=5,
-        timezone="Exchange",
+            self,
+            exchange=None,
+            country=None,
+            series_type="close",
+            time_period=9,
+            outputsize=30,
+            start_date=None,
+            end_date=None,
+            dp=5,
+            timezone="Exchange",
     ):
         """
         Add request builder of MAXINDEX to chart builder
@@ -3477,16 +3476,16 @@ class TimeSeries(object):
     @force_use_kwargs
     @apply_context_defaults
     def with_medprice(
-        self,
-        exchange=None,
-        country=None,
-        series_type="close",
-        time_period=9,
-        outputsize=30,
-        start_date=None,
-        end_date=None,
-        dp=5,
-        timezone="Exchange",
+            self,
+            exchange=None,
+            country=None,
+            series_type="close",
+            time_period=9,
+            outputsize=30,
+            start_date=None,
+            end_date=None,
+            dp=5,
+            timezone="Exchange",
     ):
         """
         Add request builder of MEDPRICE to chart builder
@@ -3542,17 +3541,79 @@ class TimeSeries(object):
 
     @force_use_kwargs
     @apply_context_defaults
+    def with_mfi(
+            self,
+            exchange=None,
+            country=None,
+            time_period=14,
+            outputsize=30,
+            start_date=None,
+            end_date=None,
+            dp=5,
+            timezone="Exchange",
+    ):
+        """
+        Add request builder of MFI to chart builder
+
+        Money Flow Index(MFI) is used to identify overbought and oversold levels in an asset. In some cases,
+        it can be used to detect divergences, which might be a sign of upcoming trend changes.
+
+        This API call returns "meta" and "time_series" values of MFI. "meta" object consist of general information
+        about the requested technical indicator. "time_series" is the array of objects ordered by time
+        descending updated in real-time.
+
+        :param symbol: Name of instrument you want to request
+            For preffered stocks use dot(.) delimiter. E.g. BRK.A or BRK.B will be correct
+        :param interval: Interval between two consecutive points in time series
+        :param exchange: Only is applicable to stocks and cryptocurrencies
+        otherwise is ignored
+            Exchange where instrument is traded
+        :param country: Only is applicable to stocks otherwise is ignored
+            Country where instrument is traded
+        :param time_period: Number of periods to average over. Must be at
+        least 1
+        :param outputsize: Number of last datapoints to retrieve
+        :param start_date: Start date of selection, accepts "yyyy-MM-dd hh:mm:ss" and "yyyy-MM-dd" formats
+        :param end_date: End date of selection, accepts "yyyy-MM-dd hh:mm:ss" and "yyyy-MM-dd" formats
+        :param dp: Specifies number of decimal places for floating values
+        :param timezone: Timezone at which output datetime will be displayed
+            Exchange for local exchange time2. UTC for datetime at universal
+            UTC standard3. Timezone name according to IANA Time Zone
+            Database. E.g. America/New_York, Asia/Singapore. Full list of
+            timezones can be found here.Take note that IANA Timezone name is
+            case-sensitive.
+
+        :returns: chart builder
+        :rtype: ChartEndpoint
+        """
+        ep = MFIEndpoint(
+            ctx=self.ctx,
+            symbol=self.ctx.defaults["symbol"],
+            interval=self.ctx.defaults["interval"],
+            exchange=exchange,
+            country=country,
+            time_period=time_period,
+            outputsize=outputsize,
+            start_date=start_date,
+            end_date=end_date,
+            dp=dp,
+            timezone=timezone,
+        )
+        return self._with_endpoint(ep)
+
+    @force_use_kwargs
+    @apply_context_defaults
     def with_midpoint(
-        self,
-        exchange=None,
-        country=None,
-        series_type="close",
-        time_period=9,
-        outputsize=30,
-        start_date=None,
-        end_date=None,
-        dp=5,
-        timezone="Exchange",
+            self,
+            exchange=None,
+            country=None,
+            series_type="close",
+            time_period=9,
+            outputsize=30,
+            start_date=None,
+            end_date=None,
+            dp=5,
+            timezone="Exchange",
     ):
         """
         Add request builder of MIDPOINT to chart builder
@@ -3610,15 +3671,15 @@ class TimeSeries(object):
     @force_use_kwargs
     @apply_context_defaults
     def with_midprice(
-        self,
-        exchange=None,
-        country=None,
-        time_period=9,
-        outputsize=30,
-        start_date=None,
-        end_date=None,
-        dp=5,
-        timezone="Exchange",
+            self,
+            exchange=None,
+            country=None,
+            time_period=9,
+            outputsize=30,
+            start_date=None,
+            end_date=None,
+            dp=5,
+            timezone="Exchange",
     ):
         """
         Add request builder of MIDPRICE to chart builder
@@ -3673,16 +3734,16 @@ class TimeSeries(object):
     @force_use_kwargs
     @apply_context_defaults
     def with_min(
-        self,
-        exchange=None,
-        country=None,
-        series_type="close",
-        time_period=9,
-        outputsize=30,
-        start_date=None,
-        end_date=None,
-        dp=5,
-        timezone="Exchange",
+            self,
+            exchange=None,
+            country=None,
+            series_type="close",
+            time_period=9,
+            outputsize=30,
+            start_date=None,
+            end_date=None,
+            dp=5,
+            timezone="Exchange",
     ):
         """
         Add request builder of MIN to chart builder
@@ -3739,16 +3800,16 @@ class TimeSeries(object):
     @force_use_kwargs
     @apply_context_defaults
     def with_minindex(
-        self,
-        exchange=None,
-        country=None,
-        series_type="close",
-        time_period=9,
-        outputsize=30,
-        start_date=None,
-        end_date=None,
-        dp=5,
-        timezone="Exchange",
+            self,
+            exchange=None,
+            country=None,
+            series_type="close",
+            time_period=9,
+            outputsize=30,
+            start_date=None,
+            end_date=None,
+            dp=5,
+            timezone="Exchange",
     ):
         """
         Add request builder of MININDEX to chart builder
@@ -3805,16 +3866,16 @@ class TimeSeries(object):
     @force_use_kwargs
     @apply_context_defaults
     def with_minmax(
-        self,
-        exchange=None,
-        country=None,
-        series_type="close",
-        time_period=9,
-        outputsize=30,
-        start_date=None,
-        end_date=None,
-        dp=5,
-        timezone="Exchange",
+            self,
+            exchange=None,
+            country=None,
+            series_type="close",
+            time_period=9,
+            outputsize=30,
+            start_date=None,
+            end_date=None,
+            dp=5,
+            timezone="Exchange",
     ):
         """
         Add request builder of MINMAX to chart builder
@@ -3871,16 +3932,16 @@ class TimeSeries(object):
     @force_use_kwargs
     @apply_context_defaults
     def with_minmaxindex(
-        self,
-        exchange=None,
-        country=None,
-        series_type="close",
-        time_period=9,
-        outputsize=30,
-        start_date=None,
-        end_date=None,
-        dp=5,
-        timezone="Exchange",
+            self,
+            exchange=None,
+            country=None,
+            series_type="close",
+            time_period=9,
+            outputsize=30,
+            start_date=None,
+            end_date=None,
+            dp=5,
+            timezone="Exchange",
     ):
         """
         Add request builder of MINMAXINDEX to chart builder
@@ -3937,15 +3998,15 @@ class TimeSeries(object):
     @force_use_kwargs
     @apply_context_defaults
     def with_minus_di(
-        self,
-        exchange=None,
-        country=None,
-        time_period=9,
-        outputsize=30,
-        start_date=None,
-        end_date=None,
-        dp=5,
-        timezone="Exchange",
+            self,
+            exchange=None,
+            country=None,
+            time_period=9,
+            outputsize=30,
+            start_date=None,
+            end_date=None,
+            dp=5,
+            timezone="Exchange",
     ):
         """
         Add request builder of MINUS_DI to chart builder
@@ -4000,15 +4061,15 @@ class TimeSeries(object):
     @force_use_kwargs
     @apply_context_defaults
     def with_minus_dm(
-        self,
-        exchange=None,
-        country=None,
-        time_period=9,
-        outputsize=30,
-        start_date=None,
-        end_date=None,
-        dp=5,
-        timezone="Exchange",
+            self,
+            exchange=None,
+            country=None,
+            time_period=9,
+            outputsize=30,
+            start_date=None,
+            end_date=None,
+            dp=5,
+            timezone="Exchange",
     ):
         """
         Add request builder of MINUS_DM to chart builder
@@ -4063,16 +4124,16 @@ class TimeSeries(object):
     @force_use_kwargs
     @apply_context_defaults
     def with_mom(
-        self,
-        exchange=None,
-        country=None,
-        series_type="close",
-        time_period=9,
-        outputsize=30,
-        start_date=None,
-        end_date=None,
-        dp=5,
-        timezone="Exchange",
+            self,
+            exchange=None,
+            country=None,
+            series_type="close",
+            time_period=9,
+            outputsize=30,
+            start_date=None,
+            end_date=None,
+            dp=5,
+            timezone="Exchange",
     ):
         """
         Add request builder of MOM to chart builder
@@ -4130,15 +4191,15 @@ class TimeSeries(object):
     @force_use_kwargs
     @apply_context_defaults
     def with_natr(
-        self,
-        exchange=None,
-        country=None,
-        time_period=14,
-        outputsize=30,
-        start_date=None,
-        end_date=None,
-        dp=5,
-        timezone="Exchange",
+            self,
+            exchange=None,
+            country=None,
+            time_period=14,
+            outputsize=30,
+            start_date=None,
+            end_date=None,
+            dp=5,
+            timezone="Exchange",
     ):
         """
         Add request builder of NATR to chart builder
@@ -4194,15 +4255,15 @@ class TimeSeries(object):
     @force_use_kwargs
     @apply_context_defaults
     def with_obv(
-        self,
-        exchange=None,
-        country=None,
-        series_type="close",
-        outputsize=30,
-        start_date=None,
-        end_date=None,
-        dp=5,
-        timezone="Exchange",
+            self,
+            exchange=None,
+            country=None,
+            series_type="close",
+            outputsize=30,
+            start_date=None,
+            end_date=None,
+            dp=5,
+            timezone="Exchange",
     ):
         """
         Add request builder of OBV to chart builder
@@ -4258,15 +4319,15 @@ class TimeSeries(object):
     @force_use_kwargs
     @apply_context_defaults
     def with_plus_di(
-        self,
-        exchange=None,
-        country=None,
-        time_period=9,
-        outputsize=30,
-        start_date=None,
-        end_date=None,
-        dp=5,
-        timezone="Exchange",
+            self,
+            exchange=None,
+            country=None,
+            time_period=9,
+            outputsize=30,
+            start_date=None,
+            end_date=None,
+            dp=5,
+            timezone="Exchange",
     ):
         """
         Add request builder of PLUS_DI to chart builder
@@ -4321,15 +4382,15 @@ class TimeSeries(object):
     @force_use_kwargs
     @apply_context_defaults
     def with_plus_dm(
-        self,
-        exchange=None,
-        country=None,
-        time_period=9,
-        outputsize=30,
-        start_date=None,
-        end_date=None,
-        dp=5,
-        timezone="Exchange",
+            self,
+            exchange=None,
+            country=None,
+            time_period=9,
+            outputsize=30,
+            start_date=None,
+            end_date=None,
+            dp=5,
+            timezone="Exchange",
     ):
         """
         Add request builder of PLUS_DM to chart builder
@@ -4384,18 +4445,18 @@ class TimeSeries(object):
     @force_use_kwargs
     @apply_context_defaults
     def with_ppo(
-        self,
-        exchange=None,
-        country=None,
-        series_type="close",
-        fast_period="10",
-        slow_period="21",
-        ma_type="SMA",
-        outputsize=30,
-        start_date=None,
-        end_date=None,
-        dp=5,
-        timezone="Exchange",
+            self,
+            exchange=None,
+            country=None,
+            series_type="close",
+            fast_period="10",
+            slow_period="21",
+            ma_type="SMA",
+            outputsize=30,
+            start_date=None,
+            end_date=None,
+            dp=5,
+            timezone="Exchange",
     ):
         """
         Add request builder of PPO to chart builder
@@ -4458,16 +4519,16 @@ class TimeSeries(object):
     @force_use_kwargs
     @apply_context_defaults
     def with_roc(
-        self,
-        exchange=None,
-        country=None,
-        series_type="close",
-        time_period=9,
-        outputsize=30,
-        start_date=None,
-        end_date=None,
-        dp=5,
-        timezone="Exchange",
+            self,
+            exchange=None,
+            country=None,
+            series_type="close",
+            time_period=9,
+            outputsize=30,
+            start_date=None,
+            end_date=None,
+            dp=5,
+            timezone="Exchange",
     ):
         """
         Add request builder of ROC to chart builder
@@ -4525,16 +4586,16 @@ class TimeSeries(object):
     @force_use_kwargs
     @apply_context_defaults
     def with_rocp(
-        self,
-        exchange=None,
-        country=None,
-        series_type="close",
-        time_period=9,
-        outputsize=30,
-        start_date=None,
-        end_date=None,
-        dp=5,
-        timezone="Exchange",
+            self,
+            exchange=None,
+            country=None,
+            series_type="close",
+            time_period=9,
+            outputsize=30,
+            start_date=None,
+            end_date=None,
+            dp=5,
+            timezone="Exchange",
     ):
         """
         Add request builder of ROCP to chart builder
@@ -4593,16 +4654,16 @@ class TimeSeries(object):
     @force_use_kwargs
     @apply_context_defaults
     def with_rocr(
-        self,
-        exchange=None,
-        country=None,
-        series_type="close",
-        time_period=9,
-        outputsize=30,
-        start_date=None,
-        end_date=None,
-        dp=5,
-        timezone="Exchange",
+            self,
+            exchange=None,
+            country=None,
+            series_type="close",
+            time_period=9,
+            outputsize=30,
+            start_date=None,
+            end_date=None,
+            dp=5,
+            timezone="Exchange",
     ):
         """
         Add request builder of ROCR to chart builder
@@ -4660,16 +4721,16 @@ class TimeSeries(object):
     @force_use_kwargs
     @apply_context_defaults
     def with_rocr100(
-        self,
-        exchange=None,
-        country=None,
-        series_type="close",
-        time_period=9,
-        outputsize=30,
-        start_date=None,
-        end_date=None,
-        dp=5,
-        timezone="Exchange",
+            self,
+            exchange=None,
+            country=None,
+            series_type="close",
+            time_period=9,
+            outputsize=30,
+            start_date=None,
+            end_date=None,
+            dp=5,
+            timezone="Exchange",
     ):
         """
         Add request builder of ROCR100 to chart builder
@@ -4728,16 +4789,16 @@ class TimeSeries(object):
     @force_use_kwargs
     @apply_context_defaults
     def with_rsi(
-        self,
-        exchange=None,
-        country=None,
-        series_type="close",
-        time_period=14,
-        outputsize=30,
-        start_date=None,
-        end_date=None,
-        dp=5,
-        timezone="Exchange",
+            self,
+            exchange=None,
+            country=None,
+            series_type="close",
+            time_period=14,
+            outputsize=30,
+            start_date=None,
+            end_date=None,
+            dp=5,
+            timezone="Exchange",
     ):
         """
         Add request builder of RSI to chart builder
@@ -4796,16 +4857,16 @@ class TimeSeries(object):
     @force_use_kwargs
     @apply_context_defaults
     def with_sar(
-        self,
-        acceleration="0.02",
-        maximum="0.2",
-        exchange=None,
-        country=None,
-        outputsize=30,
-        start_date=None,
-        end_date=None,
-        dp=5,
-        timezone="Exchange",
+            self,
+            acceleration="0.02",
+            maximum="0.2",
+            exchange=None,
+            country=None,
+            outputsize=30,
+            start_date=None,
+            end_date=None,
+            dp=5,
+            timezone="Exchange",
     ):
         """
         Add request builder of SAR to chart builder
@@ -4861,16 +4922,16 @@ class TimeSeries(object):
     @force_use_kwargs
     @apply_context_defaults
     def with_sma(
-        self,
-        exchange=None,
-        country=None,
-        series_type="close",
-        time_period=9,
-        outputsize=30,
-        start_date=None,
-        end_date=None,
-        dp=5,
-        timezone="Exchange",
+            self,
+            exchange=None,
+            country=None,
+            series_type="close",
+            time_period=9,
+            outputsize=30,
+            start_date=None,
+            end_date=None,
+            dp=5,
+            timezone="Exchange",
     ):
         """
         Add request builder of SMA to chart builder
@@ -4929,15 +4990,15 @@ class TimeSeries(object):
     @force_use_kwargs
     @apply_context_defaults
     def with_sqrt(
-        self,
-        exchange=None,
-        country=None,
-        series_type="close",
-        outputsize=30,
-        start_date=None,
-        end_date=None,
-        dp=5,
-        timezone="Exchange",
+            self,
+            exchange=None,
+            country=None,
+            series_type="close",
+            outputsize=30,
+            start_date=None,
+            end_date=None,
+            dp=5,
+            timezone="Exchange",
     ):
         """
         Add request builder of SQRT to chart builder
@@ -4991,17 +5052,17 @@ class TimeSeries(object):
     @force_use_kwargs
     @apply_context_defaults
     def with_stddev(
-        self,
-        exchange=None,
-        country=None,
-        series_type="close",
-        time_period=9,
-        sd="2",
-        outputsize=30,
-        start_date=None,
-        end_date=None,
-        dp=5,
-        timezone="Exchange",
+            self,
+            exchange=None,
+            country=None,
+            series_type="close",
+            time_period=9,
+            sd="2",
+            outputsize=30,
+            start_date=None,
+            end_date=None,
+            dp=5,
+            timezone="Exchange",
     ):
         """
         Add request builder of STDDEV to chart builder
@@ -5061,19 +5122,19 @@ class TimeSeries(object):
     @force_use_kwargs
     @apply_context_defaults
     def with_stoch(
-        self,
-        exchange=None,
-        country=None,
-        fast_k_period="14",
-        slow_k_period="1",
-        slow_d_period="3",
-        slow_kma_type="SMA",
-        slow_dma_type="SMA",
-        outputsize=30,
-        start_date=None,
-        end_date=None,
-        dp=5,
-        timezone="Exchange",
+            self,
+            exchange=None,
+            country=None,
+            fast_k_period="14",
+            slow_k_period="1",
+            slow_d_period="3",
+            slow_kma_type="SMA",
+            slow_dma_type="SMA",
+            outputsize=30,
+            start_date=None,
+            end_date=None,
+            dp=5,
+            timezone="Exchange",
     ):
         """
         Add request builder of STOCH to chart builder
@@ -5135,17 +5196,17 @@ class TimeSeries(object):
     @force_use_kwargs
     @apply_context_defaults
     def with_stochf(
-        self,
-        exchange=None,
-        country=None,
-        fast_k_period="14",
-        fast_d_period="3",
-        fast_dma_type="SMA",
-        outputsize=30,
-        start_date=None,
-        end_date=None,
-        dp=5,
-        timezone="Exchange",
+            self,
+            exchange=None,
+            country=None,
+            fast_k_period="14",
+            fast_d_period="3",
+            fast_dma_type="SMA",
+            outputsize=30,
+            start_date=None,
+            end_date=None,
+            dp=5,
+            timezone="Exchange",
     ):
         """
         Add request builder of STOCHF to chart builder
@@ -5203,19 +5264,19 @@ class TimeSeries(object):
     @force_use_kwargs
     @apply_context_defaults
     def with_stochrsi(
-        self,
-        exchange=None,
-        country=None,
-        series_type="close",
-        time_period=14,
-        fast_k_period="3",
-        fast_d_period="3",
-        fast_dma_type="SMA",
-        outputsize=30,
-        start_date=None,
-        end_date=None,
-        dp=5,
-        timezone="Exchange",
+            self,
+            exchange=None,
+            country=None,
+            series_type="close",
+            time_period=14,
+            fast_k_period="3",
+            fast_d_period="3",
+            fast_dma_type="SMA",
+            outputsize=30,
+            start_date=None,
+            end_date=None,
+            dp=5,
+            timezone="Exchange",
     ):
         """
         Add request builder of STOCHRSI to chart builder
@@ -5345,17 +5406,17 @@ class TimeSeries(object):
     @force_use_kwargs
     @apply_context_defaults
     def with_t3ma(
-        self,
-        exchange=None,
-        country=None,
-        series_type="close",
-        time_period=9,
-        v_factor="0.7",
-        outputsize=30,
-        start_date=None,
-        end_date=None,
-        dp=5,
-        timezone="Exchange",
+            self,
+            exchange=None,
+            country=None,
+            series_type="close",
+            time_period=9,
+            v_factor="0.7",
+            outputsize=30,
+            start_date=None,
+            end_date=None,
+            dp=5,
+            timezone="Exchange",
     ):
         """
         Add request builder of T3MA to chart builder
@@ -5414,16 +5475,16 @@ class TimeSeries(object):
     @force_use_kwargs
     @apply_context_defaults
     def with_tema(
-        self,
-        exchange=None,
-        country=None,
-        series_type="close",
-        time_period=9,
-        outputsize=30,
-        start_date=None,
-        end_date=None,
-        dp=5,
-        timezone="Exchange",
+            self,
+            exchange=None,
+            country=None,
+            series_type="close",
+            time_period=9,
+            outputsize=30,
+            start_date=None,
+            end_date=None,
+            dp=5,
+            timezone="Exchange",
     ):
         """
         Add request builder of TEMA to chart builder
@@ -5482,14 +5543,14 @@ class TimeSeries(object):
     @force_use_kwargs
     @apply_context_defaults
     def with_trange(
-        self,
-        exchange=None,
-        country=None,
-        outputsize=30,
-        start_date=None,
-        end_date=None,
-        dp=5,
-        timezone="Exchange",
+            self,
+            exchange=None,
+            country=None,
+            outputsize=30,
+            start_date=None,
+            end_date=None,
+            dp=5,
+            timezone="Exchange",
     ):
         """
         Add request builder of TRANGE to chart builder
@@ -5541,16 +5602,16 @@ class TimeSeries(object):
     @force_use_kwargs
     @apply_context_defaults
     def with_trima(
-        self,
-        exchange=None,
-        country=None,
-        series_type="close",
-        time_period=9,
-        outputsize=30,
-        start_date=None,
-        end_date=None,
-        dp=5,
-        timezone="Exchange",
+            self,
+            exchange=None,
+            country=None,
+            series_type="close",
+            time_period=9,
+            outputsize=30,
+            start_date=None,
+            end_date=None,
+            dp=5,
+            timezone="Exchange",
     ):
         """
         Add request builder of TRIMA to chart builder
@@ -5608,16 +5669,16 @@ class TimeSeries(object):
     @force_use_kwargs
     @apply_context_defaults
     def with_tsf(
-        self,
-        exchange=None,
-        country=None,
-        series_type="close",
-        time_period=9,
-        outputsize=30,
-        start_date=None,
-        end_date=None,
-        dp=5,
-        timezone="Exchange",
+            self,
+            exchange=None,
+            country=None,
+            series_type="close",
+            time_period=9,
+            outputsize=30,
+            start_date=None,
+            end_date=None,
+            dp=5,
+            timezone="Exchange",
     ):
         """
         Add request builder of TSF to chart builder
@@ -5675,14 +5736,14 @@ class TimeSeries(object):
     @force_use_kwargs
     @apply_context_defaults
     def with_typprice(
-        self,
-        exchange=None,
-        country=None,
-        outputsize=30,
-        start_date=None,
-        end_date=None,
-        dp=5,
-        timezone="Exchange",
+            self,
+            exchange=None,
+            country=None,
+            outputsize=30,
+            start_date=None,
+            end_date=None,
+            dp=5,
+            timezone="Exchange",
     ):
         """
         Add request builder of TYPPRICE to chart builder
@@ -5733,17 +5794,17 @@ class TimeSeries(object):
     @force_use_kwargs
     @apply_context_defaults
     def with_ultosc(
-        self,
-        exchange=None,
-        country=None,
-        time_period_1="7",
-        time_period_2="14",
-        time_period_3="28",
-        outputsize=30,
-        start_date=None,
-        end_date=None,
-        dp=5,
-        timezone="Exchange",
+            self,
+            exchange=None,
+            country=None,
+            time_period_1="7",
+            time_period_2="14",
+            time_period_3="28",
+            outputsize=30,
+            start_date=None,
+            end_date=None,
+            dp=5,
+            timezone="Exchange",
     ):
         """
         Add request builder of ULTOSC to chart builder
@@ -5804,16 +5865,16 @@ class TimeSeries(object):
     @force_use_kwargs
     @apply_context_defaults
     def with_var(
-        self,
-        exchange=None,
-        country=None,
-        series_type="close",
-        time_period=9,
-        outputsize=30,
-        start_date=None,
-        end_date=None,
-        dp=5,
-        timezone="Exchange",
+            self,
+            exchange=None,
+            country=None,
+            series_type="close",
+            time_period=9,
+            outputsize=30,
+            start_date=None,
+            end_date=None,
+            dp=5,
+            timezone="Exchange",
     ):
         """
         Add request builder of VAR to chart builder
@@ -5930,14 +5991,14 @@ class TimeSeries(object):
     @force_use_kwargs
     @apply_context_defaults
     def with_wclprice(
-        self,
-        exchange=None,
-        country=None,
-        outputsize=30,
-        start_date=None,
-        end_date=None,
-        dp=5,
-        timezone="Exchange",
+            self,
+            exchange=None,
+            country=None,
+            outputsize=30,
+            start_date=None,
+            end_date=None,
+            dp=5,
+            timezone="Exchange",
     ):
         """
         Add request builder of WCLPRICE to chart builder
@@ -5989,15 +6050,15 @@ class TimeSeries(object):
     @force_use_kwargs
     @apply_context_defaults
     def with_willr(
-        self,
-        exchange=None,
-        country=None,
-        time_period=14,
-        outputsize=30,
-        start_date=None,
-        end_date=None,
-        dp=5,
-        timezone="Exchange",
+            self,
+            exchange=None,
+            country=None,
+            time_period=14,
+            outputsize=30,
+            start_date=None,
+            end_date=None,
+            dp=5,
+            timezone="Exchange",
     ):
         """
         Add request builder of WILLR to chart builder
@@ -6052,16 +6113,16 @@ class TimeSeries(object):
     @force_use_kwargs
     @apply_context_defaults
     def with_wma(
-        self,
-        exchange=None,
-        country=None,
-        series_type="close",
-        time_period=9,
-        outputsize=30,
-        start_date=None,
-        end_date=None,
-        dp=5,
-        timezone="Exchange",
+            self,
+            exchange=None,
+            country=None,
+            series_type="close",
+            time_period=9,
+            outputsize=30,
+            start_date=None,
+            end_date=None,
+            dp=5,
+            timezone="Exchange",
     ):
         """
         Add request builder of WMA to chart builder
