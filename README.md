@@ -60,6 +60,7 @@ pip install twelvedata[pandas,matplotlib,plotly]
 | timezone   | timezone at which output datetime will be displayed, supports: `UTC`, `Exchange` or according to IANA Time Zone Database | string | no       |
 | start_date | start date and time of sampling period, accepts `yyyy-MM-dd` or `yyyy-MM-dd hh:mm:ss` format | string | no       |
 | end_date   | end date and time of sampling period, accepts `yyyy-MM-dd` or `yyyy-MM-dd hh:mm:ss` format | string | no       |
+| order      | sorting order of the time series output, supports `desc` or `asc`  | string | no       |
 
 The basis for all methods is the `TDClient` object that takes the required `apikey` parameter.
 
