@@ -1,14 +1,26 @@
 #!/usr/bin/env python
 # coding: utf-8
 
+import json
 import pytest
+from requests import Response
+from unittest.mock import patch, MagicMock, PropertyMock
 
 from matplotlib import pyplot as plt
 from twelvedata import TDClient
 from twelvedata.http_client import DefaultHttpClient
+from twelvedata.exceptions import (
+    BadRequestError,
+    InternalServerError,
+    InvalidApiKeyError,
+    TwelveDataError,
+)
 
 
 _cache = {}
+
+
+API_URL = 'https://api.twelvedata.com'
 
 
 class CachedHttpClient(DefaultHttpClient, object):
@@ -25,10 +37,25 @@ class CachedHttpClient(DefaultHttpClient, object):
             return resp
 
 
+def _fake_resp(status_code):
+    resp = Response()
+    resp.status_code = status_code
+    return resp
+
+
+def _fake_json_resp(json_content):
+    resp = MagicMock(spec=Response)
+    type(resp).ok = PropertyMock(return_value=True)
+    resp.json = MagicMock(return_value=json_content)
+    type(resp).headers = PropertyMock(return_value={})
+    resp.status_code = 200
+    return resp
+
+
 def _init_client():
     return TDClient(
         "demo",
-        http_client=CachedHttpClient("https://api.twelvedata.com"),
+        http_client=CachedHttpClient(API_URL),
     )
 
 
@@ -1016,3 +1043,79 @@ def test_list_batch():
     batch_ts = _init_batch_ts(['AAPL', 'RY', 'EUR/USD', 'BTC/USD:Huobi'])
     batch_ts.with_macd().with_stoch().as_json()
     batch_ts.with_ema().with_bbands().as_pandas()
+
+
+@patch('twelvedata.http_client.requests.get', return_value=_fake_resp(500))
+def test_http_internal_server_error_response(mock_get):
+    http_client = DefaultHttpClient(API_URL)
+    with pytest.raises(InternalServerError):
+        http_client.get('/fake_url')
+    mock_get.assert_called_once_with(API_URL + '/fake_url', timeout=30, params={'source': 'python'})
+
+
+@patch('twelvedata.http_client.requests.get', return_value=_fake_json_resp(
+    json.loads('{"status": "error", "code": 500, "message": "error message"}')),
+)
+def test_http_internal_server_error_response_in_json(mock_get):
+    http_client = DefaultHttpClient(API_URL)
+    with pytest.raises(InternalServerError) as err:
+        http_client.get('/fake_url')
+        assert str(err) == 'error message'
+    mock_get.assert_called_once_with(API_URL + '/fake_url', timeout=30, params={'source': 'python'})
+
+
+@patch('twelvedata.http_client.requests.get', return_value=_fake_resp(400))
+def test_http_bad_request_error_response(mock_get):
+    http_client = DefaultHttpClient(API_URL)
+    with pytest.raises(BadRequestError):
+        http_client.get('/fake_url')
+    mock_get.assert_called_once_with(API_URL + '/fake_url', timeout=30, params={'source': 'python'})
+
+
+@patch('twelvedata.http_client.requests.get', return_value=_fake_json_resp(
+    json.loads('{"status": "error", "code": 400, "message": "error message"}')),
+       )
+def test_http_bad_request_error_response_in_json(mock_get):
+    http_client = DefaultHttpClient(API_URL)
+    with pytest.raises(BadRequestError) as err:
+        http_client.get('/fake_url')
+        assert str(err) == 'error message'
+    mock_get.assert_called_once_with(API_URL + '/fake_url', timeout=30, params={'source': 'python'})
+
+
+@patch('twelvedata.http_client.requests.get', return_value=_fake_resp(401))
+def test_http_invalid_api_key_response(mock_get):
+    http_client = DefaultHttpClient(API_URL)
+    with pytest.raises(InvalidApiKeyError):
+        http_client.get('/fake_url')
+    mock_get.assert_called_once_with(API_URL + '/fake_url', timeout=30, params={'source': 'python'})
+
+
+@patch('twelvedata.http_client.requests.get', return_value=_fake_json_resp(
+    json.loads('{"status": "error", "code": 401, "message": "error message"}')),
+       )
+def test_http_invalid_api_key_response_in_json(mock_get):
+    http_client = DefaultHttpClient(API_URL)
+    with pytest.raises(InvalidApiKeyError) as err:
+        http_client.get('/fake_url')
+        assert str(err) == 'error message'
+    mock_get.assert_called_once_with(API_URL + '/fake_url', timeout=30, params={'source': 'python'})
+
+
+@patch('twelvedata.http_client.requests.get', return_value=_fake_resp(520))
+def test_http_other_invalid_response(mock_get):
+    http_client = DefaultHttpClient(API_URL)
+    with pytest.raises(TwelveDataError):
+        http_client.get('/fake_url')
+    mock_get.assert_called_once_with(API_URL + '/fake_url', timeout=30, params={'source': 'python'})
+
+
+@patch('twelvedata.http_client.requests.get', return_value=_fake_json_resp(
+    json.loads('{"status": "error", "code": 520, "message": "error message"}')),
+       )
+def test_http_other_invalid_response_in_json(mock_get):
+    http_client = DefaultHttpClient(API_URL)
+    with pytest.raises(TwelveDataError) as err:
+        http_client.get('/fake_url')
+        assert str(err) == 'error message'
+    mock_get.assert_called_once_with(API_URL + '/fake_url', timeout=30, params={'source': 'python'})

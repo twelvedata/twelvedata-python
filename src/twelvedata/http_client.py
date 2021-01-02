@@ -29,20 +29,28 @@ class DefaultHttpClient(object):
                 ('Content-Type' in resp.headers and resp.headers['Content-Type'] == 'text/csv'):
             return resp
 
-        if 'status' not in resp.json():
+        if not resp.ok:
+            self._raise_error(resp.status_code, resp.text)
+
+        json_resp = resp.json()
+        if 'status' not in json_resp:
             return resp
 
-        status = resp.json()['status']
+        status = json_resp['status']
         if status == 'error':
-            error_code = resp.json()['code']
+            error_code = json_resp['code']
         else:
             return resp
 
         try:
-            message = resp.json()["message"]
+            message = json_resp["message"]
         except ValueError:
             message = resp.text
 
+        self._raise_error(error_code, message)
+
+    @staticmethod
+    def _raise_error(error_code, message):
         if error_code == 401:
             raise InvalidApiKeyError(message)
 
