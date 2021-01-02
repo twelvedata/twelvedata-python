@@ -641,6 +641,7 @@ class ADEndpoint(AsMixin, Endpoint):
         end_date=None,
         dp=5,
         timezone="Exchange",
+        order="desc",
     ):
         self.is_indicator = True
         self.meta_name = "ad"
@@ -654,6 +655,7 @@ class ADEndpoint(AsMixin, Endpoint):
         self.end_date = end_date
         self.dp = dp
         self.timezone = timezone
+        self.order = order
 
     def execute(self, format="JSON"):
 
@@ -676,6 +678,8 @@ class ADEndpoint(AsMixin, Endpoint):
             params["dp"] = self.dp
         if self.timezone is not None:
             params["timezone"] = self.timezone
+        if self.order is not None:
+            params["order"] = self.order
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -699,6 +703,7 @@ class ADOSCEndpoint(AsMixin, Endpoint):
         end_date=None,
         dp=5,
         timezone="Exchange",
+        order="desc",
     ):
         self.is_indicator = True
         self.meta_name = "adosc"
@@ -714,6 +719,7 @@ class ADOSCEndpoint(AsMixin, Endpoint):
         self.end_date = end_date
         self.dp = dp
         self.timezone = timezone
+        self.order = order
 
     def execute(self, format="JSON"):
 
@@ -740,6 +746,8 @@ class ADOSCEndpoint(AsMixin, Endpoint):
             params["dp"] = self.dp
         if self.timezone is not None:
             params["timezone"] = self.timezone
+        if self.order is not None:
+            params["order"] = self.order
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -762,6 +770,7 @@ class ADXEndpoint(AsMixin, Endpoint):
         end_date=None,
         dp=5,
         timezone="Exchange",
+        order="desc",
     ):
         self.is_indicator = True
         self.meta_name = "adx"
@@ -776,6 +785,7 @@ class ADXEndpoint(AsMixin, Endpoint):
         self.end_date = end_date
         self.dp = dp
         self.timezone = timezone
+        self.order = order
 
     def execute(self, format="JSON"):
 
@@ -800,6 +810,8 @@ class ADXEndpoint(AsMixin, Endpoint):
             params["dp"] = self.dp
         if self.timezone is not None:
             params["timezone"] = self.timezone
+        if self.order is not None:
+            params["order"] = self.order
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -822,6 +834,7 @@ class ADXREndpoint(AsMixin, Endpoint):
         end_date=None,
         dp=5,
         timezone="Exchange",
+        order="desc",
     ):
         self.is_indicator = True
         self.meta_name = "adxr"
@@ -836,6 +849,7 @@ class ADXREndpoint(AsMixin, Endpoint):
         self.end_date = end_date
         self.dp = dp
         self.timezone = timezone
+        self.order = order
 
     def execute(self, format="JSON"):
 
@@ -860,6 +874,8 @@ class ADXREndpoint(AsMixin, Endpoint):
             params["dp"] = self.dp
         if self.timezone is not None:
             params["timezone"] = self.timezone
+        if self.order is not None:
+            params["order"] = self.order
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -885,6 +901,7 @@ class APOEndpoint(AsMixin, Endpoint):
         end_date=None,
         dp=5,
         timezone="Exchange",
+        order="desc",
     ):
         self.is_indicator = True
         self.meta_name = "apo"
@@ -902,6 +919,7 @@ class APOEndpoint(AsMixin, Endpoint):
         self.end_date = end_date
         self.dp = dp
         self.timezone = timezone
+        self.order = order
 
     def execute(self, format="JSON"):
 
@@ -932,6 +950,8 @@ class APOEndpoint(AsMixin, Endpoint):
             params["dp"] = self.dp
         if self.timezone is not None:
             params["timezone"] = self.timezone
+        if self.order is not None:
+            params["order"] = self.order
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -954,6 +974,7 @@ class AROONEndpoint(AsMixin, Endpoint):
         end_date=None,
         dp=5,
         timezone="Exchange",
+        order="desc",
     ):
         self.is_indicator = True
         self.meta_name = "aroon"
@@ -968,6 +989,7 @@ class AROONEndpoint(AsMixin, Endpoint):
         self.end_date = end_date
         self.dp = dp
         self.timezone = timezone
+        self.order = order
 
     def execute(self, format="JSON"):
 
@@ -992,6 +1014,8 @@ class AROONEndpoint(AsMixin, Endpoint):
             params["dp"] = self.dp
         if self.timezone is not None:
             params["timezone"] = self.timezone
+        if self.order is not None:
+            params["order"] = self.order
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -1014,6 +1038,7 @@ class AROONOSCEndpoint(AsMixin, Endpoint):
         end_date=None,
         dp=5,
         timezone="Exchange",
+        order="desc",
     ):
         self.is_indicator = True
         self.meta_name = "aroonosc"
@@ -1028,6 +1053,7 @@ class AROONOSCEndpoint(AsMixin, Endpoint):
         self.end_date = end_date
         self.dp = dp
         self.timezone = timezone
+        self.order = order
 
     def execute(self, format="JSON"):
 
@@ -1052,6 +1078,8 @@ class AROONOSCEndpoint(AsMixin, Endpoint):
             params["dp"] = self.dp
         if self.timezone is not None:
             params["timezone"] = self.timezone
+        if self.order is not None:
+            params["order"] = self.order
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -1074,6 +1102,7 @@ class ATREndpoint(AsMixin, Endpoint):
         end_date=None,
         dp=5,
         timezone="Exchange",
+        order="desc",
     ):
         self.is_indicator = True
         self.meta_name = "atr"
@@ -1088,6 +1117,7 @@ class ATREndpoint(AsMixin, Endpoint):
         self.end_date = end_date
         self.dp = dp
         self.timezone = timezone
+        self.order = order
 
     def execute(self, format="JSON"):
 
@@ -1112,6 +1142,8 @@ class ATREndpoint(AsMixin, Endpoint):
             params["dp"] = self.dp
         if self.timezone is not None:
             params["timezone"] = self.timezone
+        if self.order is not None:
+            params["order"] = self.order
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -1133,6 +1165,7 @@ class AVGPRICEEndpoint(AsMixin, Endpoint):
         end_date=None,
         dp=5,
         timezone="Exchange",
+        order="desc",
     ):
         self.is_indicator = True
         self.meta_name = "avgprice"
@@ -1146,6 +1179,7 @@ class AVGPRICEEndpoint(AsMixin, Endpoint):
         self.end_date = end_date
         self.dp = dp
         self.timezone = timezone
+        self.order = order
 
     def execute(self, format="JSON"):
 
@@ -1168,6 +1202,8 @@ class AVGPRICEEndpoint(AsMixin, Endpoint):
             params["dp"] = self.dp
         if self.timezone is not None:
             params["timezone"] = self.timezone
+        if self.order is not None:
+            params["order"] = self.order
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -1193,6 +1229,7 @@ class BBANDSEndpoint(AsMixin, Endpoint):
         end_date=None,
         dp=5,
         timezone="Exchange",
+        order="desc",
     ):
         self.is_indicator = True
         self.meta_name = "bbands"
@@ -1210,6 +1247,7 @@ class BBANDSEndpoint(AsMixin, Endpoint):
         self.end_date = end_date
         self.dp = dp
         self.timezone = timezone
+        self.order = order
 
     def execute(self, format="JSON"):
 
@@ -1240,6 +1278,8 @@ class BBANDSEndpoint(AsMixin, Endpoint):
             params["dp"] = self.dp
         if self.timezone is not None:
             params["timezone"] = self.timezone
+        if self.order is not None:
+            params["order"] = self.order
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -1265,6 +1305,7 @@ class PercentBEndpoint(AsMixin, Endpoint):
         end_date=None,
         dp=5,
         timezone="Exchange",
+        order="desc",
     ):
         self.is_indicator = True
         self.meta_name = "percent_b"
@@ -1282,6 +1323,7 @@ class PercentBEndpoint(AsMixin, Endpoint):
         self.end_date = end_date
         self.dp = dp
         self.timezone = timezone
+        self.order = order
 
     def execute(self, format="JSON"):
 
@@ -1312,6 +1354,8 @@ class PercentBEndpoint(AsMixin, Endpoint):
             params["dp"] = self.dp
         if self.timezone is not None:
             params["timezone"] = self.timezone
+        if self.order is not None:
+            params["order"] = self.order
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -1333,6 +1377,7 @@ class BOPEndpoint(AsMixin, Endpoint):
         end_date=None,
         dp=5,
         timezone="Exchange",
+        order="desc",
     ):
         self.is_indicator = True
         self.meta_name = "bop"
@@ -1346,6 +1391,7 @@ class BOPEndpoint(AsMixin, Endpoint):
         self.end_date = end_date
         self.dp = dp
         self.timezone = timezone
+        self.order = order
 
     def execute(self, format="JSON"):
 
@@ -1368,6 +1414,8 @@ class BOPEndpoint(AsMixin, Endpoint):
             params["dp"] = self.dp
         if self.timezone is not None:
             params["timezone"] = self.timezone
+        if self.order is not None:
+            params["order"] = self.order
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -1390,6 +1438,7 @@ class CCIEndpoint(AsMixin, Endpoint):
         end_date=None,
         dp=5,
         timezone="Exchange",
+        order="desc",
     ):
         self.is_indicator = True
         self.meta_name = "cci"
@@ -1404,6 +1453,7 @@ class CCIEndpoint(AsMixin, Endpoint):
         self.end_date = end_date
         self.dp = dp
         self.timezone = timezone
+        self.order = order
 
     def execute(self, format="JSON"):
 
@@ -1428,6 +1478,8 @@ class CCIEndpoint(AsMixin, Endpoint):
             params["dp"] = self.dp
         if self.timezone is not None:
             params["timezone"] = self.timezone
+        if self.order is not None:
+            params["order"] = self.order
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -1450,6 +1502,7 @@ class CEILEndpoint(AsMixin, Endpoint):
         end_date=None,
         dp=5,
         timezone="Exchange",
+        order="desc",
     ):
         self.is_indicator = True
         self.meta_name = "ceil"
@@ -1464,6 +1517,7 @@ class CEILEndpoint(AsMixin, Endpoint):
         self.end_date = end_date
         self.dp = dp
         self.timezone = timezone
+        self.order = order
 
     def execute(self, format="JSON"):
 
@@ -1488,6 +1542,8 @@ class CEILEndpoint(AsMixin, Endpoint):
             params["dp"] = self.dp
         if self.timezone is not None:
             params["timezone"] = self.timezone
+        if self.order is not None:
+            params["order"] = self.order
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -1511,6 +1567,7 @@ class CMOEndpoint(AsMixin, Endpoint):
         end_date=None,
         dp=5,
         timezone="Exchange",
+        order="desc",
     ):
         self.is_indicator = True
         self.meta_name = "cmo"
@@ -1526,6 +1583,7 @@ class CMOEndpoint(AsMixin, Endpoint):
         self.end_date = end_date
         self.dp = dp
         self.timezone = timezone
+        self.order = order
 
     def execute(self, format="JSON"):
 
@@ -1552,6 +1610,8 @@ class CMOEndpoint(AsMixin, Endpoint):
             params["dp"] = self.dp
         if self.timezone is not None:
             params["timezone"] = self.timezone
+        if self.order is not None:
+            params["order"] = self.order
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -1577,6 +1637,7 @@ class COPPOCKEndpoint(AsMixin, Endpoint):
         end_date=None,
         dp=5,
         timezone="Exchange",
+        order="desc",
     ):
         self.is_indicator = True
         self.meta_name = "cmo"
@@ -1594,6 +1655,7 @@ class COPPOCKEndpoint(AsMixin, Endpoint):
         self.end_date = end_date
         self.dp = dp
         self.timezone = timezone
+        self.order = order
 
     def execute(self, format="JSON"):
 
@@ -1624,6 +1686,8 @@ class COPPOCKEndpoint(AsMixin, Endpoint):
             params["dp"] = self.dp
         if self.timezone is not None:
             params["timezone"] = self.timezone
+        if self.order is not None:
+            params["order"] = self.order
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -1646,6 +1710,7 @@ class CEILEndpoint(AsMixin, Endpoint):
         end_date=None,
         dp=5,
         timezone="Exchange",
+        order="desc",
     ):
         self.is_indicator = True
         self.meta_name = "ceil"
@@ -1660,6 +1725,7 @@ class CEILEndpoint(AsMixin, Endpoint):
         self.end_date = end_date
         self.dp = dp
         self.timezone = timezone
+        self.order = order
 
     def execute(self, format="JSON"):
 
@@ -1684,6 +1750,8 @@ class CEILEndpoint(AsMixin, Endpoint):
             params["dp"] = self.dp
         if self.timezone is not None:
             params["timezone"] = self.timezone
+        if self.order is not None:
+            params["order"] = self.order
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -1707,6 +1775,7 @@ class DEMAEndpoint(AsMixin, Endpoint):
         end_date=None,
         dp=5,
         timezone="Exchange",
+        order="desc",
     ):
         self.is_indicator = True
         self.meta_name = "dema"
@@ -1722,6 +1791,7 @@ class DEMAEndpoint(AsMixin, Endpoint):
         self.end_date = end_date
         self.dp = dp
         self.timezone = timezone
+        self.order = order
 
     def execute(self, format="JSON"):
 
@@ -1748,6 +1818,8 @@ class DEMAEndpoint(AsMixin, Endpoint):
             params["dp"] = self.dp
         if self.timezone is not None:
             params["timezone"] = self.timezone
+        if self.order is not None:
+            params["order"] = self.order
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -1770,6 +1842,7 @@ class DXEndpoint(AsMixin, Endpoint):
         end_date=None,
         dp=5,
         timezone="Exchange",
+        order="desc",
     ):
         self.is_indicator = True
         self.meta_name = "dx"
@@ -1784,6 +1857,7 @@ class DXEndpoint(AsMixin, Endpoint):
         self.end_date = end_date
         self.dp = dp
         self.timezone = timezone
+        self.order = order
 
     def execute(self, format="JSON"):
 
@@ -1808,6 +1882,8 @@ class DXEndpoint(AsMixin, Endpoint):
             params["dp"] = self.dp
         if self.timezone is not None:
             params["timezone"] = self.timezone
+        if self.order is not None:
+            params["order"] = self.order
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -1831,6 +1907,7 @@ class EMAEndpoint(AsMixin, Endpoint):
         end_date=None,
         dp=5,
         timezone="Exchange",
+        order="desc",
     ):
         self.is_indicator = True
         self.meta_name = "ema"
@@ -1846,6 +1923,7 @@ class EMAEndpoint(AsMixin, Endpoint):
         self.end_date = end_date
         self.dp = dp
         self.timezone = timezone
+        self.order = order
 
     def execute(self, format="JSON"):
 
@@ -1872,6 +1950,8 @@ class EMAEndpoint(AsMixin, Endpoint):
             params["dp"] = self.dp
         if self.timezone is not None:
             params["timezone"] = self.timezone
+        if self.order is not None:
+            params["order"] = self.order
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -1894,6 +1974,7 @@ class EXPEndpoint(AsMixin, Endpoint):
         end_date=None,
         dp=5,
         timezone="Exchange",
+        order="desc",
     ):
         self.is_indicator = True
         self.meta_name = "exp"
@@ -1908,6 +1989,7 @@ class EXPEndpoint(AsMixin, Endpoint):
         self.end_date = end_date
         self.dp = dp
         self.timezone = timezone
+        self.order = order
 
     def execute(self, format="JSON"):
 
@@ -1932,6 +2014,8 @@ class EXPEndpoint(AsMixin, Endpoint):
             params["dp"] = self.dp
         if self.timezone is not None:
             params["timezone"] = self.timezone
+        if self.order is not None:
+            params["order"] = self.order
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -1954,6 +2038,7 @@ class FLOOREndpoint(AsMixin, Endpoint):
         end_date=None,
         dp=5,
         timezone="Exchange",
+        order="desc",
     ):
         self.is_indicator = True
         self.meta_name = "floor"
@@ -1968,6 +2053,7 @@ class FLOOREndpoint(AsMixin, Endpoint):
         self.end_date = end_date
         self.dp = dp
         self.timezone = timezone
+        self.order = order
 
     def execute(self, format="JSON"):
 
@@ -1992,6 +2078,8 @@ class FLOOREndpoint(AsMixin, Endpoint):
             params["dp"] = self.dp
         if self.timezone is not None:
             params["timezone"] = self.timezone
+        if self.order is not None:
+            params["order"] = self.order
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -2013,6 +2101,7 @@ class HEIKINASHICANDLESEndpoint(AsMixin, Endpoint):
         end_date=None,
         dp=5,
         timezone="Exchange",
+        order="desc",
     ):
         self.is_price = True
         self.meta_name = "heikinashicandles"
@@ -2026,6 +2115,7 @@ class HEIKINASHICANDLESEndpoint(AsMixin, Endpoint):
         self.end_date = end_date
         self.dp = dp
         self.timezone = timezone
+        self.order = order
 
     def execute(self, format="JSON"):
 
@@ -2048,6 +2138,8 @@ class HEIKINASHICANDLESEndpoint(AsMixin, Endpoint):
             params["dp"] = self.dp
         if self.timezone is not None:
             params["timezone"] = self.timezone
+        if self.order is not None:
+            params["order"] = self.order
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -2069,6 +2161,7 @@ class HLC3Endpoint(AsMixin, Endpoint):
         end_date=None,
         dp=5,
         timezone="Exchange",
+        order="desc",
     ):
         self.is_price = True
         self.meta_name = "hlc3"
@@ -2082,6 +2175,7 @@ class HLC3Endpoint(AsMixin, Endpoint):
         self.end_date = end_date
         self.dp = dp
         self.timezone = timezone
+        self.order = order
 
     def execute(self, format="JSON"):
 
@@ -2104,6 +2198,8 @@ class HLC3Endpoint(AsMixin, Endpoint):
             params["dp"] = self.dp
         if self.timezone is not None:
             params["timezone"] = self.timezone
+        if self.order is not None:
+            params["order"] = self.order
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -2126,6 +2222,7 @@ class HT_DCPERIODEndpoint(AsMixin, Endpoint):
         end_date=None,
         dp=5,
         timezone="Exchange",
+        order="desc",
     ):
         self.is_indicator = True
         self.meta_name = "ht_dcperiod"
@@ -2140,6 +2237,7 @@ class HT_DCPERIODEndpoint(AsMixin, Endpoint):
         self.end_date = end_date
         self.dp = dp
         self.timezone = timezone
+        self.order = order
 
     def execute(self, format="JSON"):
 
@@ -2164,6 +2262,8 @@ class HT_DCPERIODEndpoint(AsMixin, Endpoint):
             params["dp"] = self.dp
         if self.timezone is not None:
             params["timezone"] = self.timezone
+        if self.order is not None:
+            params["order"] = self.order
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -2186,6 +2286,7 @@ class HT_DCPHASEEndpoint(AsMixin, Endpoint):
         end_date=None,
         dp=5,
         timezone="Exchange",
+        order="desc",
     ):
         self.is_indicator = True
         self.meta_name = "ht_dcphase"
@@ -2200,6 +2301,7 @@ class HT_DCPHASEEndpoint(AsMixin, Endpoint):
         self.end_date = end_date
         self.dp = dp
         self.timezone = timezone
+        self.order = order
 
     def execute(self, format="JSON"):
 
@@ -2224,6 +2326,8 @@ class HT_DCPHASEEndpoint(AsMixin, Endpoint):
             params["dp"] = self.dp
         if self.timezone is not None:
             params["timezone"] = self.timezone
+        if self.order is not None:
+            params["order"] = self.order
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -2246,6 +2350,7 @@ class HT_PHASOREndpoint(AsMixin, Endpoint):
         end_date=None,
         dp=5,
         timezone="Exchange",
+        order="desc",
     ):
         self.is_indicator = True
         self.meta_name = "ht_phasor"
@@ -2260,6 +2365,7 @@ class HT_PHASOREndpoint(AsMixin, Endpoint):
         self.end_date = end_date
         self.dp = dp
         self.timezone = timezone
+        self.order = order
 
     def execute(self, format="JSON"):
 
@@ -2284,6 +2390,8 @@ class HT_PHASOREndpoint(AsMixin, Endpoint):
             params["dp"] = self.dp
         if self.timezone is not None:
             params["timezone"] = self.timezone
+        if self.order is not None:
+            params["order"] = self.order
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -2306,6 +2414,7 @@ class HT_SINEEndpoint(AsMixin, Endpoint):
         end_date=None,
         dp=5,
         timezone="Exchange",
+        order="desc",
     ):
         self.is_indicator = True
         self.meta_name = "ht_sine"
@@ -2320,6 +2429,7 @@ class HT_SINEEndpoint(AsMixin, Endpoint):
         self.end_date = end_date
         self.dp = dp
         self.timezone = timezone
+        self.order = order
 
     def execute(self, format="JSON"):
 
@@ -2344,6 +2454,8 @@ class HT_SINEEndpoint(AsMixin, Endpoint):
             params["dp"] = self.dp
         if self.timezone is not None:
             params["timezone"] = self.timezone
+        if self.order is not None:
+            params["order"] = self.order
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -2366,6 +2478,7 @@ class HT_TRENDLINEEndpoint(AsMixin, Endpoint):
         end_date=None,
         dp=5,
         timezone="Exchange",
+        order="desc",
     ):
         self.is_indicator = True
         self.meta_name = "ht_trendline"
@@ -2380,6 +2493,7 @@ class HT_TRENDLINEEndpoint(AsMixin, Endpoint):
         self.end_date = end_date
         self.dp = dp
         self.timezone = timezone
+        self.order = order
 
     def execute(self, format="JSON"):
 
@@ -2404,6 +2518,8 @@ class HT_TRENDLINEEndpoint(AsMixin, Endpoint):
             params["dp"] = self.dp
         if self.timezone is not None:
             params["timezone"] = self.timezone
+        if self.order is not None:
+            params["order"] = self.order
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -2426,6 +2542,7 @@ class HT_TRENDMODEEndpoint(AsMixin, Endpoint):
         end_date=None,
         dp=5,
         timezone="Exchange",
+        order="desc",
     ):
         self.is_indicator = True
         self.meta_name = "ht_trendmode"
@@ -2440,6 +2557,7 @@ class HT_TRENDMODEEndpoint(AsMixin, Endpoint):
         self.end_date = end_date
         self.dp = dp
         self.timezone = timezone
+        self.order = order
 
     def execute(self, format="JSON"):
 
@@ -2464,6 +2582,8 @@ class HT_TRENDMODEEndpoint(AsMixin, Endpoint):
             params["dp"] = self.dp
         if self.timezone is not None:
             params["timezone"] = self.timezone
+        if self.order is not None:
+            params["order"] = self.order
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -2490,6 +2610,7 @@ class ICHIMOKUEndpoint(AsMixin, Endpoint):
         end_date=None,
         dp=5,
         timezone="Exchange",
+        order="desc",
     ):
         self.is_indicator = True
         self.meta_name = "vwap"
@@ -2508,6 +2629,7 @@ class ICHIMOKUEndpoint(AsMixin, Endpoint):
         self.end_date = end_date
         self.dp = dp
         self.timezone = timezone
+        self.order = order
 
     def execute(self, format="JSON"):
 
@@ -2540,6 +2662,8 @@ class ICHIMOKUEndpoint(AsMixin, Endpoint):
             params["dp"] = self.dp
         if self.timezone is not None:
             params["timezone"] = self.timezone
+        if self.order is not None:
+            params["order"] = self.order
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -2563,6 +2687,7 @@ class KAMAEndpoint(AsMixin, Endpoint):
         end_date=None,
         dp=5,
         timezone="Exchange",
+        order="desc",
     ):
         self.is_indicator = True
         self.meta_name = "kama"
@@ -2578,6 +2703,7 @@ class KAMAEndpoint(AsMixin, Endpoint):
         self.end_date = end_date
         self.dp = dp
         self.timezone = timezone
+        self.order = order
 
     def execute(self, format="JSON"):
 
@@ -2604,6 +2730,8 @@ class KAMAEndpoint(AsMixin, Endpoint):
             params["dp"] = self.dp
         if self.timezone is not None:
             params["timezone"] = self.timezone
+        if self.order is not None:
+            params["order"] = self.order
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -2630,6 +2758,7 @@ class KELTNEREndpoint(AsMixin, Endpoint):
         end_date=None,
         dp=5,
         timezone="Exchange",
+        order="desc",
     ):
         self.is_indicator = True
         self.meta_name = "keltner"
@@ -2648,6 +2777,7 @@ class KELTNEREndpoint(AsMixin, Endpoint):
         self.end_date = end_date
         self.dp = dp
         self.timezone = timezone
+        self.order = order
 
     def execute(self, format="JSON"):
 
@@ -2680,6 +2810,8 @@ class KELTNEREndpoint(AsMixin, Endpoint):
             params["dp"] = self.dp
         if self.timezone is not None:
             params["timezone"] = self.timezone
+        if self.order is not None:
+            params["order"] = self.order
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -2710,6 +2842,7 @@ class KSTEndpoint(AsMixin, Endpoint):
         end_date=None,
         dp=5,
         timezone="Exchange",
+        order="desc",
     ):
         self.is_indicator = True
         self.meta_name = "kst"
@@ -2732,6 +2865,7 @@ class KSTEndpoint(AsMixin, Endpoint):
         self.end_date = end_date
         self.dp = dp
         self.timezone = timezone
+        self.order = order
 
     def execute(self, format="JSON"):
 
@@ -2772,6 +2906,8 @@ class KSTEndpoint(AsMixin, Endpoint):
             params["dp"] = self.dp
         if self.timezone is not None:
             params["timezone"] = self.timezone
+        if self.order is not None:
+            params["order"] = self.order
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -2795,6 +2931,7 @@ class LINEARREGEndpoint(AsMixin, Endpoint):
         end_date=None,
         dp=5,
         timezone="Exchange",
+        order="desc",
     ):
         self.is_indicator = True
         self.meta_name = "linearreg"
@@ -2810,6 +2947,7 @@ class LINEARREGEndpoint(AsMixin, Endpoint):
         self.end_date = end_date
         self.dp = dp
         self.timezone = timezone
+        self.order = order
 
     def execute(self, format="JSON"):
 
@@ -2836,6 +2974,8 @@ class LINEARREGEndpoint(AsMixin, Endpoint):
             params["dp"] = self.dp
         if self.timezone is not None:
             params["timezone"] = self.timezone
+        if self.order is not None:
+            params["order"] = self.order
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -2859,6 +2999,7 @@ class LINEARREGANGLEEndpoint(AsMixin, Endpoint):
         end_date=None,
         dp=5,
         timezone="Exchange",
+        order="desc",
     ):
         self.is_indicator = True
         self.meta_name = "linearregangle"
@@ -2874,6 +3015,7 @@ class LINEARREGANGLEEndpoint(AsMixin, Endpoint):
         self.end_date = end_date
         self.dp = dp
         self.timezone = timezone
+        self.order = order
 
     def execute(self, format="JSON"):
 
@@ -2900,6 +3042,8 @@ class LINEARREGANGLEEndpoint(AsMixin, Endpoint):
             params["dp"] = self.dp
         if self.timezone is not None:
             params["timezone"] = self.timezone
+        if self.order is not None:
+            params["order"] = self.order
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -2923,6 +3067,7 @@ class LINEARREGINTERCEPTEndpoint(AsMixin, Endpoint):
         end_date=None,
         dp=5,
         timezone="Exchange",
+        order="desc",
     ):
         self.is_indicator = True
         self.meta_name = "linearregintercept"
@@ -2938,6 +3083,7 @@ class LINEARREGINTERCEPTEndpoint(AsMixin, Endpoint):
         self.end_date = end_date
         self.dp = dp
         self.timezone = timezone
+        self.order = order
 
     def execute(self, format="JSON"):
 
@@ -2964,6 +3110,8 @@ class LINEARREGINTERCEPTEndpoint(AsMixin, Endpoint):
             params["dp"] = self.dp
         if self.timezone is not None:
             params["timezone"] = self.timezone
+        if self.order is not None:
+            params["order"] = self.order
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -2987,6 +3135,7 @@ class LINEARREGSLOPEEndpoint(AsMixin, Endpoint):
         end_date=None,
         dp=5,
         timezone="Exchange",
+        order="desc",
     ):
         self.is_indicator = True
         self.meta_name = "linearregslope"
@@ -3002,6 +3151,7 @@ class LINEARREGSLOPEEndpoint(AsMixin, Endpoint):
         self.end_date = end_date
         self.dp = dp
         self.timezone = timezone
+        self.order = order
 
     def execute(self, format="JSON"):
 
@@ -3028,6 +3178,8 @@ class LINEARREGSLOPEEndpoint(AsMixin, Endpoint):
             params["dp"] = self.dp
         if self.timezone is not None:
             params["timezone"] = self.timezone
+        if self.order is not None:
+            params["order"] = self.order
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -3050,6 +3202,7 @@ class LNEndpoint(AsMixin, Endpoint):
         end_date=None,
         dp=5,
         timezone="Exchange",
+        order="desc",
     ):
         self.is_indicator = True
         self.meta_name = "ln"
@@ -3064,6 +3217,7 @@ class LNEndpoint(AsMixin, Endpoint):
         self.end_date = end_date
         self.dp = dp
         self.timezone = timezone
+        self.order = order
 
     def execute(self, format="JSON"):
 
@@ -3088,6 +3242,8 @@ class LNEndpoint(AsMixin, Endpoint):
             params["dp"] = self.dp
         if self.timezone is not None:
             params["timezone"] = self.timezone
+        if self.order is not None:
+            params["order"] = self.order
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -3110,6 +3266,7 @@ class LOG10Endpoint(AsMixin, Endpoint):
         end_date=None,
         dp=5,
         timezone="Exchange",
+        order="desc",
     ):
         self.is_indicator = True
         self.meta_name = "log10"
@@ -3124,6 +3281,7 @@ class LOG10Endpoint(AsMixin, Endpoint):
         self.end_date = end_date
         self.dp = dp
         self.timezone = timezone
+        self.order = order
 
     def execute(self, format="JSON"):
 
@@ -3148,6 +3306,8 @@ class LOG10Endpoint(AsMixin, Endpoint):
             params["dp"] = self.dp
         if self.timezone is not None:
             params["timezone"] = self.timezone
+        if self.order is not None:
+            params["order"] = self.order
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -3172,6 +3332,7 @@ class MAEndpoint(AsMixin, Endpoint):
         end_date=None,
         dp=5,
         timezone="Exchange",
+        order="desc",
     ):
         self.is_indicator = True
         self.meta_name = "ma"
@@ -3188,6 +3349,7 @@ class MAEndpoint(AsMixin, Endpoint):
         self.end_date = end_date
         self.dp = dp
         self.timezone = timezone
+        self.order = order
 
     def execute(self, format="JSON"):
 
@@ -3216,6 +3378,8 @@ class MAEndpoint(AsMixin, Endpoint):
             params["dp"] = self.dp
         if self.timezone is not None:
             params["timezone"] = self.timezone
+        if self.order is not None:
+            params["order"] = self.order
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -3241,6 +3405,7 @@ class MACDEndpoint(AsMixin, Endpoint):
         end_date=None,
         dp=5,
         timezone="Exchange",
+        order="desc",
     ):
         self.is_indicator = True
         self.meta_name = "macd"
@@ -3258,6 +3423,7 @@ class MACDEndpoint(AsMixin, Endpoint):
         self.end_date = end_date
         self.dp = dp
         self.timezone = timezone
+        self.order = order
 
     def execute(self, format="JSON"):
 
@@ -3288,6 +3454,8 @@ class MACDEndpoint(AsMixin, Endpoint):
             params["dp"] = self.dp
         if self.timezone is not None:
             params["timezone"] = self.timezone
+        if self.order is not None:
+            params["order"] = self.order
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -3316,6 +3484,7 @@ class MACDEXTEndpoint(AsMixin, Endpoint):
         end_date=None,
         dp=5,
         timezone="Exchange",
+        order="desc",
     ):
         self.is_indicator = True
         self.meta_name = "macdext"
@@ -3336,6 +3505,7 @@ class MACDEXTEndpoint(AsMixin, Endpoint):
         self.end_date = end_date
         self.dp = dp
         self.timezone = timezone
+        self.order = order
 
     def execute(self, format="JSON"):
 
@@ -3372,6 +3542,8 @@ class MACDEXTEndpoint(AsMixin, Endpoint):
             params["dp"] = self.dp
         if self.timezone is not None:
             params["timezone"] = self.timezone
+        if self.order is not None:
+            params["order"] = self.order
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -3396,6 +3568,7 @@ class MAMAEndpoint(AsMixin, Endpoint):
         end_date=None,
         dp=5,
         timezone="Exchange",
+        order="desc",
     ):
         self.is_indicator = True
         self.meta_name = "mama"
@@ -3412,6 +3585,7 @@ class MAMAEndpoint(AsMixin, Endpoint):
         self.end_date = end_date
         self.dp = dp
         self.timezone = timezone
+        self.order = order
 
     def execute(self, format="JSON"):
 
@@ -3440,6 +3614,8 @@ class MAMAEndpoint(AsMixin, Endpoint):
             params["dp"] = self.dp
         if self.timezone is not None:
             params["timezone"] = self.timezone
+        if self.order is not None:
+            params["order"] = self.order
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -3463,6 +3639,7 @@ class MAXEndpoint(AsMixin, Endpoint):
         end_date=None,
         dp=5,
         timezone="Exchange",
+        order="desc",
     ):
         self.is_indicator = True
         self.meta_name = "max"
@@ -3478,6 +3655,7 @@ class MAXEndpoint(AsMixin, Endpoint):
         self.end_date = end_date
         self.dp = dp
         self.timezone = timezone
+        self.order = order
 
     def execute(self, format="JSON"):
 
@@ -3504,6 +3682,8 @@ class MAXEndpoint(AsMixin, Endpoint):
             params["dp"] = self.dp
         if self.timezone is not None:
             params["timezone"] = self.timezone
+        if self.order is not None:
+            params["order"] = self.order
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -3527,6 +3707,7 @@ class MAXINDEXEndpoint(AsMixin, Endpoint):
         end_date=None,
         dp=5,
         timezone="Exchange",
+        order="desc",
     ):
         self.is_indicator = True
         self.meta_name = "maxindex"
@@ -3542,6 +3723,7 @@ class MAXINDEXEndpoint(AsMixin, Endpoint):
         self.end_date = end_date
         self.dp = dp
         self.timezone = timezone
+        self.order = order
 
     def execute(self, format="JSON"):
 
@@ -3568,6 +3750,8 @@ class MAXINDEXEndpoint(AsMixin, Endpoint):
             params["dp"] = self.dp
         if self.timezone is not None:
             params["timezone"] = self.timezone
+        if self.order is not None:
+            params["order"] = self.order
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -3590,6 +3774,7 @@ class McGinleyDynamicEndpoint(AsMixin, Endpoint):
         end_date=None,
         dp=5,
         timezone="Exchange",
+        order="desc",
     ):
         self.is_indicator = True
         self.meta_name = "mcginley_dynamic"
@@ -3604,6 +3789,7 @@ class McGinleyDynamicEndpoint(AsMixin, Endpoint):
         self.end_date = end_date
         self.dp = dp
         self.timezone = timezone
+        self.order = order
 
     def execute(self, format="JSON"):
 
@@ -3628,6 +3814,8 @@ class McGinleyDynamicEndpoint(AsMixin, Endpoint):
             params["dp"] = self.dp
         if self.timezone is not None:
             params["timezone"] = self.timezone
+        if self.order is not None:
+            params["order"] = self.order
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -3651,6 +3839,7 @@ class MEDPRICEEndpoint(AsMixin, Endpoint):
         end_date=None,
         dp=5,
         timezone="Exchange",
+        order="desc",
     ):
         self.is_indicator = True
         self.meta_name = "medprice"
@@ -3666,6 +3855,7 @@ class MEDPRICEEndpoint(AsMixin, Endpoint):
         self.end_date = end_date
         self.dp = dp
         self.timezone = timezone
+        self.order = order
 
     def execute(self, format="JSON"):
 
@@ -3692,6 +3882,8 @@ class MEDPRICEEndpoint(AsMixin, Endpoint):
             params["dp"] = self.dp
         if self.timezone is not None:
             params["timezone"] = self.timezone
+        if self.order is not None:
+            params["order"] = self.order
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -3714,6 +3906,7 @@ class MFIEndpoint(AsMixin, Endpoint):
         end_date=None,
         dp=5,
         timezone="Exchange",
+        order="desc",
     ):
         self.is_indicator = True
         self.meta_name = "mfi"
@@ -3728,6 +3921,7 @@ class MFIEndpoint(AsMixin, Endpoint):
         self.end_date = end_date
         self.dp = dp
         self.timezone = timezone
+        self.order = order
 
     def execute(self, format="JSON"):
 
@@ -3752,6 +3946,8 @@ class MFIEndpoint(AsMixin, Endpoint):
             params["dp"] = self.dp
         if self.timezone is not None:
             params["timezone"] = self.timezone
+        if self.order is not None:
+            params["order"] = self.order
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -3775,6 +3971,7 @@ class MIDPOINTEndpoint(AsMixin, Endpoint):
         end_date=None,
         dp=5,
         timezone="Exchange",
+        order="desc",
     ):
         self.is_indicator = True
         self.meta_name = "midpoint"
@@ -3790,6 +3987,7 @@ class MIDPOINTEndpoint(AsMixin, Endpoint):
         self.end_date = end_date
         self.dp = dp
         self.timezone = timezone
+        self.order = order
 
     def execute(self, format="JSON"):
 
@@ -3816,6 +4014,8 @@ class MIDPOINTEndpoint(AsMixin, Endpoint):
             params["dp"] = self.dp
         if self.timezone is not None:
             params["timezone"] = self.timezone
+        if self.order is not None:
+            params["order"] = self.order
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -3838,6 +4038,7 @@ class MIDPRICEEndpoint(AsMixin, Endpoint):
         end_date=None,
         dp=5,
         timezone="Exchange",
+        order="desc",
     ):
         self.is_indicator = True
         self.meta_name = "midprice"
@@ -3852,6 +4053,7 @@ class MIDPRICEEndpoint(AsMixin, Endpoint):
         self.end_date = end_date
         self.dp = dp
         self.timezone = timezone
+        self.order = order
 
     def execute(self, format="JSON"):
 
@@ -3876,6 +4078,8 @@ class MIDPRICEEndpoint(AsMixin, Endpoint):
             params["dp"] = self.dp
         if self.timezone is not None:
             params["timezone"] = self.timezone
+        if self.order is not None:
+            params["order"] = self.order
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -3899,6 +4103,7 @@ class MINEndpoint(AsMixin, Endpoint):
         end_date=None,
         dp=5,
         timezone="Exchange",
+        order="desc",
     ):
         self.is_indicator = True
         self.meta_name = "min"
@@ -3914,6 +4119,7 @@ class MINEndpoint(AsMixin, Endpoint):
         self.end_date = end_date
         self.dp = dp
         self.timezone = timezone
+        self.order = order
 
     def execute(self, format="JSON"):
 
@@ -3940,6 +4146,8 @@ class MINEndpoint(AsMixin, Endpoint):
             params["dp"] = self.dp
         if self.timezone is not None:
             params["timezone"] = self.timezone
+        if self.order is not None:
+            params["order"] = self.order
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -3963,6 +4171,7 @@ class MININDEXEndpoint(AsMixin, Endpoint):
         end_date=None,
         dp=5,
         timezone="Exchange",
+        order="desc",
     ):
         self.is_indicator = True
         self.meta_name = "minindex"
@@ -3978,6 +4187,7 @@ class MININDEXEndpoint(AsMixin, Endpoint):
         self.end_date = end_date
         self.dp = dp
         self.timezone = timezone
+        self.order = order
 
     def execute(self, format="JSON"):
 
@@ -4004,6 +4214,8 @@ class MININDEXEndpoint(AsMixin, Endpoint):
             params["dp"] = self.dp
         if self.timezone is not None:
             params["timezone"] = self.timezone
+        if self.order is not None:
+            params["order"] = self.order
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -4027,6 +4239,7 @@ class MINMAXEndpoint(AsMixin, Endpoint):
         end_date=None,
         dp=5,
         timezone="Exchange",
+        order="desc",
     ):
         self.is_indicator = True
         self.meta_name = "minmax"
@@ -4042,6 +4255,7 @@ class MINMAXEndpoint(AsMixin, Endpoint):
         self.end_date = end_date
         self.dp = dp
         self.timezone = timezone
+        self.order = order
 
     def execute(self, format="JSON"):
 
@@ -4068,6 +4282,8 @@ class MINMAXEndpoint(AsMixin, Endpoint):
             params["dp"] = self.dp
         if self.timezone is not None:
             params["timezone"] = self.timezone
+        if self.order is not None:
+            params["order"] = self.order
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -4091,6 +4307,7 @@ class MINMAXINDEXEndpoint(AsMixin, Endpoint):
         end_date=None,
         dp=5,
         timezone="Exchange",
+        order="desc",
     ):
         self.is_indicator = True
         self.meta_name = "minmaxindex"
@@ -4106,6 +4323,7 @@ class MINMAXINDEXEndpoint(AsMixin, Endpoint):
         self.end_date = end_date
         self.dp = dp
         self.timezone = timezone
+        self.order = order
 
     def execute(self, format="JSON"):
 
@@ -4132,6 +4350,8 @@ class MINMAXINDEXEndpoint(AsMixin, Endpoint):
             params["dp"] = self.dp
         if self.timezone is not None:
             params["timezone"] = self.timezone
+        if self.order is not None:
+            params["order"] = self.order
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -4154,6 +4374,7 @@ class MINUS_DIEndpoint(AsMixin, Endpoint):
         end_date=None,
         dp=5,
         timezone="Exchange",
+        order="desc",
     ):
         self.is_indicator = True
         self.meta_name = "minus_di"
@@ -4168,6 +4389,7 @@ class MINUS_DIEndpoint(AsMixin, Endpoint):
         self.end_date = end_date
         self.dp = dp
         self.timezone = timezone
+        self.order = order
 
     def execute(self, format="JSON"):
 
@@ -4192,6 +4414,8 @@ class MINUS_DIEndpoint(AsMixin, Endpoint):
             params["dp"] = self.dp
         if self.timezone is not None:
             params["timezone"] = self.timezone
+        if self.order is not None:
+            params["order"] = self.order
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -4214,6 +4438,7 @@ class MINUS_DMEndpoint(AsMixin, Endpoint):
         end_date=None,
         dp=5,
         timezone="Exchange",
+        order="desc",
     ):
         self.is_indicator = True
         self.meta_name = "minus_dm"
@@ -4228,6 +4453,7 @@ class MINUS_DMEndpoint(AsMixin, Endpoint):
         self.end_date = end_date
         self.dp = dp
         self.timezone = timezone
+        self.order = order
 
     def execute(self, format="JSON"):
 
@@ -4252,6 +4478,8 @@ class MINUS_DMEndpoint(AsMixin, Endpoint):
             params["dp"] = self.dp
         if self.timezone is not None:
             params["timezone"] = self.timezone
+        if self.order is not None:
+            params["order"] = self.order
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -4275,6 +4503,7 @@ class MOMEndpoint(AsMixin, Endpoint):
         end_date=None,
         dp=5,
         timezone="Exchange",
+        order="desc",
     ):
         self.is_indicator = True
         self.meta_name = "mom"
@@ -4290,6 +4519,7 @@ class MOMEndpoint(AsMixin, Endpoint):
         self.end_date = end_date
         self.dp = dp
         self.timezone = timezone
+        self.order = order
 
     def execute(self, format="JSON"):
 
@@ -4316,6 +4546,8 @@ class MOMEndpoint(AsMixin, Endpoint):
             params["dp"] = self.dp
         if self.timezone is not None:
             params["timezone"] = self.timezone
+        if self.order is not None:
+            params["order"] = self.order
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -4338,6 +4570,7 @@ class NATREndpoint(AsMixin, Endpoint):
         end_date=None,
         dp=5,
         timezone="Exchange",
+        order="desc",
     ):
         self.is_indicator = True
         self.meta_name = "natr"
@@ -4352,6 +4585,7 @@ class NATREndpoint(AsMixin, Endpoint):
         self.end_date = end_date
         self.dp = dp
         self.timezone = timezone
+        self.order = order
 
     def execute(self, format="JSON"):
 
@@ -4376,6 +4610,8 @@ class NATREndpoint(AsMixin, Endpoint):
             params["dp"] = self.dp
         if self.timezone is not None:
             params["timezone"] = self.timezone
+        if self.order is not None:
+            params["order"] = self.order
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -4398,6 +4634,7 @@ class OBVEndpoint(AsMixin, Endpoint):
         end_date=None,
         dp=5,
         timezone="Exchange",
+        order="desc",
     ):
         self.is_indicator = True
         self.meta_name = "obv"
@@ -4412,6 +4649,7 @@ class OBVEndpoint(AsMixin, Endpoint):
         self.end_date = end_date
         self.dp = dp
         self.timezone = timezone
+        self.order = order
 
     def execute(self, format="JSON"):
 
@@ -4436,6 +4674,8 @@ class OBVEndpoint(AsMixin, Endpoint):
             params["dp"] = self.dp
         if self.timezone is not None:
             params["timezone"] = self.timezone
+        if self.order is not None:
+            params["order"] = self.order
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -4458,6 +4698,7 @@ class PLUS_DIEndpoint(AsMixin, Endpoint):
         end_date=None,
         dp=5,
         timezone="Exchange",
+        order="desc",
     ):
         self.is_indicator = True
         self.meta_name = "plus_di"
@@ -4472,6 +4713,7 @@ class PLUS_DIEndpoint(AsMixin, Endpoint):
         self.end_date = end_date
         self.dp = dp
         self.timezone = timezone
+        self.order = order
 
     def execute(self, format="JSON"):
 
@@ -4496,6 +4738,8 @@ class PLUS_DIEndpoint(AsMixin, Endpoint):
             params["dp"] = self.dp
         if self.timezone is not None:
             params["timezone"] = self.timezone
+        if self.order is not None:
+            params["order"] = self.order
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -4518,6 +4762,7 @@ class PLUS_DMEndpoint(AsMixin, Endpoint):
         end_date=None,
         dp=5,
         timezone="Exchange",
+        order="desc",
     ):
         self.is_indicator = True
         self.meta_name = "plus_dm"
@@ -4532,6 +4777,7 @@ class PLUS_DMEndpoint(AsMixin, Endpoint):
         self.end_date = end_date
         self.dp = dp
         self.timezone = timezone
+        self.order = order
 
     def execute(self, format="JSON"):
 
@@ -4556,6 +4802,8 @@ class PLUS_DMEndpoint(AsMixin, Endpoint):
             params["dp"] = self.dp
         if self.timezone is not None:
             params["timezone"] = self.timezone
+        if self.order is not None:
+            params["order"] = self.order
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -4581,6 +4829,7 @@ class PPOEndpoint(AsMixin, Endpoint):
         end_date=None,
         dp=5,
         timezone="Exchange",
+        order="desc",
     ):
         self.is_indicator = True
         self.meta_name = "ppo"
@@ -4598,6 +4847,7 @@ class PPOEndpoint(AsMixin, Endpoint):
         self.end_date = end_date
         self.dp = dp
         self.timezone = timezone
+        self.order = order
 
     def execute(self, format="JSON"):
 
@@ -4628,6 +4878,8 @@ class PPOEndpoint(AsMixin, Endpoint):
             params["dp"] = self.dp
         if self.timezone is not None:
             params["timezone"] = self.timezone
+        if self.order is not None:
+            params["order"] = self.order
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -4651,6 +4903,7 @@ class ROCEndpoint(AsMixin, Endpoint):
         end_date=None,
         dp=5,
         timezone="Exchange",
+        order="desc",
     ):
         self.is_indicator = True
         self.meta_name = "roc"
@@ -4666,6 +4919,7 @@ class ROCEndpoint(AsMixin, Endpoint):
         self.end_date = end_date
         self.dp = dp
         self.timezone = timezone
+        self.order = order
 
     def execute(self, format="JSON"):
 
@@ -4692,6 +4946,8 @@ class ROCEndpoint(AsMixin, Endpoint):
             params["dp"] = self.dp
         if self.timezone is not None:
             params["timezone"] = self.timezone
+        if self.order is not None:
+            params["order"] = self.order
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -4715,6 +4971,7 @@ class ROCPEndpoint(AsMixin, Endpoint):
         end_date=None,
         dp=5,
         timezone="Exchange",
+        order="desc",
     ):
         self.is_indicator = True
         self.meta_name = "rocp"
@@ -4730,6 +4987,7 @@ class ROCPEndpoint(AsMixin, Endpoint):
         self.end_date = end_date
         self.dp = dp
         self.timezone = timezone
+        self.order = order
 
     def execute(self, format="JSON"):
 
@@ -4756,6 +5014,8 @@ class ROCPEndpoint(AsMixin, Endpoint):
             params["dp"] = self.dp
         if self.timezone is not None:
             params["timezone"] = self.timezone
+        if self.order is not None:
+            params["order"] = self.order
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -4779,6 +5039,7 @@ class ROCREndpoint(AsMixin, Endpoint):
         end_date=None,
         dp=5,
         timezone="Exchange",
+        order="desc",
     ):
         self.is_indicator = True
         self.meta_name = "rocr"
@@ -4794,6 +5055,7 @@ class ROCREndpoint(AsMixin, Endpoint):
         self.end_date = end_date
         self.dp = dp
         self.timezone = timezone
+        self.order = order
 
     def execute(self, format="JSON"):
 
@@ -4820,6 +5082,8 @@ class ROCREndpoint(AsMixin, Endpoint):
             params["dp"] = self.dp
         if self.timezone is not None:
             params["timezone"] = self.timezone
+        if self.order is not None:
+            params["order"] = self.order
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -4843,6 +5107,7 @@ class ROCR100Endpoint(AsMixin, Endpoint):
         end_date=None,
         dp=5,
         timezone="Exchange",
+        order="desc",
     ):
         self.is_indicator = True
         self.meta_name = "rocr100"
@@ -4858,6 +5123,7 @@ class ROCR100Endpoint(AsMixin, Endpoint):
         self.end_date = end_date
         self.dp = dp
         self.timezone = timezone
+        self.order = order
 
     def execute(self, format="JSON"):
 
@@ -4884,6 +5150,8 @@ class ROCR100Endpoint(AsMixin, Endpoint):
             params["dp"] = self.dp
         if self.timezone is not None:
             params["timezone"] = self.timezone
+        if self.order is not None:
+            params["order"] = self.order
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -4907,6 +5175,7 @@ class RSIEndpoint(AsMixin, Endpoint):
         end_date=None,
         dp=5,
         timezone="Exchange",
+        order="desc",
     ):
         self.is_indicator = True
         self.meta_name = "rsi"
@@ -4922,6 +5191,7 @@ class RSIEndpoint(AsMixin, Endpoint):
         self.end_date = end_date
         self.dp = dp
         self.timezone = timezone
+        self.order = order
 
     def execute(self, format="JSON"):
 
@@ -4948,6 +5218,8 @@ class RSIEndpoint(AsMixin, Endpoint):
             params["dp"] = self.dp
         if self.timezone is not None:
             params["timezone"] = self.timezone
+        if self.order is not None:
+            params["order"] = self.order
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -4971,6 +5243,7 @@ class SAREndpoint(AsMixin, Endpoint):
         end_date=None,
         dp=5,
         timezone="Exchange",
+        order="desc",
     ):
         self.is_indicator = True
         self.meta_name = "sar"
@@ -4986,6 +5259,7 @@ class SAREndpoint(AsMixin, Endpoint):
         self.end_date = end_date
         self.dp = dp
         self.timezone = timezone
+        self.order = order
 
     def execute(self, format="JSON"):
 
@@ -5012,6 +5286,8 @@ class SAREndpoint(AsMixin, Endpoint):
             params["dp"] = self.dp
         if self.timezone is not None:
             params["timezone"] = self.timezone
+        if self.order is not None:
+            params["order"] = self.order
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -5035,6 +5311,7 @@ class SMAEndpoint(AsMixin, Endpoint):
         end_date=None,
         dp=5,
         timezone="Exchange",
+        order="desc",
     ):
         self.is_indicator = True
         self.meta_name = "sma"
@@ -5050,6 +5327,7 @@ class SMAEndpoint(AsMixin, Endpoint):
         self.end_date = end_date
         self.dp = dp
         self.timezone = timezone
+        self.order = order
 
     def execute(self, format="JSON"):
 
@@ -5076,6 +5354,8 @@ class SMAEndpoint(AsMixin, Endpoint):
             params["dp"] = self.dp
         if self.timezone is not None:
             params["timezone"] = self.timezone
+        if self.order is not None:
+            params["order"] = self.order
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -5098,6 +5378,7 @@ class SQRTEndpoint(AsMixin, Endpoint):
         end_date=None,
         dp=5,
         timezone="Exchange",
+        order="desc",
     ):
         self.is_indicator = True
         self.meta_name = "sqrt"
@@ -5112,6 +5393,7 @@ class SQRTEndpoint(AsMixin, Endpoint):
         self.end_date = end_date
         self.dp = dp
         self.timezone = timezone
+        self.order = order
 
     def execute(self, format="JSON"):
 
@@ -5136,6 +5418,8 @@ class SQRTEndpoint(AsMixin, Endpoint):
             params["dp"] = self.dp
         if self.timezone is not None:
             params["timezone"] = self.timezone
+        if self.order is not None:
+            params["order"] = self.order
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -5160,6 +5444,7 @@ class STDDEVEndpoint(AsMixin, Endpoint):
         end_date=None,
         dp=5,
         timezone="Exchange",
+        order="desc",
     ):
         self.is_indicator = True
         self.meta_name = "stddev"
@@ -5176,6 +5461,7 @@ class STDDEVEndpoint(AsMixin, Endpoint):
         self.end_date = end_date
         self.dp = dp
         self.timezone = timezone
+        self.order = order
 
     def execute(self, format="JSON"):
 
@@ -5204,6 +5490,8 @@ class STDDEVEndpoint(AsMixin, Endpoint):
             params["dp"] = self.dp
         if self.timezone is not None:
             params["timezone"] = self.timezone
+        if self.order is not None:
+            params["order"] = self.order
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -5230,6 +5518,7 @@ class STOCHEndpoint(AsMixin, Endpoint):
         end_date=None,
         dp=5,
         timezone="Exchange",
+        order="desc",
     ):
         self.is_indicator = True
         self.meta_name = "stoch"
@@ -5248,6 +5537,7 @@ class STOCHEndpoint(AsMixin, Endpoint):
         self.end_date = end_date
         self.dp = dp
         self.timezone = timezone
+        self.order = order
 
     def execute(self, format="JSON"):
 
@@ -5280,6 +5570,8 @@ class STOCHEndpoint(AsMixin, Endpoint):
             params["dp"] = self.dp
         if self.timezone is not None:
             params["timezone"] = self.timezone
+        if self.order is not None:
+            params["order"] = self.order
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -5304,6 +5596,7 @@ class STOCHFEndpoint(AsMixin, Endpoint):
         end_date=None,
         dp=5,
         timezone="Exchange",
+        order="desc",
     ):
         self.is_indicator = True
         self.meta_name = "stochf"
@@ -5320,6 +5613,7 @@ class STOCHFEndpoint(AsMixin, Endpoint):
         self.end_date = end_date
         self.dp = dp
         self.timezone = timezone
+        self.order = order
 
     def execute(self, format="JSON"):
 
@@ -5348,6 +5642,8 @@ class STOCHFEndpoint(AsMixin, Endpoint):
             params["dp"] = self.dp
         if self.timezone is not None:
             params["timezone"] = self.timezone
+        if self.order is not None:
+            params["order"] = self.order
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -5374,6 +5670,7 @@ class STOCHRSIEndpoint(AsMixin, Endpoint):
         end_date=None,
         dp=5,
         timezone="Exchange",
+        order="desc",
     ):
         self.is_indicator = True
         self.meta_name = "stochrsi"
@@ -5392,6 +5689,7 @@ class STOCHRSIEndpoint(AsMixin, Endpoint):
         self.end_date = end_date
         self.dp = dp
         self.timezone = timezone
+        self.order = order
 
     def execute(self, format="JSON"):
 
@@ -5424,6 +5722,8 @@ class STOCHRSIEndpoint(AsMixin, Endpoint):
             params["dp"] = self.dp
         if self.timezone is not None:
             params["timezone"] = self.timezone
+        if self.order is not None:
+            params["order"] = self.order
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -5447,6 +5747,7 @@ class SuperTrendEndpoint(AsMixin, Endpoint):
         end_date=None,
         dp=5,
         timezone="Exchange",
+        order="desc",
     ):
         self.is_indicator = True
         self.meta_name = "supertrend"
@@ -5462,6 +5763,7 @@ class SuperTrendEndpoint(AsMixin, Endpoint):
         self.end_date = end_date
         self.dp = dp
         self.timezone = timezone
+        self.order = order
 
     def execute(self, format="JSON"):
 
@@ -5488,6 +5790,8 @@ class SuperTrendEndpoint(AsMixin, Endpoint):
             params["dp"] = self.dp
         if self.timezone is not None:
             params["timezone"] = self.timezone
+        if self.order is not None:
+            params["order"] = self.order
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -5512,6 +5816,7 @@ class T3MAEndpoint(AsMixin, Endpoint):
         end_date=None,
         dp=5,
         timezone="Exchange",
+        order="desc",
     ):
         self.is_indicator = True
         self.meta_name = "t3ma"
@@ -5528,6 +5833,7 @@ class T3MAEndpoint(AsMixin, Endpoint):
         self.end_date = end_date
         self.dp = dp
         self.timezone = timezone
+        self.order = order
 
     def execute(self, format="JSON"):
 
@@ -5556,6 +5862,8 @@ class T3MAEndpoint(AsMixin, Endpoint):
             params["dp"] = self.dp
         if self.timezone is not None:
             params["timezone"] = self.timezone
+        if self.order is not None:
+            params["order"] = self.order
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -5579,6 +5887,7 @@ class TEMAEndpoint(AsMixin, Endpoint):
         end_date=None,
         dp=5,
         timezone="Exchange",
+        order="desc",
     ):
         self.is_indicator = True
         self.meta_name = "tema"
@@ -5594,6 +5903,7 @@ class TEMAEndpoint(AsMixin, Endpoint):
         self.end_date = end_date
         self.dp = dp
         self.timezone = timezone
+        self.order = order
 
     def execute(self, format="JSON"):
 
@@ -5620,6 +5930,8 @@ class TEMAEndpoint(AsMixin, Endpoint):
             params["dp"] = self.dp
         if self.timezone is not None:
             params["timezone"] = self.timezone
+        if self.order is not None:
+            params["order"] = self.order
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -5641,6 +5953,7 @@ class TRANGEEndpoint(AsMixin, Endpoint):
         end_date=None,
         dp=5,
         timezone="Exchange",
+        order="desc",
     ):
         self.is_indicator = True
         self.meta_name = "trange"
@@ -5654,6 +5967,7 @@ class TRANGEEndpoint(AsMixin, Endpoint):
         self.end_date = end_date
         self.dp = dp
         self.timezone = timezone
+        self.order = order
 
     def execute(self, format="JSON"):
 
@@ -5676,6 +5990,8 @@ class TRANGEEndpoint(AsMixin, Endpoint):
             params["dp"] = self.dp
         if self.timezone is not None:
             params["timezone"] = self.timezone
+        if self.order is not None:
+            params["order"] = self.order
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -5699,6 +6015,7 @@ class TRIMAEndpoint(AsMixin, Endpoint):
         end_date=None,
         dp=5,
         timezone="Exchange",
+        order="desc",
     ):
         self.is_indicator = True
         self.meta_name = "trima"
@@ -5714,6 +6031,7 @@ class TRIMAEndpoint(AsMixin, Endpoint):
         self.end_date = end_date
         self.dp = dp
         self.timezone = timezone
+        self.order = order
 
     def execute(self, format="JSON"):
 
@@ -5740,6 +6058,8 @@ class TRIMAEndpoint(AsMixin, Endpoint):
             params["dp"] = self.dp
         if self.timezone is not None:
             params["timezone"] = self.timezone
+        if self.order is not None:
+            params["order"] = self.order
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -5763,6 +6083,7 @@ class TSFEndpoint(AsMixin, Endpoint):
         end_date=None,
         dp=5,
         timezone="Exchange",
+        order="desc",
     ):
         self.is_indicator = True
         self.meta_name = "tsf"
@@ -5778,6 +6099,7 @@ class TSFEndpoint(AsMixin, Endpoint):
         self.end_date = end_date
         self.dp = dp
         self.timezone = timezone
+        self.order = order
 
     def execute(self, format="JSON"):
 
@@ -5804,6 +6126,8 @@ class TSFEndpoint(AsMixin, Endpoint):
             params["dp"] = self.dp
         if self.timezone is not None:
             params["timezone"] = self.timezone
+        if self.order is not None:
+            params["order"] = self.order
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -5825,6 +6149,7 @@ class TYPPRICEEndpoint(AsMixin, Endpoint):
         end_date=None,
         dp=5,
         timezone="Exchange",
+        order="desc",
     ):
         self.is_indicator = True
         self.meta_name = "typprice"
@@ -5838,6 +6163,7 @@ class TYPPRICEEndpoint(AsMixin, Endpoint):
         self.end_date = end_date
         self.dp = dp
         self.timezone = timezone
+        self.order = order
 
     def execute(self, format="JSON"):
 
@@ -5860,6 +6186,8 @@ class TYPPRICEEndpoint(AsMixin, Endpoint):
             params["dp"] = self.dp
         if self.timezone is not None:
             params["timezone"] = self.timezone
+        if self.order is not None:
+            params["order"] = self.order
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -5884,6 +6212,7 @@ class ULTOSCEndpoint(AsMixin, Endpoint):
         end_date=None,
         dp=5,
         timezone="Exchange",
+        order="desc",
     ):
         self.is_indicator = True
         self.meta_name = "ultosc"
@@ -5900,6 +6229,7 @@ class ULTOSCEndpoint(AsMixin, Endpoint):
         self.end_date = end_date
         self.dp = dp
         self.timezone = timezone
+        self.order = order
 
     def execute(self, format="JSON"):
 
@@ -5928,6 +6258,8 @@ class ULTOSCEndpoint(AsMixin, Endpoint):
             params["dp"] = self.dp
         if self.timezone is not None:
             params["timezone"] = self.timezone
+        if self.order is not None:
+            params["order"] = self.order
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -5951,6 +6283,7 @@ class VAREndpoint(AsMixin, Endpoint):
         end_date=None,
         dp=5,
         timezone="Exchange",
+        order="desc",
     ):
         self.is_indicator = True
         self.meta_name = "var"
@@ -5966,6 +6299,7 @@ class VAREndpoint(AsMixin, Endpoint):
         self.end_date = end_date
         self.dp = dp
         self.timezone = timezone
+        self.order = order
 
     def execute(self, format="JSON"):
 
@@ -5992,6 +6326,8 @@ class VAREndpoint(AsMixin, Endpoint):
             params["dp"] = self.dp
         if self.timezone is not None:
             params["timezone"] = self.timezone
+        if self.order is not None:
+            params["order"] = self.order
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -6013,6 +6349,7 @@ class VWAPEndpoint(AsMixin, Endpoint):
         end_date=None,
         dp=5,
         timezone="Exchange",
+        order="desc",
     ):
         self.is_indicator = True
         self.meta_name = "vwap"
@@ -6026,6 +6363,7 @@ class VWAPEndpoint(AsMixin, Endpoint):
         self.end_date = end_date
         self.dp = dp
         self.timezone = timezone
+        self.order = order
 
     def execute(self, format="JSON"):
 
@@ -6048,6 +6386,8 @@ class VWAPEndpoint(AsMixin, Endpoint):
             params["dp"] = self.dp
         if self.timezone is not None:
             params["timezone"] = self.timezone
+        if self.order is not None:
+            params["order"] = self.order
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -6069,6 +6409,7 @@ class WCLPRICEEndpoint(AsMixin, Endpoint):
         end_date=None,
         dp=5,
         timezone="Exchange",
+        order="desc",
     ):
         self.is_indicator = True
         self.meta_name = "wclprice"
@@ -6082,6 +6423,7 @@ class WCLPRICEEndpoint(AsMixin, Endpoint):
         self.end_date = end_date
         self.dp = dp
         self.timezone = timezone
+        self.order = order
 
     def execute(self, format="JSON"):
 
@@ -6104,6 +6446,8 @@ class WCLPRICEEndpoint(AsMixin, Endpoint):
             params["dp"] = self.dp
         if self.timezone is not None:
             params["timezone"] = self.timezone
+        if self.order is not None:
+            params["order"] = self.order
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -6126,6 +6470,7 @@ class WILLREndpoint(AsMixin, Endpoint):
         end_date=None,
         dp=5,
         timezone="Exchange",
+        order="desc",
     ):
         self.is_indicator = True
         self.meta_name = "willr"
@@ -6140,6 +6485,7 @@ class WILLREndpoint(AsMixin, Endpoint):
         self.end_date = end_date
         self.dp = dp
         self.timezone = timezone
+        self.order = order
 
     def execute(self, format="JSON"):
 
@@ -6164,6 +6510,8 @@ class WILLREndpoint(AsMixin, Endpoint):
             params["dp"] = self.dp
         if self.timezone is not None:
             params["timezone"] = self.timezone
+        if self.order is not None:
+            params["order"] = self.order
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -6187,6 +6535,7 @@ class WMAEndpoint(AsMixin, Endpoint):
         end_date=None,
         dp=5,
         timezone="Exchange",
+        order="desc",
     ):
         self.is_indicator = True
         self.meta_name = "wma"
@@ -6202,6 +6551,7 @@ class WMAEndpoint(AsMixin, Endpoint):
         self.end_date = end_date
         self.dp = dp
         self.timezone = timezone
+        self.order = order
 
     def execute(self, format="JSON"):
 
@@ -6228,6 +6578,8 @@ class WMAEndpoint(AsMixin, Endpoint):
             params["dp"] = self.dp
         if self.timezone is not None:
             params["timezone"] = self.timezone
+        if self.order is not None:
+            params["order"] = self.order
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
