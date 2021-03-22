@@ -198,7 +198,8 @@ class TimeSeriesEndpoint(AsMixin, Endpoint):
         end_date=None,
         dp=5,
         timezone="Exchange",
-        order="desc"
+        order="desc",
+        prepost="false"
     ):
         self.is_price = True
         self.ctx = ctx
@@ -212,6 +213,7 @@ class TimeSeriesEndpoint(AsMixin, Endpoint):
         self.dp = dp
         self.timezone = timezone
         self.order = order
+        self.prepost = prepost
 
     def execute(self, format="JSON"):
 
@@ -236,6 +238,8 @@ class TimeSeriesEndpoint(AsMixin, Endpoint):
             params["timezone"] = self.timezone
         if self.order is not None:
             params["order"] = self.order
+        if self.prepost is not None:
+            params["prepost"] = self.prepost
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -643,6 +647,7 @@ class ADEndpoint(AsMixin, Endpoint):
         dp=5,
         timezone="Exchange",
         order="desc",
+        prepost="false"
     ):
         self.is_indicator = True
         self.meta_name = "ad"
@@ -657,6 +662,7 @@ class ADEndpoint(AsMixin, Endpoint):
         self.dp = dp
         self.timezone = timezone
         self.order = order
+        self.prepost = prepost
 
     def execute(self, format="JSON"):
 
@@ -681,6 +687,8 @@ class ADEndpoint(AsMixin, Endpoint):
             params["timezone"] = self.timezone
         if self.order is not None:
             params["order"] = self.order
+        if self.prepost is not None:
+            params["prepost"] = self.prepost
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -705,6 +713,7 @@ class ADOSCEndpoint(AsMixin, Endpoint):
         dp=5,
         timezone="Exchange",
         order="desc",
+        prepost="false"
     ):
         self.is_indicator = True
         self.meta_name = "adosc"
@@ -721,6 +730,7 @@ class ADOSCEndpoint(AsMixin, Endpoint):
         self.dp = dp
         self.timezone = timezone
         self.order = order
+        self.prepost = prepost
 
     def execute(self, format="JSON"):
 
@@ -749,6 +759,8 @@ class ADOSCEndpoint(AsMixin, Endpoint):
             params["timezone"] = self.timezone
         if self.order is not None:
             params["order"] = self.order
+        if self.prepost is not None:
+            params["prepost"] = self.prepost
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -772,6 +784,7 @@ class ADXEndpoint(AsMixin, Endpoint):
         dp=5,
         timezone="Exchange",
         order="desc",
+        prepost="false"
     ):
         self.is_indicator = True
         self.meta_name = "adx"
@@ -787,6 +800,7 @@ class ADXEndpoint(AsMixin, Endpoint):
         self.dp = dp
         self.timezone = timezone
         self.order = order
+        self.prepost = prepost
 
     def execute(self, format="JSON"):
 
@@ -813,6 +827,8 @@ class ADXEndpoint(AsMixin, Endpoint):
             params["timezone"] = self.timezone
         if self.order is not None:
             params["order"] = self.order
+        if self.prepost is not None:
+            params["prepost"] = self.prepost
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -836,6 +852,7 @@ class ADXREndpoint(AsMixin, Endpoint):
         dp=5,
         timezone="Exchange",
         order="desc",
+        prepost="false"
     ):
         self.is_indicator = True
         self.meta_name = "adxr"
@@ -851,6 +868,7 @@ class ADXREndpoint(AsMixin, Endpoint):
         self.dp = dp
         self.timezone = timezone
         self.order = order
+        self.prepost = prepost
 
     def execute(self, format="JSON"):
 
@@ -877,6 +895,8 @@ class ADXREndpoint(AsMixin, Endpoint):
             params["timezone"] = self.timezone
         if self.order is not None:
             params["order"] = self.order
+        if self.prepost is not None:
+            params["prepost"] = self.prepost
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -903,6 +923,7 @@ class APOEndpoint(AsMixin, Endpoint):
         dp=5,
         timezone="Exchange",
         order="desc",
+        prepost="false"
     ):
         self.is_indicator = True
         self.meta_name = "apo"
@@ -921,6 +942,7 @@ class APOEndpoint(AsMixin, Endpoint):
         self.dp = dp
         self.timezone = timezone
         self.order = order
+        self.prepost = prepost
 
     def execute(self, format="JSON"):
 
@@ -953,6 +975,8 @@ class APOEndpoint(AsMixin, Endpoint):
             params["timezone"] = self.timezone
         if self.order is not None:
             params["order"] = self.order
+        if self.prepost is not None:
+            params["prepost"] = self.prepost
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -976,6 +1000,7 @@ class AROONEndpoint(AsMixin, Endpoint):
         dp=5,
         timezone="Exchange",
         order="desc",
+        prepost="false"
     ):
         self.is_indicator = True
         self.meta_name = "aroon"
@@ -991,6 +1016,7 @@ class AROONEndpoint(AsMixin, Endpoint):
         self.dp = dp
         self.timezone = timezone
         self.order = order
+        self.prepost = prepost
 
     def execute(self, format="JSON"):
 
@@ -1017,6 +1043,8 @@ class AROONEndpoint(AsMixin, Endpoint):
             params["timezone"] = self.timezone
         if self.order is not None:
             params["order"] = self.order
+        if self.prepost is not None:
+            params["prepost"] = self.prepost
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -1040,6 +1068,7 @@ class AROONOSCEndpoint(AsMixin, Endpoint):
         dp=5,
         timezone="Exchange",
         order="desc",
+        prepost="false"
     ):
         self.is_indicator = True
         self.meta_name = "aroonosc"
@@ -1055,6 +1084,7 @@ class AROONOSCEndpoint(AsMixin, Endpoint):
         self.dp = dp
         self.timezone = timezone
         self.order = order
+        self.prepost = prepost
 
     def execute(self, format="JSON"):
 
@@ -1081,6 +1111,8 @@ class AROONOSCEndpoint(AsMixin, Endpoint):
             params["timezone"] = self.timezone
         if self.order is not None:
             params["order"] = self.order
+        if self.prepost is not None:
+            params["prepost"] = self.prepost
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -1104,6 +1136,7 @@ class ATREndpoint(AsMixin, Endpoint):
         dp=5,
         timezone="Exchange",
         order="desc",
+        prepost="false"
     ):
         self.is_indicator = True
         self.meta_name = "atr"
@@ -1119,6 +1152,7 @@ class ATREndpoint(AsMixin, Endpoint):
         self.dp = dp
         self.timezone = timezone
         self.order = order
+        self.prepost = prepost
 
     def execute(self, format="JSON"):
 
@@ -1145,6 +1179,8 @@ class ATREndpoint(AsMixin, Endpoint):
             params["timezone"] = self.timezone
         if self.order is not None:
             params["order"] = self.order
+        if self.prepost is not None:
+            params["prepost"] = self.prepost
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -1167,6 +1203,7 @@ class AVGPRICEEndpoint(AsMixin, Endpoint):
         dp=5,
         timezone="Exchange",
         order="desc",
+        prepost="false"
     ):
         self.is_indicator = True
         self.meta_name = "avgprice"
@@ -1181,6 +1218,7 @@ class AVGPRICEEndpoint(AsMixin, Endpoint):
         self.dp = dp
         self.timezone = timezone
         self.order = order
+        self.prepost = prepost
 
     def execute(self, format="JSON"):
 
@@ -1205,6 +1243,8 @@ class AVGPRICEEndpoint(AsMixin, Endpoint):
             params["timezone"] = self.timezone
         if self.order is not None:
             params["order"] = self.order
+        if self.prepost is not None:
+            params["prepost"] = self.prepost
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -1231,6 +1271,7 @@ class BBANDSEndpoint(AsMixin, Endpoint):
         dp=5,
         timezone="Exchange",
         order="desc",
+        prepost="false"
     ):
         self.is_indicator = True
         self.meta_name = "bbands"
@@ -1249,6 +1290,7 @@ class BBANDSEndpoint(AsMixin, Endpoint):
         self.dp = dp
         self.timezone = timezone
         self.order = order
+        self.prepost = prepost
 
     def execute(self, format="JSON"):
 
@@ -1281,6 +1323,8 @@ class BBANDSEndpoint(AsMixin, Endpoint):
             params["timezone"] = self.timezone
         if self.order is not None:
             params["order"] = self.order
+        if self.prepost is not None:
+            params["prepost"] = self.prepost
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -1307,6 +1351,7 @@ class PercentBEndpoint(AsMixin, Endpoint):
         dp=5,
         timezone="Exchange",
         order="desc",
+        prepost="false"
     ):
         self.is_indicator = True
         self.meta_name = "percent_b"
@@ -1325,6 +1370,7 @@ class PercentBEndpoint(AsMixin, Endpoint):
         self.dp = dp
         self.timezone = timezone
         self.order = order
+        self.prepost = prepost
 
     def execute(self, format="JSON"):
 
@@ -1357,6 +1403,8 @@ class PercentBEndpoint(AsMixin, Endpoint):
             params["timezone"] = self.timezone
         if self.order is not None:
             params["order"] = self.order
+        if self.prepost is not None:
+            params["prepost"] = self.prepost
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -1379,6 +1427,7 @@ class BOPEndpoint(AsMixin, Endpoint):
         dp=5,
         timezone="Exchange",
         order="desc",
+        prepost="false"
     ):
         self.is_indicator = True
         self.meta_name = "bop"
@@ -1393,6 +1442,7 @@ class BOPEndpoint(AsMixin, Endpoint):
         self.dp = dp
         self.timezone = timezone
         self.order = order
+        self.prepost = prepost
 
     def execute(self, format="JSON"):
 
@@ -1417,6 +1467,8 @@ class BOPEndpoint(AsMixin, Endpoint):
             params["timezone"] = self.timezone
         if self.order is not None:
             params["order"] = self.order
+        if self.prepost is not None:
+            params["prepost"] = self.prepost
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -1440,6 +1492,7 @@ class CCIEndpoint(AsMixin, Endpoint):
         dp=5,
         timezone="Exchange",
         order="desc",
+        prepost="false"
     ):
         self.is_indicator = True
         self.meta_name = "cci"
@@ -1455,6 +1508,7 @@ class CCIEndpoint(AsMixin, Endpoint):
         self.dp = dp
         self.timezone = timezone
         self.order = order
+        self.prepost = prepost
 
     def execute(self, format="JSON"):
 
@@ -1481,6 +1535,8 @@ class CCIEndpoint(AsMixin, Endpoint):
             params["timezone"] = self.timezone
         if self.order is not None:
             params["order"] = self.order
+        if self.prepost is not None:
+            params["prepost"] = self.prepost
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -1504,6 +1560,7 @@ class CEILEndpoint(AsMixin, Endpoint):
         dp=5,
         timezone="Exchange",
         order="desc",
+        prepost="false"
     ):
         self.is_indicator = True
         self.meta_name = "ceil"
@@ -1519,6 +1576,7 @@ class CEILEndpoint(AsMixin, Endpoint):
         self.dp = dp
         self.timezone = timezone
         self.order = order
+        self.prepost = prepost
 
     def execute(self, format="JSON"):
 
@@ -1545,6 +1603,8 @@ class CEILEndpoint(AsMixin, Endpoint):
             params["timezone"] = self.timezone
         if self.order is not None:
             params["order"] = self.order
+        if self.prepost is not None:
+            params["prepost"] = self.prepost
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -1569,6 +1629,7 @@ class CMOEndpoint(AsMixin, Endpoint):
         dp=5,
         timezone="Exchange",
         order="desc",
+        prepost="false"
     ):
         self.is_indicator = True
         self.meta_name = "cmo"
@@ -1585,6 +1646,7 @@ class CMOEndpoint(AsMixin, Endpoint):
         self.dp = dp
         self.timezone = timezone
         self.order = order
+        self.prepost = prepost
 
     def execute(self, format="JSON"):
 
@@ -1613,6 +1675,8 @@ class CMOEndpoint(AsMixin, Endpoint):
             params["timezone"] = self.timezone
         if self.order is not None:
             params["order"] = self.order
+        if self.prepost is not None:
+            params["prepost"] = self.prepost
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -1639,6 +1703,7 @@ class COPPOCKEndpoint(AsMixin, Endpoint):
         dp=5,
         timezone="Exchange",
         order="desc",
+        prepost="false"
     ):
         self.is_indicator = True
         self.meta_name = "cmo"
@@ -1657,6 +1722,7 @@ class COPPOCKEndpoint(AsMixin, Endpoint):
         self.dp = dp
         self.timezone = timezone
         self.order = order
+        self.prepost = prepost
 
     def execute(self, format="JSON"):
 
@@ -1689,6 +1755,8 @@ class COPPOCKEndpoint(AsMixin, Endpoint):
             params["timezone"] = self.timezone
         if self.order is not None:
             params["order"] = self.order
+        if self.prepost is not None:
+            params["prepost"] = self.prepost
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -1712,6 +1780,7 @@ class CEILEndpoint(AsMixin, Endpoint):
         dp=5,
         timezone="Exchange",
         order="desc",
+        prepost="false"
     ):
         self.is_indicator = True
         self.meta_name = "ceil"
@@ -1727,6 +1796,7 @@ class CEILEndpoint(AsMixin, Endpoint):
         self.dp = dp
         self.timezone = timezone
         self.order = order
+        self.prepost = prepost
 
     def execute(self, format="JSON"):
 
@@ -1753,6 +1823,8 @@ class CEILEndpoint(AsMixin, Endpoint):
             params["timezone"] = self.timezone
         if self.order is not None:
             params["order"] = self.order
+        if self.prepost is not None:
+            params["prepost"] = self.prepost
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -1777,6 +1849,7 @@ class DEMAEndpoint(AsMixin, Endpoint):
         dp=5,
         timezone="Exchange",
         order="desc",
+        prepost="false"
     ):
         self.is_indicator = True
         self.meta_name = "dema"
@@ -1793,6 +1866,7 @@ class DEMAEndpoint(AsMixin, Endpoint):
         self.dp = dp
         self.timezone = timezone
         self.order = order
+        self.prepost = prepost
 
     def execute(self, format="JSON"):
 
@@ -1821,6 +1895,8 @@ class DEMAEndpoint(AsMixin, Endpoint):
             params["timezone"] = self.timezone
         if self.order is not None:
             params["order"] = self.order
+        if self.prepost is not None:
+            params["prepost"] = self.prepost
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -1844,6 +1920,7 @@ class DXEndpoint(AsMixin, Endpoint):
         dp=5,
         timezone="Exchange",
         order="desc",
+        prepost="false"
     ):
         self.is_indicator = True
         self.meta_name = "dx"
@@ -1859,6 +1936,7 @@ class DXEndpoint(AsMixin, Endpoint):
         self.dp = dp
         self.timezone = timezone
         self.order = order
+        self.prepost = prepost
 
     def execute(self, format="JSON"):
 
@@ -1885,6 +1963,8 @@ class DXEndpoint(AsMixin, Endpoint):
             params["timezone"] = self.timezone
         if self.order is not None:
             params["order"] = self.order
+        if self.prepost is not None:
+            params["prepost"] = self.prepost
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -1909,6 +1989,7 @@ class EMAEndpoint(AsMixin, Endpoint):
         dp=5,
         timezone="Exchange",
         order="desc",
+        prepost="false"
     ):
         self.is_indicator = True
         self.meta_name = "ema"
@@ -1925,6 +2006,7 @@ class EMAEndpoint(AsMixin, Endpoint):
         self.dp = dp
         self.timezone = timezone
         self.order = order
+        self.prepost = prepost
 
     def execute(self, format="JSON"):
 
@@ -1953,6 +2035,8 @@ class EMAEndpoint(AsMixin, Endpoint):
             params["timezone"] = self.timezone
         if self.order is not None:
             params["order"] = self.order
+        if self.prepost is not None:
+            params["prepost"] = self.prepost
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -1976,6 +2060,7 @@ class EXPEndpoint(AsMixin, Endpoint):
         dp=5,
         timezone="Exchange",
         order="desc",
+        prepost="false"
     ):
         self.is_indicator = True
         self.meta_name = "exp"
@@ -1991,6 +2076,7 @@ class EXPEndpoint(AsMixin, Endpoint):
         self.dp = dp
         self.timezone = timezone
         self.order = order
+        self.prepost = prepost
 
     def execute(self, format="JSON"):
 
@@ -2017,6 +2103,8 @@ class EXPEndpoint(AsMixin, Endpoint):
             params["timezone"] = self.timezone
         if self.order is not None:
             params["order"] = self.order
+        if self.prepost is not None:
+            params["prepost"] = self.prepost
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -2040,6 +2128,7 @@ class FLOOREndpoint(AsMixin, Endpoint):
         dp=5,
         timezone="Exchange",
         order="desc",
+        prepost="false"
     ):
         self.is_indicator = True
         self.meta_name = "floor"
@@ -2055,6 +2144,7 @@ class FLOOREndpoint(AsMixin, Endpoint):
         self.dp = dp
         self.timezone = timezone
         self.order = order
+        self.prepost = prepost
 
     def execute(self, format="JSON"):
 
@@ -2081,6 +2171,8 @@ class FLOOREndpoint(AsMixin, Endpoint):
             params["timezone"] = self.timezone
         if self.order is not None:
             params["order"] = self.order
+        if self.prepost is not None:
+            params["prepost"] = self.prepost
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -2103,6 +2195,7 @@ class HEIKINASHICANDLESEndpoint(AsMixin, Endpoint):
         dp=5,
         timezone="Exchange",
         order="desc",
+        prepost="false"
     ):
         self.is_price = True
         self.meta_name = "heikinashicandles"
@@ -2117,6 +2210,7 @@ class HEIKINASHICANDLESEndpoint(AsMixin, Endpoint):
         self.dp = dp
         self.timezone = timezone
         self.order = order
+        self.prepost = prepost
 
     def execute(self, format="JSON"):
 
@@ -2141,6 +2235,8 @@ class HEIKINASHICANDLESEndpoint(AsMixin, Endpoint):
             params["timezone"] = self.timezone
         if self.order is not None:
             params["order"] = self.order
+        if self.prepost is not None:
+            params["prepost"] = self.prepost
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -2163,6 +2259,7 @@ class HLC3Endpoint(AsMixin, Endpoint):
         dp=5,
         timezone="Exchange",
         order="desc",
+        prepost="false"
     ):
         self.is_price = True
         self.meta_name = "hlc3"
@@ -2177,6 +2274,7 @@ class HLC3Endpoint(AsMixin, Endpoint):
         self.dp = dp
         self.timezone = timezone
         self.order = order
+        self.prepost = prepost
 
     def execute(self, format="JSON"):
 
@@ -2201,6 +2299,8 @@ class HLC3Endpoint(AsMixin, Endpoint):
             params["timezone"] = self.timezone
         if self.order is not None:
             params["order"] = self.order
+        if self.prepost is not None:
+            params["prepost"] = self.prepost
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -2224,6 +2324,7 @@ class HT_DCPERIODEndpoint(AsMixin, Endpoint):
         dp=5,
         timezone="Exchange",
         order="desc",
+        prepost="false"
     ):
         self.is_indicator = True
         self.meta_name = "ht_dcperiod"
@@ -2239,6 +2340,7 @@ class HT_DCPERIODEndpoint(AsMixin, Endpoint):
         self.dp = dp
         self.timezone = timezone
         self.order = order
+        self.prepost = prepost
 
     def execute(self, format="JSON"):
 
@@ -2265,6 +2367,8 @@ class HT_DCPERIODEndpoint(AsMixin, Endpoint):
             params["timezone"] = self.timezone
         if self.order is not None:
             params["order"] = self.order
+        if self.prepost is not None:
+            params["prepost"] = self.prepost
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -2288,6 +2392,7 @@ class HT_DCPHASEEndpoint(AsMixin, Endpoint):
         dp=5,
         timezone="Exchange",
         order="desc",
+        prepost="false"
     ):
         self.is_indicator = True
         self.meta_name = "ht_dcphase"
@@ -2303,6 +2408,7 @@ class HT_DCPHASEEndpoint(AsMixin, Endpoint):
         self.dp = dp
         self.timezone = timezone
         self.order = order
+        self.prepost = prepost
 
     def execute(self, format="JSON"):
 
@@ -2329,6 +2435,8 @@ class HT_DCPHASEEndpoint(AsMixin, Endpoint):
             params["timezone"] = self.timezone
         if self.order is not None:
             params["order"] = self.order
+        if self.prepost is not None:
+            params["prepost"] = self.prepost
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -2352,6 +2460,7 @@ class HT_PHASOREndpoint(AsMixin, Endpoint):
         dp=5,
         timezone="Exchange",
         order="desc",
+        prepost="false"
     ):
         self.is_indicator = True
         self.meta_name = "ht_phasor"
@@ -2367,6 +2476,7 @@ class HT_PHASOREndpoint(AsMixin, Endpoint):
         self.dp = dp
         self.timezone = timezone
         self.order = order
+        self.prepost = prepost
 
     def execute(self, format="JSON"):
 
@@ -2393,6 +2503,8 @@ class HT_PHASOREndpoint(AsMixin, Endpoint):
             params["timezone"] = self.timezone
         if self.order is not None:
             params["order"] = self.order
+        if self.prepost is not None:
+            params["prepost"] = self.prepost
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -2416,6 +2528,7 @@ class HT_SINEEndpoint(AsMixin, Endpoint):
         dp=5,
         timezone="Exchange",
         order="desc",
+        prepost="false"
     ):
         self.is_indicator = True
         self.meta_name = "ht_sine"
@@ -2431,6 +2544,7 @@ class HT_SINEEndpoint(AsMixin, Endpoint):
         self.dp = dp
         self.timezone = timezone
         self.order = order
+        self.prepost = prepost
 
     def execute(self, format="JSON"):
 
@@ -2457,6 +2571,8 @@ class HT_SINEEndpoint(AsMixin, Endpoint):
             params["timezone"] = self.timezone
         if self.order is not None:
             params["order"] = self.order
+        if self.prepost is not None:
+            params["prepost"] = self.prepost
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -2480,6 +2596,7 @@ class HT_TRENDLINEEndpoint(AsMixin, Endpoint):
         dp=5,
         timezone="Exchange",
         order="desc",
+        prepost="false"
     ):
         self.is_indicator = True
         self.meta_name = "ht_trendline"
@@ -2495,6 +2612,7 @@ class HT_TRENDLINEEndpoint(AsMixin, Endpoint):
         self.dp = dp
         self.timezone = timezone
         self.order = order
+        self.prepost = prepost
 
     def execute(self, format="JSON"):
 
@@ -2521,6 +2639,8 @@ class HT_TRENDLINEEndpoint(AsMixin, Endpoint):
             params["timezone"] = self.timezone
         if self.order is not None:
             params["order"] = self.order
+        if self.prepost is not None:
+            params["prepost"] = self.prepost
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -2544,6 +2664,7 @@ class HT_TRENDMODEEndpoint(AsMixin, Endpoint):
         dp=5,
         timezone="Exchange",
         order="desc",
+        prepost="false"
     ):
         self.is_indicator = True
         self.meta_name = "ht_trendmode"
@@ -2559,6 +2680,7 @@ class HT_TRENDMODEEndpoint(AsMixin, Endpoint):
         self.dp = dp
         self.timezone = timezone
         self.order = order
+        self.prepost = prepost
 
     def execute(self, format="JSON"):
 
@@ -2585,6 +2707,8 @@ class HT_TRENDMODEEndpoint(AsMixin, Endpoint):
             params["timezone"] = self.timezone
         if self.order is not None:
             params["order"] = self.order
+        if self.prepost is not None:
+            params["prepost"] = self.prepost
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -2612,6 +2736,7 @@ class ICHIMOKUEndpoint(AsMixin, Endpoint):
         dp=5,
         timezone="Exchange",
         order="desc",
+        prepost="false"
     ):
         self.is_indicator = True
         self.meta_name = "vwap"
@@ -2631,6 +2756,7 @@ class ICHIMOKUEndpoint(AsMixin, Endpoint):
         self.dp = dp
         self.timezone = timezone
         self.order = order
+        self.prepost = prepost
 
     def execute(self, format="JSON"):
 
@@ -2665,6 +2791,8 @@ class ICHIMOKUEndpoint(AsMixin, Endpoint):
             params["timezone"] = self.timezone
         if self.order is not None:
             params["order"] = self.order
+        if self.prepost is not None:
+            params["prepost"] = self.prepost
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -2689,6 +2817,7 @@ class KAMAEndpoint(AsMixin, Endpoint):
         dp=5,
         timezone="Exchange",
         order="desc",
+        prepost="false"
     ):
         self.is_indicator = True
         self.meta_name = "kama"
@@ -2705,6 +2834,7 @@ class KAMAEndpoint(AsMixin, Endpoint):
         self.dp = dp
         self.timezone = timezone
         self.order = order
+        self.prepost = prepost
 
     def execute(self, format="JSON"):
 
@@ -2733,6 +2863,8 @@ class KAMAEndpoint(AsMixin, Endpoint):
             params["timezone"] = self.timezone
         if self.order is not None:
             params["order"] = self.order
+        if self.prepost is not None:
+            params["prepost"] = self.prepost
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -2760,6 +2892,7 @@ class KELTNEREndpoint(AsMixin, Endpoint):
         dp=5,
         timezone="Exchange",
         order="desc",
+        prepost="false"
     ):
         self.is_indicator = True
         self.meta_name = "keltner"
@@ -2779,6 +2912,7 @@ class KELTNEREndpoint(AsMixin, Endpoint):
         self.dp = dp
         self.timezone = timezone
         self.order = order
+        self.prepost = prepost
 
     def execute(self, format="JSON"):
 
@@ -2813,6 +2947,8 @@ class KELTNEREndpoint(AsMixin, Endpoint):
             params["timezone"] = self.timezone
         if self.order is not None:
             params["order"] = self.order
+        if self.prepost is not None:
+            params["prepost"] = self.prepost
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -2844,6 +2980,7 @@ class KSTEndpoint(AsMixin, Endpoint):
         dp=5,
         timezone="Exchange",
         order="desc",
+        prepost="false"
     ):
         self.is_indicator = True
         self.meta_name = "kst"
@@ -2867,6 +3004,7 @@ class KSTEndpoint(AsMixin, Endpoint):
         self.dp = dp
         self.timezone = timezone
         self.order = order
+        self.prepost = prepost
 
     def execute(self, format="JSON"):
 
@@ -2909,6 +3047,8 @@ class KSTEndpoint(AsMixin, Endpoint):
             params["timezone"] = self.timezone
         if self.order is not None:
             params["order"] = self.order
+        if self.prepost is not None:
+            params["prepost"] = self.prepost
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -2933,6 +3073,7 @@ class LINEARREGEndpoint(AsMixin, Endpoint):
         dp=5,
         timezone="Exchange",
         order="desc",
+        prepost="false"
     ):
         self.is_indicator = True
         self.meta_name = "linearreg"
@@ -2949,6 +3090,7 @@ class LINEARREGEndpoint(AsMixin, Endpoint):
         self.dp = dp
         self.timezone = timezone
         self.order = order
+        self.prepost = prepost
 
     def execute(self, format="JSON"):
 
@@ -2977,6 +3119,8 @@ class LINEARREGEndpoint(AsMixin, Endpoint):
             params["timezone"] = self.timezone
         if self.order is not None:
             params["order"] = self.order
+        if self.prepost is not None:
+            params["prepost"] = self.prepost
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -3001,6 +3145,7 @@ class LINEARREGANGLEEndpoint(AsMixin, Endpoint):
         dp=5,
         timezone="Exchange",
         order="desc",
+        prepost="false"
     ):
         self.is_indicator = True
         self.meta_name = "linearregangle"
@@ -3017,6 +3162,7 @@ class LINEARREGANGLEEndpoint(AsMixin, Endpoint):
         self.dp = dp
         self.timezone = timezone
         self.order = order
+        self.prepost = prepost
 
     def execute(self, format="JSON"):
 
@@ -3045,6 +3191,8 @@ class LINEARREGANGLEEndpoint(AsMixin, Endpoint):
             params["timezone"] = self.timezone
         if self.order is not None:
             params["order"] = self.order
+        if self.prepost is not None:
+            params["prepost"] = self.prepost
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -3069,6 +3217,7 @@ class LINEARREGINTERCEPTEndpoint(AsMixin, Endpoint):
         dp=5,
         timezone="Exchange",
         order="desc",
+        prepost="false"
     ):
         self.is_indicator = True
         self.meta_name = "linearregintercept"
@@ -3085,6 +3234,7 @@ class LINEARREGINTERCEPTEndpoint(AsMixin, Endpoint):
         self.dp = dp
         self.timezone = timezone
         self.order = order
+        self.prepost = prepost
 
     def execute(self, format="JSON"):
 
@@ -3113,6 +3263,8 @@ class LINEARREGINTERCEPTEndpoint(AsMixin, Endpoint):
             params["timezone"] = self.timezone
         if self.order is not None:
             params["order"] = self.order
+        if self.prepost is not None:
+            params["prepost"] = self.prepost
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -3137,6 +3289,7 @@ class LINEARREGSLOPEEndpoint(AsMixin, Endpoint):
         dp=5,
         timezone="Exchange",
         order="desc",
+        prepost="false"
     ):
         self.is_indicator = True
         self.meta_name = "linearregslope"
@@ -3153,6 +3306,7 @@ class LINEARREGSLOPEEndpoint(AsMixin, Endpoint):
         self.dp = dp
         self.timezone = timezone
         self.order = order
+        self.prepost = prepost
 
     def execute(self, format="JSON"):
 
@@ -3181,6 +3335,8 @@ class LINEARREGSLOPEEndpoint(AsMixin, Endpoint):
             params["timezone"] = self.timezone
         if self.order is not None:
             params["order"] = self.order
+        if self.prepost is not None:
+            params["prepost"] = self.prepost
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -3204,6 +3360,7 @@ class LNEndpoint(AsMixin, Endpoint):
         dp=5,
         timezone="Exchange",
         order="desc",
+        prepost="false"
     ):
         self.is_indicator = True
         self.meta_name = "ln"
@@ -3219,6 +3376,7 @@ class LNEndpoint(AsMixin, Endpoint):
         self.dp = dp
         self.timezone = timezone
         self.order = order
+        self.prepost = prepost
 
     def execute(self, format="JSON"):
 
@@ -3245,6 +3403,8 @@ class LNEndpoint(AsMixin, Endpoint):
             params["timezone"] = self.timezone
         if self.order is not None:
             params["order"] = self.order
+        if self.prepost is not None:
+            params["prepost"] = self.prepost
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -3268,6 +3428,7 @@ class LOG10Endpoint(AsMixin, Endpoint):
         dp=5,
         timezone="Exchange",
         order="desc",
+        prepost="false"
     ):
         self.is_indicator = True
         self.meta_name = "log10"
@@ -3283,6 +3444,7 @@ class LOG10Endpoint(AsMixin, Endpoint):
         self.dp = dp
         self.timezone = timezone
         self.order = order
+        self.prepost = prepost
 
     def execute(self, format="JSON"):
 
@@ -3309,6 +3471,8 @@ class LOG10Endpoint(AsMixin, Endpoint):
             params["timezone"] = self.timezone
         if self.order is not None:
             params["order"] = self.order
+        if self.prepost is not None:
+            params["prepost"] = self.prepost
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -3334,6 +3498,7 @@ class MAEndpoint(AsMixin, Endpoint):
         dp=5,
         timezone="Exchange",
         order="desc",
+        prepost="false"
     ):
         self.is_indicator = True
         self.meta_name = "ma"
@@ -3351,6 +3516,7 @@ class MAEndpoint(AsMixin, Endpoint):
         self.dp = dp
         self.timezone = timezone
         self.order = order
+        self.prepost = prepost
 
     def execute(self, format="JSON"):
 
@@ -3381,6 +3547,8 @@ class MAEndpoint(AsMixin, Endpoint):
             params["timezone"] = self.timezone
         if self.order is not None:
             params["order"] = self.order
+        if self.prepost is not None:
+            params["prepost"] = self.prepost
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -3407,6 +3575,7 @@ class MACDEndpoint(AsMixin, Endpoint):
         dp=5,
         timezone="Exchange",
         order="desc",
+        prepost="false"
     ):
         self.is_indicator = True
         self.meta_name = "macd"
@@ -3425,6 +3594,7 @@ class MACDEndpoint(AsMixin, Endpoint):
         self.dp = dp
         self.timezone = timezone
         self.order = order
+        self.prepost = prepost
 
     def execute(self, format="JSON"):
 
@@ -3457,6 +3627,8 @@ class MACDEndpoint(AsMixin, Endpoint):
             params["timezone"] = self.timezone
         if self.order is not None:
             params["order"] = self.order
+        if self.prepost is not None:
+            params["prepost"] = self.prepost
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -3486,6 +3658,7 @@ class MACDEXTEndpoint(AsMixin, Endpoint):
         dp=5,
         timezone="Exchange",
         order="desc",
+        prepost="false"
     ):
         self.is_indicator = True
         self.meta_name = "macdext"
@@ -3507,6 +3680,7 @@ class MACDEXTEndpoint(AsMixin, Endpoint):
         self.dp = dp
         self.timezone = timezone
         self.order = order
+        self.prepost = prepost
 
     def execute(self, format="JSON"):
 
@@ -3545,6 +3719,8 @@ class MACDEXTEndpoint(AsMixin, Endpoint):
             params["timezone"] = self.timezone
         if self.order is not None:
             params["order"] = self.order
+        if self.prepost is not None:
+            params["prepost"] = self.prepost
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -3570,6 +3746,7 @@ class MAMAEndpoint(AsMixin, Endpoint):
         dp=5,
         timezone="Exchange",
         order="desc",
+        prepost="false"
     ):
         self.is_indicator = True
         self.meta_name = "mama"
@@ -3587,6 +3764,7 @@ class MAMAEndpoint(AsMixin, Endpoint):
         self.dp = dp
         self.timezone = timezone
         self.order = order
+        self.prepost = prepost
 
     def execute(self, format="JSON"):
 
@@ -3617,6 +3795,8 @@ class MAMAEndpoint(AsMixin, Endpoint):
             params["timezone"] = self.timezone
         if self.order is not None:
             params["order"] = self.order
+        if self.prepost is not None:
+            params["prepost"] = self.prepost
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -3641,6 +3821,7 @@ class MAXEndpoint(AsMixin, Endpoint):
         dp=5,
         timezone="Exchange",
         order="desc",
+        prepost="false"
     ):
         self.is_indicator = True
         self.meta_name = "max"
@@ -3657,6 +3838,7 @@ class MAXEndpoint(AsMixin, Endpoint):
         self.dp = dp
         self.timezone = timezone
         self.order = order
+        self.prepost = prepost
 
     def execute(self, format="JSON"):
 
@@ -3685,6 +3867,8 @@ class MAXEndpoint(AsMixin, Endpoint):
             params["timezone"] = self.timezone
         if self.order is not None:
             params["order"] = self.order
+        if self.prepost is not None:
+            params["prepost"] = self.prepost
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -3709,6 +3893,7 @@ class MAXINDEXEndpoint(AsMixin, Endpoint):
         dp=5,
         timezone="Exchange",
         order="desc",
+        prepost="false"
     ):
         self.is_indicator = True
         self.meta_name = "maxindex"
@@ -3725,6 +3910,7 @@ class MAXINDEXEndpoint(AsMixin, Endpoint):
         self.dp = dp
         self.timezone = timezone
         self.order = order
+        self.prepost = prepost
 
     def execute(self, format="JSON"):
 
@@ -3753,6 +3939,8 @@ class MAXINDEXEndpoint(AsMixin, Endpoint):
             params["timezone"] = self.timezone
         if self.order is not None:
             params["order"] = self.order
+        if self.prepost is not None:
+            params["prepost"] = self.prepost
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -3776,6 +3964,7 @@ class McGinleyDynamicEndpoint(AsMixin, Endpoint):
         dp=5,
         timezone="Exchange",
         order="desc",
+        prepost="false"
     ):
         self.is_indicator = True
         self.meta_name = "mcginley_dynamic"
@@ -3791,6 +3980,7 @@ class McGinleyDynamicEndpoint(AsMixin, Endpoint):
         self.dp = dp
         self.timezone = timezone
         self.order = order
+        self.prepost = prepost
 
     def execute(self, format="JSON"):
 
@@ -3817,6 +4007,8 @@ class McGinleyDynamicEndpoint(AsMixin, Endpoint):
             params["timezone"] = self.timezone
         if self.order is not None:
             params["order"] = self.order
+        if self.prepost is not None:
+            params["prepost"] = self.prepost
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -3841,6 +4033,7 @@ class MEDPRICEEndpoint(AsMixin, Endpoint):
         dp=5,
         timezone="Exchange",
         order="desc",
+        prepost="false"
     ):
         self.is_indicator = True
         self.meta_name = "medprice"
@@ -3857,6 +4050,7 @@ class MEDPRICEEndpoint(AsMixin, Endpoint):
         self.dp = dp
         self.timezone = timezone
         self.order = order
+        self.prepost = prepost
 
     def execute(self, format="JSON"):
 
@@ -3885,6 +4079,8 @@ class MEDPRICEEndpoint(AsMixin, Endpoint):
             params["timezone"] = self.timezone
         if self.order is not None:
             params["order"] = self.order
+        if self.prepost is not None:
+            params["prepost"] = self.prepost
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -3908,6 +4104,7 @@ class MFIEndpoint(AsMixin, Endpoint):
         dp=5,
         timezone="Exchange",
         order="desc",
+        prepost="false"
     ):
         self.is_indicator = True
         self.meta_name = "mfi"
@@ -3923,6 +4120,7 @@ class MFIEndpoint(AsMixin, Endpoint):
         self.dp = dp
         self.timezone = timezone
         self.order = order
+        self.prepost = prepost
 
     def execute(self, format="JSON"):
 
@@ -3949,6 +4147,8 @@ class MFIEndpoint(AsMixin, Endpoint):
             params["timezone"] = self.timezone
         if self.order is not None:
             params["order"] = self.order
+        if self.prepost is not None:
+            params["prepost"] = self.prepost
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -3973,6 +4173,7 @@ class MIDPOINTEndpoint(AsMixin, Endpoint):
         dp=5,
         timezone="Exchange",
         order="desc",
+        prepost="false"
     ):
         self.is_indicator = True
         self.meta_name = "midpoint"
@@ -3989,6 +4190,7 @@ class MIDPOINTEndpoint(AsMixin, Endpoint):
         self.dp = dp
         self.timezone = timezone
         self.order = order
+        self.prepost = prepost
 
     def execute(self, format="JSON"):
 
@@ -4017,6 +4219,8 @@ class MIDPOINTEndpoint(AsMixin, Endpoint):
             params["timezone"] = self.timezone
         if self.order is not None:
             params["order"] = self.order
+        if self.prepost is not None:
+            params["prepost"] = self.prepost
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -4040,6 +4244,7 @@ class MIDPRICEEndpoint(AsMixin, Endpoint):
         dp=5,
         timezone="Exchange",
         order="desc",
+        prepost="false"
     ):
         self.is_indicator = True
         self.meta_name = "midprice"
@@ -4055,6 +4260,7 @@ class MIDPRICEEndpoint(AsMixin, Endpoint):
         self.dp = dp
         self.timezone = timezone
         self.order = order
+        self.prepost = prepost
 
     def execute(self, format="JSON"):
 
@@ -4081,6 +4287,8 @@ class MIDPRICEEndpoint(AsMixin, Endpoint):
             params["timezone"] = self.timezone
         if self.order is not None:
             params["order"] = self.order
+        if self.prepost is not None:
+            params["prepost"] = self.prepost
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -4105,6 +4313,7 @@ class MINEndpoint(AsMixin, Endpoint):
         dp=5,
         timezone="Exchange",
         order="desc",
+        prepost="false"
     ):
         self.is_indicator = True
         self.meta_name = "min"
@@ -4121,6 +4330,7 @@ class MINEndpoint(AsMixin, Endpoint):
         self.dp = dp
         self.timezone = timezone
         self.order = order
+        self.prepost = prepost
 
     def execute(self, format="JSON"):
 
@@ -4149,6 +4359,8 @@ class MINEndpoint(AsMixin, Endpoint):
             params["timezone"] = self.timezone
         if self.order is not None:
             params["order"] = self.order
+        if self.prepost is not None:
+            params["prepost"] = self.prepost
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -4173,6 +4385,7 @@ class MININDEXEndpoint(AsMixin, Endpoint):
         dp=5,
         timezone="Exchange",
         order="desc",
+        prepost="false"
     ):
         self.is_indicator = True
         self.meta_name = "minindex"
@@ -4189,6 +4402,7 @@ class MININDEXEndpoint(AsMixin, Endpoint):
         self.dp = dp
         self.timezone = timezone
         self.order = order
+        self.prepost = prepost
 
     def execute(self, format="JSON"):
 
@@ -4217,6 +4431,8 @@ class MININDEXEndpoint(AsMixin, Endpoint):
             params["timezone"] = self.timezone
         if self.order is not None:
             params["order"] = self.order
+        if self.prepost is not None:
+            params["prepost"] = self.prepost
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -4241,6 +4457,7 @@ class MINMAXEndpoint(AsMixin, Endpoint):
         dp=5,
         timezone="Exchange",
         order="desc",
+        prepost="false"
     ):
         self.is_indicator = True
         self.meta_name = "minmax"
@@ -4257,6 +4474,7 @@ class MINMAXEndpoint(AsMixin, Endpoint):
         self.dp = dp
         self.timezone = timezone
         self.order = order
+        self.prepost = prepost
 
     def execute(self, format="JSON"):
 
@@ -4285,6 +4503,8 @@ class MINMAXEndpoint(AsMixin, Endpoint):
             params["timezone"] = self.timezone
         if self.order is not None:
             params["order"] = self.order
+        if self.prepost is not None:
+            params["prepost"] = self.prepost
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -4309,6 +4529,7 @@ class MINMAXINDEXEndpoint(AsMixin, Endpoint):
         dp=5,
         timezone="Exchange",
         order="desc",
+        prepost="false"
     ):
         self.is_indicator = True
         self.meta_name = "minmaxindex"
@@ -4325,6 +4546,7 @@ class MINMAXINDEXEndpoint(AsMixin, Endpoint):
         self.dp = dp
         self.timezone = timezone
         self.order = order
+        self.prepost = prepost
 
     def execute(self, format="JSON"):
 
@@ -4353,6 +4575,8 @@ class MINMAXINDEXEndpoint(AsMixin, Endpoint):
             params["timezone"] = self.timezone
         if self.order is not None:
             params["order"] = self.order
+        if self.prepost is not None:
+            params["prepost"] = self.prepost
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -4376,6 +4600,7 @@ class MINUS_DIEndpoint(AsMixin, Endpoint):
         dp=5,
         timezone="Exchange",
         order="desc",
+        prepost="false"
     ):
         self.is_indicator = True
         self.meta_name = "minus_di"
@@ -4391,6 +4616,7 @@ class MINUS_DIEndpoint(AsMixin, Endpoint):
         self.dp = dp
         self.timezone = timezone
         self.order = order
+        self.prepost = prepost
 
     def execute(self, format="JSON"):
 
@@ -4417,6 +4643,8 @@ class MINUS_DIEndpoint(AsMixin, Endpoint):
             params["timezone"] = self.timezone
         if self.order is not None:
             params["order"] = self.order
+        if self.prepost is not None:
+            params["prepost"] = self.prepost
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -4440,6 +4668,7 @@ class MINUS_DMEndpoint(AsMixin, Endpoint):
         dp=5,
         timezone="Exchange",
         order="desc",
+        prepost="false"
     ):
         self.is_indicator = True
         self.meta_name = "minus_dm"
@@ -4455,6 +4684,7 @@ class MINUS_DMEndpoint(AsMixin, Endpoint):
         self.dp = dp
         self.timezone = timezone
         self.order = order
+        self.prepost = prepost
 
     def execute(self, format="JSON"):
 
@@ -4481,6 +4711,8 @@ class MINUS_DMEndpoint(AsMixin, Endpoint):
             params["timezone"] = self.timezone
         if self.order is not None:
             params["order"] = self.order
+        if self.prepost is not None:
+            params["prepost"] = self.prepost
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -4505,6 +4737,7 @@ class MOMEndpoint(AsMixin, Endpoint):
         dp=5,
         timezone="Exchange",
         order="desc",
+        prepost="false"
     ):
         self.is_indicator = True
         self.meta_name = "mom"
@@ -4521,6 +4754,7 @@ class MOMEndpoint(AsMixin, Endpoint):
         self.dp = dp
         self.timezone = timezone
         self.order = order
+        self.prepost = prepost
 
     def execute(self, format="JSON"):
 
@@ -4549,6 +4783,8 @@ class MOMEndpoint(AsMixin, Endpoint):
             params["timezone"] = self.timezone
         if self.order is not None:
             params["order"] = self.order
+        if self.prepost is not None:
+            params["prepost"] = self.prepost
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -4572,6 +4808,7 @@ class NATREndpoint(AsMixin, Endpoint):
         dp=5,
         timezone="Exchange",
         order="desc",
+        prepost="false"
     ):
         self.is_indicator = True
         self.meta_name = "natr"
@@ -4587,6 +4824,7 @@ class NATREndpoint(AsMixin, Endpoint):
         self.dp = dp
         self.timezone = timezone
         self.order = order
+        self.prepost = prepost
 
     def execute(self, format="JSON"):
 
@@ -4613,6 +4851,8 @@ class NATREndpoint(AsMixin, Endpoint):
             params["timezone"] = self.timezone
         if self.order is not None:
             params["order"] = self.order
+        if self.prepost is not None:
+            params["prepost"] = self.prepost
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -4636,6 +4876,7 @@ class OBVEndpoint(AsMixin, Endpoint):
         dp=5,
         timezone="Exchange",
         order="desc",
+        prepost="false"
     ):
         self.is_indicator = True
         self.meta_name = "obv"
@@ -4651,6 +4892,7 @@ class OBVEndpoint(AsMixin, Endpoint):
         self.dp = dp
         self.timezone = timezone
         self.order = order
+        self.prepost = prepost
 
     def execute(self, format="JSON"):
 
@@ -4677,6 +4919,8 @@ class OBVEndpoint(AsMixin, Endpoint):
             params["timezone"] = self.timezone
         if self.order is not None:
             params["order"] = self.order
+        if self.prepost is not None:
+            params["prepost"] = self.prepost
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -4700,6 +4944,7 @@ class PLUS_DIEndpoint(AsMixin, Endpoint):
         dp=5,
         timezone="Exchange",
         order="desc",
+        prepost="false"
     ):
         self.is_indicator = True
         self.meta_name = "plus_di"
@@ -4715,6 +4960,7 @@ class PLUS_DIEndpoint(AsMixin, Endpoint):
         self.dp = dp
         self.timezone = timezone
         self.order = order
+        self.prepost = prepost
 
     def execute(self, format="JSON"):
 
@@ -4741,6 +4987,8 @@ class PLUS_DIEndpoint(AsMixin, Endpoint):
             params["timezone"] = self.timezone
         if self.order is not None:
             params["order"] = self.order
+        if self.prepost is not None:
+            params["prepost"] = self.prepost
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -4764,6 +5012,7 @@ class PLUS_DMEndpoint(AsMixin, Endpoint):
         dp=5,
         timezone="Exchange",
         order="desc",
+        prepost="false"
     ):
         self.is_indicator = True
         self.meta_name = "plus_dm"
@@ -4779,6 +5028,7 @@ class PLUS_DMEndpoint(AsMixin, Endpoint):
         self.dp = dp
         self.timezone = timezone
         self.order = order
+        self.prepost = prepost
 
     def execute(self, format="JSON"):
 
@@ -4805,6 +5055,8 @@ class PLUS_DMEndpoint(AsMixin, Endpoint):
             params["timezone"] = self.timezone
         if self.order is not None:
             params["order"] = self.order
+        if self.prepost is not None:
+            params["prepost"] = self.prepost
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -4831,6 +5083,7 @@ class PPOEndpoint(AsMixin, Endpoint):
         dp=5,
         timezone="Exchange",
         order="desc",
+        prepost="false"
     ):
         self.is_indicator = True
         self.meta_name = "ppo"
@@ -4849,6 +5102,7 @@ class PPOEndpoint(AsMixin, Endpoint):
         self.dp = dp
         self.timezone = timezone
         self.order = order
+        self.prepost = prepost
 
     def execute(self, format="JSON"):
 
@@ -4881,6 +5135,8 @@ class PPOEndpoint(AsMixin, Endpoint):
             params["timezone"] = self.timezone
         if self.order is not None:
             params["order"] = self.order
+        if self.prepost is not None:
+            params["prepost"] = self.prepost
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -4905,6 +5161,7 @@ class ROCEndpoint(AsMixin, Endpoint):
         dp=5,
         timezone="Exchange",
         order="desc",
+        prepost="false"
     ):
         self.is_indicator = True
         self.meta_name = "roc"
@@ -4921,6 +5178,7 @@ class ROCEndpoint(AsMixin, Endpoint):
         self.dp = dp
         self.timezone = timezone
         self.order = order
+        self.prepost = prepost
 
     def execute(self, format="JSON"):
 
@@ -4949,6 +5207,8 @@ class ROCEndpoint(AsMixin, Endpoint):
             params["timezone"] = self.timezone
         if self.order is not None:
             params["order"] = self.order
+        if self.prepost is not None:
+            params["prepost"] = self.prepost
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -4973,6 +5233,7 @@ class ROCPEndpoint(AsMixin, Endpoint):
         dp=5,
         timezone="Exchange",
         order="desc",
+        prepost="false"
     ):
         self.is_indicator = True
         self.meta_name = "rocp"
@@ -4989,6 +5250,7 @@ class ROCPEndpoint(AsMixin, Endpoint):
         self.dp = dp
         self.timezone = timezone
         self.order = order
+        self.prepost = prepost
 
     def execute(self, format="JSON"):
 
@@ -5017,6 +5279,8 @@ class ROCPEndpoint(AsMixin, Endpoint):
             params["timezone"] = self.timezone
         if self.order is not None:
             params["order"] = self.order
+        if self.prepost is not None:
+            params["prepost"] = self.prepost
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -5041,6 +5305,7 @@ class ROCREndpoint(AsMixin, Endpoint):
         dp=5,
         timezone="Exchange",
         order="desc",
+        prepost="false"
     ):
         self.is_indicator = True
         self.meta_name = "rocr"
@@ -5057,6 +5322,7 @@ class ROCREndpoint(AsMixin, Endpoint):
         self.dp = dp
         self.timezone = timezone
         self.order = order
+        self.prepost = prepost
 
     def execute(self, format="JSON"):
 
@@ -5085,6 +5351,8 @@ class ROCREndpoint(AsMixin, Endpoint):
             params["timezone"] = self.timezone
         if self.order is not None:
             params["order"] = self.order
+        if self.prepost is not None:
+            params["prepost"] = self.prepost
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -5109,6 +5377,7 @@ class ROCR100Endpoint(AsMixin, Endpoint):
         dp=5,
         timezone="Exchange",
         order="desc",
+        prepost="false"
     ):
         self.is_indicator = True
         self.meta_name = "rocr100"
@@ -5125,6 +5394,7 @@ class ROCR100Endpoint(AsMixin, Endpoint):
         self.dp = dp
         self.timezone = timezone
         self.order = order
+        self.prepost = prepost
 
     def execute(self, format="JSON"):
 
@@ -5153,6 +5423,8 @@ class ROCR100Endpoint(AsMixin, Endpoint):
             params["timezone"] = self.timezone
         if self.order is not None:
             params["order"] = self.order
+        if self.prepost is not None:
+            params["prepost"] = self.prepost
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -5177,6 +5449,7 @@ class RSIEndpoint(AsMixin, Endpoint):
         dp=5,
         timezone="Exchange",
         order="desc",
+        prepost="false"
     ):
         self.is_indicator = True
         self.meta_name = "rsi"
@@ -5193,6 +5466,7 @@ class RSIEndpoint(AsMixin, Endpoint):
         self.dp = dp
         self.timezone = timezone
         self.order = order
+        self.prepost = prepost
 
     def execute(self, format="JSON"):
 
@@ -5221,6 +5495,8 @@ class RSIEndpoint(AsMixin, Endpoint):
             params["timezone"] = self.timezone
         if self.order is not None:
             params["order"] = self.order
+        if self.prepost is not None:
+            params["prepost"] = self.prepost
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -5244,6 +5520,7 @@ class RVOLEndpoint(AsMixin, Endpoint):
         dp=5,
         timezone="Exchange",
         order="desc",
+        prepost="false"
     ):
         self.is_indicator = True
         self.meta_name = "rvol"
@@ -5259,6 +5536,7 @@ class RVOLEndpoint(AsMixin, Endpoint):
         self.dp = dp
         self.timezone = timezone
         self.order = order
+        self.prepost = prepost
 
     def execute(self, format="JSON"):
 
@@ -5285,6 +5563,8 @@ class RVOLEndpoint(AsMixin, Endpoint):
             params["timezone"] = self.timezone
         if self.order is not None:
             params["order"] = self.order
+        if self.prepost is not None:
+            params["prepost"] = self.prepost
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -5309,6 +5589,7 @@ class SAREndpoint(AsMixin, Endpoint):
         dp=5,
         timezone="Exchange",
         order="desc",
+        prepost="false"
     ):
         self.is_indicator = True
         self.meta_name = "sar"
@@ -5325,6 +5606,7 @@ class SAREndpoint(AsMixin, Endpoint):
         self.dp = dp
         self.timezone = timezone
         self.order = order
+        self.prepost = prepost
 
     def execute(self, format="JSON"):
 
@@ -5353,6 +5635,8 @@ class SAREndpoint(AsMixin, Endpoint):
             params["timezone"] = self.timezone
         if self.order is not None:
             params["order"] = self.order
+        if self.prepost is not None:
+            params["prepost"] = self.prepost
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -5377,6 +5661,7 @@ class SMAEndpoint(AsMixin, Endpoint):
         dp=5,
         timezone="Exchange",
         order="desc",
+        prepost="false"
     ):
         self.is_indicator = True
         self.meta_name = "sma"
@@ -5393,6 +5678,7 @@ class SMAEndpoint(AsMixin, Endpoint):
         self.dp = dp
         self.timezone = timezone
         self.order = order
+        self.prepost = prepost
 
     def execute(self, format="JSON"):
 
@@ -5421,6 +5707,8 @@ class SMAEndpoint(AsMixin, Endpoint):
             params["timezone"] = self.timezone
         if self.order is not None:
             params["order"] = self.order
+        if self.prepost is not None:
+            params["prepost"] = self.prepost
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -5444,6 +5732,7 @@ class SQRTEndpoint(AsMixin, Endpoint):
         dp=5,
         timezone="Exchange",
         order="desc",
+        prepost="false"
     ):
         self.is_indicator = True
         self.meta_name = "sqrt"
@@ -5459,6 +5748,7 @@ class SQRTEndpoint(AsMixin, Endpoint):
         self.dp = dp
         self.timezone = timezone
         self.order = order
+        self.prepost = prepost
 
     def execute(self, format="JSON"):
 
@@ -5485,6 +5775,8 @@ class SQRTEndpoint(AsMixin, Endpoint):
             params["timezone"] = self.timezone
         if self.order is not None:
             params["order"] = self.order
+        if self.prepost is not None:
+            params["prepost"] = self.prepost
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -5510,6 +5802,7 @@ class STDDEVEndpoint(AsMixin, Endpoint):
         dp=5,
         timezone="Exchange",
         order="desc",
+        prepost="false"
     ):
         self.is_indicator = True
         self.meta_name = "stddev"
@@ -5527,6 +5820,7 @@ class STDDEVEndpoint(AsMixin, Endpoint):
         self.dp = dp
         self.timezone = timezone
         self.order = order
+        self.prepost = prepost
 
     def execute(self, format="JSON"):
 
@@ -5557,6 +5851,8 @@ class STDDEVEndpoint(AsMixin, Endpoint):
             params["timezone"] = self.timezone
         if self.order is not None:
             params["order"] = self.order
+        if self.prepost is not None:
+            params["prepost"] = self.prepost
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -5584,6 +5880,7 @@ class STOCHEndpoint(AsMixin, Endpoint):
         dp=5,
         timezone="Exchange",
         order="desc",
+        prepost="false"
     ):
         self.is_indicator = True
         self.meta_name = "stoch"
@@ -5603,6 +5900,7 @@ class STOCHEndpoint(AsMixin, Endpoint):
         self.dp = dp
         self.timezone = timezone
         self.order = order
+        self.prepost = prepost
 
     def execute(self, format="JSON"):
 
@@ -5637,6 +5935,8 @@ class STOCHEndpoint(AsMixin, Endpoint):
             params["timezone"] = self.timezone
         if self.order is not None:
             params["order"] = self.order
+        if self.prepost is not None:
+            params["prepost"] = self.prepost
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -5662,6 +5962,7 @@ class STOCHFEndpoint(AsMixin, Endpoint):
         dp=5,
         timezone="Exchange",
         order="desc",
+        prepost="false"
     ):
         self.is_indicator = True
         self.meta_name = "stochf"
@@ -5679,6 +5980,7 @@ class STOCHFEndpoint(AsMixin, Endpoint):
         self.dp = dp
         self.timezone = timezone
         self.order = order
+        self.prepost = prepost
 
     def execute(self, format="JSON"):
 
@@ -5709,6 +6011,8 @@ class STOCHFEndpoint(AsMixin, Endpoint):
             params["timezone"] = self.timezone
         if self.order is not None:
             params["order"] = self.order
+        if self.prepost is not None:
+            params["prepost"] = self.prepost
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -5736,6 +6040,7 @@ class STOCHRSIEndpoint(AsMixin, Endpoint):
         dp=5,
         timezone="Exchange",
         order="desc",
+        prepost="false"
     ):
         self.is_indicator = True
         self.meta_name = "stochrsi"
@@ -5755,6 +6060,7 @@ class STOCHRSIEndpoint(AsMixin, Endpoint):
         self.dp = dp
         self.timezone = timezone
         self.order = order
+        self.prepost = prepost
 
     def execute(self, format="JSON"):
 
@@ -5789,6 +6095,8 @@ class STOCHRSIEndpoint(AsMixin, Endpoint):
             params["timezone"] = self.timezone
         if self.order is not None:
             params["order"] = self.order
+        if self.prepost is not None:
+            params["prepost"] = self.prepost
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -5813,6 +6121,7 @@ class SuperTrendEndpoint(AsMixin, Endpoint):
         dp=5,
         timezone="Exchange",
         order="desc",
+        prepost="false"
     ):
         self.is_indicator = True
         self.meta_name = "supertrend"
@@ -5829,6 +6138,7 @@ class SuperTrendEndpoint(AsMixin, Endpoint):
         self.dp = dp
         self.timezone = timezone
         self.order = order
+        self.prepost = prepost
 
     def execute(self, format="JSON"):
 
@@ -5857,6 +6167,8 @@ class SuperTrendEndpoint(AsMixin, Endpoint):
             params["timezone"] = self.timezone
         if self.order is not None:
             params["order"] = self.order
+        if self.prepost is not None:
+            params["prepost"] = self.prepost
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -5882,6 +6194,7 @@ class T3MAEndpoint(AsMixin, Endpoint):
         dp=5,
         timezone="Exchange",
         order="desc",
+        prepost="false"
     ):
         self.is_indicator = True
         self.meta_name = "t3ma"
@@ -5899,6 +6212,7 @@ class T3MAEndpoint(AsMixin, Endpoint):
         self.dp = dp
         self.timezone = timezone
         self.order = order
+        self.prepost = prepost
 
     def execute(self, format="JSON"):
 
@@ -5929,6 +6243,8 @@ class T3MAEndpoint(AsMixin, Endpoint):
             params["timezone"] = self.timezone
         if self.order is not None:
             params["order"] = self.order
+        if self.prepost is not None:
+            params["prepost"] = self.prepost
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -5953,6 +6269,7 @@ class TEMAEndpoint(AsMixin, Endpoint):
         dp=5,
         timezone="Exchange",
         order="desc",
+        prepost="false"
     ):
         self.is_indicator = True
         self.meta_name = "tema"
@@ -5969,6 +6286,7 @@ class TEMAEndpoint(AsMixin, Endpoint):
         self.dp = dp
         self.timezone = timezone
         self.order = order
+        self.prepost = prepost
 
     def execute(self, format="JSON"):
 
@@ -5997,6 +6315,8 @@ class TEMAEndpoint(AsMixin, Endpoint):
             params["timezone"] = self.timezone
         if self.order is not None:
             params["order"] = self.order
+        if self.prepost is not None:
+            params["prepost"] = self.prepost
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -6019,6 +6339,7 @@ class TRANGEEndpoint(AsMixin, Endpoint):
         dp=5,
         timezone="Exchange",
         order="desc",
+        prepost="false"
     ):
         self.is_indicator = True
         self.meta_name = "trange"
@@ -6033,6 +6354,7 @@ class TRANGEEndpoint(AsMixin, Endpoint):
         self.dp = dp
         self.timezone = timezone
         self.order = order
+        self.prepost = prepost
 
     def execute(self, format="JSON"):
 
@@ -6057,6 +6379,8 @@ class TRANGEEndpoint(AsMixin, Endpoint):
             params["timezone"] = self.timezone
         if self.order is not None:
             params["order"] = self.order
+        if self.prepost is not None:
+            params["prepost"] = self.prepost
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -6081,6 +6405,7 @@ class TRIMAEndpoint(AsMixin, Endpoint):
         dp=5,
         timezone="Exchange",
         order="desc",
+        prepost="false"
     ):
         self.is_indicator = True
         self.meta_name = "trima"
@@ -6097,6 +6422,7 @@ class TRIMAEndpoint(AsMixin, Endpoint):
         self.dp = dp
         self.timezone = timezone
         self.order = order
+        self.prepost = prepost
 
     def execute(self, format="JSON"):
 
@@ -6125,6 +6451,8 @@ class TRIMAEndpoint(AsMixin, Endpoint):
             params["timezone"] = self.timezone
         if self.order is not None:
             params["order"] = self.order
+        if self.prepost is not None:
+            params["prepost"] = self.prepost
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -6149,6 +6477,7 @@ class TSFEndpoint(AsMixin, Endpoint):
         dp=5,
         timezone="Exchange",
         order="desc",
+        prepost="false"
     ):
         self.is_indicator = True
         self.meta_name = "tsf"
@@ -6165,6 +6494,7 @@ class TSFEndpoint(AsMixin, Endpoint):
         self.dp = dp
         self.timezone = timezone
         self.order = order
+        self.prepost = prepost
 
     def execute(self, format="JSON"):
 
@@ -6193,6 +6523,8 @@ class TSFEndpoint(AsMixin, Endpoint):
             params["timezone"] = self.timezone
         if self.order is not None:
             params["order"] = self.order
+        if self.prepost is not None:
+            params["prepost"] = self.prepost
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -6215,6 +6547,7 @@ class TYPPRICEEndpoint(AsMixin, Endpoint):
         dp=5,
         timezone="Exchange",
         order="desc",
+        prepost="false"
     ):
         self.is_indicator = True
         self.meta_name = "typprice"
@@ -6229,6 +6562,7 @@ class TYPPRICEEndpoint(AsMixin, Endpoint):
         self.dp = dp
         self.timezone = timezone
         self.order = order
+        self.prepost = prepost
 
     def execute(self, format="JSON"):
 
@@ -6253,6 +6587,8 @@ class TYPPRICEEndpoint(AsMixin, Endpoint):
             params["timezone"] = self.timezone
         if self.order is not None:
             params["order"] = self.order
+        if self.prepost is not None:
+            params["prepost"] = self.prepost
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -6278,6 +6614,7 @@ class ULTOSCEndpoint(AsMixin, Endpoint):
         dp=5,
         timezone="Exchange",
         order="desc",
+        prepost="false"
     ):
         self.is_indicator = True
         self.meta_name = "ultosc"
@@ -6295,6 +6632,7 @@ class ULTOSCEndpoint(AsMixin, Endpoint):
         self.dp = dp
         self.timezone = timezone
         self.order = order
+        self.prepost = prepost
 
     def execute(self, format="JSON"):
 
@@ -6325,6 +6663,8 @@ class ULTOSCEndpoint(AsMixin, Endpoint):
             params["timezone"] = self.timezone
         if self.order is not None:
             params["order"] = self.order
+        if self.prepost is not None:
+            params["prepost"] = self.prepost
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -6349,6 +6689,7 @@ class VAREndpoint(AsMixin, Endpoint):
         dp=5,
         timezone="Exchange",
         order="desc",
+        prepost="false"
     ):
         self.is_indicator = True
         self.meta_name = "var"
@@ -6365,6 +6706,7 @@ class VAREndpoint(AsMixin, Endpoint):
         self.dp = dp
         self.timezone = timezone
         self.order = order
+        self.prepost = prepost
 
     def execute(self, format="JSON"):
 
@@ -6393,6 +6735,8 @@ class VAREndpoint(AsMixin, Endpoint):
             params["timezone"] = self.timezone
         if self.order is not None:
             params["order"] = self.order
+        if self.prepost is not None:
+            params["prepost"] = self.prepost
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -6415,6 +6759,7 @@ class VWAPEndpoint(AsMixin, Endpoint):
         dp=5,
         timezone="Exchange",
         order="desc",
+        prepost="false"
     ):
         self.is_indicator = True
         self.meta_name = "vwap"
@@ -6429,6 +6774,7 @@ class VWAPEndpoint(AsMixin, Endpoint):
         self.dp = dp
         self.timezone = timezone
         self.order = order
+        self.prepost = prepost
 
     def execute(self, format="JSON"):
 
@@ -6453,6 +6799,8 @@ class VWAPEndpoint(AsMixin, Endpoint):
             params["timezone"] = self.timezone
         if self.order is not None:
             params["order"] = self.order
+        if self.prepost is not None:
+            params["prepost"] = self.prepost
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -6475,6 +6823,7 @@ class WCLPRICEEndpoint(AsMixin, Endpoint):
         dp=5,
         timezone="Exchange",
         order="desc",
+        prepost="false"
     ):
         self.is_indicator = True
         self.meta_name = "wclprice"
@@ -6489,6 +6838,7 @@ class WCLPRICEEndpoint(AsMixin, Endpoint):
         self.dp = dp
         self.timezone = timezone
         self.order = order
+        self.prepost = prepost
 
     def execute(self, format="JSON"):
 
@@ -6513,6 +6863,8 @@ class WCLPRICEEndpoint(AsMixin, Endpoint):
             params["timezone"] = self.timezone
         if self.order is not None:
             params["order"] = self.order
+        if self.prepost is not None:
+            params["prepost"] = self.prepost
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -6536,6 +6888,7 @@ class WILLREndpoint(AsMixin, Endpoint):
         dp=5,
         timezone="Exchange",
         order="desc",
+        prepost="false"
     ):
         self.is_indicator = True
         self.meta_name = "willr"
@@ -6551,6 +6904,7 @@ class WILLREndpoint(AsMixin, Endpoint):
         self.dp = dp
         self.timezone = timezone
         self.order = order
+        self.prepost = prepost
 
     def execute(self, format="JSON"):
 
@@ -6577,6 +6931,8 @@ class WILLREndpoint(AsMixin, Endpoint):
             params["timezone"] = self.timezone
         if self.order is not None:
             params["order"] = self.order
+        if self.prepost is not None:
+            params["prepost"] = self.prepost
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -6601,6 +6957,7 @@ class WMAEndpoint(AsMixin, Endpoint):
         dp=5,
         timezone="Exchange",
         order="desc",
+        prepost="false"
     ):
         self.is_indicator = True
         self.meta_name = "wma"
@@ -6617,6 +6974,7 @@ class WMAEndpoint(AsMixin, Endpoint):
         self.dp = dp
         self.timezone = timezone
         self.order = order
+        self.prepost = prepost
 
     def execute(self, format="JSON"):
 
@@ -6645,6 +7003,8 @@ class WMAEndpoint(AsMixin, Endpoint):
             params["timezone"] = self.timezone
         if self.order is not None:
             params["order"] = self.order
+        if self.prepost is not None:
+            params["prepost"] = self.prepost
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey

@@ -1034,13 +1034,13 @@ def test_chart_pandas():
 
 
 def test_string_batch():
-    batch_ts = _init_batch_ts('AAPL,RY,EUR/USD,BTC/USD:Huobi,')
+    batch_ts = _init_batch_ts('AAPL,RY,EUR/USD,BTC/USD:Binance,')
     batch_ts.with_macd().with_stoch().as_json()
     batch_ts.with_ema().with_bbands().as_pandas()
 
 
 def test_list_batch():
-    batch_ts = _init_batch_ts(['AAPL', 'RY', 'EUR/USD', 'BTC/USD:Huobi'])
+    batch_ts = _init_batch_ts(['AAPL', 'RY', 'EUR/USD', 'BTC/USD:Binance'])
     batch_ts.with_macd().with_stoch().as_json()
     batch_ts.with_ema().with_bbands().as_pandas()
 
