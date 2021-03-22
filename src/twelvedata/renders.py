@@ -362,6 +362,7 @@ RENDERS_MAPPING = {
     ROCREndpoint: [LR],
     ROCEndpoint: [LR],
     RSIEndpoint: [LR, FAR],
+    RVOLEndpoint: [LR],
     SAREndpoint: [PointsRender("sar")],
     SMAEndpoint: [LR],
     SQRTEndpoint: [LR],

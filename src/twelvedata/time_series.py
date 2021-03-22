@@ -4856,6 +4856,69 @@ class TimeSeries(object):
 
     @force_use_kwargs
     @apply_context_defaults
+    def with_rvol(
+            self,
+            exchange=None,
+            country=None,
+            time_period=14,
+            outputsize=30,
+            start_date=None,
+            end_date=None,
+            dp=5,
+            timezone="Exchange",
+    ):
+        """
+        Add request builder of RVOL to chart builder
+
+        Relative Volume Indicator(RVOL) shows how the current trading volume
+        is compared to past volume over a given period.
+
+        This API call returns meta and time series values of RVOL. Meta
+        object consists of general information about requested technical
+        indicator. Time series is the array of objects ordered by time
+        desceding updated realtime.
+
+        :param symbol: Instrument symbol, can be any stock, forex or
+            cryptocurrency E.g. AAPL, EUR/USD, ETH/BTC, ...
+        :param interval: Interval between two consecutive points in time series
+        :param exchange: Only is applicable to stocks and cryptocurrencies
+        otherwise is ignored
+            Exchange where instrument is traded
+        :param country: Only is applicable to stocks otherwise is ignored
+            Country where instrument is traded
+        :param time_period: Number of periods to average over. Must be at
+        least 1
+        :param outputsize: Number of last datapoints to retrieve
+        :param start_date: Start date of selection, accepts "yyyy-MM-dd hh:mm:ss" and "yyyy-MM-dd" formats
+        :param end_date: End date of selection, accepts "yyyy-MM-dd hh:mm:ss" and "yyyy-MM-dd" formats
+        :param dp: Specifies number of decimal places for floating values
+        :param timezone: Timezone at which output datetime will be displayed
+            Exchange for local exchange time2. UTC for datetime at universal
+            UTC standard3. Timezone name according to IANA Time Zone
+            Database. E.g. America/New_York, Asia/Singapore. Full list of
+            timezones can be found here.Take note that IANA Timezone name is
+            case-sensitive.
+
+        :returns: chart builder
+        :rtype: ChartEndpoint
+        """
+        ep = RVOLEndpoint(
+            ctx=self.ctx,
+            symbol=self.ctx.defaults["symbol"],
+            interval=self.ctx.defaults["interval"],
+            exchange=exchange,
+            country=country,
+            time_period=time_period,
+            outputsize=outputsize,
+            start_date=start_date,
+            end_date=end_date,
+            dp=dp,
+            timezone=timezone,
+        )
+        return self._with_endpoint(ep)
+
+    @force_use_kwargs
+    @apply_context_defaults
     def with_sar(
             self,
             acceleration="0.02",
