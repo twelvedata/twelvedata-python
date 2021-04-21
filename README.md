@@ -17,7 +17,7 @@ Official python library for [Twelve Data](https://twelvedata.com). This package 
 * Full support for static and dynamic charts.
 * Real-time WebSockets data stream.
 
-Free **API Key** is required. It might be requested [here](https://twelvedata.com/apikey)
+Free **API Key** is required. It might be requested [here](https://twelvedata.com/pricing)
 
 ## Installation
 
@@ -53,7 +53,7 @@ pip install twelvedata[pandas,matplotlib,plotly]
 | ---------- | :----------------------------------------------------------- | ------ | -------- |
 | symbol     | stock ticker (e.g. AAPL, MSFT); <br />physical currency pair (e.g. EUR/USD, CNY/JPY);<br />digital currency pair (BTC/USD, XRP/ETH) | string | yes      |
 | interval   | time frame: 1min, 5min, 15min, 30min, 45min, 1h, 2h, 4h, 8h, 1day, 1week, 1month | string | yes      |
-| apikey     | your personal API Key, if you don't have one - get it [here](https://twelvedata.com/apikey) | string | yes      |
+| apikey     | your personal API Key, if you don't have one - get it [here](https://twelvedata.com/pricing) | string | yes      |
 | exchange   | if symbol is traded in multiple exchanges specify the desired one, valid for both stocks and cryptocurrencies | string | no       |
 | country    | if symbol is traded in multiple countries specify the desired one, valid for stocks | string | no       |
 | outputsize | number of data points to retrieve                            | int    | no       |
@@ -274,7 +274,7 @@ Applicable methods on `.websocket()` object:
 * `ws.disconnect()`: close connection with WebSocket server
 * `ws.keep_alive()`: run connection forever until closed
 
-**Important**. Do not forget that WebSockets are only available for Twelve Data Prime [members](https://twelvedata.com/prime).
+**Important**. Do not forget that WebSockets are only available for Twelve Data users on the [Pro plan](https://twelvedata.com/pricing) and above.
 
 ## Support
 
