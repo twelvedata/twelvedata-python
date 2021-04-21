@@ -175,19 +175,19 @@ def convert_collection_to_pandas_multi_index(val):
     for symbol, data in val.items():
         if data['status'] == 'error':
             raise BadRequestError(data['message'])
-        columns = list(data['values'][-1].keys())[1:]
-        break
+        keys = list(data['values'][-1].keys())[1:]
+        if len(keys) > len(columns):
+            columns = keys
 
     arr = []
     multi_index = []
 
-    for idx, key in enumerate(val):
-        response = val[key]
-        if 'values' in response:
-            values = response['values']
+    for symbol, data in val.items():
+        if 'values' in data:
+            values = data['values']
             for quote in values:
                 candle = tuple(quote.values())
-                multi_index.append((key, candle[0]))
+                multi_index.append((symbol, candle[0]))
                 arr.append(candle[1:])
 
     idx = pandas.MultiIndex.from_tuples(multi_index)
