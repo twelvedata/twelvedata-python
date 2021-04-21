@@ -179,16 +179,18 @@ def convert_collection_to_pandas_multi_index(val):
         break
 
     arr = []
-    major_idx = []
+    multi_index = []
+
     for idx, key in enumerate(val):
         response = val[key]
         if 'values' in response:
-            major_idx.append(key)
-            for quote in response['values']:
-                arr.append(tuple(quote.values())[1:])
+            values = response['values']
+            for quote in values:
+                candle = tuple(quote.values())
+                multi_index.append((key, candle[0]))
+                arr.append(candle[1:])
 
-    minor_idx = [d['datetime'] for d in val[list(major_idx)[0]]['values']]
-    idx = pandas.MultiIndex.from_product([major_idx, minor_idx])
+    idx = pandas.MultiIndex.from_tuples(multi_index)
 
     return pandas.DataFrame(arr, index=idx, columns=columns)
 
