@@ -274,7 +274,7 @@ Applicable methods on `.websocket()` object:
 * `ws.disconnect()`: close connection with WebSocket server
 * `ws.keep_alive()`: run connection forever until closed
 
-**Important**. Do not forget that WebSockets are only available for Twelve Data users on the [Pro plan](https://twelvedata.com/pricing) and above.
+**Important**. Do not forget that WebSockets are only available for Twelve Data users on the [Pro plan](https://twelvedata.com/pricing) and above. Checkout the trial [here](https://support.twelvedata.com/en/articles/5335783-trial).
 
 ## Support
 
