@@ -1107,6 +1107,71 @@ class TimeSeries(object):
 
     @force_use_kwargs
     @apply_context_defaults
+    def with_pivot_points_hl(
+            self,
+            exchange=None,
+            country=None,
+            time_period=10,
+            outputsize=30,
+            start_date=None,
+            end_date=None,
+            dp=5,
+            timezone="Exchange",
+            prepost="false"
+    ):
+        """
+        Creates request builder for Pivot Points (High/Low)
+
+        Pivot Points (High/Low) (PIVOT_POINTS_HL) are typically used to foresee potential price reversals.
+
+        This API call returns meta and time series values of PIVOT_POINTS_HL. Meta object
+        consists of general information about requested technical indicator.
+        Time series is the array of objects ordered by time descending updated
+        realtime.
+
+        :param symbol: Instrument symbol, can be any stock, forex or
+            cryptocurrency E.g. AAPL, EUR/USD, ETH/BTC, ...
+        :param interval: Interval between two consecutive points in time series
+        :param exchange: Only is applicable to stocks and cryptocurrencies
+        otherwise is ignored
+            Exchange where instrument is traded
+        :param country: Only is applicable to stocks otherwise is ignored
+            Country where instrument is traded
+        :param time_period: Number of periods to average over. Must be at
+        least 1
+        :param outputsize: Number of last datapoints to retrieve
+        :param start_date: Start date of selection, accepts "yyyy-MM-dd hh:mm:ss" and "yyyy-MM-dd" formats
+        :param end_date: End date of selection, accepts "yyyy-MM-dd hh:mm:ss" and "yyyy-MM-dd" formats
+        :param dp: Specifies number of decimal places for floating values
+        :param timezone: Timezone at which output datetime will be displayed
+            Exchange for local exchange time2. UTC for datetime at universal
+            UTC standard3. Timezone name according to IANA Time Zone
+            Database. E.g. America/New_York, Asia/Singapore. Full list of
+            timezones can be found here.Take note that IANA Timezone name is
+            case-sensitive.
+        :param prepost: Available at the 1min, 5min, 15min, and 30min intervals for all US equities.
+
+        :returns: chart builder
+        :rtype: ChartEndpoint
+        """
+        ep = PivotPointsHLEndpoint(
+            ctx=self.ctx,
+            symbol=self.ctx.defaults["symbol"],
+            interval=self.ctx.defaults["interval"],
+            exchange=exchange,
+            country=country,
+            time_period=time_period,
+            outputsize=outputsize,
+            start_date=start_date,
+            end_date=end_date,
+            dp=dp,
+            timezone=timezone,
+            prepost=prepost
+        )
+        return self._with_endpoint(ep)
+
+    @force_use_kwargs
+    @apply_context_defaults
     def with_bop(
             self,
             exchange=None,
@@ -3242,6 +3307,89 @@ class TimeSeries(object):
             fast_period=fast_period,
             slow_period=slow_period,
             signal_period=signal_period,
+            outputsize=outputsize,
+            start_date=start_date,
+            end_date=end_date,
+            dp=dp,
+            timezone=timezone,
+            prepost=prepost
+        )
+        return self._with_endpoint(ep)
+
+    @force_use_kwargs
+    @apply_context_defaults
+    def with_macd_slope(
+            self,
+            exchange=None,
+            country=None,
+            series_type="close",
+            fast_period="12",
+            slow_period="26",
+            signal_period="9",
+            time_period="9",
+            outputsize=30,
+            start_date=None,
+            end_date=None,
+            dp=5,
+            timezone="Exchange",
+            prepost="false"
+    ):
+        """
+        Add request builder of MACD_SLOPE to chart builder
+
+        Moving Average Convergence Divergence Regression Slope(MACD_SLOPE) shows
+        slopes of macd line, signal line, and histogram. A negative and rising slope
+        shows improvement within a downtrend. A positive and falling slope shows
+        deterioration within an uptrend. MACD has an unstable period of ~ 100.
+
+        This API call returns meta and time series values of MACD SLOPE. Meta object
+        consists of general information about requested technical indicator.
+        Time series is the array of objects ordered by time desceding updated
+        realtime.
+
+        :param symbol: Instrument symbol, can be any stock, forex or
+            cryptocurrency E.g. AAPL, EUR/USD, ETH/BTC, ...
+        :param interval: Interval between two consecutive points in time series
+        :param exchange: Only is applicable to stocks and cryptocurrencies
+        otherwise is ignored
+            Exchange where instrument is traded
+        :param country: Only is applicable to stocks otherwise is ignored
+            Country where instrument is traded
+        :param series_type: Price type on which technical indicator is
+        calculated
+        :param fast_period: Number of periods for fast moving average. Must
+        be at least 1
+        :param slow_period: Number of periods for slow moving average. Must
+        be at least 1
+        :param signal_period: Number of periods to be plotted on MACD line.
+        Must be at least 1
+        :param time_period: Number of periods to average over. Takes values in the range from 1 to 800.
+        :param outputsize: Number of last datapoints to retrieve
+        :param start_date: Start date of selection, accepts "yyyy-MM-dd hh:mm:ss" and "yyyy-MM-dd" formats
+        :param end_date: End date of selection, accepts "yyyy-MM-dd hh:mm:ss" and "yyyy-MM-dd" formats
+        :param dp: Specifies number of decimal places for floating values
+        :param timezone: Timezone at which output datetime will be displayed
+            Exchange for local exchange time2. UTC for datetime at universal
+            UTC standard3. Timezone name according to IANA Time Zone
+            Database. E.g. America/New_York, Asia/Singapore. Full list of
+            timezones can be found here.Take note that IANA Timezone name is
+            case-sensitive.
+        :param prepost: Available at the 1min, 5min, 15min, and 30min intervals for all US equities.
+
+        :returns: chart builder
+        :rtype: ChartEndpoint
+        """
+        ep = MACDSlopeEndpoint(
+            ctx=self.ctx,
+            symbol=self.ctx.defaults["symbol"],
+            interval=self.ctx.defaults["interval"],
+            exchange=exchange,
+            country=country,
+            series_type=series_type,
+            fast_period=fast_period,
+            slow_period=slow_period,
+            signal_period=signal_period,
+            time_period=time_period,
             outputsize=outputsize,
             start_date=start_date,
             end_date=end_date,

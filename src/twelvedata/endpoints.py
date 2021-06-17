@@ -50,8 +50,9 @@ __all__ = (
     "LINEARREGSLOPEEndpoint",
     "LNEndpoint",
     "LOG10Endpoint",
-    "MACDEXTEndpoint",
     "MACDEndpoint",
+    "MACDSlopeEndpoint",
+    "MACDEXTEndpoint",
     "MAMAEndpoint",
     "MAEndpoint",
     "MAXINDEXEndpoint",
@@ -74,6 +75,7 @@ __all__ = (
     "PLUS_DMEndpoint",
     "PPOEndpoint",
     "PercentBEndpoint",
+    "PivotPointsHLEndpoint",
     "ROCPEndpoint",
     "ROCR100Endpoint",
     "ROCREndpoint",
@@ -1409,6 +1411,74 @@ class PercentBEndpoint(AsMixin, Endpoint):
         params["format"] = format
         params["apikey"] = self.ctx.apikey
         return self.ctx.http_client.get("/percent_b", params=params)
+
+
+class PivotPointsHLEndpoint(AsMixin, Endpoint):
+    _name = "pivot_points_hl"
+
+    def __init__(
+        self,
+        ctx,
+        symbol,
+        interval,
+        exchange=None,
+        country=None,
+        time_period=10,
+        outputsize=30,
+        start_date=None,
+        end_date=None,
+        dp=5,
+        timezone="Exchange",
+        order="desc",
+        prepost="false"
+    ):
+        self.is_indicator = True
+        self.meta_name = "pivot_points_hl"
+        self.ctx = ctx
+        self.symbol = symbol
+        self.interval = interval
+        self.exchange = exchange
+        self.country = country
+        self.time_period = time_period
+        self.outputsize = outputsize
+        self.start_date = start_date
+        self.end_date = end_date
+        self.dp = dp
+        self.timezone = timezone
+        self.order = order
+        self.prepost = prepost
+
+    def execute(self, format="JSON"):
+
+        params = {}
+        if self.symbol is not None:
+            params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.interval is not None:
+            params["interval"] = self.interval
+        if self.exchange is not None:
+            params["exchange"] = self.exchange
+        if self.country is not None:
+            params["country"] = self.country
+        if self.time_period is not None:
+            params["time_period"] = self.time_period
+        if self.outputsize is not None:
+            params["outputsize"] = self.outputsize
+        if self.start_date is not None:
+            params["start_date"] = self.start_date
+        if self.end_date is not None:
+            params["end_date"] = self.end_date
+        if self.dp is not None:
+            params["dp"] = self.dp
+        if self.timezone is not None:
+            params["timezone"] = self.timezone
+        if self.order is not None:
+            params["order"] = self.order
+        if self.prepost is not None:
+            params["prepost"] = self.prepost
+
+        params["format"] = format
+        params["apikey"] = self.ctx.apikey
+        return self.ctx.http_client.get("/pivot_points_hl", params=params)
 
 
 class BOPEndpoint(AsMixin, Endpoint):
@@ -3633,6 +3703,90 @@ class MACDEndpoint(AsMixin, Endpoint):
         params["format"] = format
         params["apikey"] = self.ctx.apikey
         return self.ctx.http_client.get("/macd", params=params)
+
+
+class MACDSlopeEndpoint(AsMixin, Endpoint):
+    _name = "macd_slope"
+
+    def __init__(
+        self,
+        ctx,
+        symbol,
+        interval,
+        exchange=None,
+        country=None,
+        series_type="close",
+        fast_period=12,
+        slow_period=26,
+        signal_period=9,
+        time_period=9,
+        outputsize=30,
+        start_date=None,
+        end_date=None,
+        dp=5,
+        timezone="Exchange",
+        order="desc",
+        prepost="false"
+    ):
+        self.is_indicator = True
+        self.meta_name = "macd_slope"
+        self.ctx = ctx
+        self.symbol = symbol
+        self.interval = interval
+        self.exchange = exchange
+        self.country = country
+        self.series_type = series_type
+        self.fast_period = fast_period
+        self.slow_period = slow_period
+        self.signal_period = signal_period
+        self.time_period = time_period
+        self.outputsize = outputsize
+        self.start_date = start_date
+        self.end_date = end_date
+        self.dp = dp
+        self.timezone = timezone
+        self.order = order
+        self.prepost = prepost
+
+    def execute(self, format="JSON"):
+
+        params = {}
+        if self.symbol is not None:
+            params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.interval is not None:
+            params["interval"] = self.interval
+        if self.exchange is not None:
+            params["exchange"] = self.exchange
+        if self.country is not None:
+            params["country"] = self.country
+        if self.series_type is not None:
+            params["series_type"] = self.series_type
+        if self.fast_period is not None:
+            params["fast_period"] = self.fast_period
+        if self.slow_period is not None:
+            params["slow_period"] = self.slow_period
+        if self.signal_period is not None:
+            params["signal_period"] = self.signal_period
+        if self.time_period is not None:
+            params["time_period"] = self.time_period
+        if self.outputsize is not None:
+            params["outputsize"] = self.outputsize
+        if self.start_date is not None:
+            params["start_date"] = self.start_date
+        if self.end_date is not None:
+            params["end_date"] = self.end_date
+        if self.dp is not None:
+            params["dp"] = self.dp
+        if self.timezone is not None:
+            params["timezone"] = self.timezone
+        if self.order is not None:
+            params["order"] = self.order
+        if self.prepost is not None:
+            params["prepost"] = self.prepost
+
+        params["format"] = format
+        params["apikey"] = self.ctx.apikey
+        return self.ctx.http_client.get("/macd_slope", params=params)
 
 
 class MACDEXTEndpoint(AsMixin, Endpoint):
