@@ -75,7 +75,7 @@ The basis for all methods is the `TDClient` object that takes the required `apik
 from twelvedata import TDClient
 # Initialize client - apikey parameter is requiered
 td = TDClient(apikey="YOUR_API_KEY_HERE")
-# Construct the necessary time serie
+# Construct the necessary time series
 ts = td.time_series(
     symbol="AAPL",
     interval="1min",
