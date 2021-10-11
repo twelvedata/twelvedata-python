@@ -11,8 +11,23 @@ from .endpoints import (
     TechnicalIndicatorsListEndpoint,
     SymbolSearchEndpoint,
     EarliestTimestampEndpoint,
+    LogoEndpoint,
+    ProfileEndpoint,
+    DividendsEndpoint,
+    SplitsEndpoint,
     EarningsEndpoint,
     EarningsCalendarEndpoint,
+    IPOCalendarEndpoint,
+    StatisticsEndpoint,
+    InsiderTransactionsEndpoint,
+    IncomeStatementEndpoint,
+    BalanceSheetEndpoint,
+    CashFlowEndpoint,
+    OptionsExpirationEndpoint,
+    OptionsChainEndpoint,
+    KeyExecutivesEndpoint,
+    InstitutionalHoldersEndpoint,
+    FundHoldersEndpoint,
 )
 from .http_client import DefaultHttpClient
 from .time_series import TimeSeries
@@ -195,6 +210,58 @@ class TDClient:
         ctx.defaults.update(defaults)
         return TimeSeries(ctx)
 
+    def get_logo(self, **defaults):
+        """
+        Creates request builder for Logo
+
+        Returns logo of the company.
+
+        :returns: request builder instance
+        :rtype: LogoRequestBuilder
+        """
+        ctx = Context.from_context(self.ctx)
+        ctx.defaults.update(defaults)
+        return LogoEndpoint(ctx, **ctx.defaults)
+
+    def get_profile(self, **defaults):
+        """
+        Creates request builder for Profile
+
+        Returns general information about the company.
+
+        :returns: request builder instance
+        :rtype: ProfileRequestBuilder
+        """
+        ctx = Context.from_context(self.ctx)
+        ctx.defaults.update(defaults)
+        return ProfileEndpoint(ctx, **ctx.defaults)
+
+    def get_dividends(self, **defaults):
+        """
+        Creates request builder for Dividends
+
+        Returns the amount of dividends paid out for the last 10+ years.
+
+        :returns: request builder instance
+        :rtype: DividendsRequestBuilder
+        """
+        ctx = Context.from_context(self.ctx)
+        ctx.defaults.update(defaults)
+        return DividendsEndpoint(ctx, **ctx.defaults)
+
+    def get_splits(self, **defaults):
+        """
+        Creates request builder for Splits
+
+        Returns the date and the split factor of shares of the company for the last 10+ years.
+
+        :returns: request builder instance
+        :rtype: SplitsRequestBuilder
+        """
+        ctx = Context.from_context(self.ctx)
+        ctx.defaults.update(defaults)
+        return SplitsEndpoint(ctx, **ctx.defaults)
+
     def get_earnings(self, **defaults):
         """
         Creates request builder for Earnings
@@ -222,3 +289,153 @@ class TDClient:
         ctx = Context.from_context(self.ctx)
         ctx.defaults.update(defaults)
         return EarningsCalendarEndpoint(ctx, **ctx.defaults)
+
+    def get_ipo_calendar(self, **defaults):
+        """
+        Creates request builder for IPO Calendar
+
+        This endpoint returns past, today, or upcoming IPOs.
+
+        :returns: request builder instance
+        :rtype: IPOCalendarRequestBuilder
+        """
+        ctx = Context.from_context(self.ctx)
+        ctx.defaults.update(defaults)
+        return IPOCalendarEndpoint(ctx, **ctx.defaults)
+
+    def get_statistics(self, **defaults):
+        """
+        Creates request builder for Statistics
+
+        Returns current overview of company’s main statistics including valuation metrics and financials.
+
+        :returns: request builder instance
+        :rtype: StatisticsRequestBuilder
+        """
+        ctx = Context.from_context(self.ctx)
+        ctx.defaults.update(defaults)
+        return StatisticsEndpoint(ctx, **ctx.defaults)
+
+    def get_insider_transactions(self, **defaults):
+        """
+        Creates request builder for Insider Transactions
+
+        Returns trading information performed by insiders.
+
+        :returns: request builder instance
+        :rtype: InsiderTransactionsRequestBuilder
+        """
+        ctx = Context.from_context(self.ctx)
+        ctx.defaults.update(defaults)
+        return InsiderTransactionsEndpoint(ctx, **ctx.defaults)
+
+    def get_income_statement(self, **defaults):
+        """
+        Creates request builder for Income Statement
+
+        Returns complete income statement of a company and shows the company’s revenues and expenses
+        during a period (annual or quarter).
+
+        :returns: request builder instance
+        :rtype: IncomeStatementRequestBuilder
+        """
+        ctx = Context.from_context(self.ctx)
+        ctx.defaults.update(defaults)
+        return IncomeStatementEndpoint(ctx, **ctx.defaults)
+
+    def get_balance_sheet(self, **defaults):
+        """
+        Creates request builder for Balance Sheet
+
+        Returns complete balance sheet of a company showing the summary of assets, liabilities, and
+        shareholders’ equity.
+
+        :returns: request builder instance
+        :rtype: BalanceSheetRequestBuilder
+        """
+        ctx = Context.from_context(self.ctx)
+        ctx.defaults.update(defaults)
+        return BalanceSheetEndpoint(ctx, **ctx.defaults)
+
+    def get_cash_flow(self, **defaults):
+        """
+        Creates request builder for Cash Flow
+
+        Returns complete cash flow of a company showing net the amount of cash and cash equivalents
+        being transferred into and out of a business.
+
+        :returns: request builder instance
+        :rtype: CashFlowRequestBuilder
+        """
+        ctx = Context.from_context(self.ctx)
+        ctx.defaults.update(defaults)
+        return CashFlowEndpoint(ctx, **ctx.defaults)
+
+    def get_options_expiration(self, **defaults):
+        """
+        Creates request builder for Options Expiration
+
+        Return the expiration dates of an option contract.
+
+        :returns: request builder instance
+        :rtype: OptionsExpirationRequestBuilder
+        """
+        ctx = Context.from_context(self.ctx)
+        ctx.defaults.update(defaults)
+        return OptionsExpirationEndpoint(ctx, **ctx.defaults)
+
+    def get_options_chain(self, **defaults):
+        """
+        Creates request builder for Options Chain
+
+        Returns a listing of all available options contracts for given security. It shows all listed puts,
+        calls, their expiration, strike prices, and pricing information for a single underlying asset
+        within a given maturity period.
+
+        :returns: request builder instance
+        :rtype: OptionsChainRequestBuilder
+        """
+        ctx = Context.from_context(self.ctx)
+        ctx.defaults.update(defaults)
+        return OptionsChainEndpoint(ctx, **ctx.defaults)
+
+    def get_key_executives(self, **defaults):
+        """
+        Creates request builder for Key Executives
+
+        Returns individuals at the highest level of management of an organization.
+
+        :returns: request builder instance
+        :rtype: KeyExecutivesRequestBuilder
+        """
+        ctx = Context.from_context(self.ctx)
+        ctx.defaults.update(defaults)
+        return KeyExecutivesEndpoint(ctx, **ctx.defaults)
+
+    def get_institutional_holders(self, **defaults):
+        """
+        Creates request builder for Institutional Holders
+
+        Returns the amount of the company’s available stock owned by institutions (pension funds,
+        insurance companies, investment firms, private foundations, endowments, or other large
+        entities that manage funds on behalf of others).
+
+        :returns: request builder instance
+        :rtype: InstitutionalHoldersRequestBuilder
+        """
+        ctx = Context.from_context(self.ctx)
+        ctx.defaults.update(defaults)
+        return InstitutionalHoldersEndpoint(ctx, **ctx.defaults)
+
+    def get_fund_holders(self, **defaults):
+        """
+        Creates request builder for Fund Holders
+
+        Returns the amount of the company’s available stock owned by mutual fund holders.
+
+        :returns: request builder instance
+        :rtype: FundHoldersRequestBuilder
+        """
+        ctx = Context.from_context(self.ctx)
+        ctx.defaults.update(defaults)
+        return FundHoldersEndpoint(ctx, **ctx.defaults)

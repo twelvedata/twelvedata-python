@@ -126,6 +126,82 @@ def test_earliest_timestamp():
     td.get_earliest_timestamp(symbol="AAPL", interval="1day").as_json()
 
 
+def test_logo():
+    td = _init_client()
+    td.get_logo(symbol="AAPL").as_json()
+
+
+def test_profile():
+    td = _init_client()
+    td.get_profile(symbol="AAPL").as_json()
+
+
+def test_dividends():
+    td = _init_client()
+    td.get_dividends(symbol="AAPL").as_json()
+
+
+def test_splits():
+    td = _init_client()
+    td.get_splits(symbol="AAPL").as_json()
+
+
+def test_earnings():
+    td = _init_client()
+    td.get_earnings(symbol="AAPL").as_json()
+
+
+def test_statistics():
+    td = _init_client()
+    td.get_statistics(symbol="AAPL").as_json()
+
+
+def test_insider_transactions():
+    td = _init_client()
+    td.get_insider_transactions(symbol="AAPL").as_json()
+
+
+def test_income_statement():
+    td = _init_client()
+    td.get_income_statement(symbol="AAPL").as_json()
+
+
+def test_balance_sheet():
+    td = _init_client()
+    td.get_balance_sheet(symbol="AAPL").as_json()
+
+
+def test_cash_flow():
+    td = _init_client()
+    td.get_cash_flow(symbol="AAPL").as_json()
+
+
+def test_options_expiration():
+    td = _init_client()
+    td.get_options_expiration(symbol="AAPL").as_json()
+
+
+def test_options_chain():
+    td = _init_client()
+    expiration_date = td.get_options_expiration(symbol="AAPL").as_json()['dates'][0]
+    td.get_options_chain(symbol="AAPL", expiration_date=expiration_date).as_json()
+
+
+def test_key_executives():
+    td = _init_client()
+    td.get_key_executives(symbol="AAPL").as_json()
+
+
+def test_institutional_holders():
+    td = _init_client()
+    td.get_institutional_holders(symbol="AAPL").as_json()
+
+
+def test_fund_holders():
+    td = _init_client()
+    td.get_fund_holders(symbol="AAPL").as_json()
+
+
 def test_time_series():
     ts = _init_ts()
     ts.as_json()
@@ -1034,13 +1110,13 @@ def test_chart_pandas():
 
 
 def test_string_batch():
-    batch_ts = _init_batch_ts('AAPL,RY,EUR/USD,BTC/USD:Binance,')
+    batch_ts = _init_batch_ts('AAPL,QQQ,IXIC,EUR/USD,BTC/USD,')
     batch_ts.with_macd().with_stoch().as_json()
     batch_ts.with_ema().with_bbands().as_pandas()
 
 
 def test_list_batch():
-    batch_ts = _init_batch_ts(['AAPL', 'RY', 'EUR/USD', 'BTC/USD:Binance'])
+    batch_ts = _init_batch_ts(['AAPL', 'QQQ', 'IXIC', 'EUR/USD', 'BTC/USD'])
     batch_ts.with_macd().with_stoch().as_json()
     batch_ts.with_ema().with_bbands().as_pandas()
 

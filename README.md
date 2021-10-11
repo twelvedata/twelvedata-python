@@ -12,6 +12,7 @@
 Official python library for [Twelve Data](https://twelvedata.com). This package supports all main features of the service:
 
 * Get stock, forex and cryptocurrency OHLC time series.
+* Companies' profiles, financials, options, and much more fundamentals data.
 * Get over 100+ technical indicators.
 * Output data as: `json`, `csv`, `pandas`
 * Full support for static and dynamic charts.
@@ -42,6 +43,7 @@ pip install twelvedata[pandas,matplotlib,plotly]
 ## Usage
 
 * [Time series](#Time-series)
+* [Fundamentals](#Fundamentals)
 * [Technical Indicators](#Technical-indicators)
 * [Batch requests](#Batch-requests)
 * [Charts](#Charts)
@@ -73,17 +75,64 @@ The basis for all methods is the `TDClient` object that takes the required `apik
 
 ```python
 from twelvedata import TDClient
+
 # Initialize client - apikey parameter is requiered
 td = TDClient(apikey="YOUR_API_KEY_HERE")
-# Construct the necessary time serie
+
+# Construct the necessary time series
 ts = td.time_series(
     symbol="AAPL",
     interval="1min",
     outputsize=10,
     timezone="America/New_York",
 )
+
 # Returns pandas.DataFrame
 ts.as_pandas()
+```
+
+### Fundamentals
+
+All fundamentals are supported across global markets. Refer to API documentation [here](https://twelvedata.com/docs#fundamentals) and find out which countries support which fundamentals by visiting [this](https://support.twelvedata.com/en/articles/5621131-fundamentals-coverage) page.
+
+* `.get_logo(symbol, exchange, country, type)`
+* `.get_profile(symbol, exchange, country, type)`
+* `.get_dividends(symbol, exchange, country, type)`
+* `.get_splits(symbol, exchange, country, type)`
+* `.get_earnings(symbol, exchange, country, type, period, outputsize, start_date, end_date)`
+* `.get_earnings_calendar(symbol, exchange, country, period, start_date, end_date)`
+* `.get_ipo_calendar(symbol, exchange, country, start_date, end_date)`
+* `.get_statistics(symbol, exchange, country, type)`
+* `.get_insider_transactions(symbol, exchange, country, type)`
+* `.get_income_statement(symbol, exchange, country, type, period, start_date, end_date)`
+* `.get_balance_sheet(symbol, exchange, country, type, period, start_date, end_date)`
+* `.get_cash_flow(symbol, exchange, country, type, period, start_date, end_date)`
+* `.get_options_expiration(symbol, exchange, country, type)`
+* `.get_options_chain(symbol, exchange, country, type, expiration_date, option_id, side)`
+* `.get_key_executives(symbol, exchange, country, type)`
+* `.get_institutional_holders(symbol, exchange, country, type)`
+* `.get_fund_holders(symbol, exchange, country, type)`
+
+Only JSON format is supported accessible via `.as_json()`
+
+```python
+from twelvedata import TDClient
+
+td = TDClient(apikey="YOUR_API_KEY_HERE")
+
+# Get all expiration dates
+expirations = td.get_options_expiration(
+    symbol="AAPL",
+).as_json()['dates']
+
+# Extract only put options for the soonest expiration date
+put_options = td.get_options_chain(
+    symbol="AAPL",
+    side="put",
+    expiration_date=expirations[0]
+).as_json()['puts']
+
+print(put_options)
 ```
 
 ### Technical indicators
@@ -107,6 +156,7 @@ ts = td.time_series(
     outputsize=22,
     timezone="America/New_York",
 )
+
 # Returns: OHLC, BBANDS(close, 20, 2, EMA), PLUS_DI(9), WMA(20), WMA(40)
 ts.with_bbands(ma_type="EMA").with_plus_di().with_wma(time_period=20).with_wma(time_period=40).as_pandas()
 
@@ -201,6 +251,7 @@ ts = td.time_series(
     outputsize=75,
     interval="1day",
 )
+
 # 1. Returns OHLCV chart
 ts.as_pyplot_figure()
 
@@ -225,6 +276,7 @@ ts = td.time_series(
     outputsize=50,
     interval="1week",
 )
+
 # 1. Returns OHLCV chart
 ts.as_plotly_figure()
 
@@ -278,14 +330,17 @@ Applicable methods on `.websocket()` object:
 
 ## Support
 
-Visit our official website [https://twelvedata.com](https://twelvedata.com) or reach out to the Twelve Data team at [info@twelvedata.com](mailto:info@twelvedata.com?subject=Python%20library%20question).
+Visit our official website [contact page](https://twelvedata.com/contact) or [support center](https://support.twelvedata.com/).
 
 ## Announcements
 
-Follow [@TwelveData](https://twitter.com/TwelveData) on Twitter for announcements and updates about this library.
+Follow us for announcements and updates about this library.
+* [Twitter](https://twitter.com/TwelveData)
+* [Telegram](https://t.me/twelvedata)
 
 ## Roadmap
 
+- [x] Fundamentals 
 - [x] WebSocket
 - [x] Batch requests
 - [x] Custom plots coloring

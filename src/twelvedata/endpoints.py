@@ -537,6 +537,166 @@ class EarliestTimestampEndpoint(AsMixin, Endpoint):
         return self.ctx.http_client.get("/earliest_timestamp", params=params)
 
 
+class LogoEndpoint(AsMixin, Endpoint):
+    _name = "logo"
+
+    def __init__(self,
+                 ctx,
+                 symbol=None,
+                 exchange=None,
+                 country=None,
+                 type=None,
+    ):
+        self.ctx = ctx
+        self.symbol = symbol
+        self.exchange = exchange
+        self.country = country
+        self.type = type
+        self.method = "logo"
+
+    def execute(self, format="JSON"):
+
+        params = {}
+        if self.symbol is not None:
+            params["symbol"] = self.symbol
+        if self.exchange is not None:
+            params["exchange"] = self.exchange
+        if self.country is not None:
+            params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
+
+        params["format"] = format
+        params["apikey"] = self.ctx.apikey
+        return self.ctx.http_client.get("/logo", params=params)
+
+
+class ProfileEndpoint(AsMixin, Endpoint):
+    _name = "profile"
+
+    def __init__(self,
+                 ctx,
+                 symbol=None,
+                 exchange=None,
+                 country=None,
+                 type=None,
+    ):
+        self.ctx = ctx
+        self.symbol = symbol
+        self.exchange = exchange
+        self.country = country
+        self.type = type
+        self.method = "profile"
+
+    def execute(self, format="JSON"):
+
+        params = {}
+        if self.symbol is not None:
+            params["symbol"] = self.symbol
+        if self.exchange is not None:
+            params["exchange"] = self.exchange
+        if self.country is not None:
+            params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
+
+        params["format"] = format
+        params["apikey"] = self.ctx.apikey
+        return self.ctx.http_client.get("/profile", params=params)
+
+
+class DividendsEndpoint(AsMixin, Endpoint):
+    _name = "dividends"
+
+    def __init__(self,
+                 ctx,
+                 symbol=None,
+                 exchange=None,
+                 country=None,
+                 type=None,
+                 range=None,
+                 start_date=None,
+                 end_date=None,
+    ):
+        self.ctx = ctx
+        self.symbol = symbol
+        self.exchange = exchange
+        self.country = country
+        self.type = type
+        self.range = range
+        self.start_date = start_date
+        self.end_date = end_date
+        self.method = "dividends"
+
+    def execute(self, format="JSON"):
+
+        params = {}
+        if self.symbol is not None:
+            params["symbol"] = self.symbol
+        if self.exchange is not None:
+            params["exchange"] = self.exchange
+        if self.country is not None:
+            params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
+        if self.range is not None:
+            params["range"] = self.range
+        if self.start_date is not None:
+            params["start_date"] = self.start_date
+        if self.end_date is not None:
+            params["end_date"] = self.end_date
+
+        params["format"] = format
+        params["apikey"] = self.ctx.apikey
+        return self.ctx.http_client.get("/dividends", params=params)
+
+
+class SplitsEndpoint(AsMixin, Endpoint):
+    _name = "splits"
+
+    def __init__(self,
+                 ctx,
+                 symbol=None,
+                 exchange=None,
+                 country=None,
+                 type=None,
+                 range=None,
+                 start_date=None,
+                 end_date=None,
+    ):
+        self.ctx = ctx
+        self.symbol = symbol
+        self.exchange = exchange
+        self.country = country
+        self.type = type
+        self.range = range
+        self.start_date = start_date
+        self.end_date = end_date
+        self.method = "splits"
+
+    def execute(self, format="JSON"):
+
+        params = {}
+        if self.symbol is not None:
+            params["symbol"] = self.symbol
+        if self.exchange is not None:
+            params["exchange"] = self.exchange
+        if self.country is not None:
+            params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
+        if self.range is not None:
+            params["range"] = self.range
+        if self.start_date is not None:
+            params["start_date"] = self.start_date
+        if self.end_date is not None:
+            params["end_date"] = self.end_date
+
+        params["format"] = format
+        params["apikey"] = self.ctx.apikey
+        return self.ctx.http_client.get("/splits", params=params)
+
+
 class EarningsEndpoint(AsMixin, Endpoint):
     _name = "earnings"
 
@@ -631,6 +791,436 @@ class EarningsCalendarEndpoint(AsMixin, Endpoint):
         params["format"] = format
         params["apikey"] = self.ctx.apikey
         return self.ctx.http_client.get("/earnings_calendar", params=params)
+
+
+class IPOCalendarEndpoint(AsMixin, Endpoint):
+    _name = "ipo_calendar"
+
+    def __init__(self,
+                 ctx,
+                 symbol=None,
+                 exchange=None,
+                 country=None,
+                 type=None,
+                 start_date=None,
+                 end_date=None,
+    ):
+        self.ctx = ctx
+        self.symbol = symbol
+        self.exchange = exchange
+        self.country = country
+        self.type = type
+        self.start_date = start_date
+        self.end_date = end_date
+        self.method = "ipo_calendar"
+
+    def execute(self, format="JSON"):
+
+        params = {}
+        if self.symbol is not None:
+            params["symbol"] = self.symbol
+        if self.exchange is not None:
+            params["exchange"] = self.exchange
+        if self.country is not None:
+            params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
+        if self.start_date is not None:
+            params["start_date"] = self.start_date
+        if self.end_date is not None:
+            params["end_date"] = self.end_date
+
+        params["format"] = format
+        params["apikey"] = self.ctx.apikey
+        return self.ctx.http_client.get("/ipo_calendar", params=params)
+
+
+class StatisticsEndpoint(AsMixin, Endpoint):
+    _name = "statistics"
+
+    def __init__(self,
+                 ctx,
+                 symbol=None,
+                 exchange=None,
+                 country=None,
+                 type=None,
+    ):
+        self.ctx = ctx
+        self.symbol = symbol
+        self.exchange = exchange
+        self.country = country
+        self.type = type
+        self.method = "statistics"
+
+    def execute(self, format="JSON"):
+
+        params = {}
+        if self.symbol is not None:
+            params["symbol"] = self.symbol
+        if self.exchange is not None:
+            params["exchange"] = self.exchange
+        if self.country is not None:
+            params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
+
+        params["format"] = format
+        params["apikey"] = self.ctx.apikey
+        return self.ctx.http_client.get("/statistics", params=params)
+
+
+class InsiderTransactionsEndpoint(AsMixin, Endpoint):
+    _name = "insider_transactions"
+
+    def __init__(self,
+                 ctx,
+                 symbol=None,
+                 exchange=None,
+                 country=None,
+                 type=None,
+    ):
+        self.ctx = ctx
+        self.symbol = symbol
+        self.exchange = exchange
+        self.country = country
+        self.type = type
+        self.method = "insider_transactions"
+
+    def execute(self, format="JSON"):
+
+        params = {}
+        if self.symbol is not None:
+            params["symbol"] = self.symbol
+        if self.exchange is not None:
+            params["exchange"] = self.exchange
+        if self.country is not None:
+            params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
+
+        params["format"] = format
+        params["apikey"] = self.ctx.apikey
+        return self.ctx.http_client.get("/insider_transactions", params=params)
+
+
+class IncomeStatementEndpoint(AsMixin, Endpoint):
+    _name = "income_statement"
+
+    def __init__(self,
+                 ctx,
+                 symbol=None,
+                 exchange=None,
+                 country=None,
+                 type=None,
+                 period=None,
+                 start_date=None,
+                 end_date=None,
+    ):
+        self.ctx = ctx
+        self.symbol = symbol
+        self.exchange = exchange
+        self.country = country
+        self.type = type
+        self.period = period
+        self.start_date = start_date
+        self.end_date = end_date
+        self.method = "income_statement"
+
+    def execute(self, format="JSON"):
+
+        params = {}
+        if self.symbol is not None:
+            params["symbol"] = self.symbol
+        if self.exchange is not None:
+            params["exchange"] = self.exchange
+        if self.country is not None:
+            params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
+        if self.period is not None:
+            params["period"] = self.period
+        if self.start_date is not None:
+            params["start_date"] = self.start_date
+        if self.end_date is not None:
+            params["end_date"] = self.end_date
+
+        params["format"] = format
+        params["apikey"] = self.ctx.apikey
+        return self.ctx.http_client.get("/income_statement", params=params)
+
+
+class BalanceSheetEndpoint(AsMixin, Endpoint):
+    _name = "balance_sheet"
+
+    def __init__(self,
+                 ctx,
+                 symbol=None,
+                 exchange=None,
+                 country=None,
+                 type=None,
+                 period=None,
+                 start_date=None,
+                 end_date=None,
+    ):
+        self.ctx = ctx
+        self.symbol = symbol
+        self.exchange = exchange
+        self.country = country
+        self.type = type
+        self.period = period
+        self.start_date = start_date
+        self.end_date = end_date
+        self.method = "balance_sheet"
+
+    def execute(self, format="JSON"):
+
+        params = {}
+        if self.symbol is not None:
+            params["symbol"] = self.symbol
+        if self.exchange is not None:
+            params["exchange"] = self.exchange
+        if self.country is not None:
+            params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
+        if self.period is not None:
+            params["period"] = self.period
+        if self.start_date is not None:
+            params["start_date"] = self.start_date
+        if self.end_date is not None:
+            params["end_date"] = self.end_date
+
+        params["format"] = format
+        params["apikey"] = self.ctx.apikey
+        return self.ctx.http_client.get("/balance_sheet", params=params)
+
+
+class CashFlowEndpoint(AsMixin, Endpoint):
+    _name = "cash_flow"
+
+    def __init__(self,
+                 ctx,
+                 symbol=None,
+                 exchange=None,
+                 country=None,
+                 type=None,
+                 period=None,
+                 start_date=None,
+                 end_date=None,
+    ):
+        self.ctx = ctx
+        self.symbol = symbol
+        self.exchange = exchange
+        self.country = country
+        self.type = type
+        self.period = period
+        self.start_date = start_date
+        self.end_date = end_date
+        self.method = "cash_flow"
+
+    def execute(self, format="JSON"):
+
+        params = {}
+        if self.symbol is not None:
+            params["symbol"] = self.symbol
+        if self.exchange is not None:
+            params["exchange"] = self.exchange
+        if self.country is not None:
+            params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
+        if self.period is not None:
+            params["period"] = self.period
+        if self.start_date is not None:
+            params["start_date"] = self.start_date
+        if self.end_date is not None:
+            params["end_date"] = self.end_date
+
+        params["format"] = format
+        params["apikey"] = self.ctx.apikey
+        return self.ctx.http_client.get("/cash_flow", params=params)
+
+
+class OptionsExpirationEndpoint(AsMixin, Endpoint):
+    _name = "options_expiration"
+
+    def __init__(self,
+                 ctx,
+                 symbol=None,
+                 exchange=None,
+                 country=None,
+                 type=None,
+    ):
+        self.ctx = ctx
+        self.symbol = symbol
+        self.exchange = exchange
+        self.country = country
+        self.type = type
+        self.method = "options_expiration"
+
+    def execute(self, format="JSON"):
+
+        params = {}
+        if self.symbol is not None:
+            params["symbol"] = self.symbol
+        if self.exchange is not None:
+            params["exchange"] = self.exchange
+        if self.country is not None:
+            params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
+
+        params["format"] = format
+        params["apikey"] = self.ctx.apikey
+        return self.ctx.http_client.get("/options/expiration", params=params)
+
+
+class OptionsChainEndpoint(AsMixin, Endpoint):
+    _name = "options_chain"
+
+    def __init__(self,
+                 ctx,
+                 symbol=None,
+                 exchange=None,
+                 country=None,
+                 type=None,
+                 expiration_date=None,
+                 option_id=None,
+                 side=None,
+    ):
+        self.ctx = ctx
+        self.symbol = symbol
+        self.exchange = exchange
+        self.country = country
+        self.type = type
+        self.expiration_date = expiration_date
+        self.option_id = option_id
+        self.side = side
+        self.method = "options_chain"
+
+    def execute(self, format="JSON"):
+
+        params = {}
+        if self.symbol is not None:
+            params["symbol"] = self.symbol
+        if self.exchange is not None:
+            params["exchange"] = self.exchange
+        if self.country is not None:
+            params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
+        if self.expiration_date is not None:
+            params["expiration_date"] = self.expiration_date
+        if self.option_id is not None:
+            params["option_id"] = self.option_id
+        if self.side is not None:
+            params["side"] = self.side
+
+        params["format"] = format
+        params["apikey"] = self.ctx.apikey
+        return self.ctx.http_client.get("/options/chain", params=params)
+
+
+class KeyExecutivesEndpoint(AsMixin, Endpoint):
+    _name = "key_executives"
+
+    def __init__(self,
+                 ctx,
+                 symbol=None,
+                 exchange=None,
+                 country=None,
+                 type=None,
+    ):
+        self.ctx = ctx
+        self.symbol = symbol
+        self.exchange = exchange
+        self.country = country
+        self.type = type
+        self.method = "key_executives"
+
+    def execute(self, format="JSON"):
+
+        params = {}
+        if self.symbol is not None:
+            params["symbol"] = self.symbol
+        if self.exchange is not None:
+            params["exchange"] = self.exchange
+        if self.country is not None:
+            params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
+
+        params["format"] = format
+        params["apikey"] = self.ctx.apikey
+        return self.ctx.http_client.get("/key_executives", params=params)
+
+
+class InstitutionalHoldersEndpoint(AsMixin, Endpoint):
+    _name = "institutional_holders"
+
+    def __init__(self,
+                 ctx,
+                 symbol=None,
+                 exchange=None,
+                 country=None,
+                 type=None,
+    ):
+        self.ctx = ctx
+        self.symbol = symbol
+        self.exchange = exchange
+        self.country = country
+        self.type = type
+        self.method = "institutional_holders"
+
+    def execute(self, format="JSON"):
+
+        params = {}
+        if self.symbol is not None:
+            params["symbol"] = self.symbol
+        if self.exchange is not None:
+            params["exchange"] = self.exchange
+        if self.country is not None:
+            params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
+
+        params["format"] = format
+        params["apikey"] = self.ctx.apikey
+        return self.ctx.http_client.get("/institutional_holders", params=params)
+
+
+class FundHoldersEndpoint(AsMixin, Endpoint):
+    _name = "fund_holders"
+
+    def __init__(self,
+                 ctx,
+                 symbol=None,
+                 exchange=None,
+                 country=None,
+                 type=None,
+    ):
+        self.ctx = ctx
+        self.symbol = symbol
+        self.exchange = exchange
+        self.country = country
+        self.type = type
+        self.method = "fund_holders"
+
+    def execute(self, format="JSON"):
+
+        params = {}
+        if self.symbol is not None:
+            params["symbol"] = self.symbol
+        if self.exchange is not None:
+            params["exchange"] = self.exchange
+        if self.country is not None:
+            params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
+
+        params["format"] = format
+        params["apikey"] = self.ctx.apikey
+        return self.ctx.http_client.get("/fund_holders", params=params)
 
 
 class ADEndpoint(AsMixin, Endpoint):
