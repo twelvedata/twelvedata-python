@@ -7,18 +7,18 @@
 <a href="https://github.com/twelvedata/twelvedata-python/blob/master/LICENSE.txt"><img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="License"></a>
 </p>
 
-# Twelve Data Python Client for APIs & WebSockets
+# Twelve Data Python Client for financial API & WebSocket
 
 Official python library for [Twelve Data](https://twelvedata.com). This package supports all main features of the service:
 
-* Get stock, forex and cryptocurrency OHLC time series.
+* Get stock, forex, cryptocurrency, ETF, and index OHLC time series.
 * Companies' profiles, financials, options, and much more fundamentals data.
 * Get over 100+ technical indicators.
 * Output data as: `json`, `csv`, `pandas`
 * Full support for static and dynamic charts.
-* Real-time WebSockets data stream.
+* Real-time WebSocket data stream.
 
-Free **API Key** is required. It might be requested [here](https://twelvedata.com/pricing)
+**API key** is required. If you don't have it yet, get it by signing up [here](https://twelvedata.com/pricing).
 
 ## Installation
 
@@ -34,20 +34,21 @@ Or install with pandas support:
 pip install twelvedata[pandas]
 ```
 
-Or install with pandas, matplotlib and plotly support used for charting:
+Or install with pandas, matplotlib, plotly, and websocket support:
 
 ```
-pip install twelvedata[pandas,matplotlib,plotly]
+pip install twelvedata[pandas,matplotlib,plotly,websocket-client]
 ```
 
 ## Usage
 
-* [Time series](#Time-series)
+* [Core data](#Time-series)
 * [Fundamentals](#Fundamentals)
-* [Technical Indicators](#Technical-indicators)
+* [Technical indicators](#Technical-indicators)
 * [Batch requests](#Batch-requests)
 * [Charts](#Charts)
 * [WebSocket](#Websocket)
+* [Advanced](#Advanced)
 
 ##### Supported parameters
 
@@ -63,6 +64,7 @@ pip install twelvedata[pandas,matplotlib,plotly]
 | start_date | start date and time of sampling period, accepts `yyyy-MM-dd` or `yyyy-MM-dd hh:mm:ss` format | string | no       |
 | end_date   | end date and time of sampling period, accepts `yyyy-MM-dd` or `yyyy-MM-dd hh:mm:ss` format | string | no       |
 | order      | sorting order of the time series output, supports `desc` or `asc`  | string | no       |
+| date       | Could be the exact date, e.g. `2021-10-27`, or in human language `today` or `yesterday` | string | no       |
 
 The basis for all methods is the `TDClient` object that takes the required `apikey` parameter.
 
@@ -72,6 +74,7 @@ The basis for all methods is the `TDClient` object that takes the required `apik
   * `ts.as_json()` - will return JSON array
   * `ts.as_csv()` - will return CSV with header
   * `ts.as_pandas()` - will return pandas.DataFrame
+  * `ts.as_url()` - will return list of URLs used
 
 ```python
 from twelvedata import TDClient
@@ -90,6 +93,13 @@ ts = td.time_series(
 # Returns pandas.DataFrame
 ts.as_pandas()
 ```
+
+Other core data endpoints:
+* Exchange rate - `TDClient.exchange_rate(symbol)`
+* Currency conversion - `TDClient.currency_conversion(symbol, amount)`
+* Quote - `TDClient.quote()` takes parameters as `.time_series()`
+* Real-time price - `TDClient.price()` takes parameters as `.time_series()`
+* End of day price - `TDClient.eod()` takes parameters as `.time_series()`
 
 ### Fundamentals
 
@@ -137,11 +147,11 @@ print(put_options)
 
 ### Technical indicators
 
-This Python library supports all indicators implemented by Twelve Data. Full list of 100+ technical indicators   may be found in [API Documentation](https://twelvedata.com/docs).
+This Python library supports all indicators implemented by Twelve Data. Full list of 100+ technical indicators   may be found in [API documentation](https://twelvedata.com/docs).
 
 * Technical indicators are part of `TDClient.time_series()` object.
 * It shares the universal format `TDClient.time_series().with_{Technical Indicator Name}`, e.g. `.with_bbands()`, `.with_percent_b()`, `.with_macd()`
-* Indicator object accepts all parameters according to its specification in [API Documentation](https://twelvedata.com/docs), e.g. `.with_bbands()` accepts: `series_type`, `time_period`, `sd`, `ma_type`. If parameter is not provided it will be set to default value.
+* Indicator object accepts all parameters according to its specification in [API documentation](https://twelvedata.com/docs), e.g. `.with_bbands()` accepts: `series_type`, `time_period`, `sd`, `ma_type`. If parameter is not provided it will be set to default value.
 * Indicators may be used in arbitrary order and conjugated, e.g. `TDClient.time_series().with_aroon().with_adx().with_ema()`
 * By default, technical indicator will output with OHLC values. If you do not need OHLC, specify `TDClient.time_series().without_ohlc()`
 
@@ -327,6 +337,47 @@ Applicable methods on `.websocket()` object:
 * `ws.keep_alive()`: run connection forever until closed
 
 **Important**. Do not forget that WebSockets are only available for Twelve Data users on the [Pro plan](https://twelvedata.com/pricing) and above. Checkout the trial [here](https://support.twelvedata.com/en/articles/5335783-trial).
+
+### Advanced
+
+#### Custom endpoint
+This method is used to request unrepresented endpoints on this package, but which are available at Twelve Data.
+
+```python
+endpoint = td.custom_endpoint(
+    name="quote",
+    symbol="AAPL",
+)
+endpoint.as_json()
+```
+
+The only required parameter is `name` which should be identical to the endpoint used at Twelve Data. All others can be custom and will vary according to the method.
+
+#### Debugging
+When the method doesn't return the desired data or throws an error, it might be helpful to understand and analyze the API query behind it.
+Add `.as_url()` to any method or chain of methods, and it will return the list of used URLs.
+
+```python
+ts = td.time_series(
+    symbol="AAPL",
+    interval="1min",
+    outputsize=10,
+    timezone="America/New_York",
+).with_bbands().with_ema()
+
+ts.as_url()
+# ['https://api.twelvedata.com/time_series?symbol=AAPL&interval=1min&outputsize=10&dp=5&timezone=America/New_York&order=desc&prepost=false&format=JSON&apikey=demo', 
+# 'https://api.twelvedata.com/bbands?symbol=AAPL&interval=1min&series_type=close&time_period=20&sd=2&ma_type=SMA&outputsize=10&dp=5&timezone=America/New_York&order=desc&prepost=false&format=JSON&apikey=demo', 
+# 'https://api.twelvedata.com/ema?symbol=AAPL&interval=1min&series_type=close&time_period=9&outputsize=10&dp=5&timezone=America/New_York&order=desc&prepost=false&format=JSON&apikey=demo']
+
+```
+
+#### API usage
+This method gives an overview of the current API credits consumption.
+
+```python
+api = td.api_usage()
+```
 
 ## Support
 
