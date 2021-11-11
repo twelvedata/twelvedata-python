@@ -1,5 +1,6 @@
 from .context import Context
 from .endpoints import (
+    CustomEndpoint,
     StocksListEndpoint,
     StockExchangesListEndpoint,
     ForexPairsListEndpoint,
@@ -49,6 +50,20 @@ class TDClient:
         ctx = Context.from_context(self.ctx)
         ctx.defaults.update(defaults)
         return TDWebSocket(ctx)
+
+    def custom_endpoint(self, **defaults):
+        """
+        Creates request builder for custom endpoint
+
+        This method can request any GET endpoint available at Twelve Data
+        with a custom set of parameters
+
+        :returns: request builder instance
+        :rtype: CustomEndpointRequestBuilder
+        """
+        ctx = Context.from_context(self.ctx)
+        ctx.defaults.update(defaults)
+        return CustomEndpoint(ctx, **ctx.defaults)
 
     def get_stocks_list(self, **defaults):
         """

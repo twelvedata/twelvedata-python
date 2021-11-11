@@ -190,6 +190,29 @@ class Endpoint(object):
         )
 
 
+class CustomEndpoint(AsMixin, Endpoint):
+    _name = "custom_endpoint"
+
+    def __init__(
+            self,
+            ctx,
+            name,
+            **kwargs
+    ):
+        self.ctx = ctx
+        self.name = name
+        self.params = kwargs
+
+    def execute(self, format="JSON", debug=False):
+        self.params["format"] = format
+        self.params["apikey"] = self.ctx.apikey
+        endpoint = "/" + self.name
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, self.params)
+        return self.ctx.http_client.get(endpoint, params=self.params)
+
+
 class TimeSeriesEndpoint(AsMixin, Endpoint):
     _name = "time_series"
 
