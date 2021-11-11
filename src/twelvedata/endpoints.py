@@ -127,6 +127,11 @@ def get_symbol(symbol) -> (str, bool):
             return ','.join(symbol), True
 
 
+def build_url(base, endpoint, params):
+    query_params = '&'.join(['{}={}'.format(k, v) for k, v in params.items()])
+    return '{}{}?{}'.format(base, endpoint, query_params)
+
+
 class Endpoint(object):
     # This flag indicates that the current endpoint is a price chart
     is_price = False
@@ -217,7 +222,7 @@ class TimeSeriesEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -245,7 +250,11 @@ class TimeSeriesEndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/time_series", params=params)
+        endpoint = "/time_series"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class TechIndicatorsMetaEndpoint(AsMixin, Endpoint):
@@ -254,11 +263,15 @@ class TechIndicatorsMetaEndpoint(AsMixin, Endpoint):
     def __init__(self, ctx):
         self.ctx = ctx
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
         params = {}
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/technical_indicators", params=params)
+        endpoint = "/technical_indicators"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class StocksListEndpoint(AsMixin, Endpoint):
@@ -277,7 +290,7 @@ class StocksListEndpoint(AsMixin, Endpoint):
         self.country = country
         self.type = type
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -291,7 +304,11 @@ class StocksListEndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/stocks", params=params)
+        endpoint = "/stocks"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class StockExchangesListEndpoint(AsMixin, Endpoint):
@@ -300,13 +317,17 @@ class StockExchangesListEndpoint(AsMixin, Endpoint):
     def __init__(self, ctx):
         self.ctx = ctx
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/stock_exchanges", params=params)
+        endpoint = "/stock_exchanges"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class ForexPairsListEndpoint(AsMixin, Endpoint):
@@ -323,7 +344,7 @@ class ForexPairsListEndpoint(AsMixin, Endpoint):
         self.currency_base = currency_base
         self.currency_quote = currency_quote
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -335,7 +356,11 @@ class ForexPairsListEndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/forex_pairs", params=params)
+        endpoint = "/forex_pairs"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class CryptocurrenciesListEndpoint(AsMixin, Endpoint):
@@ -354,7 +379,7 @@ class CryptocurrenciesListEndpoint(AsMixin, Endpoint):
         self.currency_base = currency_base
         self.currency_quote = currency_quote
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -368,7 +393,11 @@ class CryptocurrenciesListEndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/cryptocurrencies", params=params)
+        endpoint = "/cryptocurrencies"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class ETFListEndpoint(AsMixin, Endpoint):
@@ -383,7 +412,7 @@ class ETFListEndpoint(AsMixin, Endpoint):
         self.symbol = symbol
         self.exchange = exchange
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -393,7 +422,11 @@ class ETFListEndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/etf", params=params)
+        endpoint = "/etf"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class IndicesListEndpoint(AsMixin, Endpoint):
@@ -408,7 +441,7 @@ class IndicesListEndpoint(AsMixin, Endpoint):
         self.symbol = symbol
         self.exchange = exchange
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -418,7 +451,11 @@ class IndicesListEndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/indices", params=params)
+        endpoint = "/indices"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class ExchangesListEndpoint(AsMixin, Endpoint):
@@ -437,7 +474,7 @@ class ExchangesListEndpoint(AsMixin, Endpoint):
         self.code = code
         self.country = country
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.type is not None:
@@ -451,7 +488,11 @@ class ExchangesListEndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/exchanges", params=params)
+        endpoint = "/exchanges"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class CryptocurrencyExchangesListEndpoint(AsMixin, Endpoint):
@@ -460,13 +501,17 @@ class CryptocurrencyExchangesListEndpoint(AsMixin, Endpoint):
     def __init__(self, ctx):
         self.ctx = ctx
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/cryptocurrency_exchanges", params=params)
+        endpoint = "/cryptocurrency_exchanges"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class TechnicalIndicatorsListEndpoint(AsMixin, Endpoint):
@@ -475,12 +520,16 @@ class TechnicalIndicatorsListEndpoint(AsMixin, Endpoint):
     def __init__(self, ctx):
         self.ctx = ctx
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
 
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/technical_indicators", params=params)
+        endpoint = "/technical_indicators"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class SymbolSearchEndpoint(AsMixin, Endpoint):
@@ -495,7 +544,7 @@ class SymbolSearchEndpoint(AsMixin, Endpoint):
         self.symbol = symbol
         self.outputsize = outputsize
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -505,7 +554,11 @@ class SymbolSearchEndpoint(AsMixin, Endpoint):
 
         params["format"] = "JSON"
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/symbol_search", params=params)
+        endpoint = "/symbol_search"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class EarliestTimestampEndpoint(AsMixin, Endpoint):
@@ -522,7 +575,7 @@ class EarliestTimestampEndpoint(AsMixin, Endpoint):
         self.interval = interval
         self.exchange = exchange
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -534,7 +587,11 @@ class EarliestTimestampEndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/earliest_timestamp", params=params)
+        endpoint = "/earliest_timestamp"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class LogoEndpoint(AsMixin, Endpoint):
@@ -554,7 +611,7 @@ class LogoEndpoint(AsMixin, Endpoint):
         self.type = type
         self.method = "logo"
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -568,7 +625,11 @@ class LogoEndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/logo", params=params)
+        endpoint = "/logo"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class ProfileEndpoint(AsMixin, Endpoint):
@@ -588,7 +649,7 @@ class ProfileEndpoint(AsMixin, Endpoint):
         self.type = type
         self.method = "profile"
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -602,7 +663,11 @@ class ProfileEndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/profile", params=params)
+        endpoint = "/profile"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class DividendsEndpoint(AsMixin, Endpoint):
@@ -628,7 +693,7 @@ class DividendsEndpoint(AsMixin, Endpoint):
         self.end_date = end_date
         self.method = "dividends"
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -648,7 +713,11 @@ class DividendsEndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/dividends", params=params)
+        endpoint = "/dividends"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class SplitsEndpoint(AsMixin, Endpoint):
@@ -674,7 +743,7 @@ class SplitsEndpoint(AsMixin, Endpoint):
         self.end_date = end_date
         self.method = "splits"
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -694,7 +763,11 @@ class SplitsEndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/splits", params=params)
+        endpoint = "/splits"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class EarningsEndpoint(AsMixin, Endpoint):
@@ -722,7 +795,7 @@ class EarningsEndpoint(AsMixin, Endpoint):
         self.end_date = end_date
         self.method = "earnings"
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -744,7 +817,11 @@ class EarningsEndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/earnings", params=params)
+        endpoint = "/earnings"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class EarningsCalendarEndpoint(AsMixin, Endpoint):
@@ -770,7 +847,7 @@ class EarningsCalendarEndpoint(AsMixin, Endpoint):
         self.end_date = end_date
         self.method = "earnings_calendar"
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -790,7 +867,11 @@ class EarningsCalendarEndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/earnings_calendar", params=params)
+        endpoint = "/earnings_calendar"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class IPOCalendarEndpoint(AsMixin, Endpoint):
@@ -814,7 +895,7 @@ class IPOCalendarEndpoint(AsMixin, Endpoint):
         self.end_date = end_date
         self.method = "ipo_calendar"
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -832,7 +913,11 @@ class IPOCalendarEndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/ipo_calendar", params=params)
+        endpoint = "/ipo_calendar"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class StatisticsEndpoint(AsMixin, Endpoint):
@@ -852,7 +937,7 @@ class StatisticsEndpoint(AsMixin, Endpoint):
         self.type = type
         self.method = "statistics"
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -866,7 +951,11 @@ class StatisticsEndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/statistics", params=params)
+        endpoint = "/statistics"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class InsiderTransactionsEndpoint(AsMixin, Endpoint):
@@ -886,7 +975,7 @@ class InsiderTransactionsEndpoint(AsMixin, Endpoint):
         self.type = type
         self.method = "insider_transactions"
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -900,7 +989,11 @@ class InsiderTransactionsEndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/insider_transactions", params=params)
+        endpoint = "/insider_transactions"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class IncomeStatementEndpoint(AsMixin, Endpoint):
@@ -926,7 +1019,7 @@ class IncomeStatementEndpoint(AsMixin, Endpoint):
         self.end_date = end_date
         self.method = "income_statement"
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -946,7 +1039,11 @@ class IncomeStatementEndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/income_statement", params=params)
+        endpoint = "/income_statement"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class BalanceSheetEndpoint(AsMixin, Endpoint):
@@ -972,7 +1069,7 @@ class BalanceSheetEndpoint(AsMixin, Endpoint):
         self.end_date = end_date
         self.method = "balance_sheet"
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -992,7 +1089,11 @@ class BalanceSheetEndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/balance_sheet", params=params)
+        endpoint = "/balance_sheet"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class CashFlowEndpoint(AsMixin, Endpoint):
@@ -1018,7 +1119,7 @@ class CashFlowEndpoint(AsMixin, Endpoint):
         self.end_date = end_date
         self.method = "cash_flow"
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -1038,7 +1139,11 @@ class CashFlowEndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/cash_flow", params=params)
+        endpoint = "/cash_flow"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class OptionsExpirationEndpoint(AsMixin, Endpoint):
@@ -1058,7 +1163,7 @@ class OptionsExpirationEndpoint(AsMixin, Endpoint):
         self.type = type
         self.method = "options_expiration"
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -1072,7 +1177,11 @@ class OptionsExpirationEndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/options/expiration", params=params)
+        endpoint = "/options/expiration"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class OptionsChainEndpoint(AsMixin, Endpoint):
@@ -1098,7 +1207,7 @@ class OptionsChainEndpoint(AsMixin, Endpoint):
         self.side = side
         self.method = "options_chain"
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -1118,7 +1227,11 @@ class OptionsChainEndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/options/chain", params=params)
+        endpoint = "/options/chain"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class KeyExecutivesEndpoint(AsMixin, Endpoint):
@@ -1138,7 +1251,7 @@ class KeyExecutivesEndpoint(AsMixin, Endpoint):
         self.type = type
         self.method = "key_executives"
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -1152,7 +1265,11 @@ class KeyExecutivesEndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/key_executives", params=params)
+        endpoint = "/key_executives"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class InstitutionalHoldersEndpoint(AsMixin, Endpoint):
@@ -1172,7 +1289,7 @@ class InstitutionalHoldersEndpoint(AsMixin, Endpoint):
         self.type = type
         self.method = "institutional_holders"
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -1186,7 +1303,11 @@ class InstitutionalHoldersEndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/institutional_holders", params=params)
+        endpoint = "/institutional_holders"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class FundHoldersEndpoint(AsMixin, Endpoint):
@@ -1206,7 +1327,7 @@ class FundHoldersEndpoint(AsMixin, Endpoint):
         self.type = type
         self.method = "fund_holders"
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -1220,7 +1341,11 @@ class FundHoldersEndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/fund_holders", params=params)
+        endpoint = "/fund_holders"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class ADEndpoint(AsMixin, Endpoint):
@@ -1256,7 +1381,7 @@ class ADEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -1284,7 +1409,11 @@ class ADEndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/ad", params=params)
+        endpoint = "/ad"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class ADOSCEndpoint(AsMixin, Endpoint):
@@ -1324,7 +1453,7 @@ class ADOSCEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -1356,7 +1485,11 @@ class ADOSCEndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/adosc", params=params)
+        endpoint = "/adosc"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class ADXEndpoint(AsMixin, Endpoint):
@@ -1394,7 +1527,7 @@ class ADXEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -1424,7 +1557,11 @@ class ADXEndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/adx", params=params)
+        endpoint = "/adx"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class ADXREndpoint(AsMixin, Endpoint):
@@ -1462,7 +1599,7 @@ class ADXREndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -1492,7 +1629,11 @@ class ADXREndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/adxr", params=params)
+        endpoint = "/adxr"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class APOEndpoint(AsMixin, Endpoint):
@@ -1536,7 +1677,7 @@ class APOEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -1572,7 +1713,11 @@ class APOEndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/apo", params=params)
+        endpoint = "/apo"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class AROONEndpoint(AsMixin, Endpoint):
@@ -1610,7 +1755,7 @@ class AROONEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -1640,7 +1785,11 @@ class AROONEndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/aroon", params=params)
+        endpoint = "/aroon"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class AROONOSCEndpoint(AsMixin, Endpoint):
@@ -1678,7 +1827,7 @@ class AROONOSCEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -1708,7 +1857,11 @@ class AROONOSCEndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/aroonosc", params=params)
+        endpoint = "/aroonosc"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class ATREndpoint(AsMixin, Endpoint):
@@ -1746,7 +1899,7 @@ class ATREndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -1776,7 +1929,11 @@ class ATREndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/atr", params=params)
+        endpoint = "/atr"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class AVGPRICEEndpoint(AsMixin, Endpoint):
@@ -1812,7 +1969,7 @@ class AVGPRICEEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -1840,7 +1997,11 @@ class AVGPRICEEndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/avgprice", params=params)
+        endpoint = "/avgprice"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class BBANDSEndpoint(AsMixin, Endpoint):
@@ -1884,7 +2045,7 @@ class BBANDSEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -1920,7 +2081,11 @@ class BBANDSEndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/bbands", params=params)
+        endpoint = "/bbands"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class PercentBEndpoint(AsMixin, Endpoint):
@@ -1964,7 +2129,7 @@ class PercentBEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -2000,7 +2165,11 @@ class PercentBEndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/percent_b", params=params)
+        endpoint = "/percent_b"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class PivotPointsHLEndpoint(AsMixin, Endpoint):
@@ -2038,7 +2207,7 @@ class PivotPointsHLEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -2068,7 +2237,11 @@ class PivotPointsHLEndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/pivot_points_hl", params=params)
+        endpoint = "/pivot_points_hl"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class BOPEndpoint(AsMixin, Endpoint):
@@ -2104,7 +2277,7 @@ class BOPEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -2132,7 +2305,11 @@ class BOPEndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/bop", params=params)
+        endpoint = "/bop"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class CCIEndpoint(AsMixin, Endpoint):
@@ -2170,7 +2347,7 @@ class CCIEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -2200,7 +2377,11 @@ class CCIEndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/cci", params=params)
+        endpoint = "/cci"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class CEILEndpoint(AsMixin, Endpoint):
@@ -2238,7 +2419,7 @@ class CEILEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -2268,7 +2449,11 @@ class CEILEndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/ceil", params=params)
+        endpoint = "/ceil"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class CMOEndpoint(AsMixin, Endpoint):
@@ -2308,7 +2493,7 @@ class CMOEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -2340,7 +2525,11 @@ class CMOEndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/cmo", params=params)
+        endpoint = "/cmo"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class COPPOCKEndpoint(AsMixin, Endpoint):
@@ -2384,7 +2573,7 @@ class COPPOCKEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -2420,7 +2609,11 @@ class COPPOCKEndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/coppock", params=params)
+        endpoint = "/coppock"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class CEILEndpoint(AsMixin, Endpoint):
@@ -2458,7 +2651,7 @@ class CEILEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -2488,7 +2681,11 @@ class CEILEndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/ceil", params=params)
+        endpoint = "/ceil"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class DEMAEndpoint(AsMixin, Endpoint):
@@ -2528,7 +2725,7 @@ class DEMAEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -2560,7 +2757,11 @@ class DEMAEndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/dema", params=params)
+        endpoint = "/dema"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class DXEndpoint(AsMixin, Endpoint):
@@ -2598,7 +2799,7 @@ class DXEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -2628,7 +2829,11 @@ class DXEndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/dx", params=params)
+        endpoint = "/dx"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class EMAEndpoint(AsMixin, Endpoint):
@@ -2668,7 +2873,7 @@ class EMAEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -2700,7 +2905,11 @@ class EMAEndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/ema", params=params)
+        endpoint = "/ema"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class EXPEndpoint(AsMixin, Endpoint):
@@ -2738,7 +2947,7 @@ class EXPEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -2768,7 +2977,11 @@ class EXPEndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/exp", params=params)
+        endpoint = "/exp"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class FLOOREndpoint(AsMixin, Endpoint):
@@ -2806,7 +3019,7 @@ class FLOOREndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -2836,7 +3049,11 @@ class FLOOREndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/floor", params=params)
+        endpoint = "/floor"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class HEIKINASHICANDLESEndpoint(AsMixin, Endpoint):
@@ -2872,7 +3089,7 @@ class HEIKINASHICANDLESEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -2900,7 +3117,11 @@ class HEIKINASHICANDLESEndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/heikinashicandles", params=params)
+        endpoint = "/heikinashicandles"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class HLC3Endpoint(AsMixin, Endpoint):
@@ -2936,7 +3157,7 @@ class HLC3Endpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -2964,7 +3185,11 @@ class HLC3Endpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/hlc3", params=params)
+        endpoint = "/hlc3"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class HT_DCPERIODEndpoint(AsMixin, Endpoint):
@@ -3002,7 +3227,7 @@ class HT_DCPERIODEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -3032,7 +3257,11 @@ class HT_DCPERIODEndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/ht_dcperiod", params=params)
+        endpoint = "/ht_dcperiod"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class HT_DCPHASEEndpoint(AsMixin, Endpoint):
@@ -3070,7 +3299,7 @@ class HT_DCPHASEEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -3100,7 +3329,11 @@ class HT_DCPHASEEndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/ht_dcphase", params=params)
+        endpoint = "/ht_dcphase"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class HT_PHASOREndpoint(AsMixin, Endpoint):
@@ -3138,7 +3371,7 @@ class HT_PHASOREndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -3168,7 +3401,11 @@ class HT_PHASOREndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/ht_phasor", params=params)
+        endpoint = "/ht_phasor"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class HT_SINEEndpoint(AsMixin, Endpoint):
@@ -3206,7 +3443,7 @@ class HT_SINEEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -3236,7 +3473,11 @@ class HT_SINEEndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/ht_sine", params=params)
+        endpoint = "/ht_sine"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class HT_TRENDLINEEndpoint(AsMixin, Endpoint):
@@ -3274,7 +3515,7 @@ class HT_TRENDLINEEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -3304,7 +3545,11 @@ class HT_TRENDLINEEndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/ht_trendline", params=params)
+        endpoint = "/ht_trendline"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class HT_TRENDMODEEndpoint(AsMixin, Endpoint):
@@ -3342,7 +3587,7 @@ class HT_TRENDMODEEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -3372,7 +3617,11 @@ class HT_TRENDMODEEndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/ht_trendmode", params=params)
+        endpoint = "/ht_trendmode"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class ICHIMOKUEndpoint(AsMixin, Endpoint):
@@ -3418,7 +3667,7 @@ class ICHIMOKUEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -3456,7 +3705,11 @@ class ICHIMOKUEndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/ichimoku", params=params)
+        endpoint = "/ichimoku"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class KAMAEndpoint(AsMixin, Endpoint):
@@ -3496,7 +3749,7 @@ class KAMAEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -3528,7 +3781,11 @@ class KAMAEndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/kama", params=params)
+        endpoint = "/kama"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class KELTNEREndpoint(AsMixin, Endpoint):
@@ -3574,7 +3831,7 @@ class KELTNEREndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -3612,7 +3869,11 @@ class KELTNEREndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/keltner", params=params)
+        endpoint = "/keltner"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class KSTEndpoint(AsMixin, Endpoint):
@@ -3666,7 +3927,7 @@ class KSTEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -3712,7 +3973,11 @@ class KSTEndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/kst", params=params)
+        endpoint = "/kst"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class LINEARREGEndpoint(AsMixin, Endpoint):
@@ -3752,7 +4017,7 @@ class LINEARREGEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -3784,7 +4049,11 @@ class LINEARREGEndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/linearreg", params=params)
+        endpoint = "/linearreg"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class LINEARREGANGLEEndpoint(AsMixin, Endpoint):
@@ -3824,7 +4093,7 @@ class LINEARREGANGLEEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -3856,7 +4125,11 @@ class LINEARREGANGLEEndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/linearregangle", params=params)
+        endpoint = "/linearregangle"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class LINEARREGINTERCEPTEndpoint(AsMixin, Endpoint):
@@ -3896,7 +4169,7 @@ class LINEARREGINTERCEPTEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -3928,7 +4201,11 @@ class LINEARREGINTERCEPTEndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/linearregintercept", params=params)
+        endpoint = "/linearregintercept"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class LINEARREGSLOPEEndpoint(AsMixin, Endpoint):
@@ -3968,7 +4245,7 @@ class LINEARREGSLOPEEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -4000,7 +4277,11 @@ class LINEARREGSLOPEEndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/linearregslope", params=params)
+        endpoint = "/linearregslope"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class LNEndpoint(AsMixin, Endpoint):
@@ -4038,7 +4319,7 @@ class LNEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -4068,7 +4349,11 @@ class LNEndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/ln", params=params)
+        endpoint = "/ln"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class LOG10Endpoint(AsMixin, Endpoint):
@@ -4106,7 +4391,7 @@ class LOG10Endpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -4136,7 +4421,11 @@ class LOG10Endpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/log10", params=params)
+        endpoint = "/log10"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class MAEndpoint(AsMixin, Endpoint):
@@ -4178,7 +4467,7 @@ class MAEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -4212,7 +4501,11 @@ class MAEndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/ma", params=params)
+        endpoint = "/ma"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class MACDEndpoint(AsMixin, Endpoint):
@@ -4256,7 +4549,7 @@ class MACDEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -4292,7 +4585,11 @@ class MACDEndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/macd", params=params)
+        endpoint = "/macd"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class MACDSlopeEndpoint(AsMixin, Endpoint):
@@ -4338,7 +4635,7 @@ class MACDSlopeEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -4376,7 +4673,11 @@ class MACDSlopeEndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/macd_slope", params=params)
+        endpoint = "/macd_slope"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class MACDEXTEndpoint(AsMixin, Endpoint):
@@ -4426,7 +4727,7 @@ class MACDEXTEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -4468,7 +4769,11 @@ class MACDEXTEndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/macdext", params=params)
+        endpoint = "/macdext"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class MAMAEndpoint(AsMixin, Endpoint):
@@ -4510,7 +4815,7 @@ class MAMAEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -4544,7 +4849,11 @@ class MAMAEndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/mama", params=params)
+        endpoint = "/mama"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class MAXEndpoint(AsMixin, Endpoint):
@@ -4584,7 +4893,7 @@ class MAXEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -4616,7 +4925,11 @@ class MAXEndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/max", params=params)
+        endpoint = "/max"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class MAXINDEXEndpoint(AsMixin, Endpoint):
@@ -4656,7 +4969,7 @@ class MAXINDEXEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -4688,7 +5001,11 @@ class MAXINDEXEndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/maxindex", params=params)
+        endpoint = "/maxindex"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class McGinleyDynamicEndpoint(AsMixin, Endpoint):
@@ -4726,7 +5043,7 @@ class McGinleyDynamicEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -4756,7 +5073,11 @@ class McGinleyDynamicEndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/mcginley_dynamic", params=params)
+        endpoint = "/mcginley_dynamic"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class MEDPRICEEndpoint(AsMixin, Endpoint):
@@ -4796,7 +5117,7 @@ class MEDPRICEEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -4828,7 +5149,11 @@ class MEDPRICEEndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/medprice", params=params)
+        endpoint = "/medprice"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class MFIEndpoint(AsMixin, Endpoint):
@@ -4866,7 +5191,7 @@ class MFIEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -4896,7 +5221,11 @@ class MFIEndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/mfi", params=params)
+        endpoint = "/mfi"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class MIDPOINTEndpoint(AsMixin, Endpoint):
@@ -4936,7 +5265,7 @@ class MIDPOINTEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -4968,7 +5297,11 @@ class MIDPOINTEndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/midpoint", params=params)
+        endpoint = "/midpoint"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class MIDPRICEEndpoint(AsMixin, Endpoint):
@@ -5006,7 +5339,7 @@ class MIDPRICEEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -5036,7 +5369,11 @@ class MIDPRICEEndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/midprice", params=params)
+        endpoint = "/midprice"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class MINEndpoint(AsMixin, Endpoint):
@@ -5076,7 +5413,7 @@ class MINEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -5108,7 +5445,11 @@ class MINEndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/min", params=params)
+        endpoint = "/min"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class MININDEXEndpoint(AsMixin, Endpoint):
@@ -5148,7 +5489,7 @@ class MININDEXEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -5180,7 +5521,11 @@ class MININDEXEndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/minindex", params=params)
+        endpoint = "/minindex"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class MINMAXEndpoint(AsMixin, Endpoint):
@@ -5220,7 +5565,7 @@ class MINMAXEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -5252,7 +5597,11 @@ class MINMAXEndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/minmax", params=params)
+        endpoint = "/minmax"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class MINMAXINDEXEndpoint(AsMixin, Endpoint):
@@ -5292,7 +5641,7 @@ class MINMAXINDEXEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -5324,7 +5673,11 @@ class MINMAXINDEXEndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/minmaxindex", params=params)
+        endpoint = "/minmaxindex"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class MINUS_DIEndpoint(AsMixin, Endpoint):
@@ -5362,7 +5715,7 @@ class MINUS_DIEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -5392,7 +5745,11 @@ class MINUS_DIEndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/minus_di", params=params)
+        endpoint = "/minus_di"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class MINUS_DMEndpoint(AsMixin, Endpoint):
@@ -5430,7 +5787,7 @@ class MINUS_DMEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -5460,7 +5817,11 @@ class MINUS_DMEndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/minus_dm", params=params)
+        endpoint = "/minus_dm"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class MOMEndpoint(AsMixin, Endpoint):
@@ -5500,7 +5861,7 @@ class MOMEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -5532,7 +5893,11 @@ class MOMEndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/mom", params=params)
+        endpoint = "/mom"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class NATREndpoint(AsMixin, Endpoint):
@@ -5570,7 +5935,7 @@ class NATREndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -5600,7 +5965,11 @@ class NATREndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/natr", params=params)
+        endpoint = "/natr"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class OBVEndpoint(AsMixin, Endpoint):
@@ -5638,7 +6007,7 @@ class OBVEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -5668,7 +6037,11 @@ class OBVEndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/obv", params=params)
+        endpoint = "/obv"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class PLUS_DIEndpoint(AsMixin, Endpoint):
@@ -5706,7 +6079,7 @@ class PLUS_DIEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -5736,7 +6109,11 @@ class PLUS_DIEndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/plus_di", params=params)
+        endpoint = "/plus_di"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class PLUS_DMEndpoint(AsMixin, Endpoint):
@@ -5774,7 +6151,7 @@ class PLUS_DMEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -5804,7 +6181,11 @@ class PLUS_DMEndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/plus_dm", params=params)
+        endpoint = "/plus_dm"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class PPOEndpoint(AsMixin, Endpoint):
@@ -5848,7 +6229,7 @@ class PPOEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -5884,7 +6265,11 @@ class PPOEndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/ppo", params=params)
+        endpoint = "/ppo"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class ROCEndpoint(AsMixin, Endpoint):
@@ -5924,7 +6309,7 @@ class ROCEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -5956,7 +6341,11 @@ class ROCEndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/roc", params=params)
+        endpoint = "/roc"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class ROCPEndpoint(AsMixin, Endpoint):
@@ -5996,7 +6385,7 @@ class ROCPEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -6028,7 +6417,11 @@ class ROCPEndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/rocp", params=params)
+        endpoint = "/rocp"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class ROCREndpoint(AsMixin, Endpoint):
@@ -6068,7 +6461,7 @@ class ROCREndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -6100,7 +6493,11 @@ class ROCREndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/rocr", params=params)
+        endpoint = "/rocr"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class ROCR100Endpoint(AsMixin, Endpoint):
@@ -6140,7 +6537,7 @@ class ROCR100Endpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -6172,7 +6569,11 @@ class ROCR100Endpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/rocr100", params=params)
+        endpoint = "/rocr100"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class RSIEndpoint(AsMixin, Endpoint):
@@ -6212,7 +6613,7 @@ class RSIEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -6244,7 +6645,11 @@ class RSIEndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/rsi", params=params)
+        endpoint = "/rsi"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class RVOLEndpoint(AsMixin, Endpoint):
@@ -6282,7 +6687,7 @@ class RVOLEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -6312,7 +6717,11 @@ class RVOLEndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/rvol", params=params)
+        endpoint = "/rvol"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class SAREndpoint(AsMixin, Endpoint):
@@ -6352,7 +6761,7 @@ class SAREndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -6384,7 +6793,11 @@ class SAREndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/sar", params=params)
+        endpoint = "/sar"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class SMAEndpoint(AsMixin, Endpoint):
@@ -6424,7 +6837,7 @@ class SMAEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -6456,7 +6869,11 @@ class SMAEndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/sma", params=params)
+        endpoint = "/sma"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class SQRTEndpoint(AsMixin, Endpoint):
@@ -6494,7 +6911,7 @@ class SQRTEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -6524,7 +6941,11 @@ class SQRTEndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/sqrt", params=params)
+        endpoint = "/sqrt"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class STDDEVEndpoint(AsMixin, Endpoint):
@@ -6566,7 +6987,7 @@ class STDDEVEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -6600,7 +7021,11 @@ class STDDEVEndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/stddev", params=params)
+        endpoint = "/stddev"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class STOCHEndpoint(AsMixin, Endpoint):
@@ -6646,7 +7071,7 @@ class STOCHEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -6684,7 +7109,11 @@ class STOCHEndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/stoch", params=params)
+        endpoint = "/stoch"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class STOCHFEndpoint(AsMixin, Endpoint):
@@ -6726,7 +7155,7 @@ class STOCHFEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -6760,7 +7189,11 @@ class STOCHFEndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/stochf", params=params)
+        endpoint = "/stochf"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class STOCHRSIEndpoint(AsMixin, Endpoint):
@@ -6806,7 +7239,7 @@ class STOCHRSIEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -6844,7 +7277,11 @@ class STOCHRSIEndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/stochrsi", params=params)
+        endpoint = "/stochrsi"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class SuperTrendEndpoint(AsMixin, Endpoint):
@@ -6884,7 +7321,7 @@ class SuperTrendEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -6916,7 +7353,11 @@ class SuperTrendEndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/supertrend", params=params)
+        endpoint = "/supertrend"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class T3MAEndpoint(AsMixin, Endpoint):
@@ -6958,7 +7399,7 @@ class T3MAEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -6992,7 +7433,11 @@ class T3MAEndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/t3ma", params=params)
+        endpoint = "/t3ma"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class TEMAEndpoint(AsMixin, Endpoint):
@@ -7032,7 +7477,7 @@ class TEMAEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -7064,7 +7509,11 @@ class TEMAEndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/tema", params=params)
+        endpoint = "/tema"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class TRANGEEndpoint(AsMixin, Endpoint):
@@ -7100,7 +7549,7 @@ class TRANGEEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -7128,7 +7577,11 @@ class TRANGEEndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/trange", params=params)
+        endpoint = "/trange"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class TRIMAEndpoint(AsMixin, Endpoint):
@@ -7168,7 +7621,7 @@ class TRIMAEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -7200,7 +7653,11 @@ class TRIMAEndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/trima", params=params)
+        endpoint = "/trima"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class TSFEndpoint(AsMixin, Endpoint):
@@ -7240,7 +7697,7 @@ class TSFEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -7272,7 +7729,11 @@ class TSFEndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/tsf", params=params)
+        endpoint = "/tsf"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class TYPPRICEEndpoint(AsMixin, Endpoint):
@@ -7308,7 +7769,7 @@ class TYPPRICEEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -7336,7 +7797,11 @@ class TYPPRICEEndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/typprice", params=params)
+        endpoint = "/typprice"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class ULTOSCEndpoint(AsMixin, Endpoint):
@@ -7378,7 +7843,7 @@ class ULTOSCEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -7412,7 +7877,11 @@ class ULTOSCEndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/ultosc", params=params)
+        endpoint = "/ultosc"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class VAREndpoint(AsMixin, Endpoint):
@@ -7452,7 +7921,7 @@ class VAREndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -7484,7 +7953,11 @@ class VAREndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/var", params=params)
+        endpoint = "/var"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class VWAPEndpoint(AsMixin, Endpoint):
@@ -7520,7 +7993,7 @@ class VWAPEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -7548,7 +8021,11 @@ class VWAPEndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/vwap", params=params)
+        endpoint = "/vwap"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class WCLPRICEEndpoint(AsMixin, Endpoint):
@@ -7584,7 +8061,7 @@ class WCLPRICEEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -7612,7 +8089,11 @@ class WCLPRICEEndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/wclprice", params=params)
+        endpoint = "/wclprice"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class WILLREndpoint(AsMixin, Endpoint):
@@ -7650,7 +8131,7 @@ class WILLREndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -7680,7 +8161,11 @@ class WILLREndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/willr", params=params)
+        endpoint = "/willr"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
 
 
 class WMAEndpoint(AsMixin, Endpoint):
@@ -7720,7 +8205,7 @@ class WMAEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
 
-    def execute(self, format="JSON"):
+    def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
@@ -7752,4 +8237,8 @@ class WMAEndpoint(AsMixin, Endpoint):
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        return self.ctx.http_client.get("/wma", params=params)
+        endpoint = "/wma"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)

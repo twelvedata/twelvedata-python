@@ -129,6 +129,14 @@ class TimeSeries(object):
 
         return df
 
+    def as_url(self, **kwargs):
+        urls = list()
+        if self.price_endpoint_enabled:
+            urls.append(self.price_endpoint.as_url())
+        for ep in self.endpoints:
+            urls.append(ep.as_url())
+        return urls
+
     def _has_overlays(self):
         return any(ep.is_overlay for ep in self.endpoints)
 

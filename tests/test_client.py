@@ -73,133 +73,158 @@ def test_get_stocks_list():
     td = _init_client()
     td.get_stocks_list(exchange='NASDAQ').as_json()
     td.get_stocks_list(exchange='NASDAQ').as_csv()
+    td.get_stocks_list(exchange='NASDAQ').as_url()
 
 
 def test_get_stock_exchanges_list():
     td = _init_client()
     td.get_stock_exchanges_list().as_json()
     td.get_stock_exchanges_list().as_csv()
+    td.get_stock_exchanges_list().as_url()
 
 
 def test_get_forex_pairs_list():
     td = _init_client()
     td.get_forex_pairs_list().as_json()
     td.get_forex_pairs_list().as_csv()
+    td.get_forex_pairs_list().as_url()
 
 
 def test_get_cryptocurrencies_list():
     td = _init_client()
     td.get_cryptocurrencies_list().as_json()
     td.get_cryptocurrencies_list().as_csv()
+    td.get_cryptocurrencies_list().as_url()
 
 
 def test_get_etf_list():
     td = _init_client()
     td.get_etf_list().as_json()
     td.get_etf_list().as_csv()
+    td.get_etf_list().as_url()
 
 
 def test_get_indices_list():
     td = _init_client()
     td.get_indices_list().as_json()
     td.get_indices_list().as_csv()
+    td.get_indices_list().as_url()
 
 
 def test_get_technical_indicators_list():
     td = _init_client()
     td.get_technical_indicators_list().as_json()
+    td.get_technical_indicators_list().as_url()
 
 
 def test_get_exchanges_list():
     td = _init_client()
     td.get_exchanges_list().as_json()
     td.get_exchanges_list().as_csv()
+    td.get_exchanges_list().as_url()
 
 
 def test_symbol_search():
     td = _init_client()
     td.symbol_search().as_json()
+    td.symbol_search().as_url()
 
 
 def test_earliest_timestamp():
     td = _init_client()
     td.get_earliest_timestamp(symbol="AAPL", interval="1day").as_json()
+    td.get_earliest_timestamp(symbol="AAPL", interval="1day").as_url()
 
 
 def test_logo():
     td = _init_client()
     td.get_logo(symbol="AAPL").as_json()
+    td.get_logo(symbol="AAPL").as_url()
 
 
 def test_profile():
     td = _init_client()
     td.get_profile(symbol="AAPL").as_json()
+    td.get_profile(symbol="AAPL").as_url()
 
 
 def test_dividends():
     td = _init_client()
     td.get_dividends(symbol="AAPL").as_json()
+    td.get_dividends(symbol="AAPL").as_url()
 
 
 def test_splits():
     td = _init_client()
     td.get_splits(symbol="AAPL").as_json()
+    td.get_splits(symbol="AAPL").as_url()
 
 
 def test_earnings():
     td = _init_client()
     td.get_earnings(symbol="AAPL").as_json()
+    td.get_earnings(symbol="AAPL").as_url()
 
 
 def test_statistics():
     td = _init_client()
     td.get_statistics(symbol="AAPL").as_json()
+    td.get_statistics(symbol="AAPL").as_url()
 
 
 def test_insider_transactions():
     td = _init_client()
     td.get_insider_transactions(symbol="AAPL").as_json()
+    td.get_insider_transactions(symbol="AAPL").as_url()
 
 
 def test_income_statement():
     td = _init_client()
     td.get_income_statement(symbol="AAPL").as_json()
+    td.get_income_statement(symbol="AAPL").as_url()
 
 
 def test_balance_sheet():
     td = _init_client()
     td.get_balance_sheet(symbol="AAPL").as_json()
+    td.get_balance_sheet(symbol="AAPL").as_url()
 
 
 def test_cash_flow():
     td = _init_client()
     td.get_cash_flow(symbol="AAPL").as_json()
+    td.get_cash_flow(symbol="AAPL").as_url()
 
 
 def test_options_expiration():
     td = _init_client()
     td.get_options_expiration(symbol="AAPL").as_json()
+    td.get_options_expiration(symbol="AAPL").as_url()
 
 
 def test_options_chain():
     td = _init_client()
     expiration_date = td.get_options_expiration(symbol="AAPL").as_json()['dates'][0]
     td.get_options_chain(symbol="AAPL", expiration_date=expiration_date).as_json()
+    td.get_options_chain(symbol="AAPL", expiration_date=expiration_date).as_url()
 
 
 def test_key_executives():
     td = _init_client()
     td.get_key_executives(symbol="AAPL").as_json()
+    td.get_key_executives(symbol="AAPL").as_url()
 
 
 def test_institutional_holders():
     td = _init_client()
     td.get_institutional_holders(symbol="AAPL").as_json()
+    td.get_institutional_holders(symbol="AAPL").as_url()
 
 
 def test_fund_holders():
     td = _init_client()
     td.get_fund_holders(symbol="AAPL").as_json()
+    td.get_fund_holders(symbol="AAPL").as_url()
 
 
 def test_time_series():
@@ -208,6 +233,7 @@ def test_time_series():
     ts.as_csv()
     ts.as_pandas()
     ts.as_plotly_figure()
+    ts.as_url()
     plt.close()
 
 
@@ -217,6 +243,7 @@ def test_time_series_get_ad():
     ts.with_ad().as_csv()
     ts.with_ad().as_pandas()
     ts.with_ad().as_plotly_figure()
+    ts.with_ad().as_url()
     plt.close()
 
 
@@ -226,6 +253,7 @@ def test_time_series_get_adosc():
     ts.with_adosc().as_csv()
     ts.with_adosc().as_pandas()
     ts.with_adosc().as_plotly_figure()
+    ts.with_adosc().as_url()
     plt.close()
 
 
@@ -235,6 +263,7 @@ def test_time_series_get_adx():
     ts.with_adx().as_csv()
     ts.with_adx().as_pandas()
     ts.with_adx().as_plotly_figure()
+    ts.with_adx().as_url()
     plt.close()
 
 
@@ -244,6 +273,7 @@ def test_time_series_get_adxr():
     ts.with_adxr().as_csv()
     ts.with_adxr().as_pandas()
     ts.with_adxr().as_plotly_figure()
+    ts.with_adxr().as_url()
     plt.close()
 
 
@@ -253,6 +283,7 @@ def test_time_series_get_apo():
     ts.with_apo().as_csv()
     ts.with_apo().as_pandas()
     ts.with_apo().as_plotly_figure()
+    ts.with_apo().as_url()
     plt.close()
 
 
@@ -262,6 +293,7 @@ def test_time_series_get_aroon():
     ts.with_aroon().as_csv()
     ts.with_aroon().as_pandas()
     ts.with_aroon().as_plotly_figure()
+    ts.with_aroon().as_url()
     plt.close()
 
 
@@ -271,6 +303,7 @@ def test_time_series_get_aroonosc():
     ts.with_aroonosc().as_csv()
     ts.with_aroonosc().as_pandas()
     ts.with_aroonosc().as_plotly_figure()
+    ts.with_aroonosc().as_url()
     plt.close()
 
 
@@ -280,6 +313,7 @@ def test_time_series_get_atr():
     ts.with_atr().as_csv()
     ts.with_atr().as_pandas()
     ts.with_atr().as_plotly_figure()
+    ts.with_atr().as_url()
     plt.close()
 
 
@@ -289,6 +323,7 @@ def test_time_series_get_avgprice():
     ts.with_avgprice().as_csv()
     ts.with_avgprice().as_pandas()
     ts.with_avgprice().as_plotly_figure()
+    ts.with_avgprice().as_url()
     plt.close()
 
 
@@ -298,6 +333,7 @@ def test_time_series_get_bbands():
     ts.with_bbands().as_csv()
     ts.with_bbands().as_pandas()
     ts.with_bbands().as_plotly_figure()
+    ts.with_bbands().as_url()
     plt.close()
 
 
@@ -307,6 +343,7 @@ def test_time_series_get_percent_b():
     ts.with_percent_b().as_csv()
     ts.with_percent_b().as_pandas()
     ts.with_percent_b().as_plotly_figure()
+    ts.with_percent_b().as_url()
     plt.close()
 
 
@@ -316,6 +353,7 @@ def test_time_series_get_bop():
     ts.with_bop().as_csv()
     ts.with_bop().as_pandas()
     ts.with_bop().as_plotly_figure()
+    ts.with_bop().as_url()
     plt.close()
 
 
@@ -325,6 +363,7 @@ def test_time_series_get_cci():
     ts.with_cci().as_csv()
     ts.with_cci().as_pandas()
     ts.with_cci().as_plotly_figure()
+    ts.with_cci().as_url()
     plt.close()
 
 
@@ -334,6 +373,7 @@ def test_time_series_get_ceil():
     ts.with_ceil().as_csv()
     ts.with_ceil().as_pandas()
     ts.with_ceil().as_plotly_figure()
+    ts.with_ceil().as_url()
     plt.close()
 
 
@@ -343,6 +383,7 @@ def test_time_series_get_cmo():
     ts.with_cmo().as_csv()
     ts.with_cmo().as_pandas()
     ts.with_cmo().as_plotly_figure()
+    ts.with_cmo().as_url()
     plt.close()
 
 
@@ -352,6 +393,7 @@ def test_time_series_get_coppock():
     ts.with_coppock().as_csv()
     ts.with_coppock().as_pandas()
     ts.with_coppock().as_plotly_figure()
+    ts.with_coppock().as_url()
     plt.close()
 
 
@@ -361,6 +403,7 @@ def test_time_series_get_dema():
     ts.with_dema().as_csv()
     ts.with_dema().as_pandas()
     ts.with_dema().as_plotly_figure()
+    ts.with_dema().as_url()
     plt.close()
 
 
@@ -370,6 +413,7 @@ def test_time_series_get_dx():
     ts.with_dx().as_csv()
     ts.with_dx().as_pandas()
     ts.with_dx().as_plotly_figure()
+    ts.with_dx().as_url()
     plt.close()
 
 
@@ -379,6 +423,7 @@ def test_time_series_get_ema():
     ts.with_ema().as_csv()
     ts.with_ema().as_pandas()
     ts.with_ema().as_plotly_figure()
+    ts.with_ema().as_url()
     plt.close()
 
 
@@ -388,6 +433,7 @@ def test_time_series_get_exp():
     ts.with_exp().as_csv()
     ts.with_exp().as_pandas()
     ts.with_exp().as_plotly_figure()
+    ts.with_exp().as_url()
     plt.close()
 
 
@@ -397,6 +443,7 @@ def test_time_series_get_floor():
     ts.with_floor().as_csv()
     ts.with_floor().as_pandas()
     ts.with_floor().as_plotly_figure()
+    ts.with_floor().as_url()
     plt.close()
 
 
@@ -406,6 +453,7 @@ def test_time_series_get_heikinashicandles():
     ts.with_heikinashicandles().as_csv()
     ts.with_heikinashicandles().as_pandas()
     ts.with_heikinashicandles().as_plotly_figure()
+    ts.with_heikinashicandles().as_url()
     plt.close()
 
 
@@ -415,6 +463,7 @@ def test_time_series_get_hlc3():
     ts.with_hlc3().as_csv()
     ts.with_hlc3().as_pandas()
     ts.with_hlc3().as_plotly_figure()
+    ts.with_hlc3().as_url()
     plt.close()
 
 
@@ -424,6 +473,7 @@ def test_time_series_get_ht_dcperiod():
     ts.with_ht_dcperiod().as_csv()
     ts.with_ht_dcperiod().as_pandas()
     ts.with_ht_dcperiod().as_plotly_figure()
+    ts.with_ht_dcperiod().as_url()
     plt.close()
 
 
@@ -433,6 +483,7 @@ def test_time_series_get_ht_dcphase():
     ts.with_ht_dcphase().as_csv()
     ts.with_ht_dcphase().as_pandas()
     ts.with_ht_dcphase().as_plotly_figure()
+    ts.with_ht_dcphase().as_url()
     plt.close()
 
 
@@ -442,6 +493,7 @@ def test_time_series_get_ht_phasor():
     ts.with_ht_phasor().as_csv()
     ts.with_ht_phasor().as_pandas()
     ts.with_ht_phasor().as_plotly_figure()
+    ts.with_ht_phasor().as_url()
     plt.close()
 
 
@@ -451,6 +503,7 @@ def test_time_series_get_ht_sine():
     ts.with_ht_sine().as_csv()
     ts.with_ht_sine().as_pandas()
     ts.with_ht_sine().as_plotly_figure()
+    ts.with_ht_sine().as_url()
     plt.close()
 
 
@@ -460,6 +513,7 @@ def test_time_series_get_ht_trendline():
     ts.with_ht_trendline().as_csv()
     ts.with_ht_trendline().as_pandas()
     ts.with_ht_trendline().as_plotly_figure()
+    ts.with_ht_trendline().as_url()
     plt.close()
 
 
@@ -469,6 +523,7 @@ def test_time_series_get_ht_trendmode():
     ts.with_ht_trendmode().as_csv()
     ts.with_ht_trendmode().as_pandas()
     ts.with_ht_trendmode().as_plotly_figure()
+    ts.with_ht_trendmode().as_url()
     plt.close()
 
 
@@ -478,6 +533,7 @@ def test_time_series_get_ichimoku():
     ts.with_ichimoku().as_csv()
     ts.with_ichimoku().as_pandas()
     ts.with_ichimoku().as_plotly_figure()
+    ts.with_ichimoku().as_url()
     plt.close()
 
 
@@ -487,6 +543,7 @@ def test_time_series_get_kama():
     ts.with_kama().as_csv()
     ts.with_kama().as_pandas()
     ts.with_kama().as_plotly_figure()
+    ts.with_kama().as_url()
     plt.close()
 
 
@@ -496,6 +553,7 @@ def test_time_series_get_keltner():
     ts.with_keltner().as_csv()
     ts.with_keltner().as_pandas()
     ts.with_keltner().as_plotly_figure()
+    ts.with_keltner().as_url()
     plt.close()
 
 
@@ -505,6 +563,7 @@ def test_time_series_get_kst():
     ts.with_kst().as_csv()
     ts.with_kst().as_pandas()
     ts.with_kst().as_plotly_figure()
+    ts.with_kst().as_url()
     plt.close()
 
 
@@ -514,6 +573,7 @@ def test_time_series_get_linearreg():
     ts.with_linearreg().as_csv()
     ts.with_linearreg().as_pandas()
     ts.with_linearreg().as_plotly_figure()
+    ts.with_linearreg().as_url()
     plt.close()
 
 
@@ -523,6 +583,7 @@ def test_time_series_get_linearregangle():
     ts.with_linearregangle().as_csv()
     ts.with_linearregangle().as_pandas()
     ts.with_linearregangle().as_plotly_figure()
+    ts.with_linearregangle().as_url()
     plt.close()
 
 
@@ -532,6 +593,7 @@ def test_time_series_get_linearregintercept():
     ts.with_linearregintercept().as_csv()
     ts.with_linearregintercept().as_pandas()
     ts.with_linearregintercept().as_plotly_figure()
+    ts.with_linearregintercept().as_url()
     plt.close()
 
 
@@ -541,6 +603,7 @@ def test_time_series_get_linearregslope():
     ts.with_linearregslope().as_csv()
     ts.with_linearregslope().as_pandas()
     ts.with_linearregslope().as_plotly_figure()
+    ts.with_linearregslope().as_url()
     plt.close()
 
 
@@ -550,6 +613,7 @@ def test_time_series_get_ln():
     ts.with_ln().as_csv()
     ts.with_ln().as_pandas()
     ts.with_ln().as_plotly_figure()
+    ts.with_ln().as_url()
     plt.close()
 
 
@@ -559,6 +623,7 @@ def test_time_series_get_log10():
     ts.with_log10().as_csv()
     ts.with_log10().as_pandas()
     ts.with_log10().as_plotly_figure()
+    ts.with_log10().as_url()
     plt.close()
 
 
@@ -568,6 +633,7 @@ def test_time_series_get_ma():
     ts.with_ma().as_csv()
     ts.with_ma().as_pandas()
     ts.with_ma().as_plotly_figure()
+    ts.with_ma().as_url()
     plt.close()
 
 
@@ -577,6 +643,7 @@ def test_time_series_get_macd():
     ts.with_macd().as_csv()
     ts.with_macd().as_pandas()
     ts.with_macd().as_plotly_figure()
+    ts.with_macd().as_url()
     plt.close()
 
 
@@ -586,6 +653,7 @@ def test_time_series_get_macdext():
     ts.with_macdext().as_csv()
     ts.with_macdext().as_pandas()
     ts.with_macdext().as_plotly_figure()
+    ts.with_macdext().as_url()
     plt.close()
 
 
@@ -595,6 +663,7 @@ def test_time_series_get_mama():
     ts.with_mama().as_csv()
     ts.with_mama().as_pandas()
     ts.with_mama().as_plotly_figure()
+    ts.with_mama().as_url()
     plt.close()
 
 
@@ -604,6 +673,7 @@ def test_time_series_get_max():
     ts.with_max().as_csv()
     ts.with_max().as_pandas()
     ts.with_max().as_plotly_figure()
+    ts.with_max().as_url()
     plt.close()
 
 
@@ -613,6 +683,7 @@ def test_time_series_get_maxindex():
     ts.with_maxindex().as_csv()
     ts.with_maxindex().as_pandas()
     ts.with_maxindex().as_plotly_figure()
+    ts.with_maxindex().as_url()
     plt.close()
 
 
@@ -622,6 +693,7 @@ def test_time_series_get_mcginley_dynamic():
     ts.with_mcginley_dynamic().as_csv()
     ts.with_mcginley_dynamic().as_pandas()
     ts.with_mcginley_dynamic().as_plotly_figure()
+    ts.with_mcginley_dynamic().as_url()
     plt.close()
 
 
@@ -631,6 +703,7 @@ def test_time_series_get_medprice():
     ts.with_medprice().as_csv()
     ts.with_medprice().as_pandas()
     ts.with_medprice().as_plotly_figure()
+    ts.with_medprice().as_url()
     plt.close()
 
 
@@ -640,6 +713,7 @@ def test_time_series_get_mfi():
     ts.with_mfi().as_csv()
     ts.with_mfi().as_pandas()
     ts.with_mfi().as_plotly_figure()
+    ts.with_mfi().as_url()
     plt.close()
 
 
@@ -649,6 +723,7 @@ def test_time_series_get_midpoint():
     ts.with_midpoint().as_csv()
     ts.with_midpoint().as_pandas()
     ts.with_midpoint().as_plotly_figure()
+    ts.with_midpoint().as_url()
     plt.close()
 
 
@@ -658,6 +733,7 @@ def test_time_series_get_midprice():
     ts.with_midprice().as_csv()
     ts.with_midprice().as_pandas()
     ts.with_midprice().as_plotly_figure()
+    ts.with_midprice().as_url()
     plt.close()
 
 
@@ -667,6 +743,7 @@ def test_time_series_get_min():
     ts.with_min().as_csv()
     ts.with_min().as_pandas()
     ts.with_min().as_plotly_figure()
+    ts.with_min().as_url()
     plt.close()
 
 
@@ -676,6 +753,7 @@ def test_time_series_get_minindex():
     ts.with_minindex().as_csv()
     ts.with_minindex().as_pandas()
     ts.with_minindex().as_plotly_figure()
+    ts.with_minindex().as_url()
     plt.close()
 
 
@@ -685,6 +763,7 @@ def test_time_series_get_minmax():
     ts.with_minmax().as_csv()
     ts.with_minmax().as_pandas()
     ts.with_minmax().as_plotly_figure()
+    ts.with_minmax().as_url()
     plt.close()
 
 
@@ -694,6 +773,7 @@ def test_time_series_get_minmaxindex():
     ts.with_minmaxindex().as_csv()
     ts.with_minmaxindex().as_pandas()
     ts.with_minmaxindex().as_plotly_figure()
+    ts.with_minmaxindex().as_url()
     plt.close()
 
 
@@ -703,6 +783,7 @@ def test_time_series_get_minus_di():
     ts.with_minus_di().as_csv()
     ts.with_minus_di().as_pandas()
     ts.with_minus_di().as_plotly_figure()
+    ts.with_minus_di().as_url()
     plt.close()
 
 
@@ -712,6 +793,7 @@ def test_time_series_get_minus_dm():
     ts.with_minus_dm().as_csv()
     ts.with_minus_dm().as_pandas()
     ts.with_minus_dm().as_plotly_figure()
+    ts.with_minus_dm().as_url()
     plt.close()
 
 
@@ -721,6 +803,7 @@ def test_time_series_get_mom():
     ts.with_mom().as_csv()
     ts.with_mom().as_pandas()
     ts.with_mom().as_plotly_figure()
+    ts.with_mom().as_url()
     plt.close()
 
 
@@ -730,6 +813,7 @@ def test_time_series_get_natr():
     ts.with_natr().as_csv()
     ts.with_natr().as_pandas()
     ts.with_natr().as_plotly_figure()
+    ts.with_natr().as_url()
     plt.close()
 
 
@@ -739,6 +823,7 @@ def test_time_series_get_obv():
     ts.with_obv().as_csv()
     ts.with_obv().as_pandas()
     ts.with_obv().as_plotly_figure()
+    ts.with_obv().as_url()
     plt.close()
 
 
@@ -748,6 +833,7 @@ def test_time_series_get_plus_di():
     ts.with_plus_di().as_csv()
     ts.with_plus_di().as_pandas()
     ts.with_plus_di().as_plotly_figure()
+    ts.with_plus_di().as_url()
     plt.close()
 
 
@@ -757,6 +843,7 @@ def test_time_series_get_plus_dm():
     ts.with_plus_dm().as_csv()
     ts.with_plus_dm().as_pandas()
     ts.with_plus_dm().as_plotly_figure()
+    ts.with_plus_dm().as_url()
     plt.close()
 
 
@@ -766,6 +853,7 @@ def test_time_series_get_ppo():
     ts.with_ppo().as_csv()
     ts.with_ppo().as_pandas()
     ts.with_ppo().as_plotly_figure()
+    ts.with_ppo().as_url()
     plt.close()
 
 
@@ -775,6 +863,7 @@ def test_time_series_get_roc():
     ts.with_roc().as_csv()
     ts.with_roc().as_pandas()
     ts.with_roc().as_plotly_figure()
+    ts.with_roc().as_url()
     plt.close()
 
 
@@ -784,6 +873,7 @@ def test_time_series_get_rocp():
     ts.with_rocp().as_csv()
     ts.with_rocp().as_pandas()
     ts.with_rocp().as_plotly_figure()
+    ts.with_rocp().as_url()
     plt.close()
 
 
@@ -793,6 +883,7 @@ def test_time_series_get_rocr():
     ts.with_rocr().as_csv()
     ts.with_rocr().as_pandas()
     ts.with_rocr().as_plotly_figure()
+    ts.with_rocr().as_url()
     plt.close()
 
 
@@ -802,6 +893,7 @@ def test_time_series_get_rocr100():
     ts.with_rocr100().as_csv()
     ts.with_rocr100().as_pandas()
     ts.with_rocr100().as_plotly_figure()
+    ts.with_rocr100().as_url()
     plt.close()
 
 
@@ -811,6 +903,7 @@ def test_time_series_get_rsi():
     ts.with_rsi().as_csv()
     ts.with_rsi().as_pandas()
     ts.with_rsi().as_plotly_figure()
+    ts.with_rsi().as_url()
     plt.close()
 
 
@@ -820,6 +913,7 @@ def test_time_series_get_sar():
     ts.with_sar().as_csv()
     ts.with_sar().as_pandas()
     ts.with_sar().as_plotly_figure()
+    ts.with_sar().as_url()
     plt.close()
 
 
@@ -829,6 +923,7 @@ def test_time_series_get_sma():
     ts.with_sma().as_csv()
     ts.with_sma().as_pandas()
     ts.with_sma().as_plotly_figure()
+    ts.with_sma().as_url()
     plt.close()
 
 
@@ -838,6 +933,7 @@ def test_time_series_get_sqrt():
     ts.with_sqrt().as_csv()
     ts.with_sqrt().as_pandas()
     ts.with_sqrt().as_plotly_figure()
+    ts.with_sqrt().as_url()
     plt.close()
 
 
@@ -847,6 +943,7 @@ def test_time_series_get_stddev():
     ts.with_stddev().as_csv()
     ts.with_stddev().as_pandas()
     ts.with_stddev().as_plotly_figure()
+    ts.with_stddev().as_url()
     plt.close()
 
 
@@ -856,6 +953,7 @@ def test_time_series_get_stoch():
     ts.with_stoch().as_csv()
     ts.with_stoch().as_pandas()
     ts.with_stoch().as_plotly_figure()
+    ts.with_stoch().as_url()
     plt.close()
 
 
@@ -865,6 +963,7 @@ def test_time_series_get_stochf():
     ts.with_stochf().as_csv()
     ts.with_stochf().as_pandas()
     ts.with_stochf().as_plotly_figure()
+    ts.with_stochf().as_url()
     plt.close()
 
 
@@ -874,6 +973,7 @@ def test_time_series_get_stochrsi():
     ts.with_stochrsi().as_csv()
     ts.with_stochrsi().as_pandas()
     ts.with_stochrsi().as_plotly_figure()
+    ts.with_stochrsi().as_url()
     plt.close()
 
 
@@ -883,6 +983,7 @@ def test_time_series_get_supertrend():
     ts.with_supertrend().as_csv()
     ts.with_supertrend().as_pandas()
     ts.with_supertrend().as_plotly_figure()
+    ts.with_supertrend().as_url()
     plt.close()
 
 
@@ -892,6 +993,7 @@ def test_time_series_get_t3ma():
     ts.with_t3ma().as_csv()
     ts.with_t3ma().as_pandas()
     ts.with_t3ma().as_plotly_figure()
+    ts.with_t3ma().as_url()
     plt.close()
 
 
@@ -901,6 +1003,7 @@ def test_time_series_get_tema():
     ts.with_tema().as_csv()
     ts.with_tema().as_pandas()
     ts.with_tema().as_plotly_figure()
+    ts.with_tema().as_url()
     plt.close()
 
 
@@ -910,6 +1013,7 @@ def test_time_series_get_trange():
     ts.with_trange().as_csv()
     ts.with_trange().as_pandas()
     ts.with_trange().as_plotly_figure()
+    ts.with_trange().as_url()
     plt.close()
 
 
@@ -919,6 +1023,7 @@ def test_time_series_get_trima():
     ts.with_trima().as_csv()
     ts.with_trima().as_pandas()
     ts.with_trima().as_plotly_figure()
+    ts.with_trima().as_url()
     plt.close()
 
 
@@ -928,6 +1033,7 @@ def test_time_series_get_tsf():
     ts.with_tsf().as_csv()
     ts.with_tsf().as_pandas()
     ts.with_tsf().as_plotly_figure()
+    ts.with_tsf().as_url()
     plt.close()
 
 
@@ -937,6 +1043,7 @@ def test_time_series_get_typprice():
     ts.with_typprice().as_csv()
     ts.with_typprice().as_pandas()
     ts.with_typprice().as_plotly_figure()
+    ts.with_typprice().as_url()
     plt.close()
 
 
@@ -946,6 +1053,7 @@ def test_time_series_get_ultosc():
     ts.with_ultosc().as_csv()
     ts.with_ultosc().as_pandas()
     ts.with_ultosc().as_plotly_figure()
+    ts.with_ultosc().as_url()
     plt.close()
 
 
@@ -955,6 +1063,7 @@ def test_time_series_get_var():
     ts.with_var().as_csv()
     ts.with_var().as_pandas()
     ts.with_var().as_plotly_figure()
+    ts.with_var().as_url()
     plt.close()
 
 
@@ -964,6 +1073,7 @@ def test_time_series_get_vwap():
     ts.with_vwap().as_csv()
     ts.with_vwap().as_pandas()
     ts.with_vwap().as_plotly_figure()
+    ts.with_vwap().as_url()
     plt.close()
 
 
@@ -973,6 +1083,7 @@ def test_time_series_get_wclprice():
     ts.with_wclprice().as_csv()
     ts.with_wclprice().as_pandas()
     ts.with_wclprice().as_plotly_figure()
+    ts.with_wclprice().as_url()
     plt.close()
 
 
@@ -982,6 +1093,7 @@ def test_time_series_get_willr():
     ts.with_willr().as_csv()
     ts.with_willr().as_pandas()
     ts.with_willr().as_plotly_figure()
+    ts.with_willr().as_url()
     plt.close()
 
 
@@ -991,6 +1103,7 @@ def test_time_series_get_wma():
     ts.with_wma().as_csv()
     ts.with_wma().as_pandas()
     ts.with_wma().as_plotly_figure()
+    ts.with_wma().as_url()
     plt.close()
 
 
@@ -1103,6 +1216,11 @@ def test_chart_pandas():
     chart.as_pandas()
 
 
+def test_chart_url():
+    chart = _init_chart()
+    chart.as_url()
+
+
 # def test_chart_plot():
 #     chart = _init_chart()
 #     chart.as_plotly_figure()
@@ -1113,12 +1231,14 @@ def test_string_batch():
     batch_ts = _init_batch_ts('AAPL,QQQ,IXIC,EUR/USD,BTC/USD,')
     batch_ts.with_macd().with_stoch().as_json()
     batch_ts.with_ema().with_bbands().as_pandas()
+    batch_ts.with_ema().with_bbands().as_url()
 
 
 def test_list_batch():
     batch_ts = _init_batch_ts(['AAPL', 'QQQ', 'IXIC', 'EUR/USD', 'BTC/USD'])
     batch_ts.with_macd().with_stoch().as_json()
     batch_ts.with_ema().with_bbands().as_pandas()
+    batch_ts.with_ema().with_bbands().as_url()
 
 
 @patch('twelvedata.http_client.requests.get', return_value=_fake_resp(500))

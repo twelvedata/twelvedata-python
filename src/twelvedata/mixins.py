@@ -4,7 +4,7 @@ import csv
 from .utils import convert_collection_to_pandas, convert_collection_to_pandas_multi_index, convert_pandas_to_plotly
 
 
-__all__ = ("AsJsonMixin", "AsCsvMixin", "AsPandasMixin", "AsPlotMixin", "AsMixin")
+__all__ = ("AsJsonMixin", "AsCsvMixin", "AsPandasMixin", "AsUrlMixin", "AsMixin")
 
 
 class AsJsonMixin(object):
@@ -70,5 +70,11 @@ class AsPandasMixin(object):
         return df
 
 
-class AsMixin(AsJsonMixin, AsCsvMixin, AsPandasMixin, object):
+class AsUrlMixin(object):
+    def as_url(self, **kwargs):
+        resp = self.execute(debug=True)
+        return resp if isinstance(resp, list) else [resp]
+
+
+class AsMixin(AsJsonMixin, AsCsvMixin, AsPandasMixin, AsUrlMixin, object):
     pass
