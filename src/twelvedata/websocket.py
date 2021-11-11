@@ -1,6 +1,5 @@
 import time
 import threading
-import websocket
 import json
 import logging
 import queue
@@ -194,6 +193,7 @@ class EventReceiver(threading.Thread):
         self.enabled = True
 
     def run(self):
+        import websocket
         self.client.ws = websocket.WebSocketApp(
             self.client.url,
             on_open=self.on_open,
@@ -206,18 +206,18 @@ class EventReceiver(threading.Thread):
         self.client.ws.run_forever()
         self.client.logger.debug("EventReceiver exiting")
 
-    def on_open(self):
+    def on_open(self, _):
         self.client.logger.info("TDWebSocket opened!")
         self.client.on_connect()
 
-    def on_close(self):
+    def on_close(self, _):
         self.client.logger.info("TDWebSocket closed!")
 
-    def on_error(self, error):
+    def on_error(self, _, error):
         self.client.logger.error("TDWebSocket ERROR: {}".format(error))
         self.client.self_heal()
 
-    def on_message(self, message):
+    def on_message(self, _, message):
         event = json.loads(message)
         self.client.logger.debug("Received event: {}".format(event))
 
