@@ -12,6 +12,11 @@ from .endpoints import (
     TechnicalIndicatorsListEndpoint,
     SymbolSearchEndpoint,
     EarliestTimestampEndpoint,
+    ExchangeRateEndpoint,
+    CurrencyConversionEndpoint,
+    QuoteEndpoint,
+    PriceEndpoint,
+    EODEndpoint,
     LogoEndpoint,
     ProfileEndpoint,
     DividendsEndpoint,
@@ -29,6 +34,7 @@ from .endpoints import (
     KeyExecutivesEndpoint,
     InstitutionalHoldersEndpoint,
     FundHoldersEndpoint,
+    APIUsageEndpoint,
 )
 from .http_client import DefaultHttpClient
 from .time_series import TimeSeries
@@ -224,6 +230,61 @@ class TDClient:
         ctx = Context.from_context(self.ctx)
         ctx.defaults.update(defaults)
         return TimeSeries(ctx)
+
+    def exchange_rate(self, **defaults):
+        """
+        Creates factory for exchange rate requests.
+
+        :returns: request factory instance
+        :rtype: ExchangeRate
+        """
+        ctx = Context.from_context(self.ctx)
+        ctx.defaults.update(defaults)
+        return ExchangeRateEndpoint(ctx, **ctx.defaults)
+
+    def currency_conversion(self, **defaults):
+        """
+        Creates factory for exchange rate requests.
+
+        :returns: request factory instance
+        :rtype: CurrencyConversion
+        """
+        ctx = Context.from_context(self.ctx)
+        ctx.defaults.update(defaults)
+        return CurrencyConversionEndpoint(ctx, **ctx.defaults)
+
+    def quote(self, **defaults):
+        """
+        Creates factory for exchange rate requests.
+
+        :returns: request factory instance
+        :rtype: Quote
+        """
+        ctx = Context.from_context(self.ctx)
+        ctx.defaults.update(defaults)
+        return QuoteEndpoint(ctx, **ctx.defaults)
+
+    def price(self, **defaults):
+        """
+        Creates factory for exchange rate requests.
+
+        :returns: request factory instance
+        :rtype: Price
+        """
+        ctx = Context.from_context(self.ctx)
+        ctx.defaults.update(defaults)
+        return PriceEndpoint(ctx, **ctx.defaults)
+
+    def eod(self, **defaults):
+        """
+        Creates factory for exchange rate requests.
+
+        :returns: request factory instance
+        :rtype: EOD
+        """
+        ctx = Context.from_context(self.ctx)
+        ctx.defaults.update(defaults)
+        return EODEndpoint(ctx, **ctx.defaults)
 
     def get_logo(self, **defaults):
         """
@@ -454,3 +515,16 @@ class TDClient:
         ctx = Context.from_context(self.ctx)
         ctx.defaults.update(defaults)
         return FundHoldersEndpoint(ctx, **ctx.defaults)
+
+    def api_usage(self, **defaults):
+        """
+        Creates request builder for API usage
+
+        This endpoint will provide information on the current usage of Twelve Data API.
+
+        :returns: request builder instance
+        :rtype: APIUsage
+        """
+        ctx = Context.from_context(self.ctx)
+        ctx.defaults.update(defaults)
+        return APIUsageEndpoint(ctx, **ctx.defaults)

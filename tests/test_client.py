@@ -136,6 +136,42 @@ def test_earliest_timestamp():
     td.get_earliest_timestamp(symbol="AAPL", interval="1day").as_url()
 
 
+def test_exchange_rate():
+    td = _init_client()
+    td.exchange_rate(symbol="EUR/USD").as_json()
+    td.exchange_rate(symbol="EUR/USD").as_url()
+
+
+def test_currency_conversion():
+    td = _init_client()
+    td.currency_conversion(symbol="EUR/USD", amount=100).as_json()
+    td.currency_conversion(symbol="EUR/USD", amount=100).as_url()
+
+
+def test_quote():
+    td = _init_client()
+    td.quote(symbol="AAPL").as_json()
+    td.quote(symbol="AAPL").as_url()
+
+
+def test_price():
+    td = _init_client()
+    td.price(symbol="AAPL").as_json()
+    td.price(symbol="AAPL").as_url()
+
+
+def test_eod():
+    td = _init_client()
+    td.eod(symbol="AAPL").as_json()
+    td.eod(symbol="AAPL").as_url()
+
+
+def test_api_usage():
+    td = _init_client()
+    td.api_usage().as_json()
+    td.api_usage().as_url()
+
+
 def test_logo():
     td = _init_client()
     td.get_logo(symbol="AAPL").as_json()

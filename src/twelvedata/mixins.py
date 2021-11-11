@@ -72,8 +72,7 @@ class AsPandasMixin(object):
 
 class AsUrlMixin(object):
     def as_url(self, **kwargs):
-        resp = self.execute(debug=True)
-        return resp if isinstance(resp, list) else [resp]
+        return self.execute(debug=True)
 
 
 class AsMixin(AsJsonMixin, AsCsvMixin, AsPandasMixin, AsUrlMixin, object):

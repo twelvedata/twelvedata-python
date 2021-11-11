@@ -7,6 +7,7 @@ __all__ = (
     "ADEndpoint",
     "ADXREndpoint",
     "ADXEndpoint",
+    "APIUsageEndpoint",
     "APOEndpoint",
     "AROONOSCEndpoint",
     "AROONEndpoint",
@@ -20,13 +21,16 @@ __all__ = (
     "COPPOCKEndpoint",
     "CryptocurrenciesListEndpoint",
     "CryptocurrencyExchangesListEndpoint",
+    "CurrencyConversionEndpoint",
     "DEMAEndpoint",
     "DXEndpoint",
     "EarliestTimestampEndpoint",
     "EarningsCalendarEndpoint",
     "EarningsEndpoint",
     "EMAEndpoint",
+    "EODEndpoint",
     "ETFListEndpoint",
+    "ExchangeRateEndpoint",
     "ExchangesListEndpoint",
     "EXPEndpoint",
     "FLOOREndpoint",
@@ -76,6 +80,8 @@ __all__ = (
     "PPOEndpoint",
     "PercentBEndpoint",
     "PivotPointsHLEndpoint",
+    "PriceEndpoint",
+    "QuoteEndpoint",
     "ROCPEndpoint",
     "ROCR100Endpoint",
     "ROCREndpoint",
@@ -278,6 +284,211 @@ class TimeSeriesEndpoint(AsMixin, Endpoint):
         params["format"] = format
         params["apikey"] = self.ctx.apikey
         endpoint = "/time_series"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
+
+
+class ExchangeRateEndpoint(AsMixin, Endpoint):
+    _name = "exchange_rate"
+
+    def __init__(self,
+                 ctx,
+                 symbol,
+                 precision=None,
+                 timezone=None
+    ):
+        self.ctx = ctx
+        self.symbol = symbol
+        self.precision = precision
+        self.timezone = timezone
+
+    def execute(self, format="JSON", debug=False):
+
+        params = {}
+        if self.symbol is not None:
+            params["symbol"] = self.symbol
+        if self.precision is not None:
+            params["precision"] = self.precision
+        if self.timezone is not None:
+            params["timezone"] = self.timezone
+
+        params["format"] = format
+        params["apikey"] = self.ctx.apikey
+        endpoint = "/exchange_rate"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
+
+
+class CurrencyConversionEndpoint(AsMixin, Endpoint):
+    _name = "currency_conversion"
+
+    def __init__(self,
+                 ctx,
+                 symbol,
+                 amount=None,
+                 precision=None,
+                 timezone=None
+    ):
+        self.ctx = ctx
+        self.symbol = symbol
+        self.amount = amount
+        self.precision = precision
+        self.timezone = timezone
+
+    def execute(self, format="JSON", debug=False):
+
+        params = {}
+        if self.symbol is not None:
+            params["symbol"] = self.symbol
+        if self.amount is not None:
+            params["amount"] = self.amount
+        if self.precision is not None:
+            params["precision"] = self.precision
+        if self.timezone is not None:
+            params["timezone"] = self.timezone
+
+        params["format"] = format
+        params["apikey"] = self.ctx.apikey
+        endpoint = "/currency_conversion"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
+
+
+class QuoteEndpoint(AsMixin, Endpoint):
+    _name = "quote"
+
+    def __init__(self,
+                 ctx,
+                 symbol,
+                 interval="1day",
+                 exchange=None,
+                 country=None,
+                 volume_time_period=None,
+                 dp=5,
+                 timezone="Exchange",
+                 prepost="false",
+    ):
+        self.ctx = ctx
+        self.symbol = symbol
+        self.interval = interval
+        self.exchange = exchange
+        self.country = country
+        self.volume_time_period = volume_time_period
+        self.dp = dp
+        self.timezone = timezone
+        self.prepost = prepost
+
+    def execute(self, format="JSON", debug=False):
+
+        params = {}
+        if self.symbol is not None:
+            params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.interval is not None:
+            params["interval"] = self.interval
+        if self.exchange is not None:
+            params["exchange"] = self.exchange
+        if self.country is not None:
+            params["country"] = self.country
+        if self.volume_time_period is not None:
+            params["volume_time_period"] = self.volume_time_period
+        if self.dp is not None:
+            params["dp"] = self.dp
+        if self.timezone is not None:
+            params["timezone"] = self.timezone
+        if self.prepost is not None:
+            params["prepost"] = self.prepost
+
+        params["format"] = format
+        params["apikey"] = self.ctx.apikey
+        endpoint = "/quote"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
+
+
+class PriceEndpoint(AsMixin, Endpoint):
+    _name = "price"
+
+    def __init__(self,
+                 ctx,
+                 symbol,
+                 exchange=None,
+                 country=None,
+                 dp=5,
+                 prepost="false",
+    ):
+        self.ctx = ctx
+        self.symbol = symbol
+        self.exchange = exchange
+        self.country = country
+        self.dp = dp
+        self.prepost = prepost
+
+    def execute(self, format="JSON", debug=False):
+
+        params = {}
+        if self.symbol is not None:
+            params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.exchange is not None:
+            params["exchange"] = self.exchange
+        if self.country is not None:
+            params["country"] = self.country
+        if self.dp is not None:
+            params["dp"] = self.dp
+        if self.prepost is not None:
+            params["prepost"] = self.prepost
+
+        params["format"] = format
+        params["apikey"] = self.ctx.apikey
+        endpoint = "/price"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
+
+
+class EODEndpoint(AsMixin, Endpoint):
+    _name = "eod"
+
+    def __init__(self,
+                 ctx,
+                 symbol,
+                 exchange=None,
+                 country=None,
+                 dp=5,
+                 prepost="false",
+    ):
+        self.ctx = ctx
+        self.symbol = symbol
+        self.exchange = exchange
+        self.country = country
+        self.dp = dp
+        self.prepost = prepost
+
+    def execute(self, format="JSON", debug=False):
+
+        params = {}
+        if self.symbol is not None:
+            params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.exchange is not None:
+            params["exchange"] = self.exchange
+        if self.country is not None:
+            params["country"] = self.country
+        if self.dp is not None:
+            params["dp"] = self.dp
+        if self.prepost is not None:
+            params["prepost"] = self.prepost
+
+        params["format"] = format
+        params["apikey"] = self.ctx.apikey
+        endpoint = "/eod"
 
         if debug:
             return build_url(self.ctx.base_url, endpoint, params)
@@ -1369,6 +1580,23 @@ class FundHoldersEndpoint(AsMixin, Endpoint):
         params["format"] = format
         params["apikey"] = self.ctx.apikey
         endpoint = "/fund_holders"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
+
+
+class APIUsageEndpoint(AsMixin, Endpoint):
+    _name = "api_usage"
+
+    def __init__(self, ctx):
+        self.ctx = ctx
+
+    def execute(self, format="JSON", debug=False):
+        params = {}
+        params["format"] = format
+        params["apikey"] = self.ctx.apikey
+        endpoint = "/api_usage"
 
         if debug:
             return build_url(self.ctx.base_url, endpoint, params)
