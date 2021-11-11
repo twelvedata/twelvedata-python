@@ -229,7 +229,8 @@ class TimeSeriesEndpoint(AsMixin, Endpoint):
         dp=5,
         timezone="Exchange",
         order="desc",
-        prepost="false"
+        prepost="false",
+        date=None
     ):
         self.is_price = True
         self.ctx = ctx
@@ -244,6 +245,7 @@ class TimeSeriesEndpoint(AsMixin, Endpoint):
         self.timezone = timezone
         self.order = order
         self.prepost = prepost
+        self.date = date
 
     def execute(self, format="JSON", debug=False):
 
@@ -270,6 +272,8 @@ class TimeSeriesEndpoint(AsMixin, Endpoint):
             params["order"] = self.order
         if self.prepost is not None:
             params["prepost"] = self.prepost
+        if self.date is not None:
+            params["date"] = self.date
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
