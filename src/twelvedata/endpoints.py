@@ -229,6 +229,7 @@ class TimeSeriesEndpoint(AsMixin, Endpoint):
         interval,
         exchange=None,
         country=None,
+        type=None,
         outputsize=30,
         start_date=None,
         end_date=None,
@@ -244,6 +245,7 @@ class TimeSeriesEndpoint(AsMixin, Endpoint):
         self.interval = interval
         self.exchange = exchange
         self.country = country
+        self.type = type
         self.outputsize = outputsize
         self.start_date = start_date
         self.end_date = end_date
@@ -264,6 +266,8 @@ class TimeSeriesEndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
         if self.outputsize is not None:
             params["outputsize"] = self.outputsize
         if self.start_date is not None:
@@ -370,6 +374,7 @@ class QuoteEndpoint(AsMixin, Endpoint):
                  exchange=None,
                  country=None,
                  volume_time_period=None,
+                 type=None,
                  dp=5,
                  timezone="Exchange",
                  prepost="false",
@@ -380,6 +385,7 @@ class QuoteEndpoint(AsMixin, Endpoint):
         self.exchange = exchange
         self.country = country
         self.volume_time_period = volume_time_period
+        self.type = type
         self.dp = dp
         self.timezone = timezone
         self.prepost = prepost
@@ -397,6 +403,8 @@ class QuoteEndpoint(AsMixin, Endpoint):
             params["country"] = self.country
         if self.volume_time_period is not None:
             params["volume_time_period"] = self.volume_time_period
+        if self.type is not None:
+            params["type"] = self.type
         if self.dp is not None:
             params["dp"] = self.dp
         if self.timezone is not None:
@@ -421,6 +429,7 @@ class PriceEndpoint(AsMixin, Endpoint):
                  symbol,
                  exchange=None,
                  country=None,
+                 type=None,
                  dp=5,
                  prepost="false",
     ):
@@ -428,6 +437,7 @@ class PriceEndpoint(AsMixin, Endpoint):
         self.symbol = symbol
         self.exchange = exchange
         self.country = country
+        self.type = country
         self.dp = dp
         self.prepost = prepost
 
@@ -440,6 +450,8 @@ class PriceEndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
         if self.dp is not None:
             params["dp"] = self.dp
         if self.prepost is not None:
@@ -462,6 +474,7 @@ class EODEndpoint(AsMixin, Endpoint):
                  symbol,
                  exchange=None,
                  country=None,
+                 type=None,
                  dp=5,
                  prepost="false",
     ):
@@ -469,6 +482,7 @@ class EODEndpoint(AsMixin, Endpoint):
         self.symbol = symbol
         self.exchange = exchange
         self.country = country
+        self.type = type
         self.dp = dp
         self.prepost = prepost
 
@@ -481,6 +495,8 @@ class EODEndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
         if self.dp is not None:
             params["dp"] = self.dp
         if self.prepost is not None:
@@ -701,13 +717,11 @@ class ExchangesListEndpoint(AsMixin, Endpoint):
 
     def __init__(self,
                  ctx,
-                 type=None,
                  name=None,
                  code=None,
                  country=None,
     ):
         self.ctx = ctx
-        self.type = type
         self.name = name
         self.code = code
         self.country = country
@@ -715,8 +729,6 @@ class ExchangesListEndpoint(AsMixin, Endpoint):
     def execute(self, format="JSON", debug=False):
 
         params = {}
-        if self.type is not None:
-            params["type"] = self.type
         if self.name is not None:
             params["name"] = self.name
         if self.code is not None:
@@ -840,13 +852,11 @@ class LogoEndpoint(AsMixin, Endpoint):
                  symbol=None,
                  exchange=None,
                  country=None,
-                 type=None,
     ):
         self.ctx = ctx
         self.symbol = symbol
         self.exchange = exchange
         self.country = country
-        self.type = type
         self.method = "logo"
 
     def execute(self, format="JSON", debug=False):
@@ -858,8 +868,6 @@ class LogoEndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
-        if self.type is not None:
-            params["type"] = self.type
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -878,13 +886,11 @@ class ProfileEndpoint(AsMixin, Endpoint):
                  symbol=None,
                  exchange=None,
                  country=None,
-                 type=None,
     ):
         self.ctx = ctx
         self.symbol = symbol
         self.exchange = exchange
         self.country = country
-        self.type = type
         self.method = "profile"
 
     def execute(self, format="JSON", debug=False):
@@ -896,8 +902,6 @@ class ProfileEndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
-        if self.type is not None:
-            params["type"] = self.type
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -916,7 +920,6 @@ class DividendsEndpoint(AsMixin, Endpoint):
                  symbol=None,
                  exchange=None,
                  country=None,
-                 type=None,
                  range=None,
                  start_date=None,
                  end_date=None,
@@ -925,7 +928,6 @@ class DividendsEndpoint(AsMixin, Endpoint):
         self.symbol = symbol
         self.exchange = exchange
         self.country = country
-        self.type = type
         self.range = range
         self.start_date = start_date
         self.end_date = end_date
@@ -940,8 +942,6 @@ class DividendsEndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
-        if self.type is not None:
-            params["type"] = self.type
         if self.range is not None:
             params["range"] = self.range
         if self.start_date is not None:
@@ -966,7 +966,6 @@ class SplitsEndpoint(AsMixin, Endpoint):
                  symbol=None,
                  exchange=None,
                  country=None,
-                 type=None,
                  range=None,
                  start_date=None,
                  end_date=None,
@@ -975,7 +974,6 @@ class SplitsEndpoint(AsMixin, Endpoint):
         self.symbol = symbol
         self.exchange = exchange
         self.country = country
-        self.type = type
         self.range = range
         self.start_date = start_date
         self.end_date = end_date
@@ -990,8 +988,6 @@ class SplitsEndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
-        if self.type is not None:
-            params["type"] = self.type
         if self.range is not None:
             params["range"] = self.range
         if self.start_date is not None:
@@ -1016,7 +1012,6 @@ class EarningsEndpoint(AsMixin, Endpoint):
                  symbol=None,
                  exchange=None,
                  country=None,
-                 type=None,
                  period=None,
                  outputsize=None,
                  start_date=None,
@@ -1026,7 +1021,6 @@ class EarningsEndpoint(AsMixin, Endpoint):
         self.symbol = symbol
         self.exchange = exchange
         self.country = country
-        self.type = type
         self.period = period
         self.outputsize = outputsize
         self.start_date = start_date
@@ -1042,8 +1036,6 @@ class EarningsEndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
-        if self.type is not None:
-            params["type"] = self.type
         if self.period is not None:
             params["period"] = self.period
         if self.outputsize is not None:
@@ -1070,7 +1062,6 @@ class EarningsCalendarEndpoint(AsMixin, Endpoint):
                  symbol=None,
                  exchange=None,
                  country=None,
-                 type=None,
                  period=None,
                  start_date=None,
                  end_date=None,
@@ -1079,7 +1070,6 @@ class EarningsCalendarEndpoint(AsMixin, Endpoint):
         self.symbol = symbol
         self.exchange = exchange
         self.country = country
-        self.type = type
         self.period = period
         self.start_date = start_date
         self.end_date = end_date
@@ -1094,8 +1084,6 @@ class EarningsCalendarEndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
-        if self.type is not None:
-            params["type"] = self.type
         if self.period is not None:
             params["period"] = self.period
         if self.start_date is not None:
@@ -1120,7 +1108,6 @@ class IPOCalendarEndpoint(AsMixin, Endpoint):
                  symbol=None,
                  exchange=None,
                  country=None,
-                 type=None,
                  start_date=None,
                  end_date=None,
     ):
@@ -1128,7 +1115,6 @@ class IPOCalendarEndpoint(AsMixin, Endpoint):
         self.symbol = symbol
         self.exchange = exchange
         self.country = country
-        self.type = type
         self.start_date = start_date
         self.end_date = end_date
         self.method = "ipo_calendar"
@@ -1142,8 +1128,6 @@ class IPOCalendarEndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
-        if self.type is not None:
-            params["type"] = self.type
         if self.start_date is not None:
             params["start_date"] = self.start_date
         if self.end_date is not None:
@@ -1166,13 +1150,11 @@ class StatisticsEndpoint(AsMixin, Endpoint):
                  symbol=None,
                  exchange=None,
                  country=None,
-                 type=None,
     ):
         self.ctx = ctx
         self.symbol = symbol
         self.exchange = exchange
         self.country = country
-        self.type = type
         self.method = "statistics"
 
     def execute(self, format="JSON", debug=False):
@@ -1184,8 +1166,6 @@ class StatisticsEndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
-        if self.type is not None:
-            params["type"] = self.type
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -1204,13 +1184,11 @@ class InsiderTransactionsEndpoint(AsMixin, Endpoint):
                  symbol=None,
                  exchange=None,
                  country=None,
-                 type=None,
     ):
         self.ctx = ctx
         self.symbol = symbol
         self.exchange = exchange
         self.country = country
-        self.type = type
         self.method = "insider_transactions"
 
     def execute(self, format="JSON", debug=False):
@@ -1222,8 +1200,6 @@ class InsiderTransactionsEndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
-        if self.type is not None:
-            params["type"] = self.type
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -1242,7 +1218,6 @@ class IncomeStatementEndpoint(AsMixin, Endpoint):
                  symbol=None,
                  exchange=None,
                  country=None,
-                 type=None,
                  period=None,
                  start_date=None,
                  end_date=None,
@@ -1251,7 +1226,6 @@ class IncomeStatementEndpoint(AsMixin, Endpoint):
         self.symbol = symbol
         self.exchange = exchange
         self.country = country
-        self.type = type
         self.period = period
         self.start_date = start_date
         self.end_date = end_date
@@ -1266,8 +1240,6 @@ class IncomeStatementEndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
-        if self.type is not None:
-            params["type"] = self.type
         if self.period is not None:
             params["period"] = self.period
         if self.start_date is not None:
@@ -1292,7 +1264,6 @@ class BalanceSheetEndpoint(AsMixin, Endpoint):
                  symbol=None,
                  exchange=None,
                  country=None,
-                 type=None,
                  period=None,
                  start_date=None,
                  end_date=None,
@@ -1301,7 +1272,6 @@ class BalanceSheetEndpoint(AsMixin, Endpoint):
         self.symbol = symbol
         self.exchange = exchange
         self.country = country
-        self.type = type
         self.period = period
         self.start_date = start_date
         self.end_date = end_date
@@ -1316,8 +1286,6 @@ class BalanceSheetEndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
-        if self.type is not None:
-            params["type"] = self.type
         if self.period is not None:
             params["period"] = self.period
         if self.start_date is not None:
@@ -1342,7 +1310,6 @@ class CashFlowEndpoint(AsMixin, Endpoint):
                  symbol=None,
                  exchange=None,
                  country=None,
-                 type=None,
                  period=None,
                  start_date=None,
                  end_date=None,
@@ -1351,7 +1318,6 @@ class CashFlowEndpoint(AsMixin, Endpoint):
         self.symbol = symbol
         self.exchange = exchange
         self.country = country
-        self.type = type
         self.period = period
         self.start_date = start_date
         self.end_date = end_date
@@ -1366,8 +1332,6 @@ class CashFlowEndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
-        if self.type is not None:
-            params["type"] = self.type
         if self.period is not None:
             params["period"] = self.period
         if self.start_date is not None:
@@ -1392,13 +1356,11 @@ class OptionsExpirationEndpoint(AsMixin, Endpoint):
                  symbol=None,
                  exchange=None,
                  country=None,
-                 type=None,
     ):
         self.ctx = ctx
         self.symbol = symbol
         self.exchange = exchange
         self.country = country
-        self.type = type
         self.method = "options_expiration"
 
     def execute(self, format="JSON", debug=False):
@@ -1410,8 +1372,6 @@ class OptionsExpirationEndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
-        if self.type is not None:
-            params["type"] = self.type
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -1430,7 +1390,6 @@ class OptionsChainEndpoint(AsMixin, Endpoint):
                  symbol=None,
                  exchange=None,
                  country=None,
-                 type=None,
                  expiration_date=None,
                  option_id=None,
                  side=None,
@@ -1439,7 +1398,6 @@ class OptionsChainEndpoint(AsMixin, Endpoint):
         self.symbol = symbol
         self.exchange = exchange
         self.country = country
-        self.type = type
         self.expiration_date = expiration_date
         self.option_id = option_id
         self.side = side
@@ -1454,8 +1412,6 @@ class OptionsChainEndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
-        if self.type is not None:
-            params["type"] = self.type
         if self.expiration_date is not None:
             params["expiration_date"] = self.expiration_date
         if self.option_id is not None:
@@ -1480,13 +1436,11 @@ class KeyExecutivesEndpoint(AsMixin, Endpoint):
                  symbol=None,
                  exchange=None,
                  country=None,
-                 type=None,
     ):
         self.ctx = ctx
         self.symbol = symbol
         self.exchange = exchange
         self.country = country
-        self.type = type
         self.method = "key_executives"
 
     def execute(self, format="JSON", debug=False):
@@ -1498,8 +1452,6 @@ class KeyExecutivesEndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
-        if self.type is not None:
-            params["type"] = self.type
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -1518,13 +1470,11 @@ class InstitutionalHoldersEndpoint(AsMixin, Endpoint):
                  symbol=None,
                  exchange=None,
                  country=None,
-                 type=None,
     ):
         self.ctx = ctx
         self.symbol = symbol
         self.exchange = exchange
         self.country = country
-        self.type = type
         self.method = "institutional_holders"
 
     def execute(self, format="JSON", debug=False):
@@ -1536,8 +1486,6 @@ class InstitutionalHoldersEndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
-        if self.type is not None:
-            params["type"] = self.type
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -1556,13 +1504,11 @@ class FundHoldersEndpoint(AsMixin, Endpoint):
                  symbol=None,
                  exchange=None,
                  country=None,
-                 type=None,
     ):
         self.ctx = ctx
         self.symbol = symbol
         self.exchange = exchange
         self.country = country
-        self.type = type
         self.method = "fund_holders"
 
     def execute(self, format="JSON", debug=False):
@@ -1574,8 +1520,6 @@ class FundHoldersEndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
-        if self.type is not None:
-            params["type"] = self.type
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -1613,6 +1557,7 @@ class ADEndpoint(AsMixin, Endpoint):
         interval,
         exchange=None,
         country=None,
+        type=None,
         outputsize=30,
         start_date=None,
         end_date=None,
@@ -1628,6 +1573,7 @@ class ADEndpoint(AsMixin, Endpoint):
         self.interval = interval
         self.exchange = exchange
         self.country = country
+        self.type = type
         self.outputsize = outputsize
         self.start_date = start_date
         self.end_date = end_date
@@ -1647,6 +1593,8 @@ class ADEndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
         if self.outputsize is not None:
             params["outputsize"] = self.outputsize
         if self.start_date is not None:
@@ -1681,6 +1629,7 @@ class ADOSCEndpoint(AsMixin, Endpoint):
         interval,
         exchange=None,
         country=None,
+        type=None,
         fast_period=12,
         slow_period=26,
         outputsize=30,
@@ -1698,6 +1647,7 @@ class ADOSCEndpoint(AsMixin, Endpoint):
         self.interval = interval
         self.exchange = exchange
         self.country = country
+        self.type = type
         self.fast_period = fast_period
         self.slow_period = slow_period
         self.outputsize = outputsize
@@ -1719,6 +1669,8 @@ class ADOSCEndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
         if self.fast_period is not None:
             params["fast_period"] = self.fast_period
         if self.slow_period is not None:
@@ -1757,6 +1709,7 @@ class ADXEndpoint(AsMixin, Endpoint):
         interval,
         exchange=None,
         country=None,
+        type=None,
         time_period=14,
         outputsize=30,
         start_date=None,
@@ -1773,6 +1726,7 @@ class ADXEndpoint(AsMixin, Endpoint):
         self.interval = interval
         self.exchange = exchange
         self.country = country
+        self.type = type
         self.time_period = time_period
         self.outputsize = outputsize
         self.start_date = start_date
@@ -1793,6 +1747,8 @@ class ADXEndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
         if self.time_period is not None:
             params["time_period"] = self.time_period
         if self.outputsize is not None:
@@ -1829,6 +1785,7 @@ class ADXREndpoint(AsMixin, Endpoint):
         interval,
         exchange=None,
         country=None,
+        type=None,
         time_period=14,
         outputsize=30,
         start_date=None,
@@ -1845,6 +1802,7 @@ class ADXREndpoint(AsMixin, Endpoint):
         self.interval = interval
         self.exchange = exchange
         self.country = country
+        self.type = type
         self.time_period = time_period
         self.outputsize = outputsize
         self.start_date = start_date
@@ -1865,6 +1823,8 @@ class ADXREndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
         if self.time_period is not None:
             params["time_period"] = self.time_period
         if self.outputsize is not None:
@@ -1901,6 +1861,7 @@ class APOEndpoint(AsMixin, Endpoint):
         interval,
         exchange=None,
         country=None,
+        type=None,
         time_period=9,
         fast_period=12,
         slow_period=26,
@@ -1920,6 +1881,7 @@ class APOEndpoint(AsMixin, Endpoint):
         self.interval = interval
         self.exchange = exchange
         self.country = country
+        self.type = type
         self.time_period = time_period
         self.fast_period = fast_period
         self.slow_period = slow_period
@@ -1943,6 +1905,8 @@ class APOEndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
         if self.time_period is not None:
             params["time_period"] = self.time_period
         if self.fast_period is not None:
@@ -1985,6 +1949,7 @@ class AROONEndpoint(AsMixin, Endpoint):
         interval,
         exchange=None,
         country=None,
+        type=None,
         time_period=14,
         outputsize=30,
         start_date=None,
@@ -2001,6 +1966,7 @@ class AROONEndpoint(AsMixin, Endpoint):
         self.interval = interval
         self.exchange = exchange
         self.country = country
+        self.type = type
         self.time_period = time_period
         self.outputsize = outputsize
         self.start_date = start_date
@@ -2021,6 +1987,8 @@ class AROONEndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
         if self.time_period is not None:
             params["time_period"] = self.time_period
         if self.outputsize is not None:
@@ -2057,6 +2025,7 @@ class AROONOSCEndpoint(AsMixin, Endpoint):
         interval,
         exchange=None,
         country=None,
+        type=None,
         time_period=14,
         outputsize=30,
         start_date=None,
@@ -2073,6 +2042,7 @@ class AROONOSCEndpoint(AsMixin, Endpoint):
         self.interval = interval
         self.exchange = exchange
         self.country = country
+        self.type = type
         self.time_period = time_period
         self.outputsize = outputsize
         self.start_date = start_date
@@ -2093,6 +2063,8 @@ class AROONOSCEndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
         if self.time_period is not None:
             params["time_period"] = self.time_period
         if self.outputsize is not None:
@@ -2129,6 +2101,7 @@ class ATREndpoint(AsMixin, Endpoint):
         interval,
         exchange=None,
         country=None,
+        type=None,
         time_period=14,
         outputsize=30,
         start_date=None,
@@ -2145,6 +2118,7 @@ class ATREndpoint(AsMixin, Endpoint):
         self.interval = interval
         self.exchange = exchange
         self.country = country
+        self.type = type
         self.time_period = time_period
         self.outputsize = outputsize
         self.start_date = start_date
@@ -2165,6 +2139,8 @@ class ATREndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
         if self.time_period is not None:
             params["time_period"] = self.time_period
         if self.outputsize is not None:
@@ -2201,6 +2177,7 @@ class AVGPRICEEndpoint(AsMixin, Endpoint):
         interval,
         exchange=None,
         country=None,
+        type=None,
         outputsize=30,
         start_date=None,
         end_date=None,
@@ -2216,6 +2193,7 @@ class AVGPRICEEndpoint(AsMixin, Endpoint):
         self.interval = interval
         self.exchange = exchange
         self.country = country
+        self.type = type
         self.outputsize = outputsize
         self.start_date = start_date
         self.end_date = end_date
@@ -2235,6 +2213,8 @@ class AVGPRICEEndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
         if self.outputsize is not None:
             params["outputsize"] = self.outputsize
         if self.start_date is not None:
@@ -2269,6 +2249,7 @@ class BBANDSEndpoint(AsMixin, Endpoint):
         interval,
         exchange=None,
         country=None,
+        type=None,
         series_type="close",
         time_period=20,
         sd="2",
@@ -2288,6 +2269,7 @@ class BBANDSEndpoint(AsMixin, Endpoint):
         self.interval = interval
         self.exchange = exchange
         self.country = country
+        self.type = type
         self.series_type = series_type
         self.time_period = time_period
         self.sd = sd
@@ -2311,6 +2293,8 @@ class BBANDSEndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
         if self.series_type is not None:
             params["series_type"] = self.series_type
         if self.time_period is not None:
@@ -2353,6 +2337,7 @@ class PercentBEndpoint(AsMixin, Endpoint):
         interval,
         exchange=None,
         country=None,
+        type=None,
         series_type="close",
         time_period=20,
         sd="2",
@@ -2372,6 +2357,7 @@ class PercentBEndpoint(AsMixin, Endpoint):
         self.interval = interval
         self.exchange = exchange
         self.country = country
+        self.type = type
         self.series_type = series_type
         self.time_period = time_period
         self.sd = sd
@@ -2395,6 +2381,8 @@ class PercentBEndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
         if self.series_type is not None:
             params["series_type"] = self.series_type
         if self.time_period is not None:
@@ -2437,6 +2425,7 @@ class PivotPointsHLEndpoint(AsMixin, Endpoint):
         interval,
         exchange=None,
         country=None,
+        type=None,
         time_period=10,
         outputsize=30,
         start_date=None,
@@ -2453,6 +2442,7 @@ class PivotPointsHLEndpoint(AsMixin, Endpoint):
         self.interval = interval
         self.exchange = exchange
         self.country = country
+        self.type = type
         self.time_period = time_period
         self.outputsize = outputsize
         self.start_date = start_date
@@ -2473,6 +2463,8 @@ class PivotPointsHLEndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
         if self.time_period is not None:
             params["time_period"] = self.time_period
         if self.outputsize is not None:
@@ -2509,6 +2501,7 @@ class BOPEndpoint(AsMixin, Endpoint):
         interval,
         exchange=None,
         country=None,
+        type=None,
         outputsize=30,
         start_date=None,
         end_date=None,
@@ -2524,6 +2517,7 @@ class BOPEndpoint(AsMixin, Endpoint):
         self.interval = interval
         self.exchange = exchange
         self.country = country
+        self.type = type
         self.outputsize = outputsize
         self.start_date = start_date
         self.end_date = end_date
@@ -2543,6 +2537,8 @@ class BOPEndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
         if self.outputsize is not None:
             params["outputsize"] = self.outputsize
         if self.start_date is not None:
@@ -2577,6 +2573,7 @@ class CCIEndpoint(AsMixin, Endpoint):
         interval,
         exchange=None,
         country=None,
+        type=None,
         time_period=20,
         outputsize=30,
         start_date=None,
@@ -2593,6 +2590,7 @@ class CCIEndpoint(AsMixin, Endpoint):
         self.interval = interval
         self.exchange = exchange
         self.country = country
+        self.type = type
         self.time_period = time_period
         self.outputsize = outputsize
         self.start_date = start_date
@@ -2613,6 +2611,8 @@ class CCIEndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
         if self.time_period is not None:
             params["time_period"] = self.time_period
         if self.outputsize is not None:
@@ -2649,6 +2649,7 @@ class CEILEndpoint(AsMixin, Endpoint):
         interval,
         exchange=None,
         country=None,
+        type=None,
         series_type="close",
         outputsize=30,
         start_date=None,
@@ -2665,6 +2666,7 @@ class CEILEndpoint(AsMixin, Endpoint):
         self.interval = interval
         self.exchange = exchange
         self.country = country
+        self.type = type
         self.series_type = series_type
         self.outputsize = outputsize
         self.start_date = start_date
@@ -2685,6 +2687,8 @@ class CEILEndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
         if self.series_type is not None:
             params["series_type"] = self.series_type
         if self.outputsize is not None:
@@ -2721,6 +2725,7 @@ class CMOEndpoint(AsMixin, Endpoint):
         interval,
         exchange=None,
         country=None,
+        type=None,
         series_type="close",
         time_period=9,
         outputsize=30,
@@ -2738,6 +2743,7 @@ class CMOEndpoint(AsMixin, Endpoint):
         self.interval = interval
         self.exchange = exchange
         self.country = country
+        self.type = type
         self.series_type = series_type
         self.time_period = time_period
         self.outputsize = outputsize
@@ -2759,6 +2765,8 @@ class CMOEndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
         if self.series_type is not None:
             params["series_type"] = self.series_type
         if self.time_period is not None:
@@ -2797,6 +2805,7 @@ class COPPOCKEndpoint(AsMixin, Endpoint):
         interval,
         exchange=None,
         country=None,
+        type=None,
         series_type="close",
         long_roc_period=14,
         short_roc_period=11,
@@ -2816,6 +2825,7 @@ class COPPOCKEndpoint(AsMixin, Endpoint):
         self.interval = interval
         self.exchange = exchange
         self.country = country
+        self.type = type
         self.series_type = series_type
         self.long_roc_period = long_roc_period
         self.short_roc_period = short_roc_period
@@ -2839,6 +2849,8 @@ class COPPOCKEndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
         if self.series_type is not None:
             params["series_type"] = self.series_type
         if self.long_roc_period is not None:
@@ -2881,6 +2893,7 @@ class CEILEndpoint(AsMixin, Endpoint):
         interval,
         exchange=None,
         country=None,
+        type=None,
         series_type="close",
         outputsize=30,
         start_date=None,
@@ -2897,6 +2910,7 @@ class CEILEndpoint(AsMixin, Endpoint):
         self.interval = interval
         self.exchange = exchange
         self.country = country
+        self.type = type
         self.series_type = series_type
         self.outputsize = outputsize
         self.start_date = start_date
@@ -2917,6 +2931,8 @@ class CEILEndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
         if self.series_type is not None:
             params["series_type"] = self.series_type
         if self.outputsize is not None:
@@ -2953,6 +2969,7 @@ class DEMAEndpoint(AsMixin, Endpoint):
         interval,
         exchange=None,
         country=None,
+        type=None,
         series_type="close",
         time_period=9,
         outputsize=30,
@@ -2970,6 +2987,7 @@ class DEMAEndpoint(AsMixin, Endpoint):
         self.interval = interval
         self.exchange = exchange
         self.country = country
+        self.type = type
         self.series_type = series_type
         self.time_period = time_period
         self.outputsize = outputsize
@@ -2991,6 +3009,8 @@ class DEMAEndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
         if self.series_type is not None:
             params["series_type"] = self.series_type
         if self.time_period is not None:
@@ -3029,6 +3049,7 @@ class DXEndpoint(AsMixin, Endpoint):
         interval,
         exchange=None,
         country=None,
+        type=None,
         time_period=14,
         outputsize=30,
         start_date=None,
@@ -3045,6 +3066,7 @@ class DXEndpoint(AsMixin, Endpoint):
         self.interval = interval
         self.exchange = exchange
         self.country = country
+        self.type = type
         self.time_period = time_period
         self.outputsize = outputsize
         self.start_date = start_date
@@ -3065,6 +3087,8 @@ class DXEndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
         if self.time_period is not None:
             params["time_period"] = self.time_period
         if self.outputsize is not None:
@@ -3101,6 +3125,7 @@ class EMAEndpoint(AsMixin, Endpoint):
         interval,
         exchange=None,
         country=None,
+        type=None,
         series_type="close",
         time_period=9,
         outputsize=30,
@@ -3118,6 +3143,7 @@ class EMAEndpoint(AsMixin, Endpoint):
         self.interval = interval
         self.exchange = exchange
         self.country = country
+        self.type = type
         self.series_type = series_type
         self.time_period = time_period
         self.outputsize = outputsize
@@ -3139,6 +3165,8 @@ class EMAEndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
         if self.series_type is not None:
             params["series_type"] = self.series_type
         if self.time_period is not None:
@@ -3177,6 +3205,7 @@ class EXPEndpoint(AsMixin, Endpoint):
         interval,
         exchange=None,
         country=None,
+        type=None,
         series_type="close",
         outputsize=30,
         start_date=None,
@@ -3193,6 +3222,7 @@ class EXPEndpoint(AsMixin, Endpoint):
         self.interval = interval
         self.exchange = exchange
         self.country = country
+        self.type = type
         self.series_type = series_type
         self.outputsize = outputsize
         self.start_date = start_date
@@ -3213,6 +3243,8 @@ class EXPEndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
         if self.series_type is not None:
             params["series_type"] = self.series_type
         if self.outputsize is not None:
@@ -3249,6 +3281,7 @@ class FLOOREndpoint(AsMixin, Endpoint):
         interval,
         exchange=None,
         country=None,
+        type=None,
         series_type="close",
         outputsize=30,
         start_date=None,
@@ -3265,6 +3298,7 @@ class FLOOREndpoint(AsMixin, Endpoint):
         self.interval = interval
         self.exchange = exchange
         self.country = country
+        self.type = type
         self.series_type = series_type
         self.outputsize = outputsize
         self.start_date = start_date
@@ -3285,6 +3319,8 @@ class FLOOREndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
         if self.series_type is not None:
             params["series_type"] = self.series_type
         if self.outputsize is not None:
@@ -3321,6 +3357,7 @@ class HEIKINASHICANDLESEndpoint(AsMixin, Endpoint):
         interval,
         exchange=None,
         country=None,
+        type=None,
         outputsize=30,
         start_date=None,
         end_date=None,
@@ -3336,6 +3373,7 @@ class HEIKINASHICANDLESEndpoint(AsMixin, Endpoint):
         self.interval = interval
         self.exchange = exchange
         self.country = country
+        self.type = type
         self.outputsize = outputsize
         self.start_date = start_date
         self.end_date = end_date
@@ -3355,6 +3393,8 @@ class HEIKINASHICANDLESEndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
         if self.outputsize is not None:
             params["outputsize"] = self.outputsize
         if self.start_date is not None:
@@ -3389,6 +3429,7 @@ class HLC3Endpoint(AsMixin, Endpoint):
         interval,
         exchange=None,
         country=None,
+        type=None,
         outputsize=30,
         start_date=None,
         end_date=None,
@@ -3404,6 +3445,7 @@ class HLC3Endpoint(AsMixin, Endpoint):
         self.interval = interval
         self.exchange = exchange
         self.country = country
+        self.type = type
         self.outputsize = outputsize
         self.start_date = start_date
         self.end_date = end_date
@@ -3423,6 +3465,8 @@ class HLC3Endpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
         if self.outputsize is not None:
             params["outputsize"] = self.outputsize
         if self.start_date is not None:
@@ -3457,6 +3501,7 @@ class HT_DCPERIODEndpoint(AsMixin, Endpoint):
         interval,
         exchange=None,
         country=None,
+        type=None,
         series_type="close",
         outputsize=30,
         start_date=None,
@@ -3473,6 +3518,7 @@ class HT_DCPERIODEndpoint(AsMixin, Endpoint):
         self.interval = interval
         self.exchange = exchange
         self.country = country
+        self.type = type
         self.series_type = series_type
         self.outputsize = outputsize
         self.start_date = start_date
@@ -3493,6 +3539,8 @@ class HT_DCPERIODEndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
         if self.series_type is not None:
             params["series_type"] = self.series_type
         if self.outputsize is not None:
@@ -3529,6 +3577,7 @@ class HT_DCPHASEEndpoint(AsMixin, Endpoint):
         interval,
         exchange=None,
         country=None,
+        type=None,
         series_type="close",
         outputsize=30,
         start_date=None,
@@ -3545,6 +3594,7 @@ class HT_DCPHASEEndpoint(AsMixin, Endpoint):
         self.interval = interval
         self.exchange = exchange
         self.country = country
+        self.type = type
         self.series_type = series_type
         self.outputsize = outputsize
         self.start_date = start_date
@@ -3565,6 +3615,8 @@ class HT_DCPHASEEndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
         if self.series_type is not None:
             params["series_type"] = self.series_type
         if self.outputsize is not None:
@@ -3601,6 +3653,7 @@ class HT_PHASOREndpoint(AsMixin, Endpoint):
         interval,
         exchange=None,
         country=None,
+        type=None,
         series_type="close",
         outputsize=30,
         start_date=None,
@@ -3617,6 +3670,7 @@ class HT_PHASOREndpoint(AsMixin, Endpoint):
         self.interval = interval
         self.exchange = exchange
         self.country = country
+        self.type = type
         self.series_type = series_type
         self.outputsize = outputsize
         self.start_date = start_date
@@ -3637,6 +3691,8 @@ class HT_PHASOREndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
         if self.series_type is not None:
             params["series_type"] = self.series_type
         if self.outputsize is not None:
@@ -3673,6 +3729,7 @@ class HT_SINEEndpoint(AsMixin, Endpoint):
         interval,
         exchange=None,
         country=None,
+        type=None,
         series_type="close",
         outputsize=30,
         start_date=None,
@@ -3689,6 +3746,7 @@ class HT_SINEEndpoint(AsMixin, Endpoint):
         self.interval = interval
         self.exchange = exchange
         self.country = country
+        self.type = type
         self.series_type = series_type
         self.outputsize = outputsize
         self.start_date = start_date
@@ -3709,6 +3767,8 @@ class HT_SINEEndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
         if self.series_type is not None:
             params["series_type"] = self.series_type
         if self.outputsize is not None:
@@ -3745,6 +3805,7 @@ class HT_TRENDLINEEndpoint(AsMixin, Endpoint):
         interval,
         exchange=None,
         country=None,
+        type=None,
         series_type="close",
         outputsize=30,
         start_date=None,
@@ -3761,6 +3822,7 @@ class HT_TRENDLINEEndpoint(AsMixin, Endpoint):
         self.interval = interval
         self.exchange = exchange
         self.country = country
+        self.type = type
         self.series_type = series_type
         self.outputsize = outputsize
         self.start_date = start_date
@@ -3781,6 +3843,8 @@ class HT_TRENDLINEEndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
         if self.series_type is not None:
             params["series_type"] = self.series_type
         if self.outputsize is not None:
@@ -3817,6 +3881,7 @@ class HT_TRENDMODEEndpoint(AsMixin, Endpoint):
         interval,
         exchange=None,
         country=None,
+        type=None,
         series_type="close",
         outputsize=30,
         start_date=None,
@@ -3833,6 +3898,7 @@ class HT_TRENDMODEEndpoint(AsMixin, Endpoint):
         self.interval = interval
         self.exchange = exchange
         self.country = country
+        self.type = type
         self.series_type = series_type
         self.outputsize = outputsize
         self.start_date = start_date
@@ -3853,6 +3919,8 @@ class HT_TRENDMODEEndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
         if self.series_type is not None:
             params["series_type"] = self.series_type
         if self.outputsize is not None:
@@ -3889,6 +3957,7 @@ class ICHIMOKUEndpoint(AsMixin, Endpoint):
         interval,
         exchange=None,
         country=None,
+        type=None,
         conversion_line_period=9,
         base_line_period=26,
         leading_span_b_period=52,
@@ -3909,6 +3978,7 @@ class ICHIMOKUEndpoint(AsMixin, Endpoint):
         self.interval = interval
         self.exchange = exchange
         self.country = country
+        self.type = type
         self.conversion_line_period = conversion_line_period
         self.base_line_period = base_line_period
         self.leading_span_b_period = leading_span_b_period
@@ -3933,6 +4003,8 @@ class ICHIMOKUEndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
         if self.conversion_line_period is not None:
             params["conversion_line_period"] = self.conversion_line_period
         if self.base_line_period is not None:
@@ -3977,6 +4049,7 @@ class KAMAEndpoint(AsMixin, Endpoint):
         interval,
         exchange=None,
         country=None,
+        type=None,
         series_type="close",
         time_period=9,
         outputsize=30,
@@ -3994,6 +4067,7 @@ class KAMAEndpoint(AsMixin, Endpoint):
         self.interval = interval
         self.exchange = exchange
         self.country = country
+        self.type = type
         self.series_type = series_type
         self.time_period = time_period
         self.outputsize = outputsize
@@ -4015,6 +4089,8 @@ class KAMAEndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
         if self.series_type is not None:
             params["series_type"] = self.series_type
         if self.time_period is not None:
@@ -4053,6 +4129,7 @@ class KELTNEREndpoint(AsMixin, Endpoint):
         interval,
         exchange=None,
         country=None,
+        type=None,
         series_type="close",
         time_period=20,
         atr_time_period=10,
@@ -4073,6 +4150,7 @@ class KELTNEREndpoint(AsMixin, Endpoint):
         self.interval = interval
         self.exchange = exchange
         self.country = country
+        self.type = type
         self.series_type = series_type
         self.time_period = time_period
         self.atr_time_period = atr_time_period
@@ -4097,6 +4175,8 @@ class KELTNEREndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
         if self.series_type is not None:
             params["series_type"] = self.series_type
         if self.time_period is not None:
@@ -4141,6 +4221,7 @@ class KSTEndpoint(AsMixin, Endpoint):
         interval,
         exchange=None,
         country=None,
+        type=None,
         roc_period_1=10,
         roc_period_2=15,
         roc_period_3=20,
@@ -4165,6 +4246,7 @@ class KSTEndpoint(AsMixin, Endpoint):
         self.interval = interval
         self.exchange = exchange
         self.country = country
+        self.type = type
         self.roc_period_1 = roc_period_1
         self.roc_period_2 = roc_period_2
         self.roc_period_3 = roc_period_3
@@ -4193,6 +4275,8 @@ class KSTEndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
         if self.roc_period_1 is not None:
             params["roc_period_1"] = self.roc_period_1
         if self.roc_period_2 is not None:
@@ -4245,6 +4329,7 @@ class LINEARREGEndpoint(AsMixin, Endpoint):
         interval,
         exchange=None,
         country=None,
+        type=None,
         series_type="close",
         time_period=9,
         outputsize=30,
@@ -4262,6 +4347,7 @@ class LINEARREGEndpoint(AsMixin, Endpoint):
         self.interval = interval
         self.exchange = exchange
         self.country = country
+        self.type = type
         self.series_type = series_type
         self.time_period = time_period
         self.outputsize = outputsize
@@ -4283,6 +4369,8 @@ class LINEARREGEndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
         if self.series_type is not None:
             params["series_type"] = self.series_type
         if self.time_period is not None:
@@ -4321,6 +4409,7 @@ class LINEARREGANGLEEndpoint(AsMixin, Endpoint):
         interval,
         exchange=None,
         country=None,
+        type=None,
         series_type="close",
         time_period=9,
         outputsize=30,
@@ -4338,6 +4427,7 @@ class LINEARREGANGLEEndpoint(AsMixin, Endpoint):
         self.interval = interval
         self.exchange = exchange
         self.country = country
+        self.type = type
         self.series_type = series_type
         self.time_period = time_period
         self.outputsize = outputsize
@@ -4359,6 +4449,8 @@ class LINEARREGANGLEEndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
         if self.series_type is not None:
             params["series_type"] = self.series_type
         if self.time_period is not None:
@@ -4397,6 +4489,7 @@ class LINEARREGINTERCEPTEndpoint(AsMixin, Endpoint):
         interval,
         exchange=None,
         country=None,
+        type=None,
         series_type="close",
         time_period=9,
         outputsize=30,
@@ -4414,6 +4507,7 @@ class LINEARREGINTERCEPTEndpoint(AsMixin, Endpoint):
         self.interval = interval
         self.exchange = exchange
         self.country = country
+        self.type = type
         self.series_type = series_type
         self.time_period = time_period
         self.outputsize = outputsize
@@ -4435,6 +4529,8 @@ class LINEARREGINTERCEPTEndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
         if self.series_type is not None:
             params["series_type"] = self.series_type
         if self.time_period is not None:
@@ -4473,6 +4569,7 @@ class LINEARREGSLOPEEndpoint(AsMixin, Endpoint):
         interval,
         exchange=None,
         country=None,
+        type=None,
         series_type="close",
         time_period=9,
         outputsize=30,
@@ -4490,6 +4587,7 @@ class LINEARREGSLOPEEndpoint(AsMixin, Endpoint):
         self.interval = interval
         self.exchange = exchange
         self.country = country
+        self.type = type
         self.series_type = series_type
         self.time_period = time_period
         self.outputsize = outputsize
@@ -4511,6 +4609,8 @@ class LINEARREGSLOPEEndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
         if self.series_type is not None:
             params["series_type"] = self.series_type
         if self.time_period is not None:
@@ -4549,6 +4649,7 @@ class LNEndpoint(AsMixin, Endpoint):
         interval,
         exchange=None,
         country=None,
+        type=None,
         series_type="close",
         outputsize=30,
         start_date=None,
@@ -4565,6 +4666,7 @@ class LNEndpoint(AsMixin, Endpoint):
         self.interval = interval
         self.exchange = exchange
         self.country = country
+        self.type = type
         self.series_type = series_type
         self.outputsize = outputsize
         self.start_date = start_date
@@ -4585,6 +4687,8 @@ class LNEndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
         if self.series_type is not None:
             params["series_type"] = self.series_type
         if self.outputsize is not None:
@@ -4621,6 +4725,7 @@ class LOG10Endpoint(AsMixin, Endpoint):
         interval,
         exchange=None,
         country=None,
+        type=None,
         series_type="close",
         outputsize=30,
         start_date=None,
@@ -4637,6 +4742,7 @@ class LOG10Endpoint(AsMixin, Endpoint):
         self.interval = interval
         self.exchange = exchange
         self.country = country
+        self.type = type
         self.series_type = series_type
         self.outputsize = outputsize
         self.start_date = start_date
@@ -4657,6 +4763,8 @@ class LOG10Endpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
         if self.series_type is not None:
             params["series_type"] = self.series_type
         if self.outputsize is not None:
@@ -4693,6 +4801,7 @@ class MAEndpoint(AsMixin, Endpoint):
         interval,
         exchange=None,
         country=None,
+        type=None,
         series_type="close",
         time_period=9,
         ma_type="SMA",
@@ -4711,6 +4820,7 @@ class MAEndpoint(AsMixin, Endpoint):
         self.interval = interval
         self.exchange = exchange
         self.country = country
+        self.type = type
         self.series_type = series_type
         self.time_period = time_period
         self.ma_type = ma_type
@@ -4733,6 +4843,8 @@ class MAEndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
         if self.series_type is not None:
             params["series_type"] = self.series_type
         if self.time_period is not None:
@@ -4773,6 +4885,7 @@ class MACDEndpoint(AsMixin, Endpoint):
         interval,
         exchange=None,
         country=None,
+        type=None,
         series_type="close",
         fast_period=12,
         slow_period=26,
@@ -4792,6 +4905,7 @@ class MACDEndpoint(AsMixin, Endpoint):
         self.interval = interval
         self.exchange = exchange
         self.country = country
+        self.type = type
         self.series_type = series_type
         self.fast_period = fast_period
         self.slow_period = slow_period
@@ -4815,6 +4929,8 @@ class MACDEndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
         if self.series_type is not None:
             params["series_type"] = self.series_type
         if self.fast_period is not None:
@@ -4857,6 +4973,7 @@ class MACDSlopeEndpoint(AsMixin, Endpoint):
         interval,
         exchange=None,
         country=None,
+        type=None,
         series_type="close",
         fast_period=12,
         slow_period=26,
@@ -4877,6 +4994,7 @@ class MACDSlopeEndpoint(AsMixin, Endpoint):
         self.interval = interval
         self.exchange = exchange
         self.country = country
+        self.type = type
         self.series_type = series_type
         self.fast_period = fast_period
         self.slow_period = slow_period
@@ -4901,6 +5019,8 @@ class MACDSlopeEndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
         if self.series_type is not None:
             params["series_type"] = self.series_type
         if self.fast_period is not None:
@@ -4945,6 +5065,7 @@ class MACDEXTEndpoint(AsMixin, Endpoint):
         interval,
         exchange=None,
         country=None,
+        type=None,
         series_type="close",
         fast_period=12,
         fast_ma_type="SMA",
@@ -4967,6 +5088,7 @@ class MACDEXTEndpoint(AsMixin, Endpoint):
         self.interval = interval
         self.exchange = exchange
         self.country = country
+        self.type = type
         self.series_type = series_type
         self.fast_period = fast_period
         self.fast_ma_type = fast_ma_type
@@ -4993,6 +5115,8 @@ class MACDEXTEndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
         if self.series_type is not None:
             params["series_type"] = self.series_type
         if self.fast_period is not None:
@@ -5041,6 +5165,7 @@ class MAMAEndpoint(AsMixin, Endpoint):
         interval,
         exchange=None,
         country=None,
+        type=None,
         series_type="close",
         fast_limit="0.5",
         slow_limit="0.05",
@@ -5059,6 +5184,7 @@ class MAMAEndpoint(AsMixin, Endpoint):
         self.interval = interval
         self.exchange = exchange
         self.country = country
+        self.type = type
         self.series_type = series_type
         self.fast_limit = fast_limit
         self.slow_limit = slow_limit
@@ -5081,6 +5207,8 @@ class MAMAEndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
         if self.series_type is not None:
             params["series_type"] = self.series_type
         if self.fast_limit is not None:
@@ -5121,6 +5249,7 @@ class MAXEndpoint(AsMixin, Endpoint):
         interval,
         exchange=None,
         country=None,
+        type=None,
         series_type="close",
         time_period=9,
         outputsize=30,
@@ -5138,6 +5267,7 @@ class MAXEndpoint(AsMixin, Endpoint):
         self.interval = interval
         self.exchange = exchange
         self.country = country
+        self.type = type
         self.series_type = series_type
         self.time_period = time_period
         self.outputsize = outputsize
@@ -5159,6 +5289,8 @@ class MAXEndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
         if self.series_type is not None:
             params["series_type"] = self.series_type
         if self.time_period is not None:
@@ -5197,6 +5329,7 @@ class MAXINDEXEndpoint(AsMixin, Endpoint):
         interval,
         exchange=None,
         country=None,
+        type=None,
         series_type="close",
         time_period=9,
         outputsize=30,
@@ -5214,6 +5347,7 @@ class MAXINDEXEndpoint(AsMixin, Endpoint):
         self.interval = interval
         self.exchange = exchange
         self.country = country
+        self.type = type
         self.series_type = series_type
         self.time_period = time_period
         self.outputsize = outputsize
@@ -5235,6 +5369,8 @@ class MAXINDEXEndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
         if self.series_type is not None:
             params["series_type"] = self.series_type
         if self.time_period is not None:
@@ -5273,6 +5409,7 @@ class McGinleyDynamicEndpoint(AsMixin, Endpoint):
         interval,
         exchange=None,
         country=None,
+        type=None,
         time_period=14,
         outputsize=30,
         start_date=None,
@@ -5289,6 +5426,7 @@ class McGinleyDynamicEndpoint(AsMixin, Endpoint):
         self.interval = interval
         self.exchange = exchange
         self.country = country
+        self.type = type
         self.time_period = time_period
         self.outputsize = outputsize
         self.start_date = start_date
@@ -5309,6 +5447,8 @@ class McGinleyDynamicEndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
         if self.time_period is not None:
             params["time_period"] = self.time_period
         if self.outputsize is not None:
@@ -5345,6 +5485,7 @@ class MEDPRICEEndpoint(AsMixin, Endpoint):
         interval,
         exchange=None,
         country=None,
+        type=None,
         series_type="close",
         time_period=9,
         outputsize=30,
@@ -5362,6 +5503,7 @@ class MEDPRICEEndpoint(AsMixin, Endpoint):
         self.interval = interval
         self.exchange = exchange
         self.country = country
+        self.type = type
         self.series_type = series_type
         self.time_period = time_period
         self.outputsize = outputsize
@@ -5383,6 +5525,8 @@ class MEDPRICEEndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
         if self.series_type is not None:
             params["series_type"] = self.series_type
         if self.time_period is not None:
@@ -5421,6 +5565,7 @@ class MFIEndpoint(AsMixin, Endpoint):
         interval,
         exchange=None,
         country=None,
+        type=None,
         time_period=14,
         outputsize=30,
         start_date=None,
@@ -5437,6 +5582,7 @@ class MFIEndpoint(AsMixin, Endpoint):
         self.interval = interval
         self.exchange = exchange
         self.country = country
+        self.type = type
         self.time_period = time_period
         self.outputsize = outputsize
         self.start_date = start_date
@@ -5457,6 +5603,8 @@ class MFIEndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
         if self.time_period is not None:
             params["time_period"] = self.time_period
         if self.outputsize is not None:
@@ -5493,6 +5641,7 @@ class MIDPOINTEndpoint(AsMixin, Endpoint):
         interval,
         exchange=None,
         country=None,
+        type=None,
         series_type="close",
         time_period=9,
         outputsize=30,
@@ -5510,6 +5659,7 @@ class MIDPOINTEndpoint(AsMixin, Endpoint):
         self.interval = interval
         self.exchange = exchange
         self.country = country
+        self.type = type
         self.series_type = series_type
         self.time_period = time_period
         self.outputsize = outputsize
@@ -5531,6 +5681,8 @@ class MIDPOINTEndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
         if self.series_type is not None:
             params["series_type"] = self.series_type
         if self.time_period is not None:
@@ -5569,6 +5721,7 @@ class MIDPRICEEndpoint(AsMixin, Endpoint):
         interval,
         exchange=None,
         country=None,
+        type=None,
         time_period=9,
         outputsize=30,
         start_date=None,
@@ -5585,6 +5738,7 @@ class MIDPRICEEndpoint(AsMixin, Endpoint):
         self.interval = interval
         self.exchange = exchange
         self.country = country
+        self.type = type
         self.time_period = time_period
         self.outputsize = outputsize
         self.start_date = start_date
@@ -5605,6 +5759,8 @@ class MIDPRICEEndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
         if self.time_period is not None:
             params["time_period"] = self.time_period
         if self.outputsize is not None:
@@ -5641,6 +5797,7 @@ class MINEndpoint(AsMixin, Endpoint):
         interval,
         exchange=None,
         country=None,
+        type=None,
         series_type="close",
         time_period=9,
         outputsize=30,
@@ -5658,6 +5815,7 @@ class MINEndpoint(AsMixin, Endpoint):
         self.interval = interval
         self.exchange = exchange
         self.country = country
+        self.type = type
         self.series_type = series_type
         self.time_period = time_period
         self.outputsize = outputsize
@@ -5679,6 +5837,8 @@ class MINEndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
         if self.series_type is not None:
             params["series_type"] = self.series_type
         if self.time_period is not None:
@@ -5717,6 +5877,7 @@ class MININDEXEndpoint(AsMixin, Endpoint):
         interval,
         exchange=None,
         country=None,
+        type=None,
         series_type="close",
         time_period=9,
         outputsize=30,
@@ -5734,6 +5895,7 @@ class MININDEXEndpoint(AsMixin, Endpoint):
         self.interval = interval
         self.exchange = exchange
         self.country = country
+        self.type = type
         self.series_type = series_type
         self.time_period = time_period
         self.outputsize = outputsize
@@ -5755,6 +5917,8 @@ class MININDEXEndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
         if self.series_type is not None:
             params["series_type"] = self.series_type
         if self.time_period is not None:
@@ -5793,6 +5957,7 @@ class MINMAXEndpoint(AsMixin, Endpoint):
         interval,
         exchange=None,
         country=None,
+        type=None,
         series_type="close",
         time_period=9,
         outputsize=30,
@@ -5810,6 +5975,7 @@ class MINMAXEndpoint(AsMixin, Endpoint):
         self.interval = interval
         self.exchange = exchange
         self.country = country
+        self.type = type
         self.series_type = series_type
         self.time_period = time_period
         self.outputsize = outputsize
@@ -5831,6 +5997,8 @@ class MINMAXEndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
         if self.series_type is not None:
             params["series_type"] = self.series_type
         if self.time_period is not None:
@@ -5869,6 +6037,7 @@ class MINMAXINDEXEndpoint(AsMixin, Endpoint):
         interval,
         exchange=None,
         country=None,
+        type=None,
         series_type="close",
         time_period=9,
         outputsize=30,
@@ -5886,6 +6055,7 @@ class MINMAXINDEXEndpoint(AsMixin, Endpoint):
         self.interval = interval
         self.exchange = exchange
         self.country = country
+        self.type = type
         self.series_type = series_type
         self.time_period = time_period
         self.outputsize = outputsize
@@ -5907,6 +6077,8 @@ class MINMAXINDEXEndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
         if self.series_type is not None:
             params["series_type"] = self.series_type
         if self.time_period is not None:
@@ -5945,6 +6117,7 @@ class MINUS_DIEndpoint(AsMixin, Endpoint):
         interval,
         exchange=None,
         country=None,
+        type=None,
         time_period=9,
         outputsize=30,
         start_date=None,
@@ -5961,6 +6134,7 @@ class MINUS_DIEndpoint(AsMixin, Endpoint):
         self.interval = interval
         self.exchange = exchange
         self.country = country
+        self.type = type
         self.time_period = time_period
         self.outputsize = outputsize
         self.start_date = start_date
@@ -5981,6 +6155,8 @@ class MINUS_DIEndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
         if self.time_period is not None:
             params["time_period"] = self.time_period
         if self.outputsize is not None:
@@ -6017,6 +6193,7 @@ class MINUS_DMEndpoint(AsMixin, Endpoint):
         interval,
         exchange=None,
         country=None,
+        type=None,
         time_period=9,
         outputsize=30,
         start_date=None,
@@ -6033,6 +6210,7 @@ class MINUS_DMEndpoint(AsMixin, Endpoint):
         self.interval = interval
         self.exchange = exchange
         self.country = country
+        self.type = type
         self.time_period = time_period
         self.outputsize = outputsize
         self.start_date = start_date
@@ -6053,6 +6231,8 @@ class MINUS_DMEndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
         if self.time_period is not None:
             params["time_period"] = self.time_period
         if self.outputsize is not None:
@@ -6089,6 +6269,7 @@ class MOMEndpoint(AsMixin, Endpoint):
         interval,
         exchange=None,
         country=None,
+        type=None,
         series_type="close",
         time_period=9,
         outputsize=30,
@@ -6106,6 +6287,7 @@ class MOMEndpoint(AsMixin, Endpoint):
         self.interval = interval
         self.exchange = exchange
         self.country = country
+        self.type = type
         self.series_type = series_type
         self.time_period = time_period
         self.outputsize = outputsize
@@ -6127,6 +6309,8 @@ class MOMEndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
         if self.series_type is not None:
             params["series_type"] = self.series_type
         if self.time_period is not None:
@@ -6165,6 +6349,7 @@ class NATREndpoint(AsMixin, Endpoint):
         interval,
         exchange=None,
         country=None,
+        type=None,
         time_period=14,
         outputsize=30,
         start_date=None,
@@ -6181,6 +6366,7 @@ class NATREndpoint(AsMixin, Endpoint):
         self.interval = interval
         self.exchange = exchange
         self.country = country
+        self.type = type
         self.time_period = time_period
         self.outputsize = outputsize
         self.start_date = start_date
@@ -6201,6 +6387,8 @@ class NATREndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
         if self.time_period is not None:
             params["time_period"] = self.time_period
         if self.outputsize is not None:
@@ -6237,6 +6425,7 @@ class OBVEndpoint(AsMixin, Endpoint):
         interval,
         exchange=None,
         country=None,
+        type=None,
         series_type="close",
         outputsize=30,
         start_date=None,
@@ -6253,6 +6442,7 @@ class OBVEndpoint(AsMixin, Endpoint):
         self.interval = interval
         self.exchange = exchange
         self.country = country
+        self.type = type
         self.series_type = series_type
         self.outputsize = outputsize
         self.start_date = start_date
@@ -6273,6 +6463,8 @@ class OBVEndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
         if self.series_type is not None:
             params["series_type"] = self.series_type
         if self.outputsize is not None:
@@ -6309,6 +6501,7 @@ class PLUS_DIEndpoint(AsMixin, Endpoint):
         interval,
         exchange=None,
         country=None,
+        type=None,
         time_period=9,
         outputsize=30,
         start_date=None,
@@ -6325,6 +6518,7 @@ class PLUS_DIEndpoint(AsMixin, Endpoint):
         self.interval = interval
         self.exchange = exchange
         self.country = country
+        self.type = type
         self.time_period = time_period
         self.outputsize = outputsize
         self.start_date = start_date
@@ -6345,6 +6539,8 @@ class PLUS_DIEndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
         if self.time_period is not None:
             params["time_period"] = self.time_period
         if self.outputsize is not None:
@@ -6381,6 +6577,7 @@ class PLUS_DMEndpoint(AsMixin, Endpoint):
         interval,
         exchange=None,
         country=None,
+        type=None,
         time_period=9,
         outputsize=30,
         start_date=None,
@@ -6397,6 +6594,7 @@ class PLUS_DMEndpoint(AsMixin, Endpoint):
         self.interval = interval
         self.exchange = exchange
         self.country = country
+        self.type = type
         self.time_period = time_period
         self.outputsize = outputsize
         self.start_date = start_date
@@ -6417,6 +6615,8 @@ class PLUS_DMEndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
         if self.time_period is not None:
             params["time_period"] = self.time_period
         if self.outputsize is not None:
@@ -6453,6 +6653,7 @@ class PPOEndpoint(AsMixin, Endpoint):
         interval,
         exchange=None,
         country=None,
+        type=None,
         series_type="close",
         fast_period=10,
         slow_period=21,
@@ -6472,6 +6673,7 @@ class PPOEndpoint(AsMixin, Endpoint):
         self.interval = interval
         self.exchange = exchange
         self.country = country
+        self.type = type
         self.series_type = series_type
         self.fast_period = fast_period
         self.slow_period = slow_period
@@ -6495,6 +6697,8 @@ class PPOEndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
         if self.series_type is not None:
             params["series_type"] = self.series_type
         if self.fast_period is not None:
@@ -6537,6 +6741,7 @@ class ROCEndpoint(AsMixin, Endpoint):
         interval,
         exchange=None,
         country=None,
+        type=None,
         series_type="close",
         time_period=9,
         outputsize=30,
@@ -6554,6 +6759,7 @@ class ROCEndpoint(AsMixin, Endpoint):
         self.interval = interval
         self.exchange = exchange
         self.country = country
+        self.type = type
         self.series_type = series_type
         self.time_period = time_period
         self.outputsize = outputsize
@@ -6575,6 +6781,8 @@ class ROCEndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
         if self.series_type is not None:
             params["series_type"] = self.series_type
         if self.time_period is not None:
@@ -6613,6 +6821,7 @@ class ROCPEndpoint(AsMixin, Endpoint):
         interval,
         exchange=None,
         country=None,
+        type=None,
         series_type="close",
         time_period=9,
         outputsize=30,
@@ -6630,6 +6839,7 @@ class ROCPEndpoint(AsMixin, Endpoint):
         self.interval = interval
         self.exchange = exchange
         self.country = country
+        self.type = type
         self.series_type = series_type
         self.time_period = time_period
         self.outputsize = outputsize
@@ -6651,6 +6861,8 @@ class ROCPEndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
         if self.series_type is not None:
             params["series_type"] = self.series_type
         if self.time_period is not None:
@@ -6689,6 +6901,7 @@ class ROCREndpoint(AsMixin, Endpoint):
         interval,
         exchange=None,
         country=None,
+        type=None,
         series_type="close",
         time_period=9,
         outputsize=30,
@@ -6706,6 +6919,7 @@ class ROCREndpoint(AsMixin, Endpoint):
         self.interval = interval
         self.exchange = exchange
         self.country = country
+        self.type = type
         self.series_type = series_type
         self.time_period = time_period
         self.outputsize = outputsize
@@ -6727,6 +6941,8 @@ class ROCREndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
         if self.series_type is not None:
             params["series_type"] = self.series_type
         if self.time_period is not None:
@@ -6765,6 +6981,7 @@ class ROCR100Endpoint(AsMixin, Endpoint):
         interval,
         exchange=None,
         country=None,
+        type=None,
         series_type="close",
         time_period=9,
         outputsize=30,
@@ -6782,6 +6999,7 @@ class ROCR100Endpoint(AsMixin, Endpoint):
         self.interval = interval
         self.exchange = exchange
         self.country = country
+        self.type = type
         self.series_type = series_type
         self.time_period = time_period
         self.outputsize = outputsize
@@ -6803,6 +7021,8 @@ class ROCR100Endpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
         if self.series_type is not None:
             params["series_type"] = self.series_type
         if self.time_period is not None:
@@ -6841,6 +7061,7 @@ class RSIEndpoint(AsMixin, Endpoint):
         interval,
         exchange=None,
         country=None,
+        type=None,
         series_type="close",
         time_period=14,
         outputsize=30,
@@ -6858,6 +7079,7 @@ class RSIEndpoint(AsMixin, Endpoint):
         self.interval = interval
         self.exchange = exchange
         self.country = country
+        self.type = type
         self.series_type = series_type
         self.time_period = time_period
         self.outputsize = outputsize
@@ -6879,6 +7101,8 @@ class RSIEndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
         if self.series_type is not None:
             params["series_type"] = self.series_type
         if self.time_period is not None:
@@ -6917,6 +7141,7 @@ class RVOLEndpoint(AsMixin, Endpoint):
         interval,
         exchange=None,
         country=None,
+        type=None,
         time_period=14,
         outputsize=30,
         start_date=None,
@@ -6933,6 +7158,7 @@ class RVOLEndpoint(AsMixin, Endpoint):
         self.interval = interval
         self.exchange = exchange
         self.country = country
+        self.type = type
         self.time_period = time_period
         self.outputsize = outputsize
         self.start_date = start_date
@@ -6953,6 +7179,8 @@ class RVOLEndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
         if self.time_period is not None:
             params["time_period"] = self.time_period
         if self.outputsize is not None:
@@ -6989,6 +7217,7 @@ class SAREndpoint(AsMixin, Endpoint):
         interval,
         exchange=None,
         country=None,
+        type=None,
         acceleration="0.02",
         maximum="0.2",
         outputsize=30,
@@ -7006,6 +7235,7 @@ class SAREndpoint(AsMixin, Endpoint):
         self.interval = interval
         self.exchange = exchange
         self.country = country
+        self.type = type
         self.acceleration = acceleration
         self.maximum = maximum
         self.outputsize = outputsize
@@ -7027,6 +7257,8 @@ class SAREndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
         if self.acceleration is not None:
             params["acceleration"] = self.acceleration
         if self.maximum is not None:
@@ -7065,6 +7297,7 @@ class SMAEndpoint(AsMixin, Endpoint):
         interval,
         exchange=None,
         country=None,
+        type=None,
         series_type="close",
         time_period=9,
         outputsize=30,
@@ -7082,6 +7315,7 @@ class SMAEndpoint(AsMixin, Endpoint):
         self.interval = interval
         self.exchange = exchange
         self.country = country
+        self.type = type
         self.series_type = series_type
         self.time_period = time_period
         self.outputsize = outputsize
@@ -7103,6 +7337,8 @@ class SMAEndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
         if self.series_type is not None:
             params["series_type"] = self.series_type
         if self.time_period is not None:
@@ -7141,6 +7377,7 @@ class SQRTEndpoint(AsMixin, Endpoint):
         interval,
         exchange=None,
         country=None,
+        type=None,
         series_type="close",
         outputsize=30,
         start_date=None,
@@ -7157,6 +7394,7 @@ class SQRTEndpoint(AsMixin, Endpoint):
         self.interval = interval
         self.exchange = exchange
         self.country = country
+        self.type = type
         self.series_type = series_type
         self.outputsize = outputsize
         self.start_date = start_date
@@ -7177,6 +7415,8 @@ class SQRTEndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
         if self.series_type is not None:
             params["series_type"] = self.series_type
         if self.outputsize is not None:
@@ -7213,6 +7453,7 @@ class STDDEVEndpoint(AsMixin, Endpoint):
         interval,
         exchange=None,
         country=None,
+        type=None,
         series_type="close",
         time_period=9,
         sd="2",
@@ -7231,6 +7472,7 @@ class STDDEVEndpoint(AsMixin, Endpoint):
         self.interval = interval
         self.exchange = exchange
         self.country = country
+        self.type = type
         self.series_type = series_type
         self.time_period = time_period
         self.sd = sd
@@ -7253,6 +7495,8 @@ class STDDEVEndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
         if self.series_type is not None:
             params["series_type"] = self.series_type
         if self.time_period is not None:
@@ -7293,6 +7537,7 @@ class STOCHEndpoint(AsMixin, Endpoint):
         interval,
         exchange=None,
         country=None,
+        type=None,
         fast_k_period=14,
         slow_k_period=1,
         slow_d_period=3,
@@ -7313,6 +7558,7 @@ class STOCHEndpoint(AsMixin, Endpoint):
         self.interval = interval
         self.exchange = exchange
         self.country = country
+        self.type = type
         self.fast_k_period = fast_k_period
         self.slow_k_period = slow_k_period
         self.slow_d_period = slow_d_period
@@ -7337,6 +7583,8 @@ class STOCHEndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
         if self.fast_k_period is not None:
             params["fast_k_period"] = self.fast_k_period
         if self.slow_k_period is not None:
@@ -7381,6 +7629,7 @@ class STOCHFEndpoint(AsMixin, Endpoint):
         interval,
         exchange=None,
         country=None,
+        type=None,
         fast_k_period=14,
         fast_d_period=3,
         fast_dma_type="SMA",
@@ -7399,6 +7648,7 @@ class STOCHFEndpoint(AsMixin, Endpoint):
         self.interval = interval
         self.exchange = exchange
         self.country = country
+        self.type = type
         self.fast_k_period = fast_k_period
         self.fast_d_period = fast_d_period
         self.fast_dma_type = fast_dma_type
@@ -7421,6 +7671,8 @@ class STOCHFEndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
         if self.fast_k_period is not None:
             params["fast_k_period"] = self.fast_k_period
         if self.fast_d_period is not None:
@@ -7461,6 +7713,7 @@ class STOCHRSIEndpoint(AsMixin, Endpoint):
         interval,
         exchange=None,
         country=None,
+        type=None,
         series_type="close",
         time_period=14,
         fast_k_period=3,
@@ -7481,6 +7734,7 @@ class STOCHRSIEndpoint(AsMixin, Endpoint):
         self.interval = interval
         self.exchange = exchange
         self.country = country
+        self.type = type
         self.series_type = series_type
         self.time_period = time_period
         self.fast_k_period = fast_k_period
@@ -7505,6 +7759,8 @@ class STOCHRSIEndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
         if self.series_type is not None:
             params["series_type"] = self.series_type
         if self.time_period is not None:
@@ -7549,6 +7805,7 @@ class SuperTrendEndpoint(AsMixin, Endpoint):
         interval,
         exchange=None,
         country=None,
+        type=None,
         outputsize=30,
         multiplier=3,
         period=10,
@@ -7566,6 +7823,7 @@ class SuperTrendEndpoint(AsMixin, Endpoint):
         self.interval = interval
         self.exchange = exchange
         self.country = country
+        self.type = type
         self.outputsize = outputsize
         self.multiplier = multiplier
         self.period = period
@@ -7587,6 +7845,8 @@ class SuperTrendEndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
         if self.multiplier is not None:
             params["multiplier"] = self.multiplier
         if self.period is not None:
@@ -7625,6 +7885,7 @@ class T3MAEndpoint(AsMixin, Endpoint):
         interval,
         exchange=None,
         country=None,
+        type=None,
         series_type="close",
         time_period=9,
         v_factor="0.7",
@@ -7643,6 +7904,7 @@ class T3MAEndpoint(AsMixin, Endpoint):
         self.interval = interval
         self.exchange = exchange
         self.country = country
+        self.type = type
         self.series_type = series_type
         self.time_period = time_period
         self.v_factor = v_factor
@@ -7665,6 +7927,8 @@ class T3MAEndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
         if self.series_type is not None:
             params["series_type"] = self.series_type
         if self.time_period is not None:
@@ -7705,6 +7969,7 @@ class TEMAEndpoint(AsMixin, Endpoint):
         interval,
         exchange=None,
         country=None,
+        type=None,
         series_type="close",
         time_period=9,
         outputsize=30,
@@ -7722,6 +7987,7 @@ class TEMAEndpoint(AsMixin, Endpoint):
         self.interval = interval
         self.exchange = exchange
         self.country = country
+        self.type = type
         self.series_type = series_type
         self.time_period = time_period
         self.outputsize = outputsize
@@ -7743,6 +8009,8 @@ class TEMAEndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
         if self.series_type is not None:
             params["series_type"] = self.series_type
         if self.time_period is not None:
@@ -7781,6 +8049,7 @@ class TRANGEEndpoint(AsMixin, Endpoint):
         interval,
         exchange=None,
         country=None,
+        type=None,
         outputsize=30,
         start_date=None,
         end_date=None,
@@ -7796,6 +8065,7 @@ class TRANGEEndpoint(AsMixin, Endpoint):
         self.interval = interval
         self.exchange = exchange
         self.country = country
+        self.type = type
         self.outputsize = outputsize
         self.start_date = start_date
         self.end_date = end_date
@@ -7815,6 +8085,8 @@ class TRANGEEndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
         if self.outputsize is not None:
             params["outputsize"] = self.outputsize
         if self.start_date is not None:
@@ -7849,6 +8121,7 @@ class TRIMAEndpoint(AsMixin, Endpoint):
         interval,
         exchange=None,
         country=None,
+        type=None,
         series_type="close",
         time_period=9,
         outputsize=30,
@@ -7866,6 +8139,7 @@ class TRIMAEndpoint(AsMixin, Endpoint):
         self.interval = interval
         self.exchange = exchange
         self.country = country
+        self.type = type
         self.series_type = series_type
         self.time_period = time_period
         self.outputsize = outputsize
@@ -7887,6 +8161,8 @@ class TRIMAEndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
         if self.series_type is not None:
             params["series_type"] = self.series_type
         if self.time_period is not None:
@@ -7925,6 +8201,7 @@ class TSFEndpoint(AsMixin, Endpoint):
         interval,
         exchange=None,
         country=None,
+        type=None,
         series_type="close",
         time_period=9,
         outputsize=30,
@@ -7942,6 +8219,7 @@ class TSFEndpoint(AsMixin, Endpoint):
         self.interval = interval
         self.exchange = exchange
         self.country = country
+        self.type = type
         self.series_type = series_type
         self.time_period = time_period
         self.outputsize = outputsize
@@ -7963,6 +8241,8 @@ class TSFEndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
         if self.series_type is not None:
             params["series_type"] = self.series_type
         if self.time_period is not None:
@@ -8001,6 +8281,7 @@ class TYPPRICEEndpoint(AsMixin, Endpoint):
         interval,
         exchange=None,
         country=None,
+        type=None,
         outputsize=30,
         start_date=None,
         end_date=None,
@@ -8016,6 +8297,7 @@ class TYPPRICEEndpoint(AsMixin, Endpoint):
         self.interval = interval
         self.exchange = exchange
         self.country = country
+        self.type = type
         self.outputsize = outputsize
         self.start_date = start_date
         self.end_date = end_date
@@ -8035,6 +8317,8 @@ class TYPPRICEEndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
         if self.outputsize is not None:
             params["outputsize"] = self.outputsize
         if self.start_date is not None:
@@ -8069,6 +8353,7 @@ class ULTOSCEndpoint(AsMixin, Endpoint):
         interval,
         exchange=None,
         country=None,
+        type=None,
         time_period_1=7,
         time_period_2=14,
         time_period_3=28,
@@ -8087,6 +8372,7 @@ class ULTOSCEndpoint(AsMixin, Endpoint):
         self.interval = interval
         self.exchange = exchange
         self.country = country
+        self.type = type
         self.time_period_1 = time_period_1
         self.time_period_2 = time_period_2
         self.time_period_3 = time_period_3
@@ -8109,6 +8395,8 @@ class ULTOSCEndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
         if self.time_period_1 is not None:
             params["time_period_1"] = self.time_period_1
         if self.time_period_2 is not None:
@@ -8149,6 +8437,7 @@ class VAREndpoint(AsMixin, Endpoint):
         interval,
         exchange=None,
         country=None,
+        type=None,
         series_type="close",
         time_period=9,
         outputsize=30,
@@ -8166,6 +8455,7 @@ class VAREndpoint(AsMixin, Endpoint):
         self.interval = interval
         self.exchange = exchange
         self.country = country
+        self.type = type
         self.series_type = series_type
         self.time_period = time_period
         self.outputsize = outputsize
@@ -8187,6 +8477,8 @@ class VAREndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
         if self.series_type is not None:
             params["series_type"] = self.series_type
         if self.time_period is not None:
@@ -8225,6 +8517,7 @@ class VWAPEndpoint(AsMixin, Endpoint):
         interval,
         exchange=None,
         country=None,
+        type=None,
         outputsize=30,
         start_date=None,
         end_date=None,
@@ -8240,6 +8533,7 @@ class VWAPEndpoint(AsMixin, Endpoint):
         self.interval = interval
         self.exchange = exchange
         self.country = country
+        self.type = type
         self.outputsize = outputsize
         self.start_date = start_date
         self.end_date = end_date
@@ -8259,6 +8553,8 @@ class VWAPEndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
         if self.outputsize is not None:
             params["outputsize"] = self.outputsize
         if self.start_date is not None:
@@ -8293,6 +8589,7 @@ class WCLPRICEEndpoint(AsMixin, Endpoint):
         interval,
         exchange=None,
         country=None,
+        type=None,
         outputsize=30,
         start_date=None,
         end_date=None,
@@ -8308,6 +8605,7 @@ class WCLPRICEEndpoint(AsMixin, Endpoint):
         self.interval = interval
         self.exchange = exchange
         self.country = country
+        self.type = type
         self.outputsize = outputsize
         self.start_date = start_date
         self.end_date = end_date
@@ -8327,6 +8625,8 @@ class WCLPRICEEndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
         if self.outputsize is not None:
             params["outputsize"] = self.outputsize
         if self.start_date is not None:
@@ -8361,6 +8661,7 @@ class WILLREndpoint(AsMixin, Endpoint):
         interval,
         exchange=None,
         country=None,
+        type=None,
         time_period=14,
         outputsize=30,
         start_date=None,
@@ -8377,6 +8678,7 @@ class WILLREndpoint(AsMixin, Endpoint):
         self.interval = interval
         self.exchange = exchange
         self.country = country
+        self.type = type
         self.time_period = time_period
         self.outputsize = outputsize
         self.start_date = start_date
@@ -8397,6 +8699,8 @@ class WILLREndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
         if self.time_period is not None:
             params["time_period"] = self.time_period
         if self.outputsize is not None:
@@ -8433,6 +8737,7 @@ class WMAEndpoint(AsMixin, Endpoint):
         interval,
         exchange=None,
         country=None,
+        type=None,
         series_type="close",
         time_period=9,
         outputsize=30,
@@ -8450,6 +8755,7 @@ class WMAEndpoint(AsMixin, Endpoint):
         self.interval = interval
         self.exchange = exchange
         self.country = country
+        self.type = type
         self.series_type = series_type
         self.time_period = time_period
         self.outputsize = outputsize
@@ -8471,6 +8777,8 @@ class WMAEndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
         if self.series_type is not None:
             params["series_type"] = self.series_type
         if self.time_period is not None:
