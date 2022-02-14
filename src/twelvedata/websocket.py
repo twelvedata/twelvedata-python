@@ -99,7 +99,13 @@ class TDWebSocket:
             self.heartbeat()
 
     def heartbeat(self):
-        self.ws.send('{"action": "heartbeat"}')
+        if not self.ready:
+            return
+
+        try:
+            self.ws.send('{"action": "heartbeat"}')
+        except Exception as e:
+            self.logger.error("Error calling heartbeat method: {}".format(e))
 
     def refresh_websocket(self):
         self.event_receiver = EventReceiver(self)
@@ -210,8 +216,10 @@ class EventReceiver(threading.Thread):
         self.client.logger.info("TDWebSocket opened!")
         self.client.on_connect()
 
-    def on_close(self, _):
-        self.client.logger.info("TDWebSocket closed!")
+    def on_close(self, _, close_status_code, close_msg):
+        self.client.logger.info(
+            "TDWebSocket closed! Close status code: {0}, close message: {1}".format(close_status_code, close_msg)
+        )
 
     def on_error(self, _, error):
         self.client.logger.error("TDWebSocket ERROR: {}".format(error))
