@@ -366,7 +366,8 @@ class TimeSeries(object):
             end_date=None,
             dp=5,
             timezone="Exchange",
-            prepost="false"
+            prepost="false",
+            mic_code=None,
     ):
         """
         Add request builder of AD to chart builder
@@ -414,7 +415,8 @@ class TimeSeries(object):
             end_date=end_date,
             dp=dp,
             timezone=timezone,
-            prepost=prepost
+            prepost=prepost,
+            mic_code=mic_code,
         )
         return self._with_endpoint(ep)
 
@@ -431,7 +433,8 @@ class TimeSeries(object):
             end_date=None,
             dp=5,
             timezone="Exchange",
-            prepost="false"
+            prepost="false",
+            mic_code=None,
     ):
         """
         Add request builder of ADOSC to chart builder
@@ -470,6 +473,7 @@ class TimeSeries(object):
             timezones can be found here.Take note that IANA Timezone name is
             case-sensitive.
         :param prepost: Available at the 1min, 5min, 15min, and 30min intervals for all US equities.
+        :param mic_code: Mic code value for filter.
 
         :returns: chart builder
         :rtype: ChartEndpoint
@@ -487,7 +491,8 @@ class TimeSeries(object):
             end_date=end_date,
             dp=dp,
             timezone=timezone,
-            prepost=prepost
+            prepost=prepost,
+            mic_code=mic_code,
         )
         return self._with_endpoint(ep)
 
@@ -503,7 +508,8 @@ class TimeSeries(object):
             end_date=None,
             dp=5,
             timezone="Exchange",
-            prepost="false"
+            prepost="false",
+            mic_code=None,
     ):
         """
         Add request builder of ADX to chart builder
@@ -537,6 +543,7 @@ class TimeSeries(object):
             timezones can be found here.Take note that IANA Timezone name is
             case-sensitive.
         :param prepost: Available at the 1min, 5min, 15min, and 30min intervals for all US equities.
+        :param mic_code: Mic code value for filter.
 
         :returns: chart builder
         :rtype: ChartEndpoint
@@ -553,7 +560,8 @@ class TimeSeries(object):
             end_date=end_date,
             dp=dp,
             timezone=timezone,
-            prepost=prepost
+            prepost=prepost,
+            mic_code=mic_code,
         )
         return self._with_endpoint(ep)
 
@@ -569,7 +577,8 @@ class TimeSeries(object):
             end_date=None,
             dp=5,
             timezone="Exchange",
-            prepost="false"
+            prepost="false",
+            mic_code=None,
     ):
         """
         Add request builder of ADXR to chart builder
@@ -603,6 +612,7 @@ class TimeSeries(object):
             timezones can be found here.Take note that IANA Timezone name is
             case-sensitive.
         :param prepost: Available at the 1min, 5min, 15min, and 30min intervals for all US equities.
+        :param mic_code: Mic code value for filter.
 
         :returns: chart builder
         :rtype: ChartEndpoint
@@ -619,7 +629,8 @@ class TimeSeries(object):
             end_date=end_date,
             dp=dp,
             timezone=timezone,
-            prepost=prepost
+            prepost=prepost,
+            mic_code=mic_code,
         )
         return self._with_endpoint(ep)
 
@@ -638,7 +649,8 @@ class TimeSeries(object):
             end_date=None,
             dp=5,
             timezone="Exchange",
-            prepost="false"
+            prepost="false",
+            mic_code=None,
     ):
         """
         Add request builder of APO to chart builder
@@ -677,6 +689,7 @@ class TimeSeries(object):
             timezones can be found here.Take note that IANA Timezone name is
             case-sensitive.
         :param prepost: Available at the 1min, 5min, 15min, and 30min intervals for all US equities.
+        :param mic_code: Mic code value for filter.
 
         :returns: chart builder
         :rtype: ChartEndpoint
@@ -696,7 +709,8 @@ class TimeSeries(object):
             end_date=end_date,
             dp=dp,
             timezone=timezone,
-            prepost=prepost
+            prepost=prepost,
+            mic_code=mic_code,
         )
         return self._with_endpoint(ep)
 
@@ -712,7 +726,8 @@ class TimeSeries(object):
             end_date=None,
             dp=5,
             timezone="Exchange",
-            prepost="false"
+            prepost="false",
+            mic_code=None,
     ):
         """
         Add request builder of AROON to chart builder
@@ -746,6 +761,7 @@ class TimeSeries(object):
             timezones can be found here.Take note that IANA Timezone name is
             case-sensitive.
         :param prepost: Available at the 1min, 5min, 15min, and 30min intervals for all US equities.
+        :param mic_code: Mic code value for filter.
 
         :returns: chart builder
         :rtype: ChartEndpoint
@@ -762,7 +778,8 @@ class TimeSeries(object):
             end_date=end_date,
             dp=dp,
             timezone=timezone,
-            prepost=prepost
+            prepost=prepost,
+            mic_code=mic_code,
         )
         return self._with_endpoint(ep)
 
@@ -778,7 +795,8 @@ class TimeSeries(object):
             end_date=None,
             dp=5,
             timezone="Exchange",
-            prepost="false"
+            prepost="false",
+            mic_code=None,
     ):
         """
         Add request builder of AROONOSC to chart builder
@@ -813,6 +831,7 @@ class TimeSeries(object):
             timezones can be found here.Take note that IANA Timezone name is
             case-sensitive.
         :param prepost: Available at the 1min, 5min, 15min, and 30min intervals for all US equities.
+        :param mic_code: Mic code value for filter.
 
         :returns: chart builder
         :rtype: ChartEndpoint
@@ -829,7 +848,8 @@ class TimeSeries(object):
             end_date=end_date,
             dp=dp,
             timezone=timezone,
-            prepost=prepost
+            prepost=prepost,
+            mic_code=mic_code,
         )
         return self._with_endpoint(ep)
 
@@ -845,7 +865,8 @@ class TimeSeries(object):
             end_date=None,
             dp=5,
             timezone="Exchange",
-            prepost="false"
+            prepost="false",
+            mic_code=None,
     ):
         """
         Add request builder of ATR to chart builder
@@ -879,6 +900,7 @@ class TimeSeries(object):
             timezones can be found here.Take note that IANA Timezone name is
             case-sensitive.
         :param prepost: Available at the 1min, 5min, 15min, and 30min intervals for all US equities.
+        :param mic_code: Mic code value for filter.
 
         :returns: chart builder
         :rtype: ChartEndpoint
@@ -895,7 +917,8 @@ class TimeSeries(object):
             end_date=end_date,
             dp=dp,
             timezone=timezone,
-            prepost=prepost
+            prepost=prepost,
+            mic_code=mic_code,
         )
         return self._with_endpoint(ep)
 
@@ -910,7 +933,8 @@ class TimeSeries(object):
             end_date=None,
             dp=5,
             timezone="Exchange",
-            prepost="false"
+            prepost="false",
+            mic_code=None,
     ):
         """
         Add request builder of AVGPRICE to chart builder
@@ -941,6 +965,7 @@ class TimeSeries(object):
             timezones can be found here.Take note that IANA Timezone name is
             case-sensitive.
         :param prepost: Available at the 1min, 5min, 15min, and 30min intervals for all US equities.
+        :param mic_code: Mic code value for filter.
 
         :returns: chart builder
         :rtype: ChartEndpoint
@@ -956,7 +981,8 @@ class TimeSeries(object):
             end_date=end_date,
             dp=dp,
             timezone=timezone,
-            prepost=prepost
+            prepost=prepost,
+            mic_code=mic_code,
         )
         return self._with_endpoint(ep)
 
@@ -975,7 +1001,8 @@ class TimeSeries(object):
             end_date=None,
             dp=5,
             timezone="Exchange",
-            prepost="false"
+            prepost="false",
+            mic_code=None,
     ):
         """
         Add request builder of BBANDS to chart builder
@@ -1014,6 +1041,7 @@ class TimeSeries(object):
             timezones can be found here.Take note that IANA Timezone name is
             case-sensitive.
         :param prepost: Available at the 1min, 5min, 15min, and 30min intervals for all US equities.
+        :param mic_code: Mic code value for filter.
 
         :returns: chart builder
         :rtype: ChartEndpoint
@@ -1033,7 +1061,8 @@ class TimeSeries(object):
             end_date=end_date,
             dp=dp,
             timezone=timezone,
-            prepost=prepost
+            prepost=prepost,
+            mic_code=mic_code,
         )
         return self._with_endpoint(ep)
 
@@ -1052,7 +1081,8 @@ class TimeSeries(object):
             end_date=None,
             dp=5,
             timezone="Exchange",
-            prepost="false"
+            prepost="false",
+            mic_code=None,
     ):
         """
         Creates request builder for %B
@@ -1090,6 +1120,7 @@ class TimeSeries(object):
             timezones can be found here.Take note that IANA Timezone name is
             case-sensitive.
         :param prepost: Available at the 1min, 5min, 15min, and 30min intervals for all US equities.
+        :param mic_code: Mic code value for filter.
 
         :returns: chart builder
         :rtype: ChartEndpoint
@@ -1109,7 +1140,8 @@ class TimeSeries(object):
             end_date=end_date,
             dp=dp,
             timezone=timezone,
-            prepost=prepost
+            prepost=prepost,
+            mic_code=mic_code,
         )
         return self._with_endpoint(ep)
 
@@ -1125,7 +1157,8 @@ class TimeSeries(object):
             end_date=None,
             dp=5,
             timezone="Exchange",
-            prepost="false"
+            prepost="false",
+            mic_code=None,
     ):
         """
         Creates request builder for Pivot Points (High/Low)
@@ -1158,6 +1191,7 @@ class TimeSeries(object):
             timezones can be found here.Take note that IANA Timezone name is
             case-sensitive.
         :param prepost: Available at the 1min, 5min, 15min, and 30min intervals for all US equities.
+        :param mic_code: Mic code value for filter.
 
         :returns: chart builder
         :rtype: ChartEndpoint
@@ -1174,7 +1208,8 @@ class TimeSeries(object):
             end_date=end_date,
             dp=dp,
             timezone=timezone,
-            prepost=prepost
+            prepost=prepost,
+            mic_code=mic_code,
         )
         return self._with_endpoint(ep)
 
@@ -1189,7 +1224,8 @@ class TimeSeries(object):
             end_date=None,
             dp=5,
             timezone="Exchange",
-            prepost="false"
+            prepost="false",
+            mic_code=None,
     ):
         """
         Add request builder of BOP to chart builder
@@ -1221,6 +1257,7 @@ class TimeSeries(object):
             timezones can be found here.Take note that IANA Timezone name is
             case-sensitive.
         :param prepost: Available at the 1min, 5min, 15min, and 30min intervals for all US equities.
+        :param mic_code: Mic code value for filter.
 
         :returns: chart builder
         :rtype: ChartEndpoint
@@ -1236,7 +1273,8 @@ class TimeSeries(object):
             end_date=end_date,
             dp=dp,
             timezone=timezone,
-            prepost=prepost
+            prepost=prepost,
+            mic_code=mic_code,
         )
         return self._with_endpoint(ep)
 
@@ -1252,7 +1290,8 @@ class TimeSeries(object):
             end_date=None,
             dp=5,
             timezone="Exchange",
-            prepost="false"
+            prepost="false",
+            mic_code=None,
     ):
         """
         Add request builder of CCI to chart builder
@@ -1286,6 +1325,7 @@ class TimeSeries(object):
             timezones can be found here.Take note that IANA Timezone name is
             case-sensitive.
         :param prepost: Available at the 1min, 5min, 15min, and 30min intervals for all US equities.
+        :param mic_code: Mic code value for filter.
 
         :returns: chart builder
         :rtype: ChartEndpoint
@@ -1302,7 +1342,8 @@ class TimeSeries(object):
             end_date=end_date,
             dp=dp,
             timezone=timezone,
-            prepost=prepost
+            prepost=prepost,
+            mic_code=mic_code,
         )
         return self._with_endpoint(ep)
 
@@ -1318,7 +1359,8 @@ class TimeSeries(object):
             end_date=None,
             dp=5,
             timezone="Exchange",
-            prepost="false"
+            prepost="false",
+            mic_code=None,
     ):
         """
         Add request builder of CEIL to chart builder
@@ -1352,6 +1394,7 @@ class TimeSeries(object):
             timezones can be found here.Take note that IANA Timezone name is
             case-sensitive.
         :param prepost: Available at the 1min, 5min, 15min, and 30min intervals for all US equities.
+        :param mic_code: Mic code value for filter.
 
         :returns: chart builder
         :rtype: ChartEndpoint
@@ -1368,7 +1411,8 @@ class TimeSeries(object):
             end_date=end_date,
             dp=dp,
             timezone=timezone,
-            prepost=prepost
+            prepost=prepost,
+            mic_code=mic_code,
         )
         return self._with_endpoint(ep)
 
@@ -1385,7 +1429,8 @@ class TimeSeries(object):
             end_date=None,
             dp=5,
             timezone="Exchange",
-            prepost="false"
+            prepost="false",
+            mic_code=None,
     ):
         """
         Add request builder of CMO to chart builder
@@ -1421,6 +1466,7 @@ class TimeSeries(object):
             timezones can be found here.Take note that IANA Timezone name is
             case-sensitive.
         :param prepost: Available at the 1min, 5min, 15min, and 30min intervals for all US equities.
+        :param mic_code: Mic code value for filter.
 
         :returns: chart builder
         :rtype: ChartEndpoint
@@ -1438,7 +1484,8 @@ class TimeSeries(object):
             end_date=end_date,
             dp=dp,
             timezone=timezone,
-            prepost=prepost
+            prepost=prepost,
+            mic_code=mic_code,
         )
         return self._with_endpoint(ep)
 
@@ -1457,7 +1504,8 @@ class TimeSeries(object):
             end_date=None,
             dp=5,
             timezone="Exchange",
-            prepost="false"
+            prepost="false",
+            mic_code=None,
     ):
         """
         Add request builder of COPPOCK to chart builder
@@ -1493,6 +1541,7 @@ class TimeSeries(object):
             timezones can be found here.Take note that IANA Timezone name is
             case-sensitive.
         :param prepost: Available at the 1min, 5min, 15min, and 30min intervals for all US equities.
+        :param mic_code: Mic code value for filter.
 
         :returns: chart builder
         :rtype: ChartEndpoint
@@ -1512,7 +1561,8 @@ class TimeSeries(object):
             end_date=end_date,
             dp=dp,
             timezone=timezone,
-            prepost=prepost
+            prepost=prepost,
+            mic_code=mic_code,
         )
         return self._with_endpoint(ep)
 
@@ -1528,7 +1578,8 @@ class TimeSeries(object):
             end_date=None,
             dp=5,
             timezone="Exchange",
-            prepost="false"
+            prepost="false",
+            mic_code=None,
     ):
         """
         Add request builder of CEIL to chart builder
@@ -1562,6 +1613,7 @@ class TimeSeries(object):
             timezones can be found here.Take note that IANA Timezone name is
             case-sensitive.
         :param prepost: Available at the 1min, 5min, 15min, and 30min intervals for all US equities.
+        :param mic_code: Mic code value for filter.
 
         :returns: chart builder
         :rtype: ChartEndpoint
@@ -1578,7 +1630,8 @@ class TimeSeries(object):
             end_date=end_date,
             dp=dp,
             timezone=timezone,
-            prepost=prepost
+            prepost=prepost,
+            mic_code=mic_code,
         )
         return self._with_endpoint(ep)
 
@@ -1595,7 +1648,8 @@ class TimeSeries(object):
             end_date=None,
             dp=5,
             timezone="Exchange",
-            prepost="false"
+            prepost="false",
+            mic_code=None,
     ):
         """
         Add request builder of DEMA to chart builder
@@ -1631,6 +1685,7 @@ class TimeSeries(object):
             timezones can be found here.Take note that IANA Timezone name is
             case-sensitive.
         :param prepost: Available at the 1min, 5min, 15min, and 30min intervals for all US equities.
+        :param mic_code: Mic code value for filter.
 
         :returns: chart builder
         :rtype: ChartEndpoint
@@ -1648,7 +1703,8 @@ class TimeSeries(object):
             end_date=end_date,
             dp=dp,
             timezone=timezone,
-            prepost=prepost
+            prepost=prepost,
+            mic_code=mic_code,
         )
         return self._with_endpoint(ep)
 
@@ -1664,7 +1720,8 @@ class TimeSeries(object):
             end_date=None,
             dp=5,
             timezone="Exchange",
-            prepost="false"
+            prepost="false",
+            mic_code=None,
     ):
         """
         Add request builder of DX to chart builder
@@ -1698,6 +1755,7 @@ class TimeSeries(object):
             timezones can be found here.Take note that IANA Timezone name is
             case-sensitive.
         :param prepost: Available at the 1min, 5min, 15min, and 30min intervals for all US equities.
+        :param mic_code: Mic code value for filter.
 
         :returns: chart builder
         :rtype: ChartEndpoint
@@ -1714,7 +1772,8 @@ class TimeSeries(object):
             end_date=end_date,
             dp=dp,
             timezone=timezone,
-            prepost=prepost
+            prepost=prepost,
+            mic_code=mic_code,
         )
         return self._with_endpoint(ep)
 
@@ -1731,7 +1790,8 @@ class TimeSeries(object):
             end_date=None,
             dp=5,
             timezone="Exchange",
-            prepost="false"
+            prepost="false",
+            mic_code=None,
     ):
         """
         Add request builder of EMA to chart builder
@@ -1767,6 +1827,7 @@ class TimeSeries(object):
             timezones can be found here.Take note that IANA Timezone name is
             case-sensitive.
         :param prepost: Available at the 1min, 5min, 15min, and 30min intervals for all US equities.
+        :param mic_code: Mic code value for filter.
 
         :returns: chart builder
         :rtype: ChartEndpoint
@@ -1784,7 +1845,8 @@ class TimeSeries(object):
             end_date=end_date,
             dp=dp,
             timezone=timezone,
-            prepost=prepost
+            prepost=prepost,
+            mic_code=mic_code,
         )
         return self._with_endpoint(ep)
 
@@ -1800,7 +1862,8 @@ class TimeSeries(object):
             end_date=None,
             dp=5,
             timezone="Exchange",
-            prepost="false"
+            prepost="false",
+            mic_code=None,
     ):
         """
         Add request builder of EXP to chart builder
@@ -1834,6 +1897,7 @@ class TimeSeries(object):
             timezones can be found here.Take note that IANA Timezone name is
             case-sensitive.
         :param prepost: Available at the 1min, 5min, 15min, and 30min intervals for all US equities.
+        :param mic_code: Mic code value for filter.
 
         :returns: chart builder
         :rtype: ChartEndpoint
@@ -1850,7 +1914,8 @@ class TimeSeries(object):
             end_date=end_date,
             dp=dp,
             timezone=timezone,
-            prepost=prepost
+            prepost=prepost,
+            mic_code=mic_code,
         )
         return self._with_endpoint(ep)
 
@@ -1866,7 +1931,8 @@ class TimeSeries(object):
             end_date=None,
             dp=5,
             timezone="Exchange",
-            prepost="false"
+            prepost="false",
+            mic_code=None,
     ):
         """
         Add request builder of FLOOR to chart builder
@@ -1900,6 +1966,7 @@ class TimeSeries(object):
             timezones can be found here.Take note that IANA Timezone name is
             case-sensitive.
         :param prepost: Available at the 1min, 5min, 15min, and 30min intervals for all US equities.
+        :param mic_code: Mic code value for filter.
 
         :returns: chart builder
         :rtype: ChartEndpoint
@@ -1916,7 +1983,8 @@ class TimeSeries(object):
             end_date=end_date,
             dp=dp,
             timezone=timezone,
-            prepost=prepost
+            prepost=prepost,
+            mic_code=mic_code,
         )
         return self._with_endpoint(ep)
 
@@ -1931,7 +1999,8 @@ class TimeSeries(object):
             end_date=None,
             dp=5,
             timezone="Exchange",
-            prepost="false"
+            prepost="false",
+            mic_code=None,
     ):
         """
         Add request builder of HEIKINASHICANDLES to chart builder
@@ -1964,6 +2033,7 @@ class TimeSeries(object):
             timezones can be found here.Take note that IANA Timezone name is
             case-sensitive.
         :param prepost: Available at the 1min, 5min, 15min, and 30min intervals for all US equities.
+        :param mic_code: Mic code value for filter.
 
         :returns: chart builder
         :rtype: ChartEndpoint
@@ -1979,7 +2049,8 @@ class TimeSeries(object):
             end_date=end_date,
             dp=dp,
             timezone=timezone,
-            prepost=prepost
+            prepost=prepost,
+            mic_code=mic_code,
         )
         return self._with_price_endpoint(ep)
 
@@ -1994,7 +2065,8 @@ class TimeSeries(object):
             end_date=None,
             dp=5,
             timezone="Exchange",
-            prepost="false"
+            prepost="false",
+            mic_code=None,
     ):
         """
         Add request builder of HLC3 to chart builder
@@ -2026,6 +2098,7 @@ class TimeSeries(object):
             timezones can be found here.Take note that IANA Timezone name is
             case-sensitive.
         :param prepost: Available at the 1min, 5min, 15min, and 30min intervals for all US equities.
+        :param mic_code: Mic code value for filter.
 
         :returns: chart builder
         :rtype: ChartEndpoint
@@ -2041,7 +2114,8 @@ class TimeSeries(object):
             end_date=end_date,
             dp=dp,
             timezone=timezone,
-            prepost=prepost
+            prepost=prepost,
+            mic_code=mic_code,
         )
         return self._with_price_endpoint(ep)
 
@@ -2057,7 +2131,8 @@ class TimeSeries(object):
             end_date=None,
             dp=5,
             timezone="Exchange",
-            prepost="false"
+            prepost="false",
+            mic_code=None,
     ):
         """
         Add request builder of HT_DCPERIOD to chart builder
@@ -2092,6 +2167,7 @@ class TimeSeries(object):
             timezones can be found here.Take note that IANA Timezone name is
             case-sensitive.
         :param prepost: Available at the 1min, 5min, 15min, and 30min intervals for all US equities.
+        :param mic_code: Mic code value for filter.
 
         :returns: chart builder
         :rtype: ChartEndpoint
@@ -2108,7 +2184,8 @@ class TimeSeries(object):
             end_date=end_date,
             dp=dp,
             timezone=timezone,
-            prepost=prepost
+            prepost=prepost,
+            mic_code=mic_code,
         )
         return self._with_endpoint(ep)
 
@@ -2124,7 +2201,8 @@ class TimeSeries(object):
             end_date=None,
             dp=5,
             timezone="Exchange",
-            prepost="false"
+            prepost="false",
+            mic_code=None,
     ):
         """
         Add request builder of HT_DCPHASE to chart builder
@@ -2159,6 +2237,7 @@ class TimeSeries(object):
             timezones can be found here.Take note that IANA Timezone name is
             case-sensitive.
         :param prepost: Available at the 1min, 5min, 15min, and 30min intervals for all US equities.
+        :param mic_code: Mic code value for filter.
 
         :returns: chart builder
         :rtype: ChartEndpoint
@@ -2175,7 +2254,8 @@ class TimeSeries(object):
             end_date=end_date,
             dp=dp,
             timezone=timezone,
-            prepost=prepost
+            prepost=prepost,
+            mic_code=mic_code,
         )
         return self._with_endpoint(ep)
 
@@ -2191,7 +2271,8 @@ class TimeSeries(object):
             end_date=None,
             dp=5,
             timezone="Exchange",
-            prepost="false"
+            prepost="false",
+            mic_code=None,
     ):
         """
         Add request builder of HT_PHASOR to chart builder
@@ -2226,6 +2307,7 @@ class TimeSeries(object):
             timezones can be found here.Take note that IANA Timezone name is
             case-sensitive.
         :param prepost: Available at the 1min, 5min, 15min, and 30min intervals for all US equities.
+        :param mic_code: Mic code value for filter.
 
         :returns: chart builder
         :rtype: ChartEndpoint
@@ -2242,7 +2324,8 @@ class TimeSeries(object):
             end_date=end_date,
             dp=dp,
             timezone=timezone,
-            prepost=prepost
+            prepost=prepost,
+            mic_code=mic_code,
         )
         return self._with_endpoint(ep)
 
@@ -2258,7 +2341,8 @@ class TimeSeries(object):
             end_date=None,
             dp=5,
             timezone="Exchange",
-            prepost="false"
+            prepost="false",
+            mic_code=None,
     ):
         """
         Add request builder of HT_SINE to chart builder
@@ -2293,6 +2377,7 @@ class TimeSeries(object):
             timezones can be found here.Take note that IANA Timezone name is
             case-sensitive.
         :param prepost: Available at the 1min, 5min, 15min, and 30min intervals for all US equities.
+        :param mic_code: Mic code value for filter.
 
         :returns: chart builder
         :rtype: ChartEndpoint
@@ -2309,7 +2394,8 @@ class TimeSeries(object):
             end_date=end_date,
             dp=dp,
             timezone=timezone,
-            prepost=prepost
+            prepost=prepost,
+            mic_code=mic_code,
         )
         return self._with_endpoint(ep)
 
@@ -2325,7 +2411,8 @@ class TimeSeries(object):
             end_date=None,
             dp=5,
             timezone="Exchange",
-            prepost="false"
+            prepost="false",
+            mic_code=None,
     ):
         """
         Add request builder of HT_TRENDLINE to chart builder
@@ -2361,6 +2448,7 @@ class TimeSeries(object):
             timezones can be found here.Take note that IANA Timezone name is
             case-sensitive.
         :param prepost: Available at the 1min, 5min, 15min, and 30min intervals for all US equities.
+        :param mic_code: Mic code value for filter.
 
         :returns: chart builder
         :rtype: ChartEndpoint
@@ -2377,7 +2465,8 @@ class TimeSeries(object):
             end_date=end_date,
             dp=dp,
             timezone=timezone,
-            prepost=prepost
+            prepost=prepost,
+            mic_code=mic_code,
         )
         return self._with_endpoint(ep)
 
@@ -2393,7 +2482,8 @@ class TimeSeries(object):
             end_date=None,
             dp=5,
             timezone="Exchange",
-            prepost="false"
+            prepost="false",
+            mic_code=None,
     ):
         """
         Add request builder of HT_TRENDMODE to chart builder
@@ -2428,6 +2518,7 @@ class TimeSeries(object):
             timezones can be found here.Take note that IANA Timezone name is
             case-sensitive.
         :param prepost: Available at the 1min, 5min, 15min, and 30min intervals for all US equities.
+        :param mic_code: Mic code value for filter.
 
         :returns: chart builder
         :rtype: ChartEndpoint
@@ -2444,7 +2535,8 @@ class TimeSeries(object):
             end_date=end_date,
             dp=dp,
             timezone=timezone,
-            prepost=prepost
+            prepost=prepost,
+            mic_code=mic_code,
         )
         return self._with_endpoint(ep)
 
@@ -2464,7 +2556,8 @@ class TimeSeries(object):
             end_date=None,
             dp=5,
             timezone="Exchange",
-            prepost="false"
+            prepost="false",
+            mic_code=None,
     ):
         """
         Add request builder of ICHIMOKU to chart builder
@@ -2501,6 +2594,7 @@ class TimeSeries(object):
             timezones can be found here.Take note that IANA Timezone name is
             case-sensitive.
         :param prepost: Available at the 1min, 5min, 15min, and 30min intervals for all US equities.
+        :param mic_code: Mic code value for filter.
 
         :returns: chart builder
         :rtype: ChartEndpoint
@@ -2521,7 +2615,8 @@ class TimeSeries(object):
             end_date=end_date,
             dp=dp,
             timezone=timezone,
-            prepost=prepost
+            prepost=prepost,
+            mic_code=mic_code,
         )
         return self._with_endpoint(ep)
 
@@ -2538,7 +2633,8 @@ class TimeSeries(object):
             end_date=None,
             dp=5,
             timezone="Exchange",
-            prepost="false"
+            prepost="false",
+            mic_code=None,
     ):
         """
         Add request builder of KAMA to chart builder
@@ -2574,6 +2670,7 @@ class TimeSeries(object):
             timezones can be found here.Take note that IANA Timezone name is
             case-sensitive.
         :param prepost: Available at the 1min, 5min, 15min, and 30min intervals for all US equities.
+        :param mic_code: Mic code value for filter.
 
         :returns: chart builder
         :rtype: ChartEndpoint
@@ -2591,7 +2688,8 @@ class TimeSeries(object):
             end_date=end_date,
             dp=dp,
             timezone=timezone,
-            prepost=prepost
+            prepost=prepost,
+            mic_code=mic_code,
         )
         return self._with_endpoint(ep)
 
@@ -2611,7 +2709,8 @@ class TimeSeries(object):
             end_date=None,
             dp=5,
             timezone="Exchange",
-            prepost="false"
+            prepost="false",
+            mic_code=None,
     ):
         """
         Add request builder of KELTNER to chart builder
@@ -2648,6 +2747,7 @@ class TimeSeries(object):
             timezones can be found here.Take note that IANA Timezone name is
             case-sensitive.
         :param prepost: Available at the 1min, 5min, 15min, and 30min intervals for all US equities.
+        :param mic_code: Mic code value for filter.
 
         :returns: chart builder
         :rtype: ChartEndpoint
@@ -2668,7 +2768,8 @@ class TimeSeries(object):
             end_date=end_date,
             dp=dp,
             timezone=timezone,
-            prepost=prepost
+            prepost=prepost,
+            mic_code=mic_code,
         )
         return self._with_endpoint(ep)
 
@@ -2692,7 +2793,8 @@ class TimeSeries(object):
             end_date=None,
             dp=5,
             timezone="Exchange",
-            prepost="false"
+            prepost="false",
+            mic_code=None,
     ):
         """
         Add request builder of KST to chart builder
@@ -2732,6 +2834,7 @@ class TimeSeries(object):
             timezones can be found here.Take note that IANA Timezone name is
             case-sensitive.
         :param prepost: Available at the 1min, 5min, 15min, and 30min intervals for all US equities.
+        :param mic_code: Mic code value for filter.
 
         :returns: chart builder
         :rtype: ChartEndpoint
@@ -2756,7 +2859,8 @@ class TimeSeries(object):
             end_date=end_date,
             dp=dp,
             timezone=timezone,
-            prepost=prepost
+            prepost=prepost,
+            mic_code=mic_code,
         )
         return self._with_endpoint(ep)
 
@@ -2773,7 +2877,8 @@ class TimeSeries(object):
             end_date=None,
             dp=5,
             timezone="Exchange",
-            prepost="false"
+            prepost="false",
+            mic_code=None,
     ):
         """
         Add request builder of LINEARREG to chart builder
@@ -2809,6 +2914,7 @@ class TimeSeries(object):
             timezones can be found here.Take note that IANA Timezone name is
             case-sensitive.
         :param prepost: Available at the 1min, 5min, 15min, and 30min intervals for all US equities.
+        :param mic_code: Mic code value for filter.
 
         :returns: chart builder
         :rtype: ChartEndpoint
@@ -2826,7 +2932,8 @@ class TimeSeries(object):
             end_date=end_date,
             dp=dp,
             timezone=timezone,
-            prepost=prepost
+            prepost=prepost,
+            mic_code=mic_code,
         )
         return self._with_endpoint(ep)
 
@@ -2843,7 +2950,8 @@ class TimeSeries(object):
             end_date=None,
             dp=5,
             timezone="Exchange",
-            prepost="false"
+            prepost="false",
+            mic_code=None,
     ):
         """
         Add request builder of LINEARREGANGLE to chart builder
@@ -2879,6 +2987,7 @@ class TimeSeries(object):
             timezones can be found here.Take note that IANA Timezone name is
             case-sensitive.
         :param prepost: Available at the 1min, 5min, 15min, and 30min intervals for all US equities.
+        :param mic_code: Mic code value for filter.
 
         :returns: chart builder
         :rtype: ChartEndpoint
@@ -2896,7 +3005,8 @@ class TimeSeries(object):
             end_date=end_date,
             dp=dp,
             timezone=timezone,
-            prepost=prepost
+            prepost=prepost,
+            mic_code=mic_code,
         )
         return self._with_endpoint(ep)
 
@@ -2913,7 +3023,8 @@ class TimeSeries(object):
             end_date=None,
             dp=5,
             timezone="Exchange",
-            prepost="false"
+            prepost="false",
+            mic_code=None,
     ):
         """
         Add request builder of LINEARREGINTERCEPT to chart builder
@@ -2949,6 +3060,7 @@ class TimeSeries(object):
             timezones can be found here.Take note that IANA Timezone name is
             case-sensitive.
         :param prepost: Available at the 1min, 5min, 15min, and 30min intervals for all US equities.
+        :param mic_code: Mic code value for filter.
 
         :returns: chart builder
         :rtype: ChartEndpoint
@@ -2966,7 +3078,8 @@ class TimeSeries(object):
             end_date=end_date,
             dp=dp,
             timezone=timezone,
-            prepost=prepost
+            prepost=prepost,
+            mic_code=mic_code,
         )
         return self._with_endpoint(ep)
 
@@ -2983,7 +3096,8 @@ class TimeSeries(object):
             end_date=None,
             dp=5,
             timezone="Exchange",
-            prepost="false"
+            prepost="false",
+            mic_code=None,
     ):
         """
         Add request builder of LINEARREGSLOPE to chart builder
@@ -3019,6 +3133,7 @@ class TimeSeries(object):
             timezones can be found here.Take note that IANA Timezone name is
             case-sensitive.
         :param prepost: Available at the 1min, 5min, 15min, and 30min intervals for all US equities.
+        :param mic_code: Mic code value for filter.
 
         :returns: chart builder
         :rtype: ChartEndpoint
@@ -3036,7 +3151,8 @@ class TimeSeries(object):
             end_date=end_date,
             dp=dp,
             timezone=timezone,
-            prepost=prepost
+            prepost=prepost,
+            mic_code=mic_code,
         )
         return self._with_endpoint(ep)
 
@@ -3052,7 +3168,8 @@ class TimeSeries(object):
             end_date=None,
             dp=5,
             timezone="Exchange",
-            prepost="false"
+            prepost="false",
+            mic_code=None,
     ):
         """
         Add request builder of LN to chart builder
@@ -3086,6 +3203,7 @@ class TimeSeries(object):
             timezones can be found here.Take note that IANA Timezone name is
             case-sensitive.
         :param prepost: Available at the 1min, 5min, 15min, and 30min intervals for all US equities.
+        :param mic_code: Mic code value for filter.
 
         :returns: chart builder
         :rtype: ChartEndpoint
@@ -3102,7 +3220,8 @@ class TimeSeries(object):
             end_date=end_date,
             dp=dp,
             timezone=timezone,
-            prepost=prepost
+            prepost=prepost,
+            mic_code=mic_code,
         )
         return self._with_endpoint(ep)
 
@@ -3118,7 +3237,8 @@ class TimeSeries(object):
             end_date=None,
             dp=5,
             timezone="Exchange",
-            prepost="false"
+            prepost="false",
+            mic_code=None,
     ):
         """
         Add request builder of LOG10 to chart builder
@@ -3152,6 +3272,7 @@ class TimeSeries(object):
             timezones can be found here.Take note that IANA Timezone name is
             case-sensitive.
         :param prepost: Available at the 1min, 5min, 15min, and 30min intervals for all US equities.
+        :param mic_code: Mic code value for filter.
 
         :returns: chart builder
         :rtype: ChartEndpoint
@@ -3168,7 +3289,8 @@ class TimeSeries(object):
             end_date=end_date,
             dp=dp,
             timezone=timezone,
-            prepost=prepost
+            prepost=prepost,
+            mic_code=mic_code,
         )
         return self._with_endpoint(ep)
 
@@ -3186,7 +3308,8 @@ class TimeSeries(object):
             end_date=None,
             dp=5,
             timezone="Exchange",
-            prepost="false"
+            prepost="false",
+            mic_code=None,
     ):
         """
         Add request builder of MA to chart builder
@@ -3223,6 +3346,7 @@ class TimeSeries(object):
             timezones can be found here.Take note that IANA Timezone name is
             case-sensitive.
         :param prepost: Available at the 1min, 5min, 15min, and 30min intervals for all US equities.
+        :param mic_code: Mic code value for filter.
 
         :returns: chart builder
         :rtype: ChartEndpoint
@@ -3241,7 +3365,8 @@ class TimeSeries(object):
             end_date=end_date,
             dp=dp,
             timezone=timezone,
-            prepost=prepost
+            prepost=prepost,
+            mic_code=mic_code,
         )
         return self._with_endpoint(ep)
 
@@ -3260,7 +3385,8 @@ class TimeSeries(object):
             end_date=None,
             dp=5,
             timezone="Exchange",
-            prepost="false"
+            prepost="false",
+            mic_code=None,
     ):
         """
         Add request builder of MACD to chart builder
@@ -3301,6 +3427,7 @@ class TimeSeries(object):
             timezones can be found here.Take note that IANA Timezone name is
             case-sensitive.
         :param prepost: Available at the 1min, 5min, 15min, and 30min intervals for all US equities.
+        :param mic_code: Mic code value for filter.
 
         :returns: chart builder
         :rtype: ChartEndpoint
@@ -3320,7 +3447,8 @@ class TimeSeries(object):
             end_date=end_date,
             dp=dp,
             timezone=timezone,
-            prepost=prepost
+            prepost=prepost,
+            mic_code=mic_code,
         )
         return self._with_endpoint(ep)
 
@@ -3340,7 +3468,8 @@ class TimeSeries(object):
             end_date=None,
             dp=5,
             timezone="Exchange",
-            prepost="false"
+            prepost="false",
+            mic_code=None,
     ):
         """
         Add request builder of MACD_SLOPE to chart builder
@@ -3383,6 +3512,7 @@ class TimeSeries(object):
             timezones can be found here.Take note that IANA Timezone name is
             case-sensitive.
         :param prepost: Available at the 1min, 5min, 15min, and 30min intervals for all US equities.
+        :param mic_code: Mic code value for filter.
 
         :returns: chart builder
         :rtype: ChartEndpoint
@@ -3403,7 +3533,8 @@ class TimeSeries(object):
             end_date=end_date,
             dp=dp,
             timezone=timezone,
-            prepost=prepost
+            prepost=prepost,
+            mic_code=mic_code,
         )
         return self._with_endpoint(ep)
 
@@ -3425,7 +3556,8 @@ class TimeSeries(object):
             end_date=None,
             dp=5,
             timezone="Exchange",
-            prepost="false"
+            prepost="false",
+            mic_code=None,
     ):
         """
         Add request builder of MACDEXT to chart builder
@@ -3469,6 +3601,7 @@ class TimeSeries(object):
             timezones can be found here.Take note that IANA Timezone name is
             case-sensitive.
         :param prepost: Available at the 1min, 5min, 15min, and 30min intervals for all US equities.
+        :param mic_code: Mic code value for filter.
 
         :returns: chart builder
         :rtype: ChartEndpoint
@@ -3491,7 +3624,8 @@ class TimeSeries(object):
             end_date=end_date,
             dp=dp,
             timezone=timezone,
-            prepost=prepost
+            prepost=prepost,
+            mic_code=mic_code,
         )
         return self._with_endpoint(ep)
 
@@ -3509,7 +3643,8 @@ class TimeSeries(object):
             end_date=None,
             dp=5,
             timezone="Exchange",
-            prepost="false"
+            prepost="false",
+            mic_code=None,
     ):
         """
         Add request builder of MAMA to chart builder
@@ -3546,6 +3681,7 @@ class TimeSeries(object):
             timezones can be found here.Take note that IANA Timezone name is
             case-sensitive.
         :param prepost: Available at the 1min, 5min, 15min, and 30min intervals for all US equities.
+        :param mic_code: Mic code value for filter.
 
         :returns: chart builder
         :rtype: ChartEndpoint
@@ -3564,7 +3700,8 @@ class TimeSeries(object):
             end_date=end_date,
             dp=dp,
             timezone=timezone,
-            prepost=prepost
+            prepost=prepost,
+            mic_code=mic_code,
         )
         return self._with_endpoint(ep)
 
@@ -3581,7 +3718,8 @@ class TimeSeries(object):
             end_date=None,
             dp=5,
             timezone="Exchange",
-            prepost="false"
+            prepost="false",
+            mic_code=None,
     ):
         """
         Add request builder of MAX to chart builder
@@ -3616,6 +3754,7 @@ class TimeSeries(object):
             timezones can be found here.Take note that IANA Timezone name is
             case-sensitive.
         :param prepost: Available at the 1min, 5min, 15min, and 30min intervals for all US equities.
+        :param mic_code: Mic code value for filter.
 
         :returns: chart builder
         :rtype: ChartEndpoint
@@ -3633,7 +3772,8 @@ class TimeSeries(object):
             end_date=end_date,
             dp=dp,
             timezone=timezone,
-            prepost=prepost
+            prepost=prepost,
+            mic_code=mic_code,
         )
         return self._with_endpoint(ep)
 
@@ -3650,7 +3790,8 @@ class TimeSeries(object):
             end_date=None,
             dp=5,
             timezone="Exchange",
-            prepost="false"
+            prepost="false",
+            mic_code=None,
     ):
         """
         Add request builder of MAXINDEX to chart builder
@@ -3685,6 +3826,7 @@ class TimeSeries(object):
             timezones can be found here.Take note that IANA Timezone name is
             case-sensitive.
         :param prepost: Available at the 1min, 5min, 15min, and 30min intervals for all US equities.
+        :param mic_code: Mic code value for filter.
 
         :returns: chart builder
         :rtype: ChartEndpoint
@@ -3702,7 +3844,8 @@ class TimeSeries(object):
             end_date=end_date,
             dp=dp,
             timezone=timezone,
-            prepost=prepost
+            prepost=prepost,
+            mic_code=mic_code,
         )
         return self._with_endpoint(ep)
 
@@ -3718,7 +3861,8 @@ class TimeSeries(object):
             end_date=None,
             dp=5,
             timezone="Exchange",
-            prepost="false"
+            prepost="false",
+            mic_code=None,
     ):
         """
         Add request builder of MCGINLEY_DYNAMIC to chart builder
@@ -3750,6 +3894,7 @@ class TimeSeries(object):
             timezones can be found here.Take note that IANA Timezone name is
             case-sensitive.
         :param prepost: Available at the 1min, 5min, 15min, and 30min intervals for all US equities.
+        :param mic_code: Mic code value for filter.
 
         :returns: chart builder
         :rtype: ChartEndpoint
@@ -3766,7 +3911,8 @@ class TimeSeries(object):
             end_date=end_date,
             dp=dp,
             timezone=timezone,
-            prepost=prepost
+            prepost=prepost,
+            mic_code=mic_code,
         )
         return self._with_endpoint(ep)
 
@@ -3783,7 +3929,8 @@ class TimeSeries(object):
             end_date=None,
             dp=5,
             timezone="Exchange",
-            prepost="false"
+            prepost="false",
+            mic_code=None,
     ):
         """
         Add request builder of MEDPRICE to chart builder
@@ -3818,6 +3965,7 @@ class TimeSeries(object):
             timezones can be found here.Take note that IANA Timezone name is
             case-sensitive.
         :param prepost: Available at the 1min, 5min, 15min, and 30min intervals for all US equities.
+        :param mic_code: Mic code value for filter.
 
         :returns: chart builder
         :rtype: ChartEndpoint
@@ -3835,7 +3983,8 @@ class TimeSeries(object):
             end_date=end_date,
             dp=dp,
             timezone=timezone,
-            prepost=prepost
+            prepost=prepost,
+            mic_code=mic_code,
         )
         return self._with_endpoint(ep)
 
@@ -3851,7 +4000,8 @@ class TimeSeries(object):
             end_date=None,
             dp=5,
             timezone="Exchange",
-            prepost="false"
+            prepost="false",
+            mic_code=None,
     ):
         """
         Add request builder of MFI to chart builder
@@ -3884,6 +4034,7 @@ class TimeSeries(object):
             timezones can be found here.Take note that IANA Timezone name is
             case-sensitive.
         :param prepost: Available at the 1min, 5min, 15min, and 30min intervals for all US equities.
+        :param mic_code: Mic code value for filter.
 
         :returns: chart builder
         :rtype: ChartEndpoint
@@ -3900,7 +4051,8 @@ class TimeSeries(object):
             end_date=end_date,
             dp=dp,
             timezone=timezone,
-            prepost=prepost
+            prepost=prepost,
+            mic_code=mic_code,
         )
         return self._with_endpoint(ep)
 
@@ -3917,7 +4069,8 @@ class TimeSeries(object):
             end_date=None,
             dp=5,
             timezone="Exchange",
-            prepost="false"
+            prepost="false",
+            mic_code=None,
     ):
         """
         Add request builder of MIDPOINT to chart builder
@@ -3953,6 +4106,7 @@ class TimeSeries(object):
             timezones can be found here.Take note that IANA Timezone name is
             case-sensitive.
         :param prepost: Available at the 1min, 5min, 15min, and 30min intervals for all US equities.
+        :param mic_code: Mic code value for filter.
 
         :returns: chart builder
         :rtype: ChartEndpoint
@@ -3970,7 +4124,8 @@ class TimeSeries(object):
             end_date=end_date,
             dp=dp,
             timezone=timezone,
-            prepost=prepost
+            prepost=prepost,
+            mic_code=mic_code,
         )
         return self._with_endpoint(ep)
 
@@ -3986,7 +4141,8 @@ class TimeSeries(object):
             end_date=None,
             dp=5,
             timezone="Exchange",
-            prepost="false"
+            prepost="false",
+            mic_code=None,
     ):
         """
         Add request builder of MIDPRICE to chart builder
@@ -4020,6 +4176,7 @@ class TimeSeries(object):
             timezones can be found here.Take note that IANA Timezone name is
             case-sensitive.
         :param prepost: Available at the 1min, 5min, 15min, and 30min intervals for all US equities.
+        :param mic_code: Mic code value for filter.
 
         :returns: chart builder
         :rtype: ChartEndpoint
@@ -4036,7 +4193,8 @@ class TimeSeries(object):
             end_date=end_date,
             dp=dp,
             timezone=timezone,
-            prepost=prepost
+            prepost=prepost,
+            mic_code=mic_code,
         )
         return self._with_endpoint(ep)
 
@@ -4053,7 +4211,8 @@ class TimeSeries(object):
             end_date=None,
             dp=5,
             timezone="Exchange",
-            prepost="false"
+            prepost="false",
+            mic_code=None,
     ):
         """
         Add request builder of MIN to chart builder
@@ -4088,6 +4247,7 @@ class TimeSeries(object):
             timezones can be found here.Take note that IANA Timezone name is
             case-sensitive.
         :param prepost: Available at the 1min, 5min, 15min, and 30min intervals for all US equities.
+        :param mic_code: Mic code value for filter.
 
         :returns: chart builder
         :rtype: ChartEndpoint
@@ -4105,7 +4265,8 @@ class TimeSeries(object):
             end_date=end_date,
             dp=dp,
             timezone=timezone,
-            prepost=prepost
+            prepost=prepost,
+            mic_code=mic_code,
         )
         return self._with_endpoint(ep)
 
@@ -4122,7 +4283,8 @@ class TimeSeries(object):
             end_date=None,
             dp=5,
             timezone="Exchange",
-            prepost="false"
+            prepost="false",
+            mic_code=None,
     ):
         """
         Add request builder of MININDEX to chart builder
@@ -4157,6 +4319,7 @@ class TimeSeries(object):
             timezones can be found here.Take note that IANA Timezone name is
             case-sensitive.
         :param prepost: Available at the 1min, 5min, 15min, and 30min intervals for all US equities.
+        :param mic_code: Mic code value for filter.
 
         :returns: chart builder
         :rtype: ChartEndpoint
@@ -4174,7 +4337,8 @@ class TimeSeries(object):
             end_date=end_date,
             dp=dp,
             timezone=timezone,
-            prepost=prepost
+            prepost=prepost,
+            mic_code=mic_code,
         )
         return self._with_endpoint(ep)
 
@@ -4191,7 +4355,8 @@ class TimeSeries(object):
             end_date=None,
             dp=5,
             timezone="Exchange",
-            prepost="false"
+            prepost="false",
+            mic_code=None,
     ):
         """
         Add request builder of MINMAX to chart builder
@@ -4226,6 +4391,7 @@ class TimeSeries(object):
             timezones can be found here.Take note that IANA Timezone name is
             case-sensitive.
         :param prepost: Available at the 1min, 5min, 15min, and 30min intervals for all US equities.
+        :param mic_code: Mic code value for filter.
 
         :returns: chart builder
         :rtype: ChartEndpoint
@@ -4243,7 +4409,8 @@ class TimeSeries(object):
             end_date=end_date,
             dp=dp,
             timezone=timezone,
-            prepost=prepost
+            prepost=prepost,
+            mic_code=mic_code,
         )
         return self._with_endpoint(ep)
 
@@ -4260,7 +4427,8 @@ class TimeSeries(object):
             end_date=None,
             dp=5,
             timezone="Exchange",
-            prepost="false"
+            prepost="false",
+            mic_code=None,
     ):
         """
         Add request builder of MINMAXINDEX to chart builder
@@ -4295,6 +4463,7 @@ class TimeSeries(object):
             timezones can be found here.Take note that IANA Timezone name is
             case-sensitive.
         :param prepost: Available at the 1min, 5min, 15min, and 30min intervals for all US equities.
+        :param mic_code: Mic code value for filter.
 
         :returns: chart builder
         :rtype: ChartEndpoint
@@ -4312,7 +4481,8 @@ class TimeSeries(object):
             end_date=end_date,
             dp=dp,
             timezone=timezone,
-            prepost=prepost
+            prepost=prepost,
+            mic_code=mic_code,
         )
         return self._with_endpoint(ep)
 
@@ -4328,7 +4498,8 @@ class TimeSeries(object):
             end_date=None,
             dp=5,
             timezone="Exchange",
-            prepost="false"
+            prepost="false",
+            mic_code=None,
     ):
         """
         Add request builder of MINUS_DI to chart builder
@@ -4362,6 +4533,7 @@ class TimeSeries(object):
             timezones can be found here.Take note that IANA Timezone name is
             case-sensitive.
         :param prepost: Available at the 1min, 5min, 15min, and 30min intervals for all US equities.
+        :param mic_code: Mic code value for filter.
 
         :returns: chart builder
         :rtype: ChartEndpoint
@@ -4378,7 +4550,8 @@ class TimeSeries(object):
             end_date=end_date,
             dp=dp,
             timezone=timezone,
-            prepost=prepost
+            prepost=prepost,
+            mic_code=mic_code,
         )
         return self._with_endpoint(ep)
 
@@ -4394,7 +4567,8 @@ class TimeSeries(object):
             end_date=None,
             dp=5,
             timezone="Exchange",
-            prepost="false"
+            prepost="false",
+            mic_code=None,
     ):
         """
         Add request builder of MINUS_DM to chart builder
@@ -4428,6 +4602,7 @@ class TimeSeries(object):
             timezones can be found here.Take note that IANA Timezone name is
             case-sensitive.
         :param prepost: Available at the 1min, 5min, 15min, and 30min intervals for all US equities.
+        :param mic_code: Mic code value for filter.
 
         :returns: chart builder
         :rtype: ChartEndpoint
@@ -4444,7 +4619,8 @@ class TimeSeries(object):
             end_date=end_date,
             dp=dp,
             timezone=timezone,
-            prepost=prepost
+            prepost=prepost,
+            mic_code=mic_code,
         )
         return self._with_endpoint(ep)
 
@@ -4461,7 +4637,8 @@ class TimeSeries(object):
             end_date=None,
             dp=5,
             timezone="Exchange",
-            prepost="false"
+            prepost="false",
+            mic_code=None,
     ):
         """
         Add request builder of MOM to chart builder
@@ -4497,6 +4674,7 @@ class TimeSeries(object):
             timezones can be found here.Take note that IANA Timezone name is
             case-sensitive.
         :param prepost: Available at the 1min, 5min, 15min, and 30min intervals for all US equities.
+        :param mic_code: Mic code value for filter.
 
         :returns: chart builder
         :rtype: ChartEndpoint
@@ -4514,7 +4692,8 @@ class TimeSeries(object):
             end_date=end_date,
             dp=dp,
             timezone=timezone,
-            prepost=prepost
+            prepost=prepost,
+            mic_code=mic_code,
         )
         return self._with_endpoint(ep)
 
@@ -4530,7 +4709,8 @@ class TimeSeries(object):
             end_date=None,
             dp=5,
             timezone="Exchange",
-            prepost="false"
+            prepost="false",
+            mic_code=None,
     ):
         """
         Add request builder of NATR to chart builder
@@ -4565,6 +4745,7 @@ class TimeSeries(object):
             timezones can be found here.Take note that IANA Timezone name is
             case-sensitive.
         :param prepost: Available at the 1min, 5min, 15min, and 30min intervals for all US equities.
+        :param mic_code: Mic code value for filter.
 
         :returns: chart builder
         :rtype: ChartEndpoint
@@ -4581,7 +4762,8 @@ class TimeSeries(object):
             end_date=end_date,
             dp=dp,
             timezone=timezone,
-            prepost=prepost
+            prepost=prepost,
+            mic_code=mic_code,
         )
         return self._with_endpoint(ep)
 
@@ -4597,7 +4779,8 @@ class TimeSeries(object):
             end_date=None,
             dp=5,
             timezone="Exchange",
-            prepost="false"
+            prepost="false",
+            mic_code=None,
     ):
         """
         Add request builder of OBV to chart builder
@@ -4632,6 +4815,7 @@ class TimeSeries(object):
             timezones can be found here.Take note that IANA Timezone name is
             case-sensitive.
         :param prepost: Available at the 1min, 5min, 15min, and 30min intervals for all US equities.
+        :param mic_code: Mic code value for filter.
 
         :returns: chart builder
         :rtype: ChartEndpoint
@@ -4648,7 +4832,8 @@ class TimeSeries(object):
             end_date=end_date,
             dp=dp,
             timezone=timezone,
-            prepost=prepost
+            prepost=prepost,
+            mic_code=mic_code,
         )
         return self._with_endpoint(ep)
 
@@ -4664,7 +4849,8 @@ class TimeSeries(object):
             end_date=None,
             dp=5,
             timezone="Exchange",
-            prepost="false"
+            prepost="false",
+            mic_code=None,
     ):
         """
         Add request builder of PLUS_DI to chart builder
@@ -4698,6 +4884,7 @@ class TimeSeries(object):
             timezones can be found here.Take note that IANA Timezone name is
             case-sensitive.
         :param prepost: Available at the 1min, 5min, 15min, and 30min intervals for all US equities.
+        :param mic_code: Mic code value for filter.
 
         :returns: chart builder
         :rtype: ChartEndpoint
@@ -4714,7 +4901,8 @@ class TimeSeries(object):
             end_date=end_date,
             dp=dp,
             timezone=timezone,
-            prepost=prepost
+            prepost=prepost,
+            mic_code=mic_code,
         )
         return self._with_endpoint(ep)
 
@@ -4730,7 +4918,8 @@ class TimeSeries(object):
             end_date=None,
             dp=5,
             timezone="Exchange",
-            prepost="false"
+            prepost="false",
+            mic_code=None,
     ):
         """
         Add request builder of PLUS_DM to chart builder
@@ -4764,6 +4953,7 @@ class TimeSeries(object):
             timezones can be found here.Take note that IANA Timezone name is
             case-sensitive.
         :param prepost: Available at the 1min, 5min, 15min, and 30min intervals for all US equities.
+        :param mic_code: Mic code value for filter.
 
         :returns: chart builder
         :rtype: ChartEndpoint
@@ -4780,7 +4970,8 @@ class TimeSeries(object):
             end_date=end_date,
             dp=dp,
             timezone=timezone,
-            prepost=prepost
+            prepost=prepost,
+            mic_code=mic_code,
         )
         return self._with_endpoint(ep)
 
@@ -4799,7 +4990,8 @@ class TimeSeries(object):
             end_date=None,
             dp=5,
             timezone="Exchange",
-            prepost="false"
+            prepost="false",
+            mic_code=None,
     ):
         """
         Add request builder of PPO to chart builder
@@ -4838,6 +5030,7 @@ class TimeSeries(object):
             timezones can be found here.Take note that IANA Timezone name is
             case-sensitive.
         :param prepost: Available at the 1min, 5min, 15min, and 30min intervals for all US equities.
+        :param mic_code: Mic code value for filter.
 
         :returns: chart builder
         :rtype: ChartEndpoint
@@ -4857,7 +5050,8 @@ class TimeSeries(object):
             end_date=end_date,
             dp=dp,
             timezone=timezone,
-            prepost=prepost
+            prepost=prepost,
+            mic_code=mic_code,
         )
         return self._with_endpoint(ep)
 
@@ -4874,7 +5068,8 @@ class TimeSeries(object):
             end_date=None,
             dp=5,
             timezone="Exchange",
-            prepost="false"
+            prepost="false",
+            mic_code=None,
     ):
         """
         Add request builder of ROC to chart builder
@@ -4910,6 +5105,7 @@ class TimeSeries(object):
             timezones can be found here.Take note that IANA Timezone name is
             case-sensitive.
         :param prepost: Available at the 1min, 5min, 15min, and 30min intervals for all US equities.
+        :param mic_code: Mic code value for filter.
 
         :returns: chart builder
         :rtype: ChartEndpoint
@@ -4927,7 +5123,8 @@ class TimeSeries(object):
             end_date=end_date,
             dp=dp,
             timezone=timezone,
-            prepost=prepost
+            prepost=prepost,
+            mic_code=mic_code,
         )
         return self._with_endpoint(ep)
 
@@ -4944,7 +5141,8 @@ class TimeSeries(object):
             end_date=None,
             dp=5,
             timezone="Exchange",
-            prepost="false"
+            prepost="false",
+            mic_code=None,
     ):
         """
         Add request builder of ROCP to chart builder
@@ -4981,6 +5179,7 @@ class TimeSeries(object):
             timezones can be found here.Take note that IANA Timezone name is
             case-sensitive.
         :param prepost: Available at the 1min, 5min, 15min, and 30min intervals for all US equities.
+        :param mic_code: Mic code value for filter.
 
         :returns: chart builder
         :rtype: ChartEndpoint
@@ -4998,7 +5197,8 @@ class TimeSeries(object):
             end_date=end_date,
             dp=dp,
             timezone=timezone,
-            prepost=prepost
+            prepost=prepost,
+            mic_code=mic_code,
         )
         return self._with_endpoint(ep)
 
@@ -5015,7 +5215,8 @@ class TimeSeries(object):
             end_date=None,
             dp=5,
             timezone="Exchange",
-            prepost="false"
+            prepost="false",
+            mic_code=None,
     ):
         """
         Add request builder of ROCR to chart builder
@@ -5051,6 +5252,7 @@ class TimeSeries(object):
             timezones can be found here.Take note that IANA Timezone name is
             case-sensitive.
         :param prepost: Available at the 1min, 5min, 15min, and 30min intervals for all US equities.
+        :param mic_code: Mic code value for filter.
 
         :returns: chart builder
         :rtype: ChartEndpoint
@@ -5068,7 +5270,8 @@ class TimeSeries(object):
             end_date=end_date,
             dp=dp,
             timezone=timezone,
-            prepost=prepost
+            prepost=prepost,
+            mic_code=mic_code,
         )
         return self._with_endpoint(ep)
 
@@ -5085,7 +5288,8 @@ class TimeSeries(object):
             end_date=None,
             dp=5,
             timezone="Exchange",
-            prepost="false"
+            prepost="false",
+            mic_code=None,
     ):
         """
         Add request builder of ROCR100 to chart builder
@@ -5122,6 +5326,7 @@ class TimeSeries(object):
             timezones can be found here.Take note that IANA Timezone name is
             case-sensitive.
         :param prepost: Available at the 1min, 5min, 15min, and 30min intervals for all US equities.
+        :param mic_code: Mic code value for filter.
 
         :returns: chart builder
         :rtype: ChartEndpoint
@@ -5139,7 +5344,8 @@ class TimeSeries(object):
             end_date=end_date,
             dp=dp,
             timezone=timezone,
-            prepost=prepost
+            prepost=prepost,
+            mic_code=mic_code,
         )
         return self._with_endpoint(ep)
 
@@ -5156,7 +5362,8 @@ class TimeSeries(object):
             end_date=None,
             dp=5,
             timezone="Exchange",
-            prepost="false"
+            prepost="false",
+            mic_code=None,
     ):
         """
         Add request builder of RSI to chart builder
@@ -5193,6 +5400,7 @@ class TimeSeries(object):
             timezones can be found here.Take note that IANA Timezone name is
             case-sensitive.
         :param prepost: Available at the 1min, 5min, 15min, and 30min intervals for all US equities.
+        :param mic_code: Mic code value for filter.
 
         :returns: chart builder
         :rtype: ChartEndpoint
@@ -5210,7 +5418,8 @@ class TimeSeries(object):
             end_date=end_date,
             dp=dp,
             timezone=timezone,
-            prepost=prepost
+            prepost=prepost,
+            mic_code=mic_code,
         )
         return self._with_endpoint(ep)
 
@@ -5226,7 +5435,8 @@ class TimeSeries(object):
             end_date=None,
             dp=5,
             timezone="Exchange",
-            prepost="false"
+            prepost="false",
+            mic_code=None,
     ):
         """
         Add request builder of RVOL to chart builder
@@ -5260,6 +5470,7 @@ class TimeSeries(object):
             timezones can be found here.Take note that IANA Timezone name is
             case-sensitive.
         :param prepost: Available at the 1min, 5min, 15min, and 30min intervals for all US equities.
+        :param mic_code: Mic code value for filter.
 
         :returns: chart builder
         :rtype: ChartEndpoint
@@ -5276,7 +5487,8 @@ class TimeSeries(object):
             end_date=end_date,
             dp=dp,
             timezone=timezone,
-            prepost=prepost
+            prepost=prepost,
+            mic_code=mic_code,
         )
         return self._with_endpoint(ep)
 
@@ -5293,7 +5505,8 @@ class TimeSeries(object):
             end_date=None,
             dp=5,
             timezone="Exchange",
-            prepost="false"
+            prepost="false",
+            mic_code=None,
     ):
         """
         Add request builder of SAR to chart builder
@@ -5327,6 +5540,7 @@ class TimeSeries(object):
             timezones can be found here.Take note that IANA Timezone name is
             case-sensitive.
         :param prepost: Available at the 1min, 5min, 15min, and 30min intervals for all US equities.
+        :param mic_code: Mic code value for filter.
 
         :returns: chart builder
         :rtype: ChartEndpoint
@@ -5344,7 +5558,8 @@ class TimeSeries(object):
             end_date=end_date,
             dp=dp,
             timezone=timezone,
-            prepost=prepost
+            prepost=prepost,
+            mic_code=mic_code,
         )
         return self._with_endpoint(ep)
 
@@ -5361,7 +5576,8 @@ class TimeSeries(object):
             end_date=None,
             dp=5,
             timezone="Exchange",
-            prepost="false"
+            prepost="false",
+            mic_code=None,
     ):
         """
         Add request builder of SMA to chart builder
@@ -5398,6 +5614,7 @@ class TimeSeries(object):
             timezones can be found here.Take note that IANA Timezone name is
             case-sensitive.
         :param prepost: Available at the 1min, 5min, 15min, and 30min intervals for all US equities.
+        :param mic_code: Mic code value for filter.
 
         :returns: chart builder
         :rtype: ChartEndpoint
@@ -5415,7 +5632,8 @@ class TimeSeries(object):
             end_date=end_date,
             dp=dp,
             timezone=timezone,
-            prepost=prepost
+            prepost=prepost,
+            mic_code=mic_code,
         )
         return self._with_endpoint(ep)
 
@@ -5431,7 +5649,8 @@ class TimeSeries(object):
             end_date=None,
             dp=5,
             timezone="Exchange",
-            prepost="false"
+            prepost="false",
+            mic_code=None,
     ):
         """
         Add request builder of SQRT to chart builder
@@ -5464,6 +5683,7 @@ class TimeSeries(object):
             timezones can be found here.Take note that IANA Timezone name is
             case-sensitive.
         :param prepost: Available at the 1min, 5min, 15min, and 30min intervals for all US equities.
+        :param mic_code: Mic code value for filter.
 
         :returns: chart builder
         :rtype: ChartEndpoint
@@ -5480,7 +5700,8 @@ class TimeSeries(object):
             end_date=end_date,
             dp=dp,
             timezone=timezone,
-            prepost=prepost
+            prepost=prepost,
+            mic_code=mic_code,
         )
         return self._with_endpoint(ep)
 
@@ -5498,7 +5719,8 @@ class TimeSeries(object):
             end_date=None,
             dp=5,
             timezone="Exchange",
-            prepost="false"
+            prepost="false",
+            mic_code=None,
     ):
         """
         Add request builder of STDDEV to chart builder
@@ -5535,6 +5757,7 @@ class TimeSeries(object):
             timezones can be found here.Take note that IANA Timezone name is
             case-sensitive.
         :param prepost: Available at the 1min, 5min, 15min, and 30min intervals for all US equities.
+        :param mic_code: Mic code value for filter.
 
         :returns: chart builder
         :rtype: ChartEndpoint
@@ -5553,7 +5776,8 @@ class TimeSeries(object):
             end_date=end_date,
             dp=dp,
             timezone=timezone,
-            prepost=prepost
+            prepost=prepost,
+            mic_code=mic_code,
         )
         return self._with_endpoint(ep)
 
@@ -5573,7 +5797,8 @@ class TimeSeries(object):
             end_date=None,
             dp=5,
             timezone="Exchange",
-            prepost="false"
+            prepost="false",
+            mic_code=None,
     ):
         """
         Add request builder of STOCH to chart builder
@@ -5610,6 +5835,7 @@ class TimeSeries(object):
             timezones can be found here.Take note that IANA Timezone name is
             case-sensitive.
         :param prepost: Available at the 1min, 5min, 15min, and 30min intervals for all US equities.
+        :param mic_code: Mic code value for filter.
 
         :returns: chart builder
         :rtype: ChartEndpoint
@@ -5630,7 +5856,8 @@ class TimeSeries(object):
             end_date=end_date,
             dp=dp,
             timezone=timezone,
-            prepost=prepost
+            prepost=prepost,
+            mic_code=mic_code,
         )
         return self._with_endpoint(ep)
 
@@ -5648,7 +5875,8 @@ class TimeSeries(object):
             end_date=None,
             dp=5,
             timezone="Exchange",
-            prepost="false"
+            prepost="false",
+            mic_code=None,
     ):
         """
         Add request builder of STOCHF to chart builder
@@ -5683,6 +5911,7 @@ class TimeSeries(object):
             timezones can be found here.Take note that IANA Timezone name is
             case-sensitive.
         :param prepost: Available at the 1min, 5min, 15min, and 30min intervals for all US equities.
+        :param mic_code: Mic code value for filter.
 
         :returns: chart builder
         :rtype: ChartEndpoint
@@ -5701,7 +5930,8 @@ class TimeSeries(object):
             end_date=end_date,
             dp=dp,
             timezone=timezone,
-            prepost=prepost
+            prepost=prepost,
+            mic_code=mic_code,
         )
         return self._with_endpoint(ep)
 
@@ -5721,7 +5951,8 @@ class TimeSeries(object):
             end_date=None,
             dp=5,
             timezone="Exchange",
-            prepost="false"
+            prepost="false",
+            mic_code=None,
     ):
         """
         Add request builder of STOCHRSI to chart builder
@@ -5761,6 +5992,7 @@ class TimeSeries(object):
             timezones can be found here.Take note that IANA Timezone name is
             case-sensitive.
         :param prepost: Available at the 1min, 5min, 15min, and 30min intervals for all US equities.
+        :param mic_code: Mic code value for filter.
 
         :returns: chart builder
         :rtype: ChartEndpoint
@@ -5781,7 +6013,8 @@ class TimeSeries(object):
             end_date=end_date,
             dp=dp,
             timezone=timezone,
-            prepost=prepost
+            prepost=prepost,
+            mic_code=mic_code,
         )
         return self._with_endpoint(ep)
 
@@ -5798,7 +6031,8 @@ class TimeSeries(object):
             end_date=None,
             dp=5,
             timezone="Exchange",
-            prepost="false"
+            prepost="false",
+            mic_code=None,
     ):
         """
         Add request builder of SuperTrend to chart builder
@@ -5832,6 +6066,7 @@ class TimeSeries(object):
             timezones can be found here.Take note that IANA Timezone name is
             case-sensitive.
         :param prepost: Available at the 1min, 5min, 15min, and 30min intervals for all US equities.
+        :param mic_code: Mic code value for filter.
 
         :returns: chart builder
         :rtype: ChartEndpoint
@@ -5849,7 +6084,8 @@ class TimeSeries(object):
             end_date=end_date,
             dp=dp,
             timezone=timezone,
-            prepost=prepost
+            prepost=prepost,
+            mic_code=mic_code,
         )
         return self._with_endpoint(ep)
 
@@ -5867,7 +6103,8 @@ class TimeSeries(object):
             end_date=None,
             dp=5,
             timezone="Exchange",
-            prepost="false"
+            prepost="false",
+            mic_code=None,
     ):
         """
         Add request builder of T3MA to chart builder
@@ -5903,6 +6140,7 @@ class TimeSeries(object):
             timezones can be found here.Take note that IANA Timezone name is
             case-sensitive.
         :param prepost: Available at the 1min, 5min, 15min, and 30min intervals for all US equities.
+        :param mic_code: Mic code value for filter.
 
         :returns: chart builder
         :rtype: ChartEndpoint
@@ -5921,7 +6159,8 @@ class TimeSeries(object):
             end_date=end_date,
             dp=dp,
             timezone=timezone,
-            prepost=prepost
+            prepost=prepost,
+            mic_code=mic_code,
         )
         return self._with_endpoint(ep)
 
@@ -5938,7 +6177,8 @@ class TimeSeries(object):
             end_date=None,
             dp=5,
             timezone="Exchange",
-            prepost="false"
+            prepost="false",
+            mic_code=None,
     ):
         """
         Add request builder of TEMA to chart builder
@@ -5975,6 +6215,7 @@ class TimeSeries(object):
             timezones can be found here.Take note that IANA Timezone name is
             case-sensitive.
         :param prepost: Available at the 1min, 5min, 15min, and 30min intervals for all US equities.
+        :param mic_code: Mic code value for filter.
 
         :returns: chart builder
         :rtype: ChartEndpoint
@@ -5992,7 +6233,8 @@ class TimeSeries(object):
             end_date=end_date,
             dp=dp,
             timezone=timezone,
-            prepost=prepost
+            prepost=prepost,
+            mic_code=mic_code,
         )
         return self._with_endpoint(ep)
 
@@ -6007,7 +6249,8 @@ class TimeSeries(object):
             end_date=None,
             dp=5,
             timezone="Exchange",
-            prepost="false"
+            prepost="false",
+            mic_code=None,
     ):
         """
         Add request builder of TRANGE to chart builder
@@ -6039,6 +6282,7 @@ class TimeSeries(object):
             timezones can be found here.Take note that IANA Timezone name is
             case-sensitive.
         :param prepost: Available at the 1min, 5min, 15min, and 30min intervals for all US equities.
+        :param mic_code: Mic code value for filter.
 
         :returns: chart builder
         :rtype: ChartEndpoint
@@ -6054,7 +6298,8 @@ class TimeSeries(object):
             end_date=end_date,
             dp=dp,
             timezone=timezone,
-            prepost=prepost
+            prepost=prepost,
+            mic_code=mic_code,
         )
         return self._with_endpoint(ep)
 
@@ -6071,7 +6316,8 @@ class TimeSeries(object):
             end_date=None,
             dp=5,
             timezone="Exchange",
-            prepost="false"
+            prepost="false",
+            mic_code=None,
     ):
         """
         Add request builder of TRIMA to chart builder
@@ -6107,6 +6353,7 @@ class TimeSeries(object):
             timezones can be found here.Take note that IANA Timezone name is
             case-sensitive.
         :param prepost: Available at the 1min, 5min, 15min, and 30min intervals for all US equities.
+        :param mic_code: Mic code value for filter.
 
         :returns: chart builder
         :rtype: ChartEndpoint
@@ -6124,7 +6371,8 @@ class TimeSeries(object):
             end_date=end_date,
             dp=dp,
             timezone=timezone,
-            prepost=prepost
+            prepost=prepost,
+            mic_code=mic_code,
         )
         return self._with_endpoint(ep)
 
@@ -6141,7 +6389,8 @@ class TimeSeries(object):
             end_date=None,
             dp=5,
             timezone="Exchange",
-            prepost="false"
+            prepost="false",
+            mic_code=None,
     ):
         """
         Add request builder of TSF to chart builder
@@ -6177,6 +6426,7 @@ class TimeSeries(object):
             timezones can be found here.Take note that IANA Timezone name is
             case-sensitive.
         :param prepost: Available at the 1min, 5min, 15min, and 30min intervals for all US equities.
+        :param mic_code: Mic code value for filter.
 
         :returns: chart builder
         :rtype: ChartEndpoint
@@ -6194,7 +6444,8 @@ class TimeSeries(object):
             end_date=end_date,
             dp=dp,
             timezone=timezone,
-            prepost=prepost
+            prepost=prepost,
+            mic_code=mic_code,
         )
         return self._with_endpoint(ep)
 
@@ -6209,7 +6460,8 @@ class TimeSeries(object):
             end_date=None,
             dp=5,
             timezone="Exchange",
-            prepost="false"
+            prepost="false",
+            mic_code=None,
     ):
         """
         Add request builder of TYPPRICE to chart builder
@@ -6240,6 +6492,7 @@ class TimeSeries(object):
             timezones can be found here.Take note that IANA Timezone name is
             case-sensitive.
         :param prepost: Available at the 1min, 5min, 15min, and 30min intervals for all US equities.
+        :param mic_code: Mic code value for filter.
 
         :returns: chart builder
         :rtype: ChartEndpoint
@@ -6255,7 +6508,8 @@ class TimeSeries(object):
             end_date=end_date,
             dp=dp,
             timezone=timezone,
-            prepost=prepost
+            prepost=prepost,
+            mic_code=mic_code,
         )
         return self._with_endpoint(ep)
 
@@ -6273,7 +6527,8 @@ class TimeSeries(object):
             end_date=None,
             dp=5,
             timezone="Exchange",
-            prepost="false"
+            prepost="false",
+            mic_code=None,
     ):
         """
         Add request builder of ULTOSC to chart builder
@@ -6311,6 +6566,7 @@ class TimeSeries(object):
             timezones can be found here.Take note that IANA Timezone name is
             case-sensitive.
         :param prepost: Available at the 1min, 5min, 15min, and 30min intervals for all US equities.
+        :param mic_code: Mic code value for filter.
 
         :returns: chart builder
         :rtype: ChartEndpoint
@@ -6329,7 +6585,8 @@ class TimeSeries(object):
             end_date=end_date,
             dp=dp,
             timezone=timezone,
-            prepost=prepost
+            prepost=prepost,
+            mic_code=mic_code,
         )
         return self._with_endpoint(ep)
 
@@ -6346,7 +6603,8 @@ class TimeSeries(object):
             end_date=None,
             dp=5,
             timezone="Exchange",
-            prepost="false"
+            prepost="false",
+            mic_code=None,
     ):
         """
         Add request builder of VAR to chart builder
@@ -6382,6 +6640,7 @@ class TimeSeries(object):
             timezones can be found here.Take note that IANA Timezone name is
             case-sensitive.
         :param prepost: Available at the 1min, 5min, 15min, and 30min intervals for all US equities.
+        :param mic_code: Mic code value for filter.
 
         :returns: chart builder
         :rtype: ChartEndpoint
@@ -6399,7 +6658,8 @@ class TimeSeries(object):
             end_date=end_date,
             dp=dp,
             timezone=timezone,
-            prepost=prepost
+            prepost=prepost,
+            mic_code=mic_code,
         )
         return self._with_endpoint(ep)
 
@@ -6414,7 +6674,8 @@ class TimeSeries(object):
             end_date=None,
             dp=5,
             timezone="Exchange",
-            prepost="false"
+            prepost="false",
+            mic_code=None,
     ):
         """
         Add request builder of VWAP to chart builder
@@ -6446,6 +6707,7 @@ class TimeSeries(object):
             timezones can be found here.Take note that IANA Timezone name is
             case-sensitive.
         :param prepost: Available at the 1min, 5min, 15min, and 30min intervals for all US equities.
+        :param mic_code: Mic code value for filter.
 
         :returns: chart builder
         :rtype: ChartEndpoint
@@ -6461,7 +6723,8 @@ class TimeSeries(object):
             end_date=end_date,
             dp=dp,
             timezone=timezone,
-            prepost=prepost
+            prepost=prepost,
+            mic_code=mic_code,
         )
         return self._with_endpoint(ep)
 
@@ -6476,7 +6739,8 @@ class TimeSeries(object):
             end_date=None,
             dp=5,
             timezone="Exchange",
-            prepost="false"
+            prepost="false",
+            mic_code=None,
     ):
         """
         Add request builder of WCLPRICE to chart builder
@@ -6522,7 +6786,8 @@ class TimeSeries(object):
             end_date=end_date,
             dp=dp,
             timezone=timezone,
-            prepost=prepost
+            prepost=prepost,
+            mic_code=mic_code,
         )
         return self._with_endpoint(ep)
 
@@ -6538,7 +6803,8 @@ class TimeSeries(object):
             end_date=None,
             dp=5,
             timezone="Exchange",
-            prepost="false"
+            prepost="false",
+            mic_code=None,
     ):
         """
         Add request builder of WILLR to chart builder
@@ -6572,6 +6838,7 @@ class TimeSeries(object):
             timezones can be found here.Take note that IANA Timezone name is
             case-sensitive.
         :param prepost: Available at the 1min, 5min, 15min, and 30min intervals for all US equities.
+        :param mic_code: Mic code value for filter.
 
         :returns: chart builder
         :rtype: ChartEndpoint
@@ -6588,7 +6855,8 @@ class TimeSeries(object):
             end_date=end_date,
             dp=dp,
             timezone=timezone,
-            prepost=prepost
+            prepost=prepost,
+            mic_code=mic_code,
         )
         return self._with_endpoint(ep)
 
@@ -6605,7 +6873,8 @@ class TimeSeries(object):
             end_date=None,
             dp=5,
             timezone="Exchange",
-            prepost="false"
+            prepost="false",
+            mic_code=None,
     ):
         """
         Add request builder of WMA to chart builder
@@ -6641,6 +6910,7 @@ class TimeSeries(object):
             timezones can be found here.Take note that IANA Timezone name is
             case-sensitive.
         :param prepost: Available at the 1min, 5min, 15min, and 30min intervals for all US equities.
+        :param mic_code: Mic code value for filter.
 
         :returns: chart builder
         :rtype: ChartEndpoint
@@ -6658,6 +6928,7 @@ class TimeSeries(object):
             end_date=end_date,
             dp=dp,
             timezone=timezone,
-            prepost=prepost
+            prepost=prepost,
+            mic_code=mic_code,
         )
         return self._with_endpoint(ep)
