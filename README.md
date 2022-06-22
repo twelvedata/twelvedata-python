@@ -58,6 +58,7 @@ pip install twelvedata[pandas,matplotlib,plotly,websocket-client]
 | interval   | time frame: 1min, 5min, 15min, 30min, 45min, 1h, 2h, 4h, 8h, 1day, 1week, 1month | string | yes      |
 | apikey     | your personal API Key, if you don't have one - get it [here](https://twelvedata.com/pricing) | string | yes      |
 | exchange   | if symbol is traded in multiple exchanges specify the desired one, valid for both stocks and cryptocurrencies | string | no       |
+| mic_code   | Market Identifier Code (MIC) under ISO 10383 standard, valid for stocks | string | no       |
 | country    | if symbol is traded in multiple countries specify the desired one, valid for stocks | string | no       |
 | outputsize | number of data points to retrieve                            | int    | no       |
 | timezone   | timezone at which output datetime will be displayed, supports: `UTC`, `Exchange` or according to IANA Time Zone Database | string | no       |
