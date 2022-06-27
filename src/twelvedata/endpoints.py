@@ -401,6 +401,8 @@ class QuoteEndpoint(AsMixin, Endpoint):
         params = {}
         if self.symbol is not None:
             params["symbol"], self.is_batch = get_symbol(self.symbol)
+            # Batch mode is not supported for this endpoint
+            self.is_batch = False
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:

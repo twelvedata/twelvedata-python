@@ -147,7 +147,7 @@ def convert_collection_to_pandas(val, indexing_type=None):
             return pandas.DataFrame.from_dict(val, orient="index", dtype="float")
         except ValueError:
             return pandas.DataFrame.from_dict(
-                {data_key: val}, orient="index", dtype="object"
+                {'data_key': val}, orient="index", dtype="object"
             )
     else:
         raise ValueError("Expected list, tuple or dict, but {} found".format(type(val)))
