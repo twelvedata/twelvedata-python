@@ -309,17 +309,27 @@ Make sure to have `websocket_client` package [installed](https://pypi.org/projec
 
 #### Example
 ```python
+import time
 from twelvedata import TDClient
+
+
+messages_history = []
+
 
 def on_event(e):
     # do whatever is needed with data
     print(e)
-    
-td = TDClient(apikey="YOUR_API_KEY_HERE")
+    messages_history.append(e)
+
+
+td = TDClient(apikey="02fb2924fc9e468e99a30decbe1259b7")
 ws = td.websocket(symbols="BTC/USD", on_event=on_event)
 ws.subscribe(['ETH/BTC', 'AAPL'])
 ws.connect()
-ws.keep_alive()
+while True:
+    print('messages received: ', len(messages_history))
+    ws.heartbeat()
+    time.sleep(10)
 ```
 
 Parameters accepted by the `.websocket()` object:
@@ -335,7 +345,7 @@ Applicable methods on `.websocket()` object:
 * `ws.reset()`: unsubscribe from all symbols
 * `ws.connect()`: establish connection with WebSocket server
 * `ws.disconnect()`: close connection with WebSocket server
-* `ws.keep_alive()`: run connection forever until closed
+* `ws.heartbeat()`: send heartbeat to server
 
 **Important**. Do not forget that WebSockets are only available for Twelve Data users on the [Pro plan](https://twelvedata.com/pricing) and above. Checkout the trial [here](https://support.twelvedata.com/en/articles/5335783-trial).
 

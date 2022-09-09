@@ -94,9 +94,8 @@ class TDWebSocket:
             time.sleep(1)
 
     def keep_alive(self):
-        while True:
-            time.sleep(10)
-            self.heartbeat()
+        self.logger.info('Method keep_alive is deprecated, use heartbeat method instead')
+        self.heartbeat()
 
     def heartbeat(self):
         if not self.ready:
@@ -192,11 +191,13 @@ class TDWebSocket:
 
 
 class EventReceiver(threading.Thread):
-    def __init__(self, client):
+    def __init__(self, client, ping_interval=15, ping_timeout=10):
         threading.Thread.__init__(self)
         self.daemon = True
         self.client = client
         self.enabled = True
+        self.ping_interval = ping_interval
+        self.ping_timeout = ping_timeout
 
     def run(self):
         import websocket
@@ -209,7 +210,11 @@ class EventReceiver(threading.Thread):
         )
 
         self.client.logger.debug("EventReceiver ready")
-        self.client.ws.run_forever()
+        self.client.ws.run_forever(
+            ping_interval=self.ping_interval,
+            ping_timeout=self.ping_timeout,
+            ping_payload='ping',
+        )
         self.client.logger.debug("EventReceiver exiting")
 
     def on_open(self, _):
