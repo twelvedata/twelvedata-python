@@ -322,7 +322,7 @@ def on_event(e):
     messages_history.append(e)
 
 
-td = TDClient(apikey="02fb2924fc9e468e99a30decbe1259b7")
+td = TDClient(apikey="YOUR_API_KEY_HERE")
 ws = td.websocket(symbols="BTC/USD", on_event=on_event)
 ws.subscribe(['ETH/BTC', 'AAPL'])
 ws.connect()
