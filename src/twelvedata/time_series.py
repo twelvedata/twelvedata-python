@@ -1068,6 +1068,79 @@ class TimeSeries(object):
 
     @force_use_kwargs
     @apply_context_defaults
+    def with_beta(
+            self,
+            exchange=None,
+            country=None,
+            series_type_1="open",
+            series_type_2="close",
+            time_period=9,
+            outputsize=30,
+            start_date=None,
+            end_date=None,
+            dp=5,
+            timezone="Exchange",
+            prepost="false",
+            mic_code=None,
+    ):
+        """
+        Add request builder of BETA to chart builder
+
+        Statistic Beta function.
+
+        This API call returns meta and time series values of BBANDS. Meta
+        object consists of general information about requested technical
+        indicator. Time series is the array of objects ordered by time
+        desceding updated realtime.
+
+        :param symbol: Instrument symbol, can be any stock, forex or
+            cryptocurrency E.g. AAPL, EUR/USD, ETH/BTC, ...
+        :param interval: Interval between two consecutive points in time series
+        :param exchange: Only is applicable to stocks and cryptocurrencies
+        otherwise is ignored
+            Exchange where instrument is traded
+        :param country: Only is applicable to stocks otherwise is ignored
+            Country where instrument is traded
+        :param series_type_1: Price type used as the first part of technical indicator
+        :param series_type_2: Price type used as the second part of technical indicator
+        :param time_period: Number of periods to average over. Takes values in the range from 1 to 800
+        :param outputsize: Number of last datapoints to retrieve
+        :param start_date: Start date of selection, accepts "yyyy-MM-dd hh:mm:ss" and "yyyy-MM-dd" formats
+        :param end_date: End date of selection, accepts "yyyy-MM-dd hh:mm:ss" and "yyyy-MM-dd" formats
+        :param dp: Specifies number of decimal places for floating values
+        :param timezone: Timezone at which output datetime will be displayed
+            Exchange for local exchange time2. UTC for datetime at universal
+            UTC standard3. Timezone name according to IANA Time Zone
+            Database. E.g. America/New_York, Asia/Singapore. Full list of
+            timezones can be found here.Take note that IANA Timezone name is
+            case-sensitive.
+        :param prepost: Available at the 1min, 5min, 15min, and 30min intervals for all US equities.
+        :param mic_code: Mic code value for filter.
+
+        :returns: chart builder
+        :rtype: ChartEndpoint
+        """
+        ep = BETAEndpoint(
+            ctx=self.ctx,
+            symbol=self.ctx.defaults["symbol"],
+            interval=self.ctx.defaults["interval"],
+            exchange=exchange,
+            country=country,
+            series_type_1=series_type_1,
+            series_type_2=series_type_2,
+            time_period=time_period,
+            outputsize=outputsize,
+            start_date=start_date,
+            end_date=end_date,
+            dp=dp,
+            timezone=timezone,
+            prepost=prepost,
+            mic_code=mic_code,
+        )
+        return self._with_endpoint(ep)
+
+    @force_use_kwargs
+    @apply_context_defaults
     def with_percent_b(
             self,
             exchange=None,

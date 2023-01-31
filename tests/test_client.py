@@ -373,6 +373,15 @@ def test_time_series_get_bbands():
     plt.close()
 
 
+def test_time_series_get_beta():
+    ts = _init_ts()
+    ts.with_beta().as_json()
+    ts.with_beta().as_pandas()
+    ts.with_beta().as_plotly_figure()
+    ts.with_beta().as_url()
+    plt.close()
+
+
 def test_time_series_get_percent_b():
     ts = _init_ts()
     ts.with_percent_b().as_json()
@@ -1157,6 +1166,7 @@ def _init_chart():
         .with_atr()
         .with_avgprice()
         .with_bbands()
+        .with_beta()
         .with_percent_b()
         .with_bop()
         .with_cci()

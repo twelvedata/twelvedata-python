@@ -14,6 +14,7 @@ __all__ = (
     "ATREndpoint",
     "AVGPRICEEndpoint",
     "BBANDSEndpoint",
+    "BETAEndpoint",
     "BOPEndpoint",
     "CCIEndpoint",
     "CEILEndpoint",
@@ -2377,6 +2378,94 @@ class BBANDSEndpoint(AsMixin, Endpoint):
         params["format"] = format
         params["apikey"] = self.ctx.apikey
         endpoint = "/bbands"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
+
+
+class BETAEndpoint(AsMixin, Endpoint):
+    _name = "beta"
+
+    def __init__(
+        self,
+        ctx,
+        symbol,
+        interval,
+        exchange=None,
+        country=None,
+        type=None,
+        series_type_1="open",
+        series_type_2="close",
+        time_period=9,
+        outputsize=30,
+        start_date=None,
+        end_date=None,
+        dp=5,
+        timezone="Exchange",
+        order="desc",
+        prepost="false",
+        mic_code=None,
+    ):
+        self.is_indicator = True
+        self.meta_name = "beta"
+        self.ctx = ctx
+        self.symbol = symbol
+        self.interval = interval
+        self.exchange = exchange
+        self.country = country
+        self.type = type
+        self.series_type_1 = series_type_1
+        self.series_type_2 = series_type_2
+        self.time_period = time_period
+        self.outputsize = outputsize
+        self.start_date = start_date
+        self.end_date = end_date
+        self.dp = dp
+        self.timezone = timezone
+        self.order = order
+        self.prepost = prepost
+        self.mic_code = mic_code
+
+    def execute(self, format="JSON", debug=False):
+
+        params = {}
+        if self.symbol is not None:
+            params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.interval is not None:
+            params["interval"] = self.interval
+        if self.exchange is not None:
+            params["exchange"] = self.exchange
+        if self.country is not None:
+            params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
+        if self.series_type_1 is not None:
+            params["series_type_1"] = self.series_type_1
+        if self.series_type_2 is not None:
+            params["series_type_2"] = self.series_type_2
+        if self.time_period is not None:
+            params["time_period"] = self.time_period
+        if self.outputsize is not None:
+            params["outputsize"] = self.outputsize
+        if self.start_date is not None:
+            params["start_date"] = self.start_date
+        if self.end_date is not None:
+            params["end_date"] = self.end_date
+        if self.dp is not None:
+            params["dp"] = self.dp
+        if self.timezone is not None:
+            params["timezone"] = self.timezone
+        if self.order is not None:
+            params["order"] = self.order
+        if self.prepost is not None:
+            params["prepost"] = self.prepost
+        if self.mic_code is not None:
+            params["mic_code"] = self.mic_code
+
+        params["format"] = format
+        params["apikey"] = self.ctx.apikey
+        endpoint = "/beta"
 
         if debug:
             return build_url(self.ctx.base_url, endpoint, params)

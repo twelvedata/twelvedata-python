@@ -303,6 +303,7 @@ RENDERS_MAPPING = {
     ATREndpoint: [LR],
     AVGPRICEEndpoint: [LR],
     BBANDSEndpoint: [LR, FAR],
+    BETAEndpoint: [LR],
     BOPEndpoint: [LR],
     CCIEndpoint: [LR, FAR],
     CEILEndpoint: [LR],
