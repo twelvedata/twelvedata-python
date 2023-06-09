@@ -63,7 +63,7 @@ class AsPandasMixin(object):
     def create_basic_df(data, pd, index_column="datetime", **kwargs):
         df = convert_collection_to_pandas(data, **kwargs)
         df = df.set_index(index_column)
-        df.index = pd.to_datetime(df.index, infer_datetime_format=True)
+        df.index = pd.to_datetime(df.index)
 
         for col in df.columns:
             df[col] = pd.to_numeric(df[col], errors="ignore")
