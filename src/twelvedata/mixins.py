@@ -13,7 +13,7 @@ class AsJsonMixin(object):
         json = resp.json()
         if hasattr(self, 'is_batch') and self.is_batch:
             return json
-        if json.get("status") == "ok":
+        if isinstance(json, dict) and json.get("status") == "ok":
             return json.get("data") or json.get("values") or json.get("earnings") or []
         return json
 

@@ -16,6 +16,7 @@ __all__ = (
     "BBANDSEndpoint",
     "BETAEndpoint",
     "BOPEndpoint",
+    "BondsListEndpoint",
     "CCIEndpoint",
     "CEILEndpoint",
     "CMOEndpoint",
@@ -24,6 +25,7 @@ __all__ = (
     "CryptocurrencyExchangesListEndpoint",
     "CurrencyConversionEndpoint",
     "DEMAEndpoint",
+    "DividendsCalendarEndpoint",
     "DXEndpoint",
     "EarliestTimestampEndpoint",
     "EarningsCalendarEndpoint",
@@ -36,6 +38,7 @@ __all__ = (
     "EXPEndpoint",
     "FLOOREndpoint",
     "ForexPairsListEndpoint",
+    "FundsListEndpoint",
     "HEIKINASHICANDLESEndpoint",
     "HLC3Endpoint",
     "HT_DCPERIODEndpoint",
@@ -62,6 +65,7 @@ __all__ = (
     "MAEndpoint",
     "MAXINDEXEndpoint",
     "MAXEndpoint",
+    "MarketStateEndpoint",
     "McGinleyDynamicEndpoint",
     "MEDPRICEEndpoint",
     "MFIEndpoint",
@@ -96,6 +100,7 @@ __all__ = (
     "STOCHFEndpoint",
     "STOCHRSIEndpoint",
     "STOCHEndpoint",
+    "SplitsCalendarEndpoint",
     "SymbolSearchEndpoint",
     "StockExchangesListEndpoint",
     "StocksListEndpoint",
@@ -240,6 +245,8 @@ class TimeSeriesEndpoint(AsMixin, Endpoint):
         prepost="false",
         date=None,
         mic_code=None,
+        previous_close=None,
+        adjust=None,
     ):
         self.is_price = True
         self.ctx = ctx
@@ -257,6 +264,8 @@ class TimeSeriesEndpoint(AsMixin, Endpoint):
         self.prepost = prepost
         self.date = date
         self.mic_code = mic_code
+        self.previous_close = previous_close
+        self.adjust = adjust
 
     def execute(self, format="JSON", debug=False):
 
@@ -289,6 +298,10 @@ class TimeSeriesEndpoint(AsMixin, Endpoint):
             params["mic_code"] = self.mic_code
         if self.date is not None:
             params["date"] = self.date
+        if self.previous_close is not None:
+            params["previous_close"] = self.previous_close
+        if self.adjust is not None:
+            params["adjust"] = self.adjust
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -305,12 +318,14 @@ class ExchangeRateEndpoint(AsMixin, Endpoint):
     def __init__(self,
                  ctx,
                  symbol,
-                 precision=None,
+                 date=None,
+                 dp=None,
                  timezone=None
     ):
         self.ctx = ctx
         self.symbol = symbol
-        self.precision = precision
+        self.date = date
+        self.dp = dp
         self.timezone = timezone
 
     def execute(self, format="JSON", debug=False):
@@ -318,8 +333,10 @@ class ExchangeRateEndpoint(AsMixin, Endpoint):
         params = {}
         if self.symbol is not None:
             params["symbol"] = self.symbol
-        if self.precision is not None:
-            params["precision"] = self.precision
+        if self.date is not None:
+            params["date"] = self.date
+        if self.dp is not None:
+            params["dp"] = self.dp
         if self.timezone is not None:
             params["timezone"] = self.timezone
 
@@ -339,13 +356,15 @@ class CurrencyConversionEndpoint(AsMixin, Endpoint):
                  ctx,
                  symbol,
                  amount=None,
-                 precision=None,
+                 date=None,
+                 dp=None,
                  timezone=None
     ):
         self.ctx = ctx
         self.symbol = symbol
         self.amount = amount
-        self.precision = precision
+        self.date = date
+        self.dp = dp
         self.timezone = timezone
 
     def execute(self, format="JSON", debug=False):
@@ -355,8 +374,10 @@ class CurrencyConversionEndpoint(AsMixin, Endpoint):
             params["symbol"] = self.symbol
         if self.amount is not None:
             params["amount"] = self.amount
-        if self.precision is not None:
-            params["precision"] = self.precision
+        if self.date is not None:
+            params["date"] = self.date
+        if self.dp is not None:
+            params["dp"] = self.dp
         if self.timezone is not None:
             params["timezone"] = self.timezone
 
@@ -384,6 +405,8 @@ class QuoteEndpoint(AsMixin, Endpoint):
                  timezone="Exchange",
                  prepost="false",
                  mic_code=None,
+                 eod=None,
+                 rolling_period=None,
     ):
         self.ctx = ctx
         self.symbol = symbol
@@ -396,6 +419,8 @@ class QuoteEndpoint(AsMixin, Endpoint):
         self.timezone = timezone
         self.prepost = prepost
         self.mic_code = mic_code
+        self.eod = eod
+        self.rolling_period = rolling_period
 
     def execute(self, format="JSON", debug=False):
 
@@ -422,6 +447,10 @@ class QuoteEndpoint(AsMixin, Endpoint):
             params["prepost"] = self.prepost
         if self.mic_code is not None:
             params["mic_code"] = self.mic_code
+        if self.eod is not None:
+            params["eod"] = self.eod
+        if self.rolling_period is not None:
+            params["rolling_period"] = self.rolling_period
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -449,7 +478,7 @@ class PriceEndpoint(AsMixin, Endpoint):
         self.symbol = symbol
         self.exchange = exchange
         self.country = country
-        self.type = country
+        self.type = type
         self.dp = dp
         self.prepost = prepost
         self.mic_code = mic_code
@@ -554,12 +583,18 @@ class StocksListEndpoint(AsMixin, Endpoint):
                  exchange=None,
                  country=None,
                  type=None,
+                 mic_code=None,
+                 show_plan=None,
+                 include_delisted=None,
     ):
         self.ctx = ctx
         self.symbol = symbol
         self.exchange = exchange
         self.country = country
         self.type = type
+        self.mic_code = mic_code
+        self.show_plan = show_plan
+        self.include_delisted = include_delisted
 
     def execute(self, format="JSON", debug=False):
 
@@ -572,6 +607,12 @@ class StocksListEndpoint(AsMixin, Endpoint):
             params["country"] = self.country
         if self.type is not None:
             params["type"] = self.type
+        if self.mic_code is not None:
+            params["mic_code"] = self.mic_code
+        if self.show_plan is not None:
+            params["show_plan"] = self.show_plan
+        if self.include_delisted is not None:
+            params["include_delisted"] = self.include_delisted
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -678,10 +719,18 @@ class ETFListEndpoint(AsMixin, Endpoint):
                  ctx,
                  symbol=None,
                  exchange=None,
+                 country=None,
+                 mic_code=None,
+                 show_plan=None,
+                 include_delisted=None,
     ):
         self.ctx = ctx
         self.symbol = symbol
         self.exchange = exchange
+        self.country = country
+        self.mic_code = mic_code
+        self.show_plan = show_plan
+        self.include_delisted = include_delisted
 
     def execute(self, format="JSON", debug=False):
 
@@ -690,6 +739,14 @@ class ETFListEndpoint(AsMixin, Endpoint):
             params["symbol"] = self.symbol
         if self.exchange is not None:
             params["exchange"] = self.exchange
+        if self.country is not None:
+            params["country"] = self.country
+        if self.mic_code is not None:
+            params["mic_code"] = self.mic_code
+        if self.show_plan is not None:
+            params["show_plan"] = self.show_plan
+        if self.include_delisted is not None:
+            params["include_delisted"] = self.include_delisted
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -707,10 +764,18 @@ class IndicesListEndpoint(AsMixin, Endpoint):
                  ctx,
                  symbol=None,
                  exchange=None,
+                 country=None,
+                 mic_code=None,
+                 show_plan=None,
+                 include_delisted=None,
     ):
         self.ctx = ctx
         self.symbol = symbol
         self.exchange = exchange
+        self.country = country
+        self.mic_code = mic_code
+        self.show_plan = show_plan
+        self.include_delisted = include_delisted
 
     def execute(self, format="JSON", debug=False):
 
@@ -719,10 +784,124 @@ class IndicesListEndpoint(AsMixin, Endpoint):
             params["symbol"] = self.symbol
         if self.exchange is not None:
             params["exchange"] = self.exchange
+        if self.country is not None:
+            params["country"] = self.country
+        if self.mic_code is not None:
+            params["mic_code"] = self.mic_code
+        if self.show_plan is not None:
+            params["show_plan"] = self.show_plan
+        if self.include_delisted is not None:
+            params["include_delisted"] = self.include_delisted
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
         endpoint = "/indices"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
+
+
+class FundsListEndpoint(AsMixin, Endpoint):
+    _name = "funds"
+
+    def __init__(self,
+                 ctx,
+                 symbol=None,
+                 exchange=None,
+                 country=None,
+                 type=None,
+                 show_plan=None,
+                 include_delisted=None,
+                 page=None,
+                 outputsize=None,
+    ):
+        self.ctx = ctx
+        self.symbol = symbol
+        self.exchange = exchange
+        self.country = country
+        self.type = type
+        self.show_plan = show_plan
+        self.include_delisted = include_delisted
+        self.page = page
+        self.outputsize = outputsize
+
+    def execute(self, format="JSON", debug=False):
+
+        params = {}
+        if self.symbol is not None:
+            params["symbol"] = self.symbol
+        if self.exchange is not None:
+            params["exchange"] = self.exchange
+        if self.country is not None:
+            params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
+        if self.show_plan is not None:
+            params["show_plan"] = self.show_plan
+        if self.include_delisted is not None:
+            params["include_delisted"] = self.include_delisted
+        if self.page is not None:
+            params["page"] = self.page
+        if self.outputsize is not None:
+            params["outputsize"] = self.outputsize
+
+        params["format"] = format
+        params["apikey"] = self.ctx.apikey
+        endpoint = "/funds"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
+
+
+class BondsListEndpoint(AsMixin, Endpoint):
+    _name = "bonds"
+
+    def __init__(self,
+                 ctx,
+                 symbol=None,
+                 exchange=None,
+                 country=None,
+                 type=None,
+                 show_plan=None,
+                 include_delisted=None,
+                 page=None,
+                 outputsize=None,
+    ):
+        self.ctx = ctx
+        self.symbol = symbol
+        self.exchange = exchange
+        self.country = country
+        self.type = type
+        self.show_plan = show_plan
+        self.include_delisted = include_delisted
+        self.page = page
+        self.outputsize = outputsize
+
+    def execute(self, format="JSON", debug=False):
+
+        params = {}
+        if self.symbol is not None:
+            params["symbol"] = self.symbol
+        if self.exchange is not None:
+            params["exchange"] = self.exchange
+        if self.country is not None:
+            params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
+        if self.show_plan is not None:
+            params["show_plan"] = self.show_plan
+        if self.include_delisted is not None:
+            params["include_delisted"] = self.include_delisted
+        if self.page is not None:
+            params["page"] = self.page
+        if self.outputsize is not None:
+            params["outputsize"] = self.outputsize
+
+        params["format"] = format
+        params["apikey"] = self.ctx.apikey
+        endpoint = "/bonds"
 
         if debug:
             return build_url(self.ctx.base_url, endpoint, params)
@@ -737,11 +916,15 @@ class ExchangesListEndpoint(AsMixin, Endpoint):
                  name=None,
                  code=None,
                  country=None,
+                 type=None,
+                 show_plan=None,
     ):
         self.ctx = ctx
         self.name = name
         self.code = code
         self.country = country
+        self.type = type
+        self.show_plan = show_plan
 
     def execute(self, format="JSON", debug=False):
 
@@ -752,6 +935,10 @@ class ExchangesListEndpoint(AsMixin, Endpoint):
             params["code"] = self.code
         if self.country is not None:
             params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
+        if self.show_plan is not None:
+            params["show_plan"] = self.show_plan
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -800,16 +987,18 @@ class TechnicalIndicatorsListEndpoint(AsMixin, Endpoint):
 
 
 class SymbolSearchEndpoint(AsMixin, Endpoint):
-    _name = "indices"
+    _name = "symbol_search"
 
     def __init__(self,
                  ctx,
                  symbol=None,
                  outputsize=None,
+                 show_plan=None,
     ):
         self.ctx = ctx
         self.symbol = symbol
         self.outputsize = outputsize
+        self.show_plan = show_plan
 
     def execute(self, format="JSON", debug=False):
 
@@ -818,6 +1007,8 @@ class SymbolSearchEndpoint(AsMixin, Endpoint):
             params["symbol"] = self.symbol
         if self.outputsize is not None:
             params["outputsize"] = self.outputsize
+        if self.show_plan is not None:
+            params["show_plan"] = self.show_plan
 
         params["format"] = "JSON"
         params["apikey"] = self.ctx.apikey
@@ -836,11 +1027,15 @@ class EarliestTimestampEndpoint(AsMixin, Endpoint):
                  symbol=None,
                  interval=None,
                  exchange=None,
+                 mic_code=None,
+                 timezone=None,
     ):
         self.ctx = ctx
         self.symbol = symbol
         self.interval = interval
         self.exchange = exchange
+        self.mic_code = mic_code
+        self.timezone = timezone
 
     def execute(self, format="JSON", debug=False):
 
@@ -851,10 +1046,47 @@ class EarliestTimestampEndpoint(AsMixin, Endpoint):
             params["interval"] = self.interval
         if self.exchange is not None:
             params["exchange"] = self.exchange
+        if self.mic_code is not None:
+            params["mic_code"] = self.mic_code
+        if self.timezone is not None:
+            params["timezone"] = self.timezone
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
         endpoint = "/earliest_timestamp"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
+
+
+class MarketStateEndpoint(AsMixin, Endpoint):
+    _name = "market_state"
+
+    def __init__(self,
+                 ctx,
+                 exchange=None,
+                 code=None,
+                 country=None,
+    ):
+        self.ctx = ctx
+        self.exchange = exchange
+        self.code = code
+        self.country = country
+
+    def execute(self, format="JSON", debug=False):
+
+        params = {}
+        if self.exchange is not None:
+            params["exchange"] = self.exchange
+        if self.code is not None:
+            params["code"] = self.code
+        if self.country is not None:
+            params["country"] = self.country
+
+        params["format"] = format
+        params["apikey"] = self.ctx.apikey
+        endpoint = "/market_state"
 
         if debug:
             return build_url(self.ctx.base_url, endpoint, params)
@@ -869,11 +1101,13 @@ class LogoEndpoint(AsMixin, Endpoint):
                  symbol=None,
                  exchange=None,
                  country=None,
+                 mic_code=None,
     ):
         self.ctx = ctx
         self.symbol = symbol
         self.exchange = exchange
         self.country = country
+        self.mic_code = mic_code
         self.method = "logo"
 
     def execute(self, format="JSON", debug=False):
@@ -885,6 +1119,8 @@ class LogoEndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
+        if self.mic_code is not None:
+            params["mic_code"] = self.mic_code
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -903,11 +1139,13 @@ class ProfileEndpoint(AsMixin, Endpoint):
                  symbol=None,
                  exchange=None,
                  country=None,
+                 mic_code=None,
     ):
         self.ctx = ctx
         self.symbol = symbol
         self.exchange = exchange
         self.country = country
+        self.mic_code = mic_code
         self.method = "profile"
 
     def execute(self, format="JSON", debug=False):
@@ -919,6 +1157,8 @@ class ProfileEndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
+        if self.mic_code is not None:
+            params["mic_code"] = self.mic_code
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -940,6 +1180,7 @@ class DividendsEndpoint(AsMixin, Endpoint):
                  range=None,
                  start_date=None,
                  end_date=None,
+                 mic_code=None,
     ):
         self.ctx = ctx
         self.symbol = symbol
@@ -948,6 +1189,7 @@ class DividendsEndpoint(AsMixin, Endpoint):
         self.range = range
         self.start_date = start_date
         self.end_date = end_date
+        self.mic_code = mic_code
         self.method = "dividends"
 
     def execute(self, format="JSON", debug=False):
@@ -965,10 +1207,58 @@ class DividendsEndpoint(AsMixin, Endpoint):
             params["start_date"] = self.start_date
         if self.end_date is not None:
             params["end_date"] = self.end_date
+        if self.mic_code is not None:
+            params["mic_code"] = self.mic_code
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
         endpoint = "/dividends"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
+
+
+class DividendsCalendarEndpoint(AsMixin, Endpoint):
+    _name = "dividends_calendar"
+
+    def __init__(self,
+                 ctx,
+                 symbol=None,
+                 exchange=None,
+                 country=None,
+                 start_date=None,
+                 end_date=None,
+                 mic_code=None,
+    ):
+        self.ctx = ctx
+        self.symbol = symbol
+        self.exchange = exchange
+        self.country = country
+        self.start_date = start_date
+        self.end_date = end_date
+        self.mic_code = mic_code
+        self.method = "dividends_calendar"
+
+    def execute(self, format="JSON", debug=False):
+
+        params = {}
+        if self.symbol is not None:
+            params["symbol"] = self.symbol
+        if self.exchange is not None:
+            params["exchange"] = self.exchange
+        if self.country is not None:
+            params["country"] = self.country
+        if self.start_date is not None:
+            params["start_date"] = self.start_date
+        if self.end_date is not None:
+            params["end_date"] = self.end_date
+        if self.mic_code is not None:
+            params["mic_code"] = self.mic_code
+
+        params["format"] = format
+        params["apikey"] = self.ctx.apikey
+        endpoint = "/dividends_calendar"
 
         if debug:
             return build_url(self.ctx.base_url, endpoint, params)
@@ -1021,6 +1311,52 @@ class SplitsEndpoint(AsMixin, Endpoint):
         return self.ctx.http_client.get(endpoint, params=params)
 
 
+class SplitsCalendarEndpoint(AsMixin, Endpoint):
+    _name = "splits_calendar"
+
+    def __init__(self,
+                 ctx,
+                 symbol=None,
+                 exchange=None,
+                 country=None,
+                 start_date=None,
+                 end_date=None,
+                 mic_code=None,
+    ):
+        self.ctx = ctx
+        self.symbol = symbol
+        self.exchange = exchange
+        self.country = country
+        self.start_date = start_date
+        self.end_date = end_date
+        self.mic_code = mic_code
+        self.method = "splits_calendar"
+
+    def execute(self, format="JSON", debug=False):
+
+        params = {}
+        if self.symbol is not None:
+            params["symbol"] = self.symbol
+        if self.exchange is not None:
+            params["exchange"] = self.exchange
+        if self.country is not None:
+            params["country"] = self.country
+        if self.start_date is not None:
+            params["start_date"] = self.start_date
+        if self.end_date is not None:
+            params["end_date"] = self.end_date
+        if self.mic_code is not None:
+            params["mic_code"] = self.mic_code
+
+        params["format"] = format
+        params["apikey"] = self.ctx.apikey
+        endpoint = "/splits_calendar"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
+
+
 class EarningsEndpoint(AsMixin, Endpoint):
     _name = "earnings"
 
@@ -1033,6 +1369,9 @@ class EarningsEndpoint(AsMixin, Endpoint):
                  outputsize=None,
                  start_date=None,
                  end_date=None,
+                 mic_code=None,
+                 dp=None,
+                 type=None,
     ):
         self.ctx = ctx
         self.symbol = symbol
@@ -1042,6 +1381,9 @@ class EarningsEndpoint(AsMixin, Endpoint):
         self.outputsize = outputsize
         self.start_date = start_date
         self.end_date = end_date
+        self.mic_code = mic_code
+        self.dp = dp
+        self.type = type
         self.method = "earnings"
 
     def execute(self, format="JSON", debug=False):
@@ -1061,6 +1403,12 @@ class EarningsEndpoint(AsMixin, Endpoint):
             params["start_date"] = self.start_date
         if self.end_date is not None:
             params["end_date"] = self.end_date
+        if self.mic_code is not None:
+            params["mic_code"] = self.mic_code
+        if self.dp is not None:
+            params["dp"] = self.dp
+        if self.type is not None:
+            params["type"] = self.type
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -1082,6 +1430,7 @@ class EarningsCalendarEndpoint(AsMixin, Endpoint):
                  period=None,
                  start_date=None,
                  end_date=None,
+                 mic_code=None,
     ):
         self.ctx = ctx
         self.symbol = symbol
@@ -1090,6 +1439,7 @@ class EarningsCalendarEndpoint(AsMixin, Endpoint):
         self.period = period
         self.start_date = start_date
         self.end_date = end_date
+        self.mic_code = mic_code
         self.method = "earnings_calendar"
 
     def execute(self, format="JSON", debug=False):
@@ -1107,6 +1457,8 @@ class EarningsCalendarEndpoint(AsMixin, Endpoint):
             params["start_date"] = self.start_date
         if self.end_date is not None:
             params["end_date"] = self.end_date
+        if self.mic_code is not None:
+            params["mic_code"] = self.mic_code
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -1167,11 +1519,13 @@ class StatisticsEndpoint(AsMixin, Endpoint):
                  symbol=None,
                  exchange=None,
                  country=None,
+                 mic_code=None,
     ):
         self.ctx = ctx
         self.symbol = symbol
         self.exchange = exchange
         self.country = country
+        self.mic_code = mic_code
         self.method = "statistics"
 
     def execute(self, format="JSON", debug=False):
@@ -1183,6 +1537,8 @@ class StatisticsEndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
+        if self.mic_code is not None:
+            params["mic_code"] = self.mic_code
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -1201,11 +1557,13 @@ class InsiderTransactionsEndpoint(AsMixin, Endpoint):
                  symbol=None,
                  exchange=None,
                  country=None,
+                 mic_code=None,
     ):
         self.ctx = ctx
         self.symbol = symbol
         self.exchange = exchange
         self.country = country
+        self.mic_code = mic_code
         self.method = "insider_transactions"
 
     def execute(self, format="JSON", debug=False):
@@ -1217,6 +1575,8 @@ class InsiderTransactionsEndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
+        if self.mic_code is not None:
+            params["mic_code"] = self.mic_code
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -1238,6 +1598,7 @@ class IncomeStatementEndpoint(AsMixin, Endpoint):
                  period=None,
                  start_date=None,
                  end_date=None,
+                 mic_code=None,
     ):
         self.ctx = ctx
         self.symbol = symbol
@@ -1246,6 +1607,7 @@ class IncomeStatementEndpoint(AsMixin, Endpoint):
         self.period = period
         self.start_date = start_date
         self.end_date = end_date
+        self.mic_code = mic_code
         self.method = "income_statement"
 
     def execute(self, format="JSON", debug=False):
@@ -1263,6 +1625,8 @@ class IncomeStatementEndpoint(AsMixin, Endpoint):
             params["start_date"] = self.start_date
         if self.end_date is not None:
             params["end_date"] = self.end_date
+        if self.mic_code is not None:
+            params["mic_code"] = self.mic_code
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -1284,6 +1648,7 @@ class BalanceSheetEndpoint(AsMixin, Endpoint):
                  period=None,
                  start_date=None,
                  end_date=None,
+                 mic_code=None,
     ):
         self.ctx = ctx
         self.symbol = symbol
@@ -1292,6 +1657,7 @@ class BalanceSheetEndpoint(AsMixin, Endpoint):
         self.period = period
         self.start_date = start_date
         self.end_date = end_date
+        self.mic_code = mic_code
         self.method = "balance_sheet"
 
     def execute(self, format="JSON", debug=False):
@@ -1309,6 +1675,8 @@ class BalanceSheetEndpoint(AsMixin, Endpoint):
             params["start_date"] = self.start_date
         if self.end_date is not None:
             params["end_date"] = self.end_date
+        if self.mic_code is not None:
+            params["mic_code"] = self.mic_code
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -1330,6 +1698,7 @@ class CashFlowEndpoint(AsMixin, Endpoint):
                  period=None,
                  start_date=None,
                  end_date=None,
+                 mic_code=None,
     ):
         self.ctx = ctx
         self.symbol = symbol
@@ -1338,6 +1707,7 @@ class CashFlowEndpoint(AsMixin, Endpoint):
         self.period = period
         self.start_date = start_date
         self.end_date = end_date
+        self.mic_code = mic_code
         self.method = "cash_flow"
 
     def execute(self, format="JSON", debug=False):
@@ -1355,6 +1725,8 @@ class CashFlowEndpoint(AsMixin, Endpoint):
             params["start_date"] = self.start_date
         if self.end_date is not None:
             params["end_date"] = self.end_date
+        if self.mic_code is not None:
+            params["mic_code"] = self.mic_code
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -1373,11 +1745,13 @@ class OptionsExpirationEndpoint(AsMixin, Endpoint):
                  symbol=None,
                  exchange=None,
                  country=None,
+                 mic_code=None,
     ):
         self.ctx = ctx
         self.symbol = symbol
         self.exchange = exchange
         self.country = country
+        self.mic_code = mic_code
         self.method = "options_expiration"
 
     def execute(self, format="JSON", debug=False):
@@ -1389,6 +1763,8 @@ class OptionsExpirationEndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
+        if self.mic_code is not None:
+            params["mic_code"] = self.mic_code
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -1410,6 +1786,7 @@ class OptionsChainEndpoint(AsMixin, Endpoint):
                  expiration_date=None,
                  option_id=None,
                  side=None,
+                 mic_code=None,
     ):
         self.ctx = ctx
         self.symbol = symbol
@@ -1418,6 +1795,7 @@ class OptionsChainEndpoint(AsMixin, Endpoint):
         self.expiration_date = expiration_date
         self.option_id = option_id
         self.side = side
+        self.mic_code = mic_code
         self.method = "options_chain"
 
     def execute(self, format="JSON", debug=False):
@@ -1435,6 +1813,8 @@ class OptionsChainEndpoint(AsMixin, Endpoint):
             params["option_id"] = self.option_id
         if self.side is not None:
             params["side"] = self.side
+        if self.mic_code is not None:
+            params["mic_code"] = self.mic_code
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -1453,11 +1833,13 @@ class KeyExecutivesEndpoint(AsMixin, Endpoint):
                  symbol=None,
                  exchange=None,
                  country=None,
+                 mic_code=None,
     ):
         self.ctx = ctx
         self.symbol = symbol
         self.exchange = exchange
         self.country = country
+        self.mic_code = mic_code
         self.method = "key_executives"
 
     def execute(self, format="JSON", debug=False):
@@ -1469,6 +1851,8 @@ class KeyExecutivesEndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
+        if self.mic_code is not None:
+            params["mic_code"] = self.mic_code
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -1487,11 +1871,13 @@ class InstitutionalHoldersEndpoint(AsMixin, Endpoint):
                  symbol=None,
                  exchange=None,
                  country=None,
+                 mic_code=None,
     ):
         self.ctx = ctx
         self.symbol = symbol
         self.exchange = exchange
         self.country = country
+        self.mic_code = mic_code
         self.method = "institutional_holders"
 
     def execute(self, format="JSON", debug=False):
@@ -1503,6 +1889,8 @@ class InstitutionalHoldersEndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
+        if self.mic_code is not None:
+            params["mic_code"] = self.mic_code
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -1521,11 +1909,13 @@ class FundHoldersEndpoint(AsMixin, Endpoint):
                  symbol=None,
                  exchange=None,
                  country=None,
+                 mic_code=None,
     ):
         self.ctx = ctx
         self.symbol = symbol
         self.exchange = exchange
         self.country = country
+        self.mic_code = mic_code
         self.method = "fund_holders"
 
     def execute(self, format="JSON", debug=False):
@@ -1537,6 +1927,8 @@ class FundHoldersEndpoint(AsMixin, Endpoint):
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
+        if self.mic_code is not None:
+            params["mic_code"] = self.mic_code
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey

@@ -97,6 +97,20 @@ def test_get_cryptocurrencies_list():
     td.get_cryptocurrencies_list().as_url()
 
 
+def test_get_funds_list():
+    td = _init_client()
+    params={'outputsize': 10, 'page': 0}
+    td.get_funds_list(**params).as_json()
+    td.get_funds_list(**params).as_csv()
+    td.get_funds_list(**params).as_url()
+
+
+def test_get_bonds_list():
+    td = _init_client()
+    td.get_bonds_list().as_json()
+    td.get_bonds_list().as_csv()
+    td.get_bonds_list().as_url()
+
 def test_get_etf_list():
     td = _init_client()
     td.get_etf_list().as_json()
@@ -134,6 +148,12 @@ def test_earliest_timestamp():
     td = _init_client()
     td.get_earliest_timestamp(symbol="AAPL", interval="1day").as_json()
     td.get_earliest_timestamp(symbol="AAPL", interval="1day").as_url()
+
+
+def test_market_state():
+    td = _init_client()
+    td.get_market_state().as_json()
+    td.get_market_state().as_url()
 
 
 def test_exchange_rate():
@@ -190,10 +210,22 @@ def test_dividends():
     td.get_dividends(symbol="AAPL").as_url()
 
 
+def test_dividends_calendar():
+    td = _init_client()
+    td.get_dividends_calendar(symbol="AAPL").as_json()
+    td.get_dividends_calendar(symbol="AAPL").as_url()
+
+
 def test_splits():
     td = _init_client()
     td.get_splits(symbol="AAPL").as_json()
     td.get_splits(symbol="AAPL").as_url()
+
+
+def test_splits_calendar():
+    td = _init_client()
+    td.get_splits_calendar(symbol="AAPL").as_json()
+    td.get_splits_calendar(symbol="AAPL").as_url()
 
 
 def test_earnings():

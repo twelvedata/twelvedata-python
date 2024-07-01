@@ -6,6 +6,8 @@ from .endpoints import (
     ForexPairsListEndpoint,
     ETFListEndpoint,
     IndicesListEndpoint,
+    FundsListEndpoint,
+    BondsListEndpoint,
     ExchangesListEndpoint,
     CryptocurrenciesListEndpoint,
     CryptocurrencyExchangesListEndpoint,
@@ -20,7 +22,9 @@ from .endpoints import (
     LogoEndpoint,
     ProfileEndpoint,
     DividendsEndpoint,
+    DividendsCalendarEndpoint,
     SplitsEndpoint,
+    SplitsCalendarEndpoint,
     EarningsEndpoint,
     EarningsCalendarEndpoint,
     IPOCalendarEndpoint,
@@ -35,6 +39,7 @@ from .endpoints import (
     InstitutionalHoldersEndpoint,
     FundHoldersEndpoint,
     APIUsageEndpoint,
+    MarketStateEndpoint,
 )
 from .http_client import DefaultHttpClient
 from .time_series import TimeSeries
@@ -153,6 +158,34 @@ class TDClient:
         ctx.defaults.update(defaults)
         return IndicesListEndpoint(ctx, **ctx.defaults)
 
+    def get_funds_list(self, **defaults):
+        """
+        Creates request builder for Funds List
+
+        This API call return array of funds available at Twelve Data API. This list is daily updated.
+        This list is daily updated.
+
+        :returns: request builder instance
+        :rtype: FundsListRequestBuilder
+        """
+        ctx = Context.from_context(self.ctx)
+        ctx.defaults.update(defaults)
+        return FundsListEndpoint(ctx, **ctx.defaults)
+
+    def get_bonds_list(self, **defaults):
+        """
+        Creates request builder for Bonds List
+
+        This API call return array of bonds available at Twelve Data API. This list is daily updated.
+        This list is daily updated.
+
+        :returns: request builder instance
+        :rtype: BondsListRequestBuilder
+        """
+        ctx = Context.from_context(self.ctx)
+        ctx.defaults.update(defaults)
+        return BondsListEndpoint(ctx, **ctx.defaults)
+
     def get_exchanges_list(self, **defaults):
         """
         Creates request builder for Exchanges List
@@ -219,6 +252,19 @@ class TDClient:
         ctx = Context.from_context(self.ctx)
         ctx.defaults.update(defaults)
         return EarliestTimestampEndpoint(ctx, **ctx.defaults)
+
+    def get_market_state(self, **defaults):
+        """
+        Creates request builder for Market State
+
+        Check the state of all available exchanges, time to open, and time to close. Returns all available stock exchanges by default.
+
+        :returns: request builder instance
+        :rtype: MarketStateRequestBuilder
+        """
+        ctx = Context.from_context(self.ctx)
+        ctx.defaults.update(defaults)
+        return MarketStateEndpoint(ctx, **ctx.defaults)
 
     def time_series(self, **defaults):
         """
@@ -325,6 +371,19 @@ class TDClient:
         ctx.defaults.update(defaults)
         return DividendsEndpoint(ctx, **ctx.defaults)
 
+    def get_dividends_calendar(self, **defaults):
+        """
+        Creates request builder for Dividends Calendar
+
+        Returns the dividend data as a calendar for a given date range. To call custom period, use start_date and end_date parameters.
+
+        :returns: request builder instance
+        :rtype: DividendsCalendarRequestBuilder
+        """
+        ctx = Context.from_context(self.ctx)
+        ctx.defaults.update(defaults)
+        return DividendsCalendarEndpoint(ctx, **ctx.defaults)
+
     def get_splits(self, **defaults):
         """
         Creates request builder for Splits
@@ -337,6 +396,19 @@ class TDClient:
         ctx = Context.from_context(self.ctx)
         ctx.defaults.update(defaults)
         return SplitsEndpoint(ctx, **ctx.defaults)
+
+    def get_splits_calendar(self, **defaults):
+        """
+        Creates request builder for Splits Calendar
+
+        Returns split data as a calendar for a given date range. To call custom period, use start_date and end_date parameters.
+
+        :returns: request builder instance
+        :rtype: SplitsCalendarRequestBuilder
+        """
+        ctx = Context.from_context(self.ctx)
+        ctx.defaults.update(defaults)
+        return SplitsCalendarEndpoint(ctx, **ctx.defaults)
 
     def get_earnings(self, **defaults):
         """
