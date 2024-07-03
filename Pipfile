@@ -3,6 +3,7 @@ twelvedata = {path = "./",extras = ["pandas", "matplotlib", "plotly", "websocket
 
 [dev-packages]
 jupyter = "*"
+twine = "*"
 
 [pipenv]
 allow_prereleases = true
