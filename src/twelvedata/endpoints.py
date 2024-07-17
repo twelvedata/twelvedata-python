@@ -163,6 +163,9 @@ class Endpoint(object):
     # The fill between lines
     fill_area = {}
 
+    # The DataFrame generated
+    df = None
+
     def render_matplotlib(self, **kwargs):
         import matplotlib.dates as mdates
         from .renders import RENDERS_MAPPING, RenderContext
@@ -191,7 +194,7 @@ class Endpoint(object):
         ctx.interval_minutes = kwargs.pop("interval_minutes", 1)
         ctx.postfix = kwargs.pop("postfix", "")
 
-        df = self.as_pandas()
+        df = self.df or self.as_pandas()
         return tuple(
             itertools.chain(
                 *(

@@ -5,6 +5,7 @@ import pytimeparse
 import re
 import itertools
 from collections import OrderedDict, Counter
+from pandas import DataFrame
 
 from .endpoints import *
 from .utils import apply_context_defaults, force_use_kwargs, parse_interval_in_minutes
@@ -256,6 +257,18 @@ class TimeSeries(object):
         mpl.use("WebAgg")
         self.as_pyplot_figure(figsize=figsize, candle_width=candle_width)
         plt.show()
+
+    def df_to_plotly(self, df: DataFrame):
+        """
+        Creates plotly figure from existing DataFrame
+
+        :returns: plotly figure
+        :rtype: Figure
+        """
+        if not isinstance(df, DataFrame):
+            raise TypeError("df must be type `DataFrame`")
+        self.df = df
+        return self.as_plotly_figure()
 
     def as_plotly_figure(self):
         from plotly.subplots import make_subplots
