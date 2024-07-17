@@ -299,9 +299,10 @@ def test_time_series():
     ts = _init_ts()
     ts.as_json()
     ts.as_csv()
-    ts.as_pandas()
+    df = ts.as_pandas()
     ts.as_plotly_figure()
     ts.as_url()
+    ts.df_to_plotly(df)
     plt.close()
 
 
