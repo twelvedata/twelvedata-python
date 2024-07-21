@@ -167,7 +167,9 @@ class Endpoint(object):
         import matplotlib.dates as mdates
         from .renders import RENDERS_MAPPING, RenderContext
 
-        df = self.as_pandas()
+        df = kwargs.pop('df', None)
+        if df is None:
+            df = self.as_pandas()
         df = df.iloc[::-1]
         df.reset_index(level=0, inplace=True)
         df.set_index("datetime", inplace=True)
@@ -191,7 +193,9 @@ class Endpoint(object):
         ctx.interval_minutes = kwargs.pop("interval_minutes", 1)
         ctx.postfix = kwargs.pop("postfix", "")
 
-        df = self.as_pandas()
+        df = kwargs.pop('df', None)
+        if df is None:
+            df = self.as_pandas()
         return tuple(
             itertools.chain(
                 *(

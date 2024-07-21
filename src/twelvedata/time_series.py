@@ -169,7 +169,7 @@ class TimeSeries(object):
 
         return postfixes
 
-    def as_pyplot_figure(self, figsize=(16, 8), candle_width=0.0002):
+    def as_pyplot_figure(self, figsize=(16, 8), candle_width=0.0002, df=None):
         import matplotlib.dates as mdates
         import matplotlib.pyplot as plt
         import matplotlib.ticker as mticker
@@ -215,6 +215,7 @@ class TimeSeries(object):
                 ax=price_ax,
                 candle_width=candle_width,
                 interval_minutes=interval_minutes,
+                df=df,
             )
             price_ax.yaxis.tick_right()
             price_ax.yaxis.set_label_position("right")
@@ -257,7 +258,7 @@ class TimeSeries(object):
         self.as_pyplot_figure(figsize=figsize, candle_width=candle_width)
         plt.show()
 
-    def as_plotly_figure(self):
+    def as_plotly_figure(self, df=None):
         from plotly.subplots import make_subplots
         import plotly.graph_objs as go
 
@@ -280,7 +281,7 @@ class TimeSeries(object):
 
         # Draw main plot
         if self.price_endpoint_enabled:
-            price_traces = self.price_endpoint.render_plotly(fig=fig)
+            price_traces = self.price_endpoint.render_plotly(fig=fig, df=df)
             fig.add_trace(price_traces[0], 1, 1)
 
             for trace in price_traces[1:]:
@@ -292,7 +293,7 @@ class TimeSeries(object):
         overlay_endpoints = (ep for ep in self.endpoints if ep.is_overlay)
         for ep in overlay_endpoints:
             postfix = next(postfixes[ep.__class__])
-            for ep_trace in ep.render_plotly(postfix=postfix):
+            for ep_trace in ep.render_plotly(postfix=postfix, df=df):
                 fig.add_trace(ep_trace)
 
         if self.price_endpoint_enabled or self._has_overlays():

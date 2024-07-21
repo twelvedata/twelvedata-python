@@ -299,8 +299,9 @@ def test_time_series():
     ts = _init_ts()
     ts.as_json()
     ts.as_csv()
-    ts.as_pandas()
+    df = ts.as_pandas()
     ts.as_plotly_figure()
+    ts.as_plotly_figure(df=df)
     ts.as_url()
     plt.close()
 
@@ -309,8 +310,9 @@ def test_time_series_get_ad():
     ts = _init_ts()
     ts.with_ad().as_json()
     ts.with_ad().as_csv()
-    ts.with_ad().as_pandas()
+    df = ts.with_ad().as_pandas()
     ts.with_ad().as_plotly_figure()
+    ts.with_ad().as_plotly_figure(df=df)
     ts.with_ad().as_url()
     plt.close()
 
