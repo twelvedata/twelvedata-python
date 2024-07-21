@@ -66,7 +66,10 @@ class AsPandasMixin(object):
         df.index = pd.to_datetime(df.index)
 
         for col in df.columns:
-            df[col] = pd.to_numeric(df[col], errors="ignore")
+            try:
+                df[col] = pd.to_numeric(df[col])
+            except (ValueError, TypeError):
+                df[col] = df[col]
         return df
 
 
