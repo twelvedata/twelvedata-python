@@ -137,6 +137,8 @@ def get_symbol(symbol) -> (str, bool):
             return symbol[0], False
         elif len(symbol) > 1:
             return ','.join(symbol), True
+    else:
+        raise TypeError('The type of argument "symbol" can be only: str, list, tuple')
 
 
 def build_url(base, endpoint, params):
