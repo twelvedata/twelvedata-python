@@ -132,9 +132,9 @@ def get_symbol(symbol) -> (str, bool):
         if ',' in symbol and len(purified_symbol.split(',')) > 1:
             return purified_symbol, True
         return purified_symbol, False
-    elif isinstance(symbol, list):
+    elif isinstance(symbol, list) or isinstance(symbol, tuple):
         if len(symbol) == 1:
-            return symbol, False
+            return symbol[0], False
         elif len(symbol) > 1:
             return ','.join(symbol), True
 

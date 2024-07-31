@@ -1321,6 +1321,20 @@ def test_list_batch():
     batch_ts.with_ema().with_bbands().as_url()
 
 
+def test_tuple_batch():
+    batch_ts = _init_batch_ts(('AAPL', 'QQQ', 'IXIC', 'EUR/USD', 'BTC/USD'))
+    batch_ts.with_macd().with_stoch().as_json()
+    batch_ts.with_ema().with_bbands().as_pandas()
+    batch_ts.with_ema().with_bbands().as_url()
+
+
+def test_tuple_batch_one_symbol():
+    batch_ts = _init_batch_ts(('AAPL',))
+    batch_ts.with_macd().with_stoch().as_json()
+    batch_ts.with_ema().with_bbands().as_pandas()
+    batch_ts.with_ema().with_bbands().as_url()
+
+
 @patch('twelvedata.http_client.requests.get', return_value=_fake_resp(500))
 def test_http_internal_server_error_response(mock_get):
     http_client = DefaultHttpClient(API_URL)
