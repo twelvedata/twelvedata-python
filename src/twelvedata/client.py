@@ -48,9 +48,10 @@ from .websocket import TDWebSocket
 
 
 class TDClient:
-    def __init__(self, apikey, http_client=None, base_url=None, **defaults):
+    def __init__(self, apikey, http_client=None, base_url=None, self_heal_time_s=None, **defaults):
         self.ctx = Context()
         self.ctx.apikey = apikey
+        self.ctx.self_heal_time_s = self_heal_time_s
         self.ctx.base_url = base_url or "https://api.twelvedata.com"
         self.ctx.http_client = http_client or DefaultHttpClient(self.ctx.base_url)
         self.ctx.defaults = defaults
