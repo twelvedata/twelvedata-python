@@ -4,13 +4,13 @@ import json
 import logging
 import queue
 
-SELF_HEAL_TIME = 1
 MAX_QUEUE_SIZE = 12000
 
 
 class TDWebSocket:
     def __init__(self, ctx):
         self.apikey = ctx.apikey
+        self.self_heal_time_s = 1 if ctx.self_heal_time_s is None else ctx.self_heal_time_s
         self.defaults = ctx.defaults
 
         self.ws = None
@@ -83,7 +83,7 @@ class TDWebSocket:
                 break
             except Exception as e:
                 self.logger.error("Cannot connect: {}. Retrying...".format(e))
-                time.sleep(SELF_HEAL_TIME)
+                time.sleep(self.self_heal_time_s)
 
     def disconnect(self):
         self.ready = False
@@ -111,7 +111,7 @@ class TDWebSocket:
         self.event_receiver.start()
 
     def self_heal(self):
-        time.sleep(SELF_HEAL_TIME)
+        time.sleep(self.self_heal_time_s)
         self.connect()
 
     def on_connect(self):
