@@ -99,15 +99,17 @@ def test_get_cryptocurrencies_list():
 
 def test_get_funds_list():
     td = _init_client()
-    params={'outputsize': 10, 'page': 0}
-    td.get_funds_list(**params).as_json()
+    params = {'outputsize': 10, 'page': 0}
+    l = td.get_funds_list(**params).as_json()
+    assert len(l) > 0
     td.get_funds_list(**params).as_csv()
     td.get_funds_list(**params).as_url()
 
 
 def test_get_bonds_list():
     td = _init_client()
-    td.get_bonds_list().as_json()
+    l = td.get_bonds_list().as_json()
+    assert len(l) > 0
     td.get_bonds_list().as_csv()
     td.get_bonds_list().as_url()
 

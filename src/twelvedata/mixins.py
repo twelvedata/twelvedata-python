@@ -14,6 +14,9 @@ class AsJsonMixin(object):
         if hasattr(self, 'is_batch') and self.is_batch:
             return json
         if isinstance(json, dict) and json.get("status") == "ok":
+            if 'result' in json and isinstance(json['result'], dict) and 'list' in json['result'] \
+                    and isinstance(json['result']['list'], list):
+                return json['result']['list']
             return json.get("data") or json.get("values") or json.get("earnings") or []
         return json
 
