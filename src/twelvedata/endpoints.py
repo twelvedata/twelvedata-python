@@ -526,7 +526,8 @@ class EODEndpoint(AsMixin, Endpoint):
                  dp=5,
                  prepost="false",
                  mic_code=None,
-    ):
+                 date=None,
+                 ):
         self.ctx = ctx
         self.symbol = symbol
         self.exchange = exchange
@@ -535,6 +536,7 @@ class EODEndpoint(AsMixin, Endpoint):
         self.dp = dp
         self.prepost = prepost
         self.mic_code = mic_code
+        self.date = date
 
     def execute(self, format="JSON", debug=False):
 
@@ -553,6 +555,8 @@ class EODEndpoint(AsMixin, Endpoint):
             params["prepost"] = self.prepost
         if self.mic_code is not None:
             params["mic_code"] = self.mic_code
+        if self.date is not None:
+            params["date"] = self.date
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
