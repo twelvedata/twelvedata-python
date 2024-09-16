@@ -1337,7 +1337,7 @@ def test_tuple_batch_one_symbol():
     batch_ts.with_ema().with_bbands().as_url()
 
 
-@patch('twelvedata.http_client.requests.get', return_value=_fake_resp(500))
+@patch('twelvedata.http_client.Session.get', return_value=_fake_resp(500))
 def test_http_internal_server_error_response(mock_get):
     http_client = DefaultHttpClient(API_URL)
     with pytest.raises(InternalServerError):
@@ -1345,7 +1345,7 @@ def test_http_internal_server_error_response(mock_get):
     mock_get.assert_called_once_with(API_URL + '/fake_url', timeout=30, params={'source': 'python'})
 
 
-@patch('twelvedata.http_client.requests.get', return_value=_fake_json_resp(
+@patch('twelvedata.http_client.Session.get', return_value=_fake_json_resp(
     json.loads('{"status": "error", "code": 500, "message": "error message"}')),
 )
 def test_http_internal_server_error_response_in_json(mock_get):
@@ -1356,7 +1356,7 @@ def test_http_internal_server_error_response_in_json(mock_get):
     mock_get.assert_called_once_with(API_URL + '/fake_url', timeout=30, params={'source': 'python'})
 
 
-@patch('twelvedata.http_client.requests.get', return_value=_fake_resp(400))
+@patch('twelvedata.http_client.Session.get', return_value=_fake_resp(400))
 def test_http_bad_request_error_response(mock_get):
     http_client = DefaultHttpClient(API_URL)
     with pytest.raises(BadRequestError):
@@ -1364,7 +1364,7 @@ def test_http_bad_request_error_response(mock_get):
     mock_get.assert_called_once_with(API_URL + '/fake_url', timeout=30, params={'source': 'python'})
 
 
-@patch('twelvedata.http_client.requests.get', return_value=_fake_json_resp(
+@patch('twelvedata.http_client.Session.get', return_value=_fake_json_resp(
     json.loads('{"status": "error", "code": 400, "message": "error message"}')),
        )
 def test_http_bad_request_error_response_in_json(mock_get):
@@ -1375,7 +1375,7 @@ def test_http_bad_request_error_response_in_json(mock_get):
     mock_get.assert_called_once_with(API_URL + '/fake_url', timeout=30, params={'source': 'python'})
 
 
-@patch('twelvedata.http_client.requests.get', return_value=_fake_resp(401))
+@patch('twelvedata.http_client.Session.get', return_value=_fake_resp(401))
 def test_http_invalid_api_key_response(mock_get):
     http_client = DefaultHttpClient(API_URL)
     with pytest.raises(InvalidApiKeyError):
@@ -1383,7 +1383,7 @@ def test_http_invalid_api_key_response(mock_get):
     mock_get.assert_called_once_with(API_URL + '/fake_url', timeout=30, params={'source': 'python'})
 
 
-@patch('twelvedata.http_client.requests.get', return_value=_fake_json_resp(
+@patch('twelvedata.http_client.Session.get', return_value=_fake_json_resp(
     json.loads('{"status": "error", "code": 401, "message": "error message"}')),
        )
 def test_http_invalid_api_key_response_in_json(mock_get):
@@ -1394,7 +1394,7 @@ def test_http_invalid_api_key_response_in_json(mock_get):
     mock_get.assert_called_once_with(API_URL + '/fake_url', timeout=30, params={'source': 'python'})
 
 
-@patch('twelvedata.http_client.requests.get', return_value=_fake_resp(520))
+@patch('twelvedata.http_client.Session.get', return_value=_fake_resp(520))
 def test_http_other_invalid_response(mock_get):
     http_client = DefaultHttpClient(API_URL)
     with pytest.raises(TwelveDataError):
@@ -1402,7 +1402,7 @@ def test_http_other_invalid_response(mock_get):
     mock_get.assert_called_once_with(API_URL + '/fake_url', timeout=30, params={'source': 'python'})
 
 
-@patch('twelvedata.http_client.requests.get', return_value=_fake_json_resp(
+@patch('twelvedata.http_client.Session.get', return_value=_fake_json_resp(
     json.loads('{"status": "error", "code": 520, "message": "error message"}')),
        )
 def test_http_other_invalid_response_in_json(mock_get):
