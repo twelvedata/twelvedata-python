@@ -1,6 +1,6 @@
 # coding: utf-8
 
-import requests
+from requests import Session
 from json import JSONDecodeError
 
 from .exceptions import (
@@ -16,6 +16,7 @@ __all__ = ("DefaultHttpClient",)
 class DefaultHttpClient(object):
     def __init__(self, base_url):
         self.base_url = base_url
+        self.session = Session()
 
     def get(self, relative_url, *args, **kwargs):
 
@@ -24,7 +25,7 @@ class DefaultHttpClient(object):
         params["source"] = "python"
         kwargs["params"] = params
 
-        resp = requests.get("{}{}".format(self.base_url, relative_url), timeout=30, *args, **kwargs)
+        resp = self.session.get("{}{}".format(self.base_url, relative_url), timeout=30, *args, **kwargs)
         if ('Is_batch' in resp.headers and resp.headers['Is_batch'] == 'true') or \
                 ('Content-Type' in resp.headers and resp.headers['Content-Type'] == 'text/csv'):
             return resp
