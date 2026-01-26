@@ -19,7 +19,9 @@ __pycache__/*
 .pydevproject
 .settings
 .idea
+.vscode
 tags
+src/twelvedata/_version.py
 
 # Package files
 *.egg
