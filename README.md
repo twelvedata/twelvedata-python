@@ -12,7 +12,7 @@
 Official python library for [Twelve Data](https://twelvedata.com). This package supports all main features of the service:
 
 * Get stock, forex, cryptocurrency, ETF, and index OHLC time series.
-* Companies' profiles, financials, options, and much more fundamentals data.
+* Companies' profiles, financials, and much more fundamentals data.
 * Get over 100+ technical indicators.
 * Output data as: `json`, `csv`, `pandas`
 * Full support for static and dynamic charts.
@@ -118,8 +118,6 @@ All fundamentals are supported across global markets. Refer to API documentation
 * `.get_income_statement(symbol, exchange, country, type, period, start_date, end_date)`
 * `.get_balance_sheet(symbol, exchange, country, type, period, start_date, end_date)`
 * `.get_cash_flow(symbol, exchange, country, type, period, start_date, end_date)`
-* `.get_options_expiration(symbol, exchange, country, type)`
-* `.get_options_chain(symbol, exchange, country, type, expiration_date, option_id, side)`
 * `.get_key_executives(symbol, exchange, country, type)`
 * `.get_institutional_holders(symbol, exchange, country, type)`
 * `.get_fund_holders(symbol, exchange, country, type)`
@@ -131,19 +129,10 @@ from twelvedata import TDClient
 
 td = TDClient(apikey="YOUR_API_KEY_HERE")
 
-# Get all expiration dates
-expirations = td.get_options_expiration(
+# Get last dividends for AAPL
+dividends = td.get_dividends(
     symbol="AAPL",
-).as_json()['dates']
-
-# Extract only put options for the soonest expiration date
-put_options = td.get_options_chain(
-    symbol="AAPL",
-    side="put",
-    expiration_date=expirations[0]
-).as_json()['puts']
-
-print(put_options)
+).as_json()
 ```
 
 ### Technical indicators
