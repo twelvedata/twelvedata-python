@@ -369,6 +369,9 @@ class TimeSeries(object):
             timezone="Exchange",
             prepost="false",
             mic_code=None,
+            figi=None,
+            isin=None,
+            cusip=None,
     ):
         """
         Add request builder of AD to chart builder
@@ -418,6 +421,9 @@ class TimeSeries(object):
             timezone=timezone,
             prepost=prepost,
             mic_code=mic_code,
+            figi=figi,
+            isin=isin,
+            cusip=cusip,
         )
         return self._with_endpoint(ep)
 
@@ -436,6 +442,9 @@ class TimeSeries(object):
             timezone="Exchange",
             prepost="false",
             mic_code=None,
+            figi=None,
+            isin=None,
+            cusip=None,
     ):
         """
         Add request builder of ADOSC to chart builder
@@ -494,6 +503,9 @@ class TimeSeries(object):
             timezone=timezone,
             prepost=prepost,
             mic_code=mic_code,
+            figi=figi,
+            isin=isin,
+            cusip=cusip,
         )
         return self._with_endpoint(ep)
 
@@ -511,6 +523,9 @@ class TimeSeries(object):
             timezone="Exchange",
             prepost="false",
             mic_code=None,
+            figi=None,
+            isin=None,
+            cusip=None,
     ):
         """
         Add request builder of ADX to chart builder
@@ -563,6 +578,9 @@ class TimeSeries(object):
             timezone=timezone,
             prepost=prepost,
             mic_code=mic_code,
+            figi=figi,
+            isin=isin,
+            cusip=cusip,
         )
         return self._with_endpoint(ep)
 
@@ -580,6 +598,9 @@ class TimeSeries(object):
             timezone="Exchange",
             prepost="false",
             mic_code=None,
+            figi=None,
+            isin=None,
+            cusip=None,
     ):
         """
         Add request builder of ADXR to chart builder
@@ -632,6 +653,9 @@ class TimeSeries(object):
             timezone=timezone,
             prepost=prepost,
             mic_code=mic_code,
+            figi=figi,
+            isin=isin,
+            cusip=cusip,
         )
         return self._with_endpoint(ep)
 
@@ -652,6 +676,9 @@ class TimeSeries(object):
             timezone="Exchange",
             prepost="false",
             mic_code=None,
+            figi=None,
+            isin=None,
+            cusip=None,
     ):
         """
         Add request builder of APO to chart builder
@@ -712,6 +739,9 @@ class TimeSeries(object):
             timezone=timezone,
             prepost=prepost,
             mic_code=mic_code,
+            figi=figi,
+            isin=isin,
+            cusip=cusip,
         )
         return self._with_endpoint(ep)
 
@@ -729,6 +759,9 @@ class TimeSeries(object):
             timezone="Exchange",
             prepost="false",
             mic_code=None,
+            figi=None,
+            isin=None,
+            cusip=None,
     ):
         """
         Add request builder of AROON to chart builder
@@ -781,6 +814,9 @@ class TimeSeries(object):
             timezone=timezone,
             prepost=prepost,
             mic_code=mic_code,
+            figi=figi,
+            isin=isin,
+            cusip=cusip,
         )
         return self._with_endpoint(ep)
 
@@ -798,6 +834,9 @@ class TimeSeries(object):
             timezone="Exchange",
             prepost="false",
             mic_code=None,
+            figi=None,
+            isin=None,
+            cusip=None,
     ):
         """
         Add request builder of AROONOSC to chart builder
@@ -851,6 +890,9 @@ class TimeSeries(object):
             timezone=timezone,
             prepost=prepost,
             mic_code=mic_code,
+            figi=figi,
+            isin=isin,
+            cusip=cusip,
         )
         return self._with_endpoint(ep)
 
@@ -868,6 +910,9 @@ class TimeSeries(object):
             timezone="Exchange",
             prepost="false",
             mic_code=None,
+            figi=None,
+            isin=None,
+            cusip=None,
     ):
         """
         Add request builder of ATR to chart builder
@@ -920,6 +965,9 @@ class TimeSeries(object):
             timezone=timezone,
             prepost=prepost,
             mic_code=mic_code,
+            figi=figi,
+            isin=isin,
+            cusip=cusip,
         )
         return self._with_endpoint(ep)
 
@@ -936,6 +984,9 @@ class TimeSeries(object):
             timezone="Exchange",
             prepost="false",
             mic_code=None,
+            figi=None,
+            isin=None,
+            cusip=None,
     ):
         """
         Add request builder of AVGPRICE to chart builder
@@ -984,6 +1035,9 @@ class TimeSeries(object):
             timezone=timezone,
             prepost=prepost,
             mic_code=mic_code,
+            figi=figi,
+            isin=isin,
+            cusip=cusip,
         )
         return self._with_endpoint(ep)
 
@@ -1004,6 +1058,9 @@ class TimeSeries(object):
             timezone="Exchange",
             prepost="false",
             mic_code=None,
+            figi=None,
+            isin=None,
+            cusip=None,
     ):
         """
         Add request builder of BBANDS to chart builder
@@ -1064,6 +1121,9 @@ class TimeSeries(object):
             timezone=timezone,
             prepost=prepost,
             mic_code=mic_code,
+            figi=figi,
+            isin=isin,
+            cusip=cusip,
         )
         return self._with_endpoint(ep)
 
@@ -1083,6 +1143,9 @@ class TimeSeries(object):
             timezone="Exchange",
             prepost="false",
             mic_code=None,
+            figi=None,
+            isin=None,
+            cusip=None,
     ):
         """
         Add request builder of BETA to chart builder
@@ -1137,6 +1200,9 @@ class TimeSeries(object):
             timezone=timezone,
             prepost=prepost,
             mic_code=mic_code,
+            figi=figi,
+            isin=isin,
+            cusip=cusip,
         )
         return self._with_endpoint(ep)
 
@@ -1157,6 +1223,9 @@ class TimeSeries(object):
             timezone="Exchange",
             prepost="false",
             mic_code=None,
+            figi=None,
+            isin=None,
+            cusip=None,
     ):
         """
         Creates request builder for %B
@@ -1216,6 +1285,9 @@ class TimeSeries(object):
             timezone=timezone,
             prepost=prepost,
             mic_code=mic_code,
+            figi=figi,
+            isin=isin,
+            cusip=cusip,
         )
         return self._with_endpoint(ep)
 
@@ -1233,6 +1305,9 @@ class TimeSeries(object):
             timezone="Exchange",
             prepost="false",
             mic_code=None,
+            figi=None,
+            isin=None,
+            cusip=None,
     ):
         """
         Creates request builder for Pivot Points (High/Low)
@@ -1284,6 +1359,9 @@ class TimeSeries(object):
             timezone=timezone,
             prepost=prepost,
             mic_code=mic_code,
+            figi=figi,
+            isin=isin,
+            cusip=cusip,
         )
         return self._with_endpoint(ep)
 
@@ -1300,6 +1378,9 @@ class TimeSeries(object):
             timezone="Exchange",
             prepost="false",
             mic_code=None,
+            figi=None,
+            isin=None,
+            cusip=None,
     ):
         """
         Add request builder of BOP to chart builder
@@ -1349,6 +1430,9 @@ class TimeSeries(object):
             timezone=timezone,
             prepost=prepost,
             mic_code=mic_code,
+            figi=figi,
+            isin=isin,
+            cusip=cusip,
         )
         return self._with_endpoint(ep)
 
@@ -1366,6 +1450,9 @@ class TimeSeries(object):
             timezone="Exchange",
             prepost="false",
             mic_code=None,
+            figi=None,
+            isin=None,
+            cusip=None,
     ):
         """
         Add request builder of CCI to chart builder
@@ -1418,6 +1505,9 @@ class TimeSeries(object):
             timezone=timezone,
             prepost=prepost,
             mic_code=mic_code,
+            figi=figi,
+            isin=isin,
+            cusip=cusip,
         )
         return self._with_endpoint(ep)
 
@@ -1435,6 +1525,9 @@ class TimeSeries(object):
             timezone="Exchange",
             prepost="false",
             mic_code=None,
+            figi=None,
+            isin=None,
+            cusip=None,
     ):
         """
         Add request builder of CEIL to chart builder
@@ -1487,6 +1580,9 @@ class TimeSeries(object):
             timezone=timezone,
             prepost=prepost,
             mic_code=mic_code,
+            figi=figi,
+            isin=isin,
+            cusip=cusip,
         )
         return self._with_endpoint(ep)
 
@@ -1505,6 +1601,9 @@ class TimeSeries(object):
             timezone="Exchange",
             prepost="false",
             mic_code=None,
+            figi=None,
+            isin=None,
+            cusip=None,
     ):
         """
         Add request builder of CMO to chart builder
@@ -1560,6 +1659,9 @@ class TimeSeries(object):
             timezone=timezone,
             prepost=prepost,
             mic_code=mic_code,
+            figi=figi,
+            isin=isin,
+            cusip=cusip,
         )
         return self._with_endpoint(ep)
 
@@ -1580,6 +1682,9 @@ class TimeSeries(object):
             timezone="Exchange",
             prepost="false",
             mic_code=None,
+            figi=None,
+            isin=None,
+            cusip=None,
     ):
         """
         Add request builder of COPPOCK to chart builder
@@ -1637,6 +1742,9 @@ class TimeSeries(object):
             timezone=timezone,
             prepost=prepost,
             mic_code=mic_code,
+            figi=figi,
+            isin=isin,
+            cusip=cusip,
         )
         return self._with_endpoint(ep)
 
@@ -1654,6 +1762,9 @@ class TimeSeries(object):
             timezone="Exchange",
             prepost="false",
             mic_code=None,
+            figi=None,
+            isin=None,
+            cusip=None,
     ):
         """
         Add request builder of CEIL to chart builder
@@ -1706,6 +1817,9 @@ class TimeSeries(object):
             timezone=timezone,
             prepost=prepost,
             mic_code=mic_code,
+            figi=figi,
+            isin=isin,
+            cusip=cusip,
         )
         return self._with_endpoint(ep)
 
@@ -1724,6 +1838,9 @@ class TimeSeries(object):
             timezone="Exchange",
             prepost="false",
             mic_code=None,
+            figi=None,
+            isin=None,
+            cusip=None,
     ):
         """
         Add request builder of DEMA to chart builder
@@ -1779,6 +1896,9 @@ class TimeSeries(object):
             timezone=timezone,
             prepost=prepost,
             mic_code=mic_code,
+            figi=figi,
+            isin=isin,
+            cusip=cusip,
         )
         return self._with_endpoint(ep)
 
@@ -1796,6 +1916,9 @@ class TimeSeries(object):
             timezone="Exchange",
             prepost="false",
             mic_code=None,
+            figi=None,
+            isin=None,
+            cusip=None,
     ):
         """
         Add request builder of DX to chart builder
@@ -1848,6 +1971,9 @@ class TimeSeries(object):
             timezone=timezone,
             prepost=prepost,
             mic_code=mic_code,
+            figi=figi,
+            isin=isin,
+            cusip=cusip,
         )
         return self._with_endpoint(ep)
 
@@ -1866,6 +1992,9 @@ class TimeSeries(object):
             timezone="Exchange",
             prepost="false",
             mic_code=None,
+            figi=None,
+            isin=None,
+            cusip=None,
     ):
         """
         Add request builder of EMA to chart builder
@@ -1921,6 +2050,9 @@ class TimeSeries(object):
             timezone=timezone,
             prepost=prepost,
             mic_code=mic_code,
+            figi=figi,
+            isin=isin,
+            cusip=cusip,
         )
         return self._with_endpoint(ep)
 
@@ -1938,6 +2070,9 @@ class TimeSeries(object):
             timezone="Exchange",
             prepost="false",
             mic_code=None,
+            figi=None,
+            isin=None,
+            cusip=None,
     ):
         """
         Add request builder of EXP to chart builder
@@ -1990,6 +2125,9 @@ class TimeSeries(object):
             timezone=timezone,
             prepost=prepost,
             mic_code=mic_code,
+            figi=figi,
+            isin=isin,
+            cusip=cusip,
         )
         return self._with_endpoint(ep)
 
@@ -2007,6 +2145,9 @@ class TimeSeries(object):
             timezone="Exchange",
             prepost="false",
             mic_code=None,
+            figi=None,
+            isin=None,
+            cusip=None,
     ):
         """
         Add request builder of FLOOR to chart builder
@@ -2059,6 +2200,9 @@ class TimeSeries(object):
             timezone=timezone,
             prepost=prepost,
             mic_code=mic_code,
+            figi=figi,
+            isin=isin,
+            cusip=cusip,
         )
         return self._with_endpoint(ep)
 
@@ -2075,6 +2219,9 @@ class TimeSeries(object):
             timezone="Exchange",
             prepost="false",
             mic_code=None,
+            figi=None,
+            isin=None,
+            cusip=None,
     ):
         """
         Add request builder of HEIKINASHICANDLES to chart builder
@@ -2125,6 +2272,9 @@ class TimeSeries(object):
             timezone=timezone,
             prepost=prepost,
             mic_code=mic_code,
+            figi=figi,
+            isin=isin,
+            cusip=cusip,
         )
         return self._with_price_endpoint(ep)
 
@@ -2141,6 +2291,9 @@ class TimeSeries(object):
             timezone="Exchange",
             prepost="false",
             mic_code=None,
+            figi=None,
+            isin=None,
+            cusip=None,
     ):
         """
         Add request builder of HLC3 to chart builder
@@ -2190,6 +2343,9 @@ class TimeSeries(object):
             timezone=timezone,
             prepost=prepost,
             mic_code=mic_code,
+            figi=figi,
+            isin=isin,
+            cusip=cusip,
         )
         return self._with_price_endpoint(ep)
 
@@ -2207,6 +2363,9 @@ class TimeSeries(object):
             timezone="Exchange",
             prepost="false",
             mic_code=None,
+            figi=None,
+            isin=None,
+            cusip=None,
     ):
         """
         Add request builder of HT_DCPERIOD to chart builder
@@ -2260,6 +2419,9 @@ class TimeSeries(object):
             timezone=timezone,
             prepost=prepost,
             mic_code=mic_code,
+            figi=figi,
+            isin=isin,
+            cusip=cusip,
         )
         return self._with_endpoint(ep)
 
@@ -2277,6 +2439,9 @@ class TimeSeries(object):
             timezone="Exchange",
             prepost="false",
             mic_code=None,
+            figi=None,
+            isin=None,
+            cusip=None,
     ):
         """
         Add request builder of HT_DCPHASE to chart builder
@@ -2330,6 +2495,9 @@ class TimeSeries(object):
             timezone=timezone,
             prepost=prepost,
             mic_code=mic_code,
+            figi=figi,
+            isin=isin,
+            cusip=cusip,
         )
         return self._with_endpoint(ep)
 
@@ -2347,6 +2515,9 @@ class TimeSeries(object):
             timezone="Exchange",
             prepost="false",
             mic_code=None,
+            figi=None,
+            isin=None,
+            cusip=None,
     ):
         """
         Add request builder of HT_PHASOR to chart builder
@@ -2400,6 +2571,9 @@ class TimeSeries(object):
             timezone=timezone,
             prepost=prepost,
             mic_code=mic_code,
+            figi=figi,
+            isin=isin,
+            cusip=cusip,
         )
         return self._with_endpoint(ep)
 
@@ -2417,6 +2591,9 @@ class TimeSeries(object):
             timezone="Exchange",
             prepost="false",
             mic_code=None,
+            figi=None,
+            isin=None,
+            cusip=None,
     ):
         """
         Add request builder of HT_SINE to chart builder
@@ -2470,6 +2647,9 @@ class TimeSeries(object):
             timezone=timezone,
             prepost=prepost,
             mic_code=mic_code,
+            figi=figi,
+            isin=isin,
+            cusip=cusip,
         )
         return self._with_endpoint(ep)
 
@@ -2487,6 +2667,9 @@ class TimeSeries(object):
             timezone="Exchange",
             prepost="false",
             mic_code=None,
+            figi=None,
+            isin=None,
+            cusip=None,
     ):
         """
         Add request builder of HT_TRENDLINE to chart builder
@@ -2541,6 +2724,9 @@ class TimeSeries(object):
             timezone=timezone,
             prepost=prepost,
             mic_code=mic_code,
+            figi=figi,
+            isin=isin,
+            cusip=cusip,
         )
         return self._with_endpoint(ep)
 
@@ -2558,6 +2744,9 @@ class TimeSeries(object):
             timezone="Exchange",
             prepost="false",
             mic_code=None,
+            figi=None,
+            isin=None,
+            cusip=None,
     ):
         """
         Add request builder of HT_TRENDMODE to chart builder
@@ -2611,6 +2800,9 @@ class TimeSeries(object):
             timezone=timezone,
             prepost=prepost,
             mic_code=mic_code,
+            figi=figi,
+            isin=isin,
+            cusip=cusip,
         )
         return self._with_endpoint(ep)
 
@@ -2632,6 +2824,9 @@ class TimeSeries(object):
             timezone="Exchange",
             prepost="false",
             mic_code=None,
+            figi=None,
+            isin=None,
+            cusip=None,
     ):
         """
         Add request builder of ICHIMOKU to chart builder
@@ -2691,6 +2886,9 @@ class TimeSeries(object):
             timezone=timezone,
             prepost=prepost,
             mic_code=mic_code,
+            figi=figi,
+            isin=isin,
+            cusip=cusip,
         )
         return self._with_endpoint(ep)
 
@@ -2709,6 +2907,9 @@ class TimeSeries(object):
             timezone="Exchange",
             prepost="false",
             mic_code=None,
+            figi=None,
+            isin=None,
+            cusip=None,
     ):
         """
         Add request builder of KAMA to chart builder
@@ -2764,6 +2965,9 @@ class TimeSeries(object):
             timezone=timezone,
             prepost=prepost,
             mic_code=mic_code,
+            figi=figi,
+            isin=isin,
+            cusip=cusip,
         )
         return self._with_endpoint(ep)
 
@@ -2785,6 +2989,9 @@ class TimeSeries(object):
             timezone="Exchange",
             prepost="false",
             mic_code=None,
+            figi=None,
+            isin=None,
+            cusip=None,
     ):
         """
         Add request builder of KELTNER to chart builder
@@ -2844,6 +3051,9 @@ class TimeSeries(object):
             timezone=timezone,
             prepost=prepost,
             mic_code=mic_code,
+            figi=figi,
+            isin=isin,
+            cusip=cusip,
         )
         return self._with_endpoint(ep)
 
@@ -2869,6 +3079,9 @@ class TimeSeries(object):
             timezone="Exchange",
             prepost="false",
             mic_code=None,
+            figi=None,
+            isin=None,
+            cusip=None,
     ):
         """
         Add request builder of KST to chart builder
@@ -2935,6 +3148,9 @@ class TimeSeries(object):
             timezone=timezone,
             prepost=prepost,
             mic_code=mic_code,
+            figi=figi,
+            isin=isin,
+            cusip=cusip,
         )
         return self._with_endpoint(ep)
 
@@ -2953,6 +3169,9 @@ class TimeSeries(object):
             timezone="Exchange",
             prepost="false",
             mic_code=None,
+            figi=None,
+            isin=None,
+            cusip=None,
     ):
         """
         Add request builder of LINEARREG to chart builder
@@ -3008,6 +3227,9 @@ class TimeSeries(object):
             timezone=timezone,
             prepost=prepost,
             mic_code=mic_code,
+            figi=figi,
+            isin=isin,
+            cusip=cusip,
         )
         return self._with_endpoint(ep)
 
@@ -3026,6 +3248,9 @@ class TimeSeries(object):
             timezone="Exchange",
             prepost="false",
             mic_code=None,
+            figi=None,
+            isin=None,
+            cusip=None,
     ):
         """
         Add request builder of LINEARREGANGLE to chart builder
@@ -3081,6 +3306,9 @@ class TimeSeries(object):
             timezone=timezone,
             prepost=prepost,
             mic_code=mic_code,
+            figi=figi,
+            isin=isin,
+            cusip=cusip,
         )
         return self._with_endpoint(ep)
 
@@ -3099,6 +3327,9 @@ class TimeSeries(object):
             timezone="Exchange",
             prepost="false",
             mic_code=None,
+            figi=None,
+            isin=None,
+            cusip=None,
     ):
         """
         Add request builder of LINEARREGINTERCEPT to chart builder
@@ -3154,6 +3385,9 @@ class TimeSeries(object):
             timezone=timezone,
             prepost=prepost,
             mic_code=mic_code,
+            figi=figi,
+            isin=isin,
+            cusip=cusip,
         )
         return self._with_endpoint(ep)
 
@@ -3172,6 +3406,9 @@ class TimeSeries(object):
             timezone="Exchange",
             prepost="false",
             mic_code=None,
+            figi=None,
+            isin=None,
+            cusip=None,
     ):
         """
         Add request builder of LINEARREGSLOPE to chart builder
@@ -3227,6 +3464,9 @@ class TimeSeries(object):
             timezone=timezone,
             prepost=prepost,
             mic_code=mic_code,
+            figi=figi,
+            isin=isin,
+            cusip=cusip,
         )
         return self._with_endpoint(ep)
 
@@ -3244,6 +3484,9 @@ class TimeSeries(object):
             timezone="Exchange",
             prepost="false",
             mic_code=None,
+            figi=None,
+            isin=None,
+            cusip=None,
     ):
         """
         Add request builder of LN to chart builder
@@ -3296,6 +3539,9 @@ class TimeSeries(object):
             timezone=timezone,
             prepost=prepost,
             mic_code=mic_code,
+            figi=figi,
+            isin=isin,
+            cusip=cusip,
         )
         return self._with_endpoint(ep)
 
@@ -3313,6 +3559,9 @@ class TimeSeries(object):
             timezone="Exchange",
             prepost="false",
             mic_code=None,
+            figi=None,
+            isin=None,
+            cusip=None,
     ):
         """
         Add request builder of LOG10 to chart builder
@@ -3365,6 +3614,9 @@ class TimeSeries(object):
             timezone=timezone,
             prepost=prepost,
             mic_code=mic_code,
+            figi=figi,
+            isin=isin,
+            cusip=cusip,
         )
         return self._with_endpoint(ep)
 
@@ -3384,6 +3636,9 @@ class TimeSeries(object):
             timezone="Exchange",
             prepost="false",
             mic_code=None,
+            figi=None,
+            isin=None,
+            cusip=None,
     ):
         """
         Add request builder of MA to chart builder
@@ -3441,6 +3696,9 @@ class TimeSeries(object):
             timezone=timezone,
             prepost=prepost,
             mic_code=mic_code,
+            figi=figi,
+            isin=isin,
+            cusip=cusip,
         )
         return self._with_endpoint(ep)
 
@@ -3461,6 +3719,9 @@ class TimeSeries(object):
             timezone="Exchange",
             prepost="false",
             mic_code=None,
+            figi=None,
+            isin=None,
+            cusip=None,
     ):
         """
         Add request builder of MACD to chart builder
@@ -3523,6 +3784,9 @@ class TimeSeries(object):
             timezone=timezone,
             prepost=prepost,
             mic_code=mic_code,
+            figi=figi,
+            isin=isin,
+            cusip=cusip,
         )
         return self._with_endpoint(ep)
 
@@ -3544,6 +3808,9 @@ class TimeSeries(object):
             timezone="Exchange",
             prepost="false",
             mic_code=None,
+            figi=None,
+            isin=None,
+            cusip=None,
     ):
         """
         Add request builder of MACD_SLOPE to chart builder
@@ -3609,6 +3876,9 @@ class TimeSeries(object):
             timezone=timezone,
             prepost=prepost,
             mic_code=mic_code,
+            figi=figi,
+            isin=isin,
+            cusip=cusip,
         )
         return self._with_endpoint(ep)
 
@@ -3632,6 +3902,9 @@ class TimeSeries(object):
             timezone="Exchange",
             prepost="false",
             mic_code=None,
+            figi=None,
+            isin=None,
+            cusip=None,
     ):
         """
         Add request builder of MACDEXT to chart builder
@@ -3700,6 +3973,9 @@ class TimeSeries(object):
             timezone=timezone,
             prepost=prepost,
             mic_code=mic_code,
+            figi=figi,
+            isin=isin,
+            cusip=cusip,
         )
         return self._with_endpoint(ep)
 
@@ -3719,6 +3995,9 @@ class TimeSeries(object):
             timezone="Exchange",
             prepost="false",
             mic_code=None,
+            figi=None,
+            isin=None,
+            cusip=None,
     ):
         """
         Add request builder of MAMA to chart builder
@@ -3776,6 +4055,9 @@ class TimeSeries(object):
             timezone=timezone,
             prepost=prepost,
             mic_code=mic_code,
+            figi=figi,
+            isin=isin,
+            cusip=cusip,
         )
         return self._with_endpoint(ep)
 
@@ -3794,6 +4076,9 @@ class TimeSeries(object):
             timezone="Exchange",
             prepost="false",
             mic_code=None,
+            figi=None,
+            isin=None,
+            cusip=None,
     ):
         """
         Add request builder of MAX to chart builder
@@ -3848,6 +4133,9 @@ class TimeSeries(object):
             timezone=timezone,
             prepost=prepost,
             mic_code=mic_code,
+            figi=figi,
+            isin=isin,
+            cusip=cusip,
         )
         return self._with_endpoint(ep)
 
@@ -3866,6 +4154,9 @@ class TimeSeries(object):
             timezone="Exchange",
             prepost="false",
             mic_code=None,
+            figi=None,
+            isin=None,
+            cusip=None,
     ):
         """
         Add request builder of MAXINDEX to chart builder
@@ -3920,6 +4211,9 @@ class TimeSeries(object):
             timezone=timezone,
             prepost=prepost,
             mic_code=mic_code,
+            figi=figi,
+            isin=isin,
+            cusip=cusip,
         )
         return self._with_endpoint(ep)
 
@@ -3937,6 +4231,9 @@ class TimeSeries(object):
             timezone="Exchange",
             prepost="false",
             mic_code=None,
+            figi=None,
+            isin=None,
+            cusip=None,
     ):
         """
         Add request builder of MCGINLEY_DYNAMIC to chart builder
@@ -3987,6 +4284,9 @@ class TimeSeries(object):
             timezone=timezone,
             prepost=prepost,
             mic_code=mic_code,
+            figi=figi,
+            isin=isin,
+            cusip=cusip,
         )
         return self._with_endpoint(ep)
 
@@ -4005,6 +4305,9 @@ class TimeSeries(object):
             timezone="Exchange",
             prepost="false",
             mic_code=None,
+            figi=None,
+            isin=None,
+            cusip=None,
     ):
         """
         Add request builder of MEDPRICE to chart builder
@@ -4059,6 +4362,9 @@ class TimeSeries(object):
             timezone=timezone,
             prepost=prepost,
             mic_code=mic_code,
+            figi=figi,
+            isin=isin,
+            cusip=cusip,
         )
         return self._with_endpoint(ep)
 
@@ -4076,6 +4382,9 @@ class TimeSeries(object):
             timezone="Exchange",
             prepost="false",
             mic_code=None,
+            figi=None,
+            isin=None,
+            cusip=None,
     ):
         """
         Add request builder of MFI to chart builder
@@ -4127,6 +4436,9 @@ class TimeSeries(object):
             timezone=timezone,
             prepost=prepost,
             mic_code=mic_code,
+            figi=figi,
+            isin=isin,
+            cusip=cusip,
         )
         return self._with_endpoint(ep)
 
@@ -4145,6 +4457,9 @@ class TimeSeries(object):
             timezone="Exchange",
             prepost="false",
             mic_code=None,
+            figi=None,
+            isin=None,
+            cusip=None,
     ):
         """
         Add request builder of MIDPOINT to chart builder
@@ -4200,6 +4515,9 @@ class TimeSeries(object):
             timezone=timezone,
             prepost=prepost,
             mic_code=mic_code,
+            figi=figi,
+            isin=isin,
+            cusip=cusip,
         )
         return self._with_endpoint(ep)
 
@@ -4217,6 +4535,9 @@ class TimeSeries(object):
             timezone="Exchange",
             prepost="false",
             mic_code=None,
+            figi=None,
+            isin=None,
+            cusip=None,
     ):
         """
         Add request builder of MIDPRICE to chart builder
@@ -4269,6 +4590,9 @@ class TimeSeries(object):
             timezone=timezone,
             prepost=prepost,
             mic_code=mic_code,
+            figi=figi,
+            isin=isin,
+            cusip=cusip,
         )
         return self._with_endpoint(ep)
 
@@ -4287,6 +4611,9 @@ class TimeSeries(object):
             timezone="Exchange",
             prepost="false",
             mic_code=None,
+            figi=None,
+            isin=None,
+            cusip=None,
     ):
         """
         Add request builder of MIN to chart builder
@@ -4341,6 +4668,9 @@ class TimeSeries(object):
             timezone=timezone,
             prepost=prepost,
             mic_code=mic_code,
+            figi=figi,
+            isin=isin,
+            cusip=cusip,
         )
         return self._with_endpoint(ep)
 
@@ -4359,6 +4689,9 @@ class TimeSeries(object):
             timezone="Exchange",
             prepost="false",
             mic_code=None,
+            figi=None,
+            isin=None,
+            cusip=None,
     ):
         """
         Add request builder of MININDEX to chart builder
@@ -4413,6 +4746,9 @@ class TimeSeries(object):
             timezone=timezone,
             prepost=prepost,
             mic_code=mic_code,
+            figi=figi,
+            isin=isin,
+            cusip=cusip,
         )
         return self._with_endpoint(ep)
 
@@ -4431,6 +4767,9 @@ class TimeSeries(object):
             timezone="Exchange",
             prepost="false",
             mic_code=None,
+            figi=None,
+            isin=None,
+            cusip=None,
     ):
         """
         Add request builder of MINMAX to chart builder
@@ -4485,6 +4824,9 @@ class TimeSeries(object):
             timezone=timezone,
             prepost=prepost,
             mic_code=mic_code,
+            figi=figi,
+            isin=isin,
+            cusip=cusip,
         )
         return self._with_endpoint(ep)
 
@@ -4503,6 +4845,9 @@ class TimeSeries(object):
             timezone="Exchange",
             prepost="false",
             mic_code=None,
+            figi=None,
+            isin=None,
+            cusip=None,
     ):
         """
         Add request builder of MINMAXINDEX to chart builder
@@ -4557,6 +4902,9 @@ class TimeSeries(object):
             timezone=timezone,
             prepost=prepost,
             mic_code=mic_code,
+            figi=figi,
+            isin=isin,
+            cusip=cusip,
         )
         return self._with_endpoint(ep)
 
@@ -4574,6 +4922,9 @@ class TimeSeries(object):
             timezone="Exchange",
             prepost="false",
             mic_code=None,
+            figi=None,
+            isin=None,
+            cusip=None,
     ):
         """
         Add request builder of MINUS_DI to chart builder
@@ -4626,6 +4977,9 @@ class TimeSeries(object):
             timezone=timezone,
             prepost=prepost,
             mic_code=mic_code,
+            figi=figi,
+            isin=isin,
+            cusip=cusip,
         )
         return self._with_endpoint(ep)
 
@@ -4643,6 +4997,9 @@ class TimeSeries(object):
             timezone="Exchange",
             prepost="false",
             mic_code=None,
+            figi=None,
+            isin=None,
+            cusip=None,
     ):
         """
         Add request builder of MINUS_DM to chart builder
@@ -4695,6 +5052,9 @@ class TimeSeries(object):
             timezone=timezone,
             prepost=prepost,
             mic_code=mic_code,
+            figi=figi,
+            isin=isin,
+            cusip=cusip,
         )
         return self._with_endpoint(ep)
 
@@ -4713,6 +5073,9 @@ class TimeSeries(object):
             timezone="Exchange",
             prepost="false",
             mic_code=None,
+            figi=None,
+            isin=None,
+            cusip=None,
     ):
         """
         Add request builder of MOM to chart builder
@@ -4768,6 +5131,9 @@ class TimeSeries(object):
             timezone=timezone,
             prepost=prepost,
             mic_code=mic_code,
+            figi=figi,
+            isin=isin,
+            cusip=cusip,
         )
         return self._with_endpoint(ep)
 
@@ -4785,6 +5151,9 @@ class TimeSeries(object):
             timezone="Exchange",
             prepost="false",
             mic_code=None,
+            figi=None,
+            isin=None,
+            cusip=None,
     ):
         """
         Add request builder of NATR to chart builder
@@ -4838,6 +5207,9 @@ class TimeSeries(object):
             timezone=timezone,
             prepost=prepost,
             mic_code=mic_code,
+            figi=figi,
+            isin=isin,
+            cusip=cusip,
         )
         return self._with_endpoint(ep)
 
@@ -4855,6 +5227,9 @@ class TimeSeries(object):
             timezone="Exchange",
             prepost="false",
             mic_code=None,
+            figi=None,
+            isin=None,
+            cusip=None,
     ):
         """
         Add request builder of OBV to chart builder
@@ -4908,6 +5283,9 @@ class TimeSeries(object):
             timezone=timezone,
             prepost=prepost,
             mic_code=mic_code,
+            figi=figi,
+            isin=isin,
+            cusip=cusip,
         )
         return self._with_endpoint(ep)
 
@@ -4925,6 +5303,9 @@ class TimeSeries(object):
             timezone="Exchange",
             prepost="false",
             mic_code=None,
+            figi=None,
+            isin=None,
+            cusip=None,
     ):
         """
         Add request builder of PLUS_DI to chart builder
@@ -4977,6 +5358,9 @@ class TimeSeries(object):
             timezone=timezone,
             prepost=prepost,
             mic_code=mic_code,
+            figi=figi,
+            isin=isin,
+            cusip=cusip,
         )
         return self._with_endpoint(ep)
 
@@ -4994,6 +5378,9 @@ class TimeSeries(object):
             timezone="Exchange",
             prepost="false",
             mic_code=None,
+            figi=None,
+            isin=None,
+            cusip=None,
     ):
         """
         Add request builder of PLUS_DM to chart builder
@@ -5046,6 +5433,9 @@ class TimeSeries(object):
             timezone=timezone,
             prepost=prepost,
             mic_code=mic_code,
+            figi=figi,
+            isin=isin,
+            cusip=cusip,
         )
         return self._with_endpoint(ep)
 
@@ -5066,6 +5456,9 @@ class TimeSeries(object):
             timezone="Exchange",
             prepost="false",
             mic_code=None,
+            figi=None,
+            isin=None,
+            cusip=None,
     ):
         """
         Add request builder of PPO to chart builder
@@ -5126,6 +5519,9 @@ class TimeSeries(object):
             timezone=timezone,
             prepost=prepost,
             mic_code=mic_code,
+            figi=figi,
+            isin=isin,
+            cusip=cusip,
         )
         return self._with_endpoint(ep)
 
@@ -5144,6 +5540,9 @@ class TimeSeries(object):
             timezone="Exchange",
             prepost="false",
             mic_code=None,
+            figi=None,
+            isin=None,
+            cusip=None,
     ):
         """
         Add request builder of ROC to chart builder
@@ -5199,6 +5598,9 @@ class TimeSeries(object):
             timezone=timezone,
             prepost=prepost,
             mic_code=mic_code,
+            figi=figi,
+            isin=isin,
+            cusip=cusip,
         )
         return self._with_endpoint(ep)
 
@@ -5217,6 +5619,9 @@ class TimeSeries(object):
             timezone="Exchange",
             prepost="false",
             mic_code=None,
+            figi=None,
+            isin=None,
+            cusip=None,
     ):
         """
         Add request builder of ROCP to chart builder
@@ -5273,6 +5678,9 @@ class TimeSeries(object):
             timezone=timezone,
             prepost=prepost,
             mic_code=mic_code,
+            figi=figi,
+            isin=isin,
+            cusip=cusip,
         )
         return self._with_endpoint(ep)
 
@@ -5291,6 +5699,9 @@ class TimeSeries(object):
             timezone="Exchange",
             prepost="false",
             mic_code=None,
+            figi=None,
+            isin=None,
+            cusip=None,
     ):
         """
         Add request builder of ROCR to chart builder
@@ -5346,6 +5757,9 @@ class TimeSeries(object):
             timezone=timezone,
             prepost=prepost,
             mic_code=mic_code,
+            figi=figi,
+            isin=isin,
+            cusip=cusip,
         )
         return self._with_endpoint(ep)
 
@@ -5364,6 +5778,9 @@ class TimeSeries(object):
             timezone="Exchange",
             prepost="false",
             mic_code=None,
+            figi=None,
+            isin=None,
+            cusip=None,
     ):
         """
         Add request builder of ROCR100 to chart builder
@@ -5420,6 +5837,9 @@ class TimeSeries(object):
             timezone=timezone,
             prepost=prepost,
             mic_code=mic_code,
+            figi=figi,
+            isin=isin,
+            cusip=cusip,
         )
         return self._with_endpoint(ep)
 
@@ -5438,6 +5858,9 @@ class TimeSeries(object):
             timezone="Exchange",
             prepost="false",
             mic_code=None,
+            figi=None,
+            isin=None,
+            cusip=None,
     ):
         """
         Add request builder of RSI to chart builder
@@ -5494,6 +5917,9 @@ class TimeSeries(object):
             timezone=timezone,
             prepost=prepost,
             mic_code=mic_code,
+            figi=figi,
+            isin=isin,
+            cusip=cusip,
         )
         return self._with_endpoint(ep)
 
@@ -5511,6 +5937,9 @@ class TimeSeries(object):
             timezone="Exchange",
             prepost="false",
             mic_code=None,
+            figi=None,
+            isin=None,
+            cusip=None,
     ):
         """
         Add request builder of RVOL to chart builder
@@ -5563,6 +5992,9 @@ class TimeSeries(object):
             timezone=timezone,
             prepost=prepost,
             mic_code=mic_code,
+            figi=figi,
+            isin=isin,
+            cusip=cusip,
         )
         return self._with_endpoint(ep)
 
@@ -5581,6 +6013,9 @@ class TimeSeries(object):
             timezone="Exchange",
             prepost="false",
             mic_code=None,
+            figi=None,
+            isin=None,
+            cusip=None,
     ):
         """
         Add request builder of SAR to chart builder
@@ -5634,6 +6069,9 @@ class TimeSeries(object):
             timezone=timezone,
             prepost=prepost,
             mic_code=mic_code,
+            figi=figi,
+            isin=isin,
+            cusip=cusip,
         )
         return self._with_endpoint(ep)
 
@@ -5652,6 +6090,9 @@ class TimeSeries(object):
             timezone="Exchange",
             prepost="false",
             mic_code=None,
+            figi=None,
+            isin=None,
+            cusip=None,
     ):
         """
         Add request builder of SMA to chart builder
@@ -5708,6 +6149,9 @@ class TimeSeries(object):
             timezone=timezone,
             prepost=prepost,
             mic_code=mic_code,
+            figi=figi,
+            isin=isin,
+            cusip=cusip,
         )
         return self._with_endpoint(ep)
 
@@ -5725,6 +6169,9 @@ class TimeSeries(object):
             timezone="Exchange",
             prepost="false",
             mic_code=None,
+            figi=None,
+            isin=None,
+            cusip=None,
     ):
         """
         Add request builder of SQRT to chart builder
@@ -5776,6 +6223,9 @@ class TimeSeries(object):
             timezone=timezone,
             prepost=prepost,
             mic_code=mic_code,
+            figi=figi,
+            isin=isin,
+            cusip=cusip,
         )
         return self._with_endpoint(ep)
 
@@ -5795,6 +6245,9 @@ class TimeSeries(object):
             timezone="Exchange",
             prepost="false",
             mic_code=None,
+            figi=None,
+            isin=None,
+            cusip=None,
     ):
         """
         Add request builder of STDDEV to chart builder
@@ -5852,6 +6305,9 @@ class TimeSeries(object):
             timezone=timezone,
             prepost=prepost,
             mic_code=mic_code,
+            figi=figi,
+            isin=isin,
+            cusip=cusip,
         )
         return self._with_endpoint(ep)
 
@@ -5873,6 +6329,9 @@ class TimeSeries(object):
             timezone="Exchange",
             prepost="false",
             mic_code=None,
+            figi=None,
+            isin=None,
+            cusip=None,
     ):
         """
         Add request builder of STOCH to chart builder
@@ -5932,6 +6391,9 @@ class TimeSeries(object):
             timezone=timezone,
             prepost=prepost,
             mic_code=mic_code,
+            figi=figi,
+            isin=isin,
+            cusip=cusip,
         )
         return self._with_endpoint(ep)
 
@@ -5951,6 +6413,9 @@ class TimeSeries(object):
             timezone="Exchange",
             prepost="false",
             mic_code=None,
+            figi=None,
+            isin=None,
+            cusip=None,
     ):
         """
         Add request builder of STOCHF to chart builder
@@ -6006,6 +6471,9 @@ class TimeSeries(object):
             timezone=timezone,
             prepost=prepost,
             mic_code=mic_code,
+            figi=figi,
+            isin=isin,
+            cusip=cusip,
         )
         return self._with_endpoint(ep)
 
@@ -6027,6 +6495,9 @@ class TimeSeries(object):
             timezone="Exchange",
             prepost="false",
             mic_code=None,
+            figi=None,
+            isin=None,
+            cusip=None,
     ):
         """
         Add request builder of STOCHRSI to chart builder
@@ -6089,6 +6560,9 @@ class TimeSeries(object):
             timezone=timezone,
             prepost=prepost,
             mic_code=mic_code,
+            figi=figi,
+            isin=isin,
+            cusip=cusip,
         )
         return self._with_endpoint(ep)
 
@@ -6107,6 +6581,9 @@ class TimeSeries(object):
             timezone="Exchange",
             prepost="false",
             mic_code=None,
+            figi=None,
+            isin=None,
+            cusip=None,
     ):
         """
         Add request builder of SuperTrend to chart builder
@@ -6160,6 +6637,9 @@ class TimeSeries(object):
             timezone=timezone,
             prepost=prepost,
             mic_code=mic_code,
+            figi=figi,
+            isin=isin,
+            cusip=cusip,
         )
         return self._with_endpoint(ep)
 
@@ -6179,6 +6659,9 @@ class TimeSeries(object):
             timezone="Exchange",
             prepost="false",
             mic_code=None,
+            figi=None,
+            isin=None,
+            cusip=None,
     ):
         """
         Add request builder of T3MA to chart builder
@@ -6235,6 +6718,9 @@ class TimeSeries(object):
             timezone=timezone,
             prepost=prepost,
             mic_code=mic_code,
+            figi=figi,
+            isin=isin,
+            cusip=cusip,
         )
         return self._with_endpoint(ep)
 
@@ -6253,6 +6739,9 @@ class TimeSeries(object):
             timezone="Exchange",
             prepost="false",
             mic_code=None,
+            figi=None,
+            isin=None,
+            cusip=None,
     ):
         """
         Add request builder of TEMA to chart builder
@@ -6309,6 +6798,9 @@ class TimeSeries(object):
             timezone=timezone,
             prepost=prepost,
             mic_code=mic_code,
+            figi=figi,
+            isin=isin,
+            cusip=cusip,
         )
         return self._with_endpoint(ep)
 
@@ -6325,6 +6817,9 @@ class TimeSeries(object):
             timezone="Exchange",
             prepost="false",
             mic_code=None,
+            figi=None,
+            isin=None,
+            cusip=None,
     ):
         """
         Add request builder of TRANGE to chart builder
@@ -6374,6 +6869,9 @@ class TimeSeries(object):
             timezone=timezone,
             prepost=prepost,
             mic_code=mic_code,
+            figi=figi,
+            isin=isin,
+            cusip=cusip,
         )
         return self._with_endpoint(ep)
 
@@ -6392,6 +6890,9 @@ class TimeSeries(object):
             timezone="Exchange",
             prepost="false",
             mic_code=None,
+            figi=None,
+            isin=None,
+            cusip=None,
     ):
         """
         Add request builder of TRIMA to chart builder
@@ -6447,6 +6948,9 @@ class TimeSeries(object):
             timezone=timezone,
             prepost=prepost,
             mic_code=mic_code,
+            figi=figi,
+            isin=isin,
+            cusip=cusip,
         )
         return self._with_endpoint(ep)
 
@@ -6465,6 +6969,9 @@ class TimeSeries(object):
             timezone="Exchange",
             prepost="false",
             mic_code=None,
+            figi=None,
+            isin=None,
+            cusip=None,
     ):
         """
         Add request builder of TSF to chart builder
@@ -6520,6 +7027,9 @@ class TimeSeries(object):
             timezone=timezone,
             prepost=prepost,
             mic_code=mic_code,
+            figi=figi,
+            isin=isin,
+            cusip=cusip,
         )
         return self._with_endpoint(ep)
 
@@ -6536,6 +7046,9 @@ class TimeSeries(object):
             timezone="Exchange",
             prepost="false",
             mic_code=None,
+            figi=None,
+            isin=None,
+            cusip=None,
     ):
         """
         Add request builder of TYPPRICE to chart builder
@@ -6584,6 +7097,9 @@ class TimeSeries(object):
             timezone=timezone,
             prepost=prepost,
             mic_code=mic_code,
+            figi=figi,
+            isin=isin,
+            cusip=cusip,
         )
         return self._with_endpoint(ep)
 
@@ -6603,6 +7119,9 @@ class TimeSeries(object):
             timezone="Exchange",
             prepost="false",
             mic_code=None,
+            figi=None,
+            isin=None,
+            cusip=None,
     ):
         """
         Add request builder of ULTOSC to chart builder
@@ -6661,6 +7180,9 @@ class TimeSeries(object):
             timezone=timezone,
             prepost=prepost,
             mic_code=mic_code,
+            figi=figi,
+            isin=isin,
+            cusip=cusip,
         )
         return self._with_endpoint(ep)
 
@@ -6679,6 +7201,9 @@ class TimeSeries(object):
             timezone="Exchange",
             prepost="false",
             mic_code=None,
+            figi=None,
+            isin=None,
+            cusip=None,
     ):
         """
         Add request builder of VAR to chart builder
@@ -6734,6 +7259,9 @@ class TimeSeries(object):
             timezone=timezone,
             prepost=prepost,
             mic_code=mic_code,
+            figi=figi,
+            isin=isin,
+            cusip=cusip,
         )
         return self._with_endpoint(ep)
 
@@ -6750,6 +7278,9 @@ class TimeSeries(object):
             timezone="Exchange",
             prepost="false",
             mic_code=None,
+            figi=None,
+            isin=None,
+            cusip=None,
     ):
         """
         Add request builder of VWAP to chart builder
@@ -6799,6 +7330,9 @@ class TimeSeries(object):
             timezone=timezone,
             prepost=prepost,
             mic_code=mic_code,
+            figi=figi,
+            isin=isin,
+            cusip=cusip,
         )
         return self._with_endpoint(ep)
 
@@ -6815,6 +7349,9 @@ class TimeSeries(object):
             timezone="Exchange",
             prepost="false",
             mic_code=None,
+            figi=None,
+            isin=None,
+            cusip=None,
     ):
         """
         Add request builder of WCLPRICE to chart builder
@@ -6862,6 +7399,9 @@ class TimeSeries(object):
             timezone=timezone,
             prepost=prepost,
             mic_code=mic_code,
+            figi=figi,
+            isin=isin,
+            cusip=cusip,
         )
         return self._with_endpoint(ep)
 
@@ -6879,6 +7419,9 @@ class TimeSeries(object):
             timezone="Exchange",
             prepost="false",
             mic_code=None,
+            figi=None,
+            isin=None,
+            cusip=None,
     ):
         """
         Add request builder of WILLR to chart builder
@@ -6931,6 +7474,9 @@ class TimeSeries(object):
             timezone=timezone,
             prepost=prepost,
             mic_code=mic_code,
+            figi=figi,
+            isin=isin,
+            cusip=cusip,
         )
         return self._with_endpoint(ep)
 
@@ -6949,6 +7495,9 @@ class TimeSeries(object):
             timezone="Exchange",
             prepost="false",
             mic_code=None,
+            figi=None,
+            isin=None,
+            cusip=None,
     ):
         """
         Add request builder of WMA to chart builder
@@ -7004,5 +7553,479 @@ class TimeSeries(object):
             timezone=timezone,
             prepost=prepost,
             mic_code=mic_code,
+            figi=figi,
+            isin=isin,
+            cusip=cusip,
+        )
+        return self._with_endpoint(ep)
+
+    @force_use_kwargs
+    @apply_context_defaults
+    def with_add(
+            self,
+            exchange=None,
+            country=None,
+            series_type_1="open",
+            series_type_2="close",
+            outputsize=30,
+            start_date=None,
+            end_date=None,
+            dp=5,
+            timezone="Exchange",
+            prepost="false",
+            mic_code=None,
+            figi=None,
+            isin=None,
+            cusip=None,
+    ):
+        """Add request builder of ADD to chart builder."""
+        ep = ADDEndpoint(
+            ctx=self.ctx,
+            symbol=self.ctx.defaults["symbol"],
+            interval=self.ctx.defaults["interval"],
+            exchange=exchange,
+            country=country,
+            series_type_1=series_type_1,
+            series_type_2=series_type_2,
+            outputsize=outputsize,
+            start_date=start_date,
+            end_date=end_date,
+            dp=dp,
+            timezone=timezone,
+            prepost=prepost,
+            mic_code=mic_code,
+            figi=figi,
+            isin=isin,
+            cusip=cusip,
+        )
+        return self._with_endpoint(ep)
+
+    @force_use_kwargs
+    @apply_context_defaults
+    def with_sub(
+            self,
+            exchange=None,
+            country=None,
+            series_type_1="open",
+            series_type_2="close",
+            outputsize=30,
+            start_date=None,
+            end_date=None,
+            dp=5,
+            timezone="Exchange",
+            prepost="false",
+            mic_code=None,
+            figi=None,
+            isin=None,
+            cusip=None,
+    ):
+        """Add request builder of SUB to chart builder."""
+        ep = SUBEndpoint(
+            ctx=self.ctx,
+            symbol=self.ctx.defaults["symbol"],
+            interval=self.ctx.defaults["interval"],
+            exchange=exchange,
+            country=country,
+            series_type_1=series_type_1,
+            series_type_2=series_type_2,
+            outputsize=outputsize,
+            start_date=start_date,
+            end_date=end_date,
+            dp=dp,
+            timezone=timezone,
+            prepost=prepost,
+            mic_code=mic_code,
+            figi=figi,
+            isin=isin,
+            cusip=cusip,
+        )
+        return self._with_endpoint(ep)
+
+    @force_use_kwargs
+    @apply_context_defaults
+    def with_mult(
+            self,
+            exchange=None,
+            country=None,
+            series_type_1="open",
+            series_type_2="close",
+            outputsize=30,
+            start_date=None,
+            end_date=None,
+            dp=5,
+            timezone="Exchange",
+            prepost="false",
+            mic_code=None,
+            figi=None,
+            isin=None,
+            cusip=None,
+    ):
+        """Add request builder of MULT to chart builder."""
+        ep = MULTEndpoint(
+            ctx=self.ctx,
+            symbol=self.ctx.defaults["symbol"],
+            interval=self.ctx.defaults["interval"],
+            exchange=exchange,
+            country=country,
+            series_type_1=series_type_1,
+            series_type_2=series_type_2,
+            outputsize=outputsize,
+            start_date=start_date,
+            end_date=end_date,
+            dp=dp,
+            timezone=timezone,
+            prepost=prepost,
+            mic_code=mic_code,
+            figi=figi,
+            isin=isin,
+            cusip=cusip,
+        )
+        return self._with_endpoint(ep)
+
+    @force_use_kwargs
+    @apply_context_defaults
+    def with_div(
+            self,
+            exchange=None,
+            country=None,
+            series_type_1="open",
+            series_type_2="close",
+            outputsize=30,
+            start_date=None,
+            end_date=None,
+            dp=5,
+            timezone="Exchange",
+            prepost="false",
+            mic_code=None,
+            figi=None,
+            isin=None,
+            cusip=None,
+    ):
+        """Add request builder of DIV to chart builder."""
+        ep = DIVEndpoint(
+            ctx=self.ctx,
+            symbol=self.ctx.defaults["symbol"],
+            interval=self.ctx.defaults["interval"],
+            exchange=exchange,
+            country=country,
+            series_type_1=series_type_1,
+            series_type_2=series_type_2,
+            outputsize=outputsize,
+            start_date=start_date,
+            end_date=end_date,
+            dp=dp,
+            timezone=timezone,
+            prepost=prepost,
+            mic_code=mic_code,
+            figi=figi,
+            isin=isin,
+            cusip=cusip,
+        )
+        return self._with_endpoint(ep)
+
+    @force_use_kwargs
+    @apply_context_defaults
+    def with_sum(
+            self,
+            exchange=None,
+            country=None,
+            series_type="close",
+            time_period=9,
+            outputsize=30,
+            start_date=None,
+            end_date=None,
+            dp=5,
+            timezone="Exchange",
+            prepost="false",
+            mic_code=None,
+            figi=None,
+            isin=None,
+            cusip=None,
+    ):
+        """Add request builder of SUM to chart builder."""
+        ep = SUMEndpoint(
+            ctx=self.ctx,
+            symbol=self.ctx.defaults["symbol"],
+            interval=self.ctx.defaults["interval"],
+            exchange=exchange,
+            country=country,
+            series_type=series_type,
+            time_period=time_period,
+            outputsize=outputsize,
+            start_date=start_date,
+            end_date=end_date,
+            dp=dp,
+            timezone=timezone,
+            prepost=prepost,
+            mic_code=mic_code,
+            figi=figi,
+            isin=isin,
+            cusip=cusip,
+        )
+        return self._with_endpoint(ep)
+
+    @force_use_kwargs
+    @apply_context_defaults
+    def with_avg(
+            self,
+            exchange=None,
+            country=None,
+            series_type="close",
+            time_period=9,
+            outputsize=30,
+            start_date=None,
+            end_date=None,
+            dp=5,
+            timezone="Exchange",
+            prepost="false",
+            mic_code=None,
+            figi=None,
+            isin=None,
+            cusip=None,
+    ):
+        """Add request builder of AVG to chart builder."""
+        ep = AVGEndpoint(
+            ctx=self.ctx,
+            symbol=self.ctx.defaults["symbol"],
+            interval=self.ctx.defaults["interval"],
+            exchange=exchange,
+            country=country,
+            series_type=series_type,
+            time_period=time_period,
+            outputsize=outputsize,
+            start_date=start_date,
+            end_date=end_date,
+            dp=dp,
+            timezone=timezone,
+            prepost=prepost,
+            mic_code=mic_code,
+            figi=figi,
+            isin=isin,
+            cusip=cusip,
+        )
+        return self._with_endpoint(ep)
+
+    @force_use_kwargs
+    @apply_context_defaults
+    def with_crsi(
+            self,
+            exchange=None,
+            country=None,
+            series_type="close",
+            rsi_period=3,
+            up_down_length=2,
+            percent_rank_period=100,
+            outputsize=30,
+            start_date=None,
+            end_date=None,
+            dp=5,
+            timezone="Exchange",
+            prepost="false",
+            mic_code=None,
+            figi=None,
+            isin=None,
+            cusip=None,
+    ):
+        """Add request builder of CRSI to chart builder."""
+        ep = CRSIEndpoint(
+            ctx=self.ctx,
+            symbol=self.ctx.defaults["symbol"],
+            interval=self.ctx.defaults["interval"],
+            exchange=exchange,
+            country=country,
+            series_type=series_type,
+            rsi_period=rsi_period,
+            up_down_length=up_down_length,
+            percent_rank_period=percent_rank_period,
+            outputsize=outputsize,
+            start_date=start_date,
+            end_date=end_date,
+            dp=dp,
+            timezone=timezone,
+            prepost=prepost,
+            mic_code=mic_code,
+            figi=figi,
+            isin=isin,
+            cusip=cusip,
+        )
+        return self._with_endpoint(ep)
+
+    @force_use_kwargs
+    @apply_context_defaults
+    def with_correl(
+            self,
+            exchange=None,
+            country=None,
+            series_type_1="open",
+            series_type_2="close",
+            time_period=9,
+            outputsize=30,
+            start_date=None,
+            end_date=None,
+            dp=5,
+            timezone="Exchange",
+            prepost="false",
+            mic_code=None,
+            figi=None,
+            isin=None,
+            cusip=None,
+    ):
+        """Add request builder of CORREL to chart builder."""
+        ep = CORRELEndpoint(
+            ctx=self.ctx,
+            symbol=self.ctx.defaults["symbol"],
+            interval=self.ctx.defaults["interval"],
+            exchange=exchange,
+            country=country,
+            series_type_1=series_type_1,
+            series_type_2=series_type_2,
+            time_period=time_period,
+            outputsize=outputsize,
+            start_date=start_date,
+            end_date=end_date,
+            dp=dp,
+            timezone=timezone,
+            prepost=prepost,
+            mic_code=mic_code,
+            figi=figi,
+            isin=isin,
+            cusip=cusip,
+        )
+        return self._with_endpoint(ep)
+
+    @force_use_kwargs
+    @apply_context_defaults
+    def with_dpo(
+            self,
+            exchange=None,
+            country=None,
+            series_type="close",
+            time_period=9,
+            centered="false",
+            outputsize=30,
+            start_date=None,
+            end_date=None,
+            dp=5,
+            timezone="Exchange",
+            prepost="false",
+            mic_code=None,
+            figi=None,
+            isin=None,
+            cusip=None,
+    ):
+        """Add request builder of DPO to chart builder."""
+        ep = DPOEndpoint(
+            ctx=self.ctx,
+            symbol=self.ctx.defaults["symbol"],
+            interval=self.ctx.defaults["interval"],
+            exchange=exchange,
+            country=country,
+            series_type=series_type,
+            time_period=time_period,
+            centered=centered,
+            outputsize=outputsize,
+            start_date=start_date,
+            end_date=end_date,
+            dp=dp,
+            timezone=timezone,
+            prepost=prepost,
+            mic_code=mic_code,
+            figi=figi,
+            isin=isin,
+            cusip=cusip,
+        )
+        return self._with_endpoint(ep)
+
+    @force_use_kwargs
+    @apply_context_defaults
+    def with_sarext(
+            self,
+            exchange=None,
+            country=None,
+            start_value=0,
+            offset_on_reverse=0,
+            acceleration_limit_long=0.02,
+            acceleration_long=0.02,
+            acceleration_max_long=0.2,
+            acceleration_limit_short=0.02,
+            acceleration_short=0.02,
+            acceleration_max_short=0.2,
+            outputsize=30,
+            start_date=None,
+            end_date=None,
+            dp=5,
+            timezone="Exchange",
+            prepost="false",
+            mic_code=None,
+            figi=None,
+            isin=None,
+            cusip=None,
+    ):
+        """Add request builder of SAREXT to chart builder."""
+        ep = SAREXTEndpoint(
+            ctx=self.ctx,
+            symbol=self.ctx.defaults["symbol"],
+            interval=self.ctx.defaults["interval"],
+            exchange=exchange,
+            country=country,
+            start_value=start_value,
+            offset_on_reverse=offset_on_reverse,
+            acceleration_limit_long=acceleration_limit_long,
+            acceleration_long=acceleration_long,
+            acceleration_max_long=acceleration_max_long,
+            acceleration_limit_short=acceleration_limit_short,
+            acceleration_short=acceleration_short,
+            acceleration_max_short=acceleration_max_short,
+            outputsize=outputsize,
+            start_date=start_date,
+            end_date=end_date,
+            dp=dp,
+            timezone=timezone,
+            prepost=prepost,
+            mic_code=mic_code,
+            figi=figi,
+            isin=isin,
+            cusip=cusip,
+        )
+        return self._with_endpoint(ep)
+
+    @force_use_kwargs
+    @apply_context_defaults
+    def with_supertrend_heikinashicandles(
+            self,
+            exchange=None,
+            country=None,
+            period=10,
+            multiplier=3,
+            outputsize=30,
+            start_date=None,
+            end_date=None,
+            dp=5,
+            timezone="Exchange",
+            prepost="false",
+            mic_code=None,
+            figi=None,
+            isin=None,
+            cusip=None,
+    ):
+        """Add request builder of SUPERTREND_HEIKINASHICANDLES to chart builder."""
+        ep = SUPERTREND_HEIKINASHICANDLESEndpoint(
+            ctx=self.ctx,
+            symbol=self.ctx.defaults["symbol"],
+            interval=self.ctx.defaults["interval"],
+            exchange=exchange,
+            country=country,
+            period=period,
+            multiplier=multiplier,
+            outputsize=outputsize,
+            start_date=start_date,
+            end_date=end_date,
+            dp=dp,
+            timezone=timezone,
+            prepost=prepost,
+            mic_code=mic_code,
+            figi=figi,
+            isin=isin,
+            cusip=cusip,
         )
         return self._with_endpoint(ep)

@@ -3,43 +3,117 @@ from .mixins import AsMixin
 
 
 __all__ = (
-    "ADOSCEndpoint",
-    "ADEndpoint",
-    "ADXREndpoint",
-    "ADXEndpoint",
+    # Advanced
     "APIUsageEndpoint",
+    "TechIndicatorsMetaEndpoint",
+    # Analysis
+    "AnalystRatingsLightEndpoint",
+    "AnalystRatingsUSEquitiesEndpoint",
+    "EPSRevisionsEndpoint",
+    "EPSTrendEndpoint",
+    "EarningsEstimateEndpoint",
+    "GrowthEstimatesEndpoint",
+    "PriceTargetEndpoint",
+    "RecommendationsEndpoint",
+    "RevenueEstimateEndpoint",
+    # Currencies
+    "CurrencyConversionEndpoint",
+    "ExchangeRateEndpoint",
+    # ETFs
+    "ETFsDetailedListEndpoint",
+    "ETFsFamilyEndpoint",
+    "ETFsTypeEndpoint",
+    "ETFsWorldCompositionEndpoint",
+    "ETFsWorldEndpoint",
+    "ETFsWorldPerformanceEndpoint",
+    "ETFsWorldRiskEndpoint",
+    "ETFsWorldSummaryEndpoint",
+    # Fundamentals
+    "BalanceSheetConsolidatedEndpoint",
+    "CashFlowConsolidatedEndpoint",
+    "DividendsCalendarEndpoint",
+    "EarningsCalendarEndpoint",
+    "EarningsEndpoint",
+    "IncomeStatementConsolidatedEndpoint",
+    "LastChangeEndpoint",
+    "MarketCapEndpoint",
+    "PressReleasesEndpoint",
+    "SplitsCalendarEndpoint",
+    # Market Data
+    "EODEndpoint",
+    "MarketMoversEndpoint",
+    "PriceEndpoint",
+    "QuoteEndpoint",
+    "TimeSeriesCrossEndpoint",
+    "TimeSeriesEndpoint",
+    # Mutual Funds
+    "MutualFundsFamilyEndpoint",
+    "MutualFundsListEndpoint",
+    "MutualFundsTypeEndpoint",
+    "MutualFundsWorldCompositionEndpoint",
+    "MutualFundsWorldEndpoint",
+    "MutualFundsWorldPerformanceEndpoint",
+    "MutualFundsWorldPurchaseInfoEndpoint",
+    "MutualFundsWorldRatingsEndpoint",
+    "MutualFundsWorldRiskEndpoint",
+    "MutualFundsWorldSummaryEndpoint",
+    "MutualFundsWorldSustainabilityEndpoint",
+    # Reference Data
+    "BondsListEndpoint",
+    "CommoditiesListEndpoint",
+    "CountriesEndpoint",
+    "CrossListingsEndpoint",
+    "CryptocurrenciesListEndpoint",
+    "CryptocurrencyExchangesListEndpoint",
+    "ETFListEndpoint",
+    "EarliestTimestampEndpoint",
+    "ExchangeScheduleEndpoint",
+    "ExchangesListEndpoint",
+    "ForexPairsListEndpoint",
+    "FundsListEndpoint",
+    "IndicesListEndpoint",
+    "InstrumentTypeEndpoint",
+    "IntervalsEndpoint",
+    "MarketStateEndpoint",
+    "StockExchangesListEndpoint",
+    "StocksListEndpoint",
+    "SymbolSearchEndpoint",
+    # Options (deprecated)
+    "OptionsChainEndpoint",
+    "OptionsExpirationEndpoint",
+    # Regulatory
+    "DirectHoldersEndpoint",
+    "EdgarFilingsArchiveEndpoint",
+    "SanctionsEndpoint",
+    "TaxInfoEndpoint",
+    # Technical Indicators
+    "ADDEndpoint",
+    "ADEndpoint",
+    "ADOSCEndpoint",
+    "ADXEndpoint",
+    "ADXREndpoint",
     "APOEndpoint",
-    "AROONOSCEndpoint",
     "AROONEndpoint",
+    "AROONOSCEndpoint",
     "ATREndpoint",
+    "AVGEndpoint",
     "AVGPRICEEndpoint",
     "BBANDSEndpoint",
     "BETAEndpoint",
     "BOPEndpoint",
-    "BondsListEndpoint",
     "CCIEndpoint",
     "CEILEndpoint",
     "CMOEndpoint",
     "COPPOCKEndpoint",
-    "CommoditiesListEndpoint",
-    "CryptocurrenciesListEndpoint",
-    "CryptocurrencyExchangesListEndpoint",
-    "CurrencyConversionEndpoint",
+    "CORRELEndpoint",
+    "CRSIEndpoint",
     "DEMAEndpoint",
-    "DividendsCalendarEndpoint",
+    "DIVEndpoint",
+    "DPOEndpoint",
     "DXEndpoint",
-    "EarliestTimestampEndpoint",
-    "EarningsCalendarEndpoint",
-    "EarningsEndpoint",
     "EMAEndpoint",
-    "EODEndpoint",
-    "ETFListEndpoint",
-    "ExchangeRateEndpoint",
-    "ExchangesListEndpoint",
     "EXPEndpoint",
     "FLOOREndpoint",
-    "ForexPairsListEndpoint",
-    "FundsListEndpoint",
     "HEIKINASHICANDLESEndpoint",
     "HLC3Endpoint",
     "HT_DCPERIODEndpoint",
@@ -49,36 +123,35 @@ __all__ = (
     "HT_TRENDLINEEndpoint",
     "HT_TRENDMODEEndpoint",
     "ICHIMOKUEndpoint",
-    "IndicesListEndpoint",
     "KAMAEndpoint",
     "KELTNEREndpoint",
     "KSTEndpoint",
     "LINEARREGANGLEEndpoint",
-    "LINEARREGINTERCEPTEndpoint",
     "LINEARREGEndpoint",
+    "LINEARREGINTERCEPTEndpoint",
     "LINEARREGSLOPEEndpoint",
     "LNEndpoint",
     "LOG10Endpoint",
+    "MACDEXTEndpoint",
     "MACDEndpoint",
     "MACDSlopeEndpoint",
-    "MACDEXTEndpoint",
-    "MAMAEndpoint",
     "MAEndpoint",
-    "MAXINDEXEndpoint",
+    "MAMAEndpoint",
     "MAXEndpoint",
-    "MarketStateEndpoint",
+    "MAXINDEXEndpoint",
     "McGinleyDynamicEndpoint",
     "MEDPRICEEndpoint",
     "MFIEndpoint",
     "MIDPOINTEndpoint",
     "MIDPRICEEndpoint",
-    "MININDEXEndpoint",
-    "MINMAXINDEXEndpoint",
-    "MINMAXEndpoint",
     "MINEndpoint",
+    "MININDEXEndpoint",
+    "MINMAXEndpoint",
+    "MINMAXINDEXEndpoint",
     "MINUS_DIEndpoint",
     "MINUS_DMEndpoint",
     "MOMEndpoint",
+    "MULTEndpoint",
     "NATREndpoint",
     "OBVEndpoint",
     "PLUS_DIEndpoint",
@@ -86,25 +159,23 @@ __all__ = (
     "PPOEndpoint",
     "PercentBEndpoint",
     "PivotPointsHLEndpoint",
-    "PriceEndpoint",
-    "QuoteEndpoint",
+    "ROCEndpoint",
     "ROCPEndpoint",
     "ROCR100Endpoint",
     "ROCREndpoint",
-    "ROCEndpoint",
     "RSIEndpoint",
     "RVOLEndpoint",
+    "SAREXTEndpoint",
     "SAREndpoint",
     "SMAEndpoint",
     "SQRTEndpoint",
     "STDDEVEndpoint",
+    "STOCHEndpoint",
     "STOCHFEndpoint",
     "STOCHRSIEndpoint",
-    "STOCHEndpoint",
-    "SplitsCalendarEndpoint",
-    "SymbolSearchEndpoint",
-    "StockExchangesListEndpoint",
-    "StocksListEndpoint",
+    "SUBEndpoint",
+    "SUMEndpoint",
+    "SUPERTREND_HEIKINASHICANDLESEndpoint",
     "SuperTrendEndpoint",
     "T3MAEndpoint",
     "TEMAEndpoint",
@@ -112,8 +183,6 @@ __all__ = (
     "TRIMAEndpoint",
     "TSFEndpoint",
     "TYPPRICEEndpoint",
-    "TechIndicatorsMetaEndpoint",
-    "TimeSeriesEndpoint",
     "ULTOSCEndpoint",
     "VAREndpoint",
     "VWAPEndpoint",
@@ -254,10 +323,16 @@ class TimeSeriesEndpoint(AsMixin, Endpoint):
         mic_code=None,
         previous_close=None,
         adjust=None,
+        figi=None,
+        isin=None,
+        cusip=None,
     ):
         self.is_price = True
         self.ctx = ctx
         self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
         self.interval = interval
         self.exchange = exchange
         self.country = country
@@ -279,6 +354,12 @@ class TimeSeriesEndpoint(AsMixin, Endpoint):
         params = {}
         if self.symbol is not None:
             params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -414,9 +495,15 @@ class QuoteEndpoint(AsMixin, Endpoint):
                  mic_code=None,
                  eod=None,
                  rolling_period=None,
+                 figi=None,
+                 isin=None,
+                 cusip=None,
     ):
         self.ctx = ctx
         self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
         self.interval = interval
         self.exchange = exchange
         self.country = country
@@ -436,6 +523,12 @@ class QuoteEndpoint(AsMixin, Endpoint):
             params["symbol"], self.is_batch = get_symbol(self.symbol)
             # Batch mode is not supported for this endpoint
             self.is_batch = False
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -480,9 +573,15 @@ class PriceEndpoint(AsMixin, Endpoint):
                  dp=5,
                  prepost="false",
                  mic_code=None,
+                 figi=None,
+                 isin=None,
+                 cusip=None,
     ):
         self.ctx = ctx
         self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
         self.exchange = exchange
         self.country = country
         self.type = type
@@ -495,6 +594,12 @@ class PriceEndpoint(AsMixin, Endpoint):
         params = {}
         if self.symbol is not None:
             params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
         if self.exchange is not None:
             params["exchange"] = self.exchange
         if self.country is not None:
@@ -528,9 +633,15 @@ class EODEndpoint(AsMixin, Endpoint):
                  prepost="false",
                  mic_code=None,
                  date=None,
+                 figi=None,
+                 isin=None,
+                 cusip=None,
                  ):
         self.ctx = ctx
         self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
         self.exchange = exchange
         self.country = country
         self.type = type
@@ -544,6 +655,12 @@ class EODEndpoint(AsMixin, Endpoint):
         params = {}
         if self.symbol is not None:
             params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
         if self.exchange is not None:
             params["exchange"] = self.exchange
         if self.country is not None:
@@ -597,9 +714,17 @@ class StocksListEndpoint(AsMixin, Endpoint):
                  mic_code=None,
                  show_plan=None,
                  include_delisted=None,
+                 figi=None,
+                 isin=None,
+                 cusip=None,
+                 cik=None,
     ):
         self.ctx = ctx
         self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
+        self.cik = cik
         self.exchange = exchange
         self.country = country
         self.type = type
@@ -612,6 +737,14 @@ class StocksListEndpoint(AsMixin, Endpoint):
         params = {}
         if self.symbol is not None:
             params["symbol"] = self.symbol
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
+        if self.cik is not None:
+            params["cik"] = self.cik
         if self.exchange is not None:
             params["exchange"] = self.exchange
         if self.country is not None:
@@ -724,7 +857,7 @@ class CryptocurrenciesListEndpoint(AsMixin, Endpoint):
 
 
 class ETFListEndpoint(AsMixin, Endpoint):
-    _name = "etf"
+    _name = "etfs"
 
     def __init__(self,
                  ctx,
@@ -734,6 +867,10 @@ class ETFListEndpoint(AsMixin, Endpoint):
                  mic_code=None,
                  show_plan=None,
                  include_delisted=None,
+                 figi=None,
+                 isin=None,
+                 cusip=None,
+                 cik=None,
     ):
         self.ctx = ctx
         self.symbol = symbol
@@ -742,6 +879,10 @@ class ETFListEndpoint(AsMixin, Endpoint):
         self.mic_code = mic_code
         self.show_plan = show_plan
         self.include_delisted = include_delisted
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
+        self.cik = cik
 
     def execute(self, format="JSON", debug=False):
 
@@ -758,10 +899,18 @@ class ETFListEndpoint(AsMixin, Endpoint):
             params["show_plan"] = self.show_plan
         if self.include_delisted is not None:
             params["include_delisted"] = self.include_delisted
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
+        if self.cik is not None:
+            params["cik"] = self.cik
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
-        endpoint = "/etf"
+        endpoint = "/etfs"
 
         if debug:
             return build_url(self.ctx.base_url, endpoint, params)
@@ -826,9 +975,17 @@ class FundsListEndpoint(AsMixin, Endpoint):
                  include_delisted=None,
                  page=None,
                  outputsize=None,
+                 figi=None,
+                 isin=None,
+                 cusip=None,
+                 cik=None,
     ):
         self.ctx = ctx
         self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
+        self.cik = cik
         self.exchange = exchange
         self.country = country
         self.type = type
@@ -842,6 +999,14 @@ class FundsListEndpoint(AsMixin, Endpoint):
         params = {}
         if self.symbol is not None:
             params["symbol"] = self.symbol
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
+        if self.cik is not None:
+            params["cik"] = self.cik
         if self.exchange is not None:
             params["exchange"] = self.exchange
         if self.country is not None:
@@ -1068,9 +1233,15 @@ class EarliestTimestampEndpoint(AsMixin, Endpoint):
                  exchange=None,
                  mic_code=None,
                  timezone=None,
+                 figi=None,
+                 isin=None,
+                 cusip=None,
     ):
         self.ctx = ctx
         self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
         self.interval = interval
         self.exchange = exchange
         self.mic_code = mic_code
@@ -1081,6 +1252,12 @@ class EarliestTimestampEndpoint(AsMixin, Endpoint):
         params = {}
         if self.symbol is not None:
             params["symbol"] = self.symbol
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -1179,9 +1356,15 @@ class ProfileEndpoint(AsMixin, Endpoint):
                  exchange=None,
                  country=None,
                  mic_code=None,
+                 figi=None,
+                 isin=None,
+                 cusip=None,
     ):
         self.ctx = ctx
         self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
         self.exchange = exchange
         self.country = country
         self.mic_code = mic_code
@@ -1192,6 +1375,12 @@ class ProfileEndpoint(AsMixin, Endpoint):
         params = {}
         if self.symbol is not None:
             params["symbol"] = self.symbol
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
         if self.exchange is not None:
             params["exchange"] = self.exchange
         if self.country is not None:
@@ -1220,15 +1409,23 @@ class DividendsEndpoint(AsMixin, Endpoint):
                  start_date=None,
                  end_date=None,
                  mic_code=None,
+                 adjust=None,
+                 figi=None,
+                 isin=None,
+                 cusip=None,
     ):
         self.ctx = ctx
         self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
         self.exchange = exchange
         self.country = country
         self.range = range
         self.start_date = start_date
         self.end_date = end_date
         self.mic_code = mic_code
+        self.adjust = adjust
         self.method = "dividends"
 
     def execute(self, format="JSON", debug=False):
@@ -1236,6 +1433,12 @@ class DividendsEndpoint(AsMixin, Endpoint):
         params = {}
         if self.symbol is not None:
             params["symbol"] = self.symbol
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
         if self.exchange is not None:
             params["exchange"] = self.exchange
         if self.country is not None:
@@ -1248,6 +1451,8 @@ class DividendsEndpoint(AsMixin, Endpoint):
             params["end_date"] = self.end_date
         if self.mic_code is not None:
             params["mic_code"] = self.mic_code
+        if self.adjust is not None:
+            params["adjust"] = self.adjust
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -1269,14 +1474,24 @@ class DividendsCalendarEndpoint(AsMixin, Endpoint):
                  start_date=None,
                  end_date=None,
                  mic_code=None,
+                 outputsize=None,
+                 page=None,
+                 figi=None,
+                 isin=None,
+                 cusip=None,
     ):
         self.ctx = ctx
         self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
         self.exchange = exchange
         self.country = country
         self.start_date = start_date
         self.end_date = end_date
         self.mic_code = mic_code
+        self.outputsize = outputsize
+        self.page = page
         self.method = "dividends_calendar"
 
     def execute(self, format="JSON", debug=False):
@@ -1284,6 +1499,12 @@ class DividendsCalendarEndpoint(AsMixin, Endpoint):
         params = {}
         if self.symbol is not None:
             params["symbol"] = self.symbol
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
         if self.exchange is not None:
             params["exchange"] = self.exchange
         if self.country is not None:
@@ -1294,6 +1515,10 @@ class DividendsCalendarEndpoint(AsMixin, Endpoint):
             params["end_date"] = self.end_date
         if self.mic_code is not None:
             params["mic_code"] = self.mic_code
+        if self.outputsize is not None:
+            params["outputsize"] = self.outputsize
+        if self.page is not None:
+            params["page"] = self.page
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -1315,14 +1540,22 @@ class SplitsEndpoint(AsMixin, Endpoint):
                  range=None,
                  start_date=None,
                  end_date=None,
+                 mic_code=None,
+                 figi=None,
+                 isin=None,
+                 cusip=None,
     ):
         self.ctx = ctx
         self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
         self.exchange = exchange
         self.country = country
         self.range = range
         self.start_date = start_date
         self.end_date = end_date
+        self.mic_code = mic_code
         self.method = "splits"
 
     def execute(self, format="JSON", debug=False):
@@ -1330,6 +1563,12 @@ class SplitsEndpoint(AsMixin, Endpoint):
         params = {}
         if self.symbol is not None:
             params["symbol"] = self.symbol
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
         if self.exchange is not None:
             params["exchange"] = self.exchange
         if self.country is not None:
@@ -1340,6 +1579,8 @@ class SplitsEndpoint(AsMixin, Endpoint):
             params["start_date"] = self.start_date
         if self.end_date is not None:
             params["end_date"] = self.end_date
+        if self.mic_code is not None:
+            params["mic_code"] = self.mic_code
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -1361,14 +1602,24 @@ class SplitsCalendarEndpoint(AsMixin, Endpoint):
                  start_date=None,
                  end_date=None,
                  mic_code=None,
+                 outputsize=None,
+                 page=None,
+                 figi=None,
+                 isin=None,
+                 cusip=None,
     ):
         self.ctx = ctx
         self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
         self.exchange = exchange
         self.country = country
         self.start_date = start_date
         self.end_date = end_date
         self.mic_code = mic_code
+        self.outputsize = outputsize
+        self.page = page
         self.method = "splits_calendar"
 
     def execute(self, format="JSON", debug=False):
@@ -1376,6 +1627,12 @@ class SplitsCalendarEndpoint(AsMixin, Endpoint):
         params = {}
         if self.symbol is not None:
             params["symbol"] = self.symbol
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
         if self.exchange is not None:
             params["exchange"] = self.exchange
         if self.country is not None:
@@ -1386,6 +1643,10 @@ class SplitsCalendarEndpoint(AsMixin, Endpoint):
             params["end_date"] = self.end_date
         if self.mic_code is not None:
             params["mic_code"] = self.mic_code
+        if self.outputsize is not None:
+            params["outputsize"] = self.outputsize
+        if self.page is not None:
+            params["page"] = self.page
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -1411,9 +1672,15 @@ class EarningsEndpoint(AsMixin, Endpoint):
                  mic_code=None,
                  dp=None,
                  type=None,
+                 figi=None,
+                 isin=None,
+                 cusip=None,
     ):
         self.ctx = ctx
         self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
         self.exchange = exchange
         self.country = country
         self.period = period
@@ -1430,6 +1697,12 @@ class EarningsEndpoint(AsMixin, Endpoint):
         params = {}
         if self.symbol is not None:
             params["symbol"] = self.symbol
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
         if self.exchange is not None:
             params["exchange"] = self.exchange
         if self.country is not None:
@@ -1470,6 +1743,7 @@ class EarningsCalendarEndpoint(AsMixin, Endpoint):
                  start_date=None,
                  end_date=None,
                  mic_code=None,
+                 dp=None,
     ):
         self.ctx = ctx
         self.symbol = symbol
@@ -1479,6 +1753,7 @@ class EarningsCalendarEndpoint(AsMixin, Endpoint):
         self.start_date = start_date
         self.end_date = end_date
         self.mic_code = mic_code
+        self.dp = dp
         self.method = "earnings_calendar"
 
     def execute(self, format="JSON", debug=False):
@@ -1498,6 +1773,8 @@ class EarningsCalendarEndpoint(AsMixin, Endpoint):
             params["end_date"] = self.end_date
         if self.mic_code is not None:
             params["mic_code"] = self.mic_code
+        if self.dp is not None:
+            params["dp"] = self.dp
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -1518,6 +1795,7 @@ class IPOCalendarEndpoint(AsMixin, Endpoint):
                  country=None,
                  start_date=None,
                  end_date=None,
+                 mic_code=None,
     ):
         self.ctx = ctx
         self.symbol = symbol
@@ -1525,6 +1803,7 @@ class IPOCalendarEndpoint(AsMixin, Endpoint):
         self.country = country
         self.start_date = start_date
         self.end_date = end_date
+        self.mic_code = mic_code
         self.method = "ipo_calendar"
 
     def execute(self, format="JSON", debug=False):
@@ -1540,6 +1819,8 @@ class IPOCalendarEndpoint(AsMixin, Endpoint):
             params["start_date"] = self.start_date
         if self.end_date is not None:
             params["end_date"] = self.end_date
+        if self.mic_code is not None:
+            params["mic_code"] = self.mic_code
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -1559,9 +1840,15 @@ class StatisticsEndpoint(AsMixin, Endpoint):
                  exchange=None,
                  country=None,
                  mic_code=None,
+                 figi=None,
+                 isin=None,
+                 cusip=None,
     ):
         self.ctx = ctx
         self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
         self.exchange = exchange
         self.country = country
         self.mic_code = mic_code
@@ -1572,6 +1859,12 @@ class StatisticsEndpoint(AsMixin, Endpoint):
         params = {}
         if self.symbol is not None:
             params["symbol"] = self.symbol
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
         if self.exchange is not None:
             params["exchange"] = self.exchange
         if self.country is not None:
@@ -1597,9 +1890,15 @@ class InsiderTransactionsEndpoint(AsMixin, Endpoint):
                  exchange=None,
                  country=None,
                  mic_code=None,
+                 figi=None,
+                 isin=None,
+                 cusip=None,
     ):
         self.ctx = ctx
         self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
         self.exchange = exchange
         self.country = country
         self.mic_code = mic_code
@@ -1610,6 +1909,12 @@ class InsiderTransactionsEndpoint(AsMixin, Endpoint):
         params = {}
         if self.symbol is not None:
             params["symbol"] = self.symbol
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
         if self.exchange is not None:
             params["exchange"] = self.exchange
         if self.country is not None:
@@ -1635,15 +1940,23 @@ class IncomeStatementEndpoint(AsMixin, Endpoint):
                  exchange=None,
                  country=None,
                  period=None,
+                 outputsize=None,
                  start_date=None,
                  end_date=None,
                  mic_code=None,
+                 figi=None,
+                 isin=None,
+                 cusip=None,
     ):
         self.ctx = ctx
         self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
         self.exchange = exchange
         self.country = country
         self.period = period
+        self.outputsize = outputsize
         self.start_date = start_date
         self.end_date = end_date
         self.mic_code = mic_code
@@ -1654,12 +1967,20 @@ class IncomeStatementEndpoint(AsMixin, Endpoint):
         params = {}
         if self.symbol is not None:
             params["symbol"] = self.symbol
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
         if self.exchange is not None:
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
         if self.period is not None:
             params["period"] = self.period
+        if self.outputsize is not None:
+            params["outputsize"] = self.outputsize
         if self.start_date is not None:
             params["start_date"] = self.start_date
         if self.end_date is not None:
@@ -1685,15 +2006,23 @@ class BalanceSheetEndpoint(AsMixin, Endpoint):
                  exchange=None,
                  country=None,
                  period=None,
+                 outputsize=None,
                  start_date=None,
                  end_date=None,
                  mic_code=None,
+                 figi=None,
+                 isin=None,
+                 cusip=None,
     ):
         self.ctx = ctx
         self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
         self.exchange = exchange
         self.country = country
         self.period = period
+        self.outputsize = outputsize
         self.start_date = start_date
         self.end_date = end_date
         self.mic_code = mic_code
@@ -1704,12 +2033,20 @@ class BalanceSheetEndpoint(AsMixin, Endpoint):
         params = {}
         if self.symbol is not None:
             params["symbol"] = self.symbol
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
         if self.exchange is not None:
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
         if self.period is not None:
             params["period"] = self.period
+        if self.outputsize is not None:
+            params["outputsize"] = self.outputsize
         if self.start_date is not None:
             params["start_date"] = self.start_date
         if self.end_date is not None:
@@ -1735,15 +2072,23 @@ class CashFlowEndpoint(AsMixin, Endpoint):
                  exchange=None,
                  country=None,
                  period=None,
+                 outputsize=None,
                  start_date=None,
                  end_date=None,
                  mic_code=None,
+                 figi=None,
+                 isin=None,
+                 cusip=None,
     ):
         self.ctx = ctx
         self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
         self.exchange = exchange
         self.country = country
         self.period = period
+        self.outputsize = outputsize
         self.start_date = start_date
         self.end_date = end_date
         self.mic_code = mic_code
@@ -1754,12 +2099,20 @@ class CashFlowEndpoint(AsMixin, Endpoint):
         params = {}
         if self.symbol is not None:
             params["symbol"] = self.symbol
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
         if self.exchange is not None:
             params["exchange"] = self.exchange
         if self.country is not None:
             params["country"] = self.country
         if self.period is not None:
             params["period"] = self.period
+        if self.outputsize is not None:
+            params["outputsize"] = self.outputsize
         if self.start_date is not None:
             params["start_date"] = self.start_date
         if self.end_date is not None:
@@ -1777,6 +2130,8 @@ class CashFlowEndpoint(AsMixin, Endpoint):
 
 
 class OptionsExpirationEndpoint(AsMixin, Endpoint):
+    """Deprecated: the `/options/expiration` endpoint has been retired by the API."""
+
     _name = "options_expiration"
 
     def __init__(self,
@@ -1815,6 +2170,8 @@ class OptionsExpirationEndpoint(AsMixin, Endpoint):
 
 
 class OptionsChainEndpoint(AsMixin, Endpoint):
+    """Deprecated: the `/options/chain` endpoint has been retired by the API."""
+
     _name = "options_chain"
 
     def __init__(self,
@@ -1873,9 +2230,15 @@ class KeyExecutivesEndpoint(AsMixin, Endpoint):
                  exchange=None,
                  country=None,
                  mic_code=None,
+                 figi=None,
+                 isin=None,
+                 cusip=None,
     ):
         self.ctx = ctx
         self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
         self.exchange = exchange
         self.country = country
         self.mic_code = mic_code
@@ -1886,6 +2249,12 @@ class KeyExecutivesEndpoint(AsMixin, Endpoint):
         params = {}
         if self.symbol is not None:
             params["symbol"] = self.symbol
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
         if self.exchange is not None:
             params["exchange"] = self.exchange
         if self.country is not None:
@@ -1911,9 +2280,15 @@ class InstitutionalHoldersEndpoint(AsMixin, Endpoint):
                  exchange=None,
                  country=None,
                  mic_code=None,
+                 figi=None,
+                 isin=None,
+                 cusip=None,
     ):
         self.ctx = ctx
         self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
         self.exchange = exchange
         self.country = country
         self.mic_code = mic_code
@@ -1924,6 +2299,12 @@ class InstitutionalHoldersEndpoint(AsMixin, Endpoint):
         params = {}
         if self.symbol is not None:
             params["symbol"] = self.symbol
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
         if self.exchange is not None:
             params["exchange"] = self.exchange
         if self.country is not None:
@@ -1949,9 +2330,15 @@ class FundHoldersEndpoint(AsMixin, Endpoint):
                  exchange=None,
                  country=None,
                  mic_code=None,
+                 figi=None,
+                 isin=None,
+                 cusip=None,
     ):
         self.ctx = ctx
         self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
         self.exchange = exchange
         self.country = country
         self.mic_code = mic_code
@@ -1962,6 +2349,12 @@ class FundHoldersEndpoint(AsMixin, Endpoint):
         params = {}
         if self.symbol is not None:
             params["symbol"] = self.symbol
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
         if self.exchange is not None:
             params["exchange"] = self.exchange
         if self.country is not None:
@@ -1981,11 +2374,14 @@ class FundHoldersEndpoint(AsMixin, Endpoint):
 class APIUsageEndpoint(AsMixin, Endpoint):
     _name = "api_usage"
 
-    def __init__(self, ctx):
+    def __init__(self, ctx, timezone=None):
         self.ctx = ctx
+        self.timezone = timezone
 
     def execute(self, format="JSON", debug=False):
         params = {}
+        if self.timezone is not None:
+            params["timezone"] = self.timezone
         params["format"] = format
         params["apikey"] = self.ctx.apikey
         endpoint = "/api_usage"
@@ -2014,11 +2410,21 @@ class ADEndpoint(AsMixin, Endpoint):
         order="desc",
         prepost="false",
         mic_code=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        adjust=None,
+        date=None,
+        include_ohlc=None,
+        previous_close=None,
     ):
         self.is_indicator = True
         self.meta_name = "ad"
         self.ctx = ctx
         self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
         self.interval = interval
         self.exchange = exchange
         self.country = country
@@ -2031,12 +2437,22 @@ class ADEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
         self.mic_code = mic_code
+        self.adjust = adjust
+        self.date = date
+        self.include_ohlc = include_ohlc
+        self.previous_close = previous_close
 
     def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
             params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -2062,6 +2478,14 @@ class ADEndpoint(AsMixin, Endpoint):
         if self.mic_code is not None:
             params["mic_code"] = self.mic_code
 
+        if self.adjust is not None:
+            params["adjust"] = self.adjust
+        if self.date is not None:
+            params["date"] = self.date
+        if self.include_ohlc is not None:
+            params["include_ohlc"] = self.include_ohlc
+        if self.previous_close is not None:
+            params["previous_close"] = self.previous_close
         params["format"] = format
         params["apikey"] = self.ctx.apikey
         endpoint = "/ad"
@@ -2092,11 +2516,21 @@ class ADOSCEndpoint(AsMixin, Endpoint):
         order="desc",
         prepost="false",
         mic_code=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        adjust=None,
+        date=None,
+        include_ohlc=None,
+        previous_close=None,
     ):
         self.is_indicator = True
         self.meta_name = "adosc"
         self.ctx = ctx
         self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
         self.interval = interval
         self.exchange = exchange
         self.country = country
@@ -2111,12 +2545,22 @@ class ADOSCEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
         self.mic_code = mic_code
+        self.adjust = adjust
+        self.date = date
+        self.include_ohlc = include_ohlc
+        self.previous_close = previous_close
 
     def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
             params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -2146,6 +2590,14 @@ class ADOSCEndpoint(AsMixin, Endpoint):
         if self.mic_code is not None:
             params["mic_code"] = self.mic_code
 
+        if self.adjust is not None:
+            params["adjust"] = self.adjust
+        if self.date is not None:
+            params["date"] = self.date
+        if self.include_ohlc is not None:
+            params["include_ohlc"] = self.include_ohlc
+        if self.previous_close is not None:
+            params["previous_close"] = self.previous_close
         params["format"] = format
         params["apikey"] = self.ctx.apikey
         endpoint = "/adosc"
@@ -2175,11 +2627,21 @@ class ADXEndpoint(AsMixin, Endpoint):
         order="desc",
         prepost="false",
         mic_code=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        adjust=None,
+        date=None,
+        include_ohlc=None,
+        previous_close=None,
     ):
         self.is_indicator = True
         self.meta_name = "adx"
         self.ctx = ctx
         self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
         self.interval = interval
         self.exchange = exchange
         self.country = country
@@ -2193,12 +2655,22 @@ class ADXEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
         self.mic_code = mic_code
+        self.adjust = adjust
+        self.date = date
+        self.include_ohlc = include_ohlc
+        self.previous_close = previous_close
 
     def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
             params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -2226,6 +2698,14 @@ class ADXEndpoint(AsMixin, Endpoint):
         if self.mic_code is not None:
             params["mic_code"] = self.mic_code
 
+        if self.adjust is not None:
+            params["adjust"] = self.adjust
+        if self.date is not None:
+            params["date"] = self.date
+        if self.include_ohlc is not None:
+            params["include_ohlc"] = self.include_ohlc
+        if self.previous_close is not None:
+            params["previous_close"] = self.previous_close
         params["format"] = format
         params["apikey"] = self.ctx.apikey
         endpoint = "/adx"
@@ -2255,11 +2735,21 @@ class ADXREndpoint(AsMixin, Endpoint):
         order="desc",
         prepost="false",
         mic_code=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        adjust=None,
+        date=None,
+        include_ohlc=None,
+        previous_close=None,
     ):
         self.is_indicator = True
         self.meta_name = "adxr"
         self.ctx = ctx
         self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
         self.interval = interval
         self.exchange = exchange
         self.country = country
@@ -2273,12 +2763,22 @@ class ADXREndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
         self.mic_code = mic_code
+        self.adjust = adjust
+        self.date = date
+        self.include_ohlc = include_ohlc
+        self.previous_close = previous_close
 
     def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
             params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -2306,6 +2806,14 @@ class ADXREndpoint(AsMixin, Endpoint):
         if self.mic_code is not None:
             params["mic_code"] = self.mic_code
 
+        if self.adjust is not None:
+            params["adjust"] = self.adjust
+        if self.date is not None:
+            params["date"] = self.date
+        if self.include_ohlc is not None:
+            params["include_ohlc"] = self.include_ohlc
+        if self.previous_close is not None:
+            params["previous_close"] = self.previous_close
         params["format"] = format
         params["apikey"] = self.ctx.apikey
         endpoint = "/adxr"
@@ -2326,6 +2834,7 @@ class APOEndpoint(AsMixin, Endpoint):
         exchange=None,
         country=None,
         type=None,
+        series_type="close",
         time_period=9,
         fast_period=12,
         slow_period=26,
@@ -2338,15 +2847,26 @@ class APOEndpoint(AsMixin, Endpoint):
         order="desc",
         prepost="false",
         mic_code=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        adjust=None,
+        date=None,
+        include_ohlc=None,
+        previous_close=None,
     ):
         self.is_indicator = True
         self.meta_name = "apo"
         self.ctx = ctx
         self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
         self.interval = interval
         self.exchange = exchange
         self.country = country
         self.type = type
+        self.series_type = series_type
         self.time_period = time_period
         self.fast_period = fast_period
         self.slow_period = slow_period
@@ -2359,12 +2879,22 @@ class APOEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
         self.mic_code = mic_code
+        self.adjust = adjust
+        self.date = date
+        self.include_ohlc = include_ohlc
+        self.previous_close = previous_close
 
     def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
             params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -2373,6 +2903,8 @@ class APOEndpoint(AsMixin, Endpoint):
             params["country"] = self.country
         if self.type is not None:
             params["type"] = self.type
+        if self.series_type is not None:
+            params["series_type"] = self.series_type
         if self.time_period is not None:
             params["time_period"] = self.time_period
         if self.fast_period is not None:
@@ -2398,6 +2930,14 @@ class APOEndpoint(AsMixin, Endpoint):
         if self.mic_code is not None:
             params["mic_code"] = self.mic_code
 
+        if self.adjust is not None:
+            params["adjust"] = self.adjust
+        if self.date is not None:
+            params["date"] = self.date
+        if self.include_ohlc is not None:
+            params["include_ohlc"] = self.include_ohlc
+        if self.previous_close is not None:
+            params["previous_close"] = self.previous_close
         params["format"] = format
         params["apikey"] = self.ctx.apikey
         endpoint = "/apo"
@@ -2427,11 +2967,21 @@ class AROONEndpoint(AsMixin, Endpoint):
         order="desc",
         prepost="false",
         mic_code=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        adjust=None,
+        date=None,
+        include_ohlc=None,
+        previous_close=None,
     ):
         self.is_indicator = True
         self.meta_name = "aroon"
         self.ctx = ctx
         self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
         self.interval = interval
         self.exchange = exchange
         self.country = country
@@ -2445,12 +2995,22 @@ class AROONEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
         self.mic_code = mic_code
+        self.adjust = adjust
+        self.date = date
+        self.include_ohlc = include_ohlc
+        self.previous_close = previous_close
 
     def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
             params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -2478,6 +3038,14 @@ class AROONEndpoint(AsMixin, Endpoint):
         if self.mic_code is not None:
             params["mic_code"] = self.mic_code
 
+        if self.adjust is not None:
+            params["adjust"] = self.adjust
+        if self.date is not None:
+            params["date"] = self.date
+        if self.include_ohlc is not None:
+            params["include_ohlc"] = self.include_ohlc
+        if self.previous_close is not None:
+            params["previous_close"] = self.previous_close
         params["format"] = format
         params["apikey"] = self.ctx.apikey
         endpoint = "/aroon"
@@ -2507,11 +3075,21 @@ class AROONOSCEndpoint(AsMixin, Endpoint):
         order="desc",
         prepost="false",
         mic_code=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        adjust=None,
+        date=None,
+        include_ohlc=None,
+        previous_close=None,
     ):
         self.is_indicator = True
         self.meta_name = "aroonosc"
         self.ctx = ctx
         self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
         self.interval = interval
         self.exchange = exchange
         self.country = country
@@ -2525,12 +3103,22 @@ class AROONOSCEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
         self.mic_code = mic_code
+        self.adjust = adjust
+        self.date = date
+        self.include_ohlc = include_ohlc
+        self.previous_close = previous_close
 
     def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
             params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -2558,6 +3146,14 @@ class AROONOSCEndpoint(AsMixin, Endpoint):
         if self.mic_code is not None:
             params["mic_code"] = self.mic_code
 
+        if self.adjust is not None:
+            params["adjust"] = self.adjust
+        if self.date is not None:
+            params["date"] = self.date
+        if self.include_ohlc is not None:
+            params["include_ohlc"] = self.include_ohlc
+        if self.previous_close is not None:
+            params["previous_close"] = self.previous_close
         params["format"] = format
         params["apikey"] = self.ctx.apikey
         endpoint = "/aroonosc"
@@ -2587,11 +3183,21 @@ class ATREndpoint(AsMixin, Endpoint):
         order="desc",
         prepost="false",
         mic_code=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        adjust=None,
+        date=None,
+        include_ohlc=None,
+        previous_close=None,
     ):
         self.is_indicator = True
         self.meta_name = "atr"
         self.ctx = ctx
         self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
         self.interval = interval
         self.exchange = exchange
         self.country = country
@@ -2605,12 +3211,22 @@ class ATREndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
         self.mic_code = mic_code
+        self.adjust = adjust
+        self.date = date
+        self.include_ohlc = include_ohlc
+        self.previous_close = previous_close
 
     def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
             params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -2638,6 +3254,14 @@ class ATREndpoint(AsMixin, Endpoint):
         if self.mic_code is not None:
             params["mic_code"] = self.mic_code
 
+        if self.adjust is not None:
+            params["adjust"] = self.adjust
+        if self.date is not None:
+            params["date"] = self.date
+        if self.include_ohlc is not None:
+            params["include_ohlc"] = self.include_ohlc
+        if self.previous_close is not None:
+            params["previous_close"] = self.previous_close
         params["format"] = format
         params["apikey"] = self.ctx.apikey
         endpoint = "/atr"
@@ -2666,11 +3290,21 @@ class AVGPRICEEndpoint(AsMixin, Endpoint):
         order="desc",
         prepost="false",
         mic_code=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        adjust=None,
+        date=None,
+        include_ohlc=None,
+        previous_close=None,
     ):
         self.is_indicator = True
         self.meta_name = "avgprice"
         self.ctx = ctx
         self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
         self.interval = interval
         self.exchange = exchange
         self.country = country
@@ -2683,12 +3317,22 @@ class AVGPRICEEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
         self.mic_code = mic_code
+        self.adjust = adjust
+        self.date = date
+        self.include_ohlc = include_ohlc
+        self.previous_close = previous_close
 
     def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
             params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -2714,6 +3358,14 @@ class AVGPRICEEndpoint(AsMixin, Endpoint):
         if self.mic_code is not None:
             params["mic_code"] = self.mic_code
 
+        if self.adjust is not None:
+            params["adjust"] = self.adjust
+        if self.date is not None:
+            params["date"] = self.date
+        if self.include_ohlc is not None:
+            params["include_ohlc"] = self.include_ohlc
+        if self.previous_close is not None:
+            params["previous_close"] = self.previous_close
         params["format"] = format
         params["apikey"] = self.ctx.apikey
         endpoint = "/avgprice"
@@ -2746,11 +3398,21 @@ class BBANDSEndpoint(AsMixin, Endpoint):
         order="desc",
         prepost="false",
         mic_code=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        adjust=None,
+        date=None,
+        include_ohlc=None,
+        previous_close=None,
     ):
         self.is_indicator = True
         self.meta_name = "bbands"
         self.ctx = ctx
         self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
         self.interval = interval
         self.exchange = exchange
         self.country = country
@@ -2767,12 +3429,22 @@ class BBANDSEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
         self.mic_code = mic_code
+        self.adjust = adjust
+        self.date = date
+        self.include_ohlc = include_ohlc
+        self.previous_close = previous_close
 
     def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
             params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -2806,6 +3478,14 @@ class BBANDSEndpoint(AsMixin, Endpoint):
         if self.mic_code is not None:
             params["mic_code"] = self.mic_code
 
+        if self.adjust is not None:
+            params["adjust"] = self.adjust
+        if self.date is not None:
+            params["date"] = self.date
+        if self.include_ohlc is not None:
+            params["include_ohlc"] = self.include_ohlc
+        if self.previous_close is not None:
+            params["previous_close"] = self.previous_close
         params["format"] = format
         params["apikey"] = self.ctx.apikey
         endpoint = "/bbands"
@@ -2837,11 +3517,21 @@ class BETAEndpoint(AsMixin, Endpoint):
         order="desc",
         prepost="false",
         mic_code=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        adjust=None,
+        date=None,
+        include_ohlc=None,
+        previous_close=None,
     ):
         self.is_indicator = True
         self.meta_name = "beta"
         self.ctx = ctx
         self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
         self.interval = interval
         self.exchange = exchange
         self.country = country
@@ -2857,12 +3547,22 @@ class BETAEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
         self.mic_code = mic_code
+        self.adjust = adjust
+        self.date = date
+        self.include_ohlc = include_ohlc
+        self.previous_close = previous_close
 
     def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
             params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -2894,6 +3594,14 @@ class BETAEndpoint(AsMixin, Endpoint):
         if self.mic_code is not None:
             params["mic_code"] = self.mic_code
 
+        if self.adjust is not None:
+            params["adjust"] = self.adjust
+        if self.date is not None:
+            params["date"] = self.date
+        if self.include_ohlc is not None:
+            params["include_ohlc"] = self.include_ohlc
+        if self.previous_close is not None:
+            params["previous_close"] = self.previous_close
         params["format"] = format
         params["apikey"] = self.ctx.apikey
         endpoint = "/beta"
@@ -2926,11 +3634,21 @@ class PercentBEndpoint(AsMixin, Endpoint):
         order="desc",
         prepost="false",
         mic_code=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        adjust=None,
+        date=None,
+        include_ohlc=None,
+        previous_close=None,
     ):
         self.is_indicator = True
         self.meta_name = "percent_b"
         self.ctx = ctx
         self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
         self.interval = interval
         self.exchange = exchange
         self.country = country
@@ -2947,12 +3665,22 @@ class PercentBEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
         self.mic_code = mic_code
+        self.adjust = adjust
+        self.date = date
+        self.include_ohlc = include_ohlc
+        self.previous_close = previous_close
 
     def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
             params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -2986,6 +3714,14 @@ class PercentBEndpoint(AsMixin, Endpoint):
         if self.mic_code is not None:
             params["mic_code"] = self.mic_code
 
+        if self.adjust is not None:
+            params["adjust"] = self.adjust
+        if self.date is not None:
+            params["date"] = self.date
+        if self.include_ohlc is not None:
+            params["include_ohlc"] = self.include_ohlc
+        if self.previous_close is not None:
+            params["previous_close"] = self.previous_close
         params["format"] = format
         params["apikey"] = self.ctx.apikey
         endpoint = "/percent_b"
@@ -3015,11 +3751,21 @@ class PivotPointsHLEndpoint(AsMixin, Endpoint):
         order="desc",
         prepost="false",
         mic_code=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        adjust=None,
+        date=None,
+        include_ohlc=None,
+        previous_close=None,
     ):
         self.is_indicator = True
         self.meta_name = "pivot_points_hl"
         self.ctx = ctx
         self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
         self.interval = interval
         self.exchange = exchange
         self.country = country
@@ -3033,12 +3779,22 @@ class PivotPointsHLEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
         self.mic_code = mic_code
+        self.adjust = adjust
+        self.date = date
+        self.include_ohlc = include_ohlc
+        self.previous_close = previous_close
 
     def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
             params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -3066,6 +3822,14 @@ class PivotPointsHLEndpoint(AsMixin, Endpoint):
         if self.mic_code is not None:
             params["mic_code"] = self.mic_code
 
+        if self.adjust is not None:
+            params["adjust"] = self.adjust
+        if self.date is not None:
+            params["date"] = self.date
+        if self.include_ohlc is not None:
+            params["include_ohlc"] = self.include_ohlc
+        if self.previous_close is not None:
+            params["previous_close"] = self.previous_close
         params["format"] = format
         params["apikey"] = self.ctx.apikey
         endpoint = "/pivot_points_hl"
@@ -3094,11 +3858,21 @@ class BOPEndpoint(AsMixin, Endpoint):
         order="desc",
         prepost="false",
         mic_code=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        adjust=None,
+        date=None,
+        include_ohlc=None,
+        previous_close=None,
     ):
         self.is_indicator = True
         self.meta_name = "bop"
         self.ctx = ctx
         self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
         self.interval = interval
         self.exchange = exchange
         self.country = country
@@ -3111,12 +3885,22 @@ class BOPEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
         self.mic_code = mic_code
+        self.adjust = adjust
+        self.date = date
+        self.include_ohlc = include_ohlc
+        self.previous_close = previous_close
 
     def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
             params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -3142,6 +3926,14 @@ class BOPEndpoint(AsMixin, Endpoint):
         if self.mic_code is not None:
             params["mic_code"] = self.mic_code
 
+        if self.adjust is not None:
+            params["adjust"] = self.adjust
+        if self.date is not None:
+            params["date"] = self.date
+        if self.include_ohlc is not None:
+            params["include_ohlc"] = self.include_ohlc
+        if self.previous_close is not None:
+            params["previous_close"] = self.previous_close
         params["format"] = format
         params["apikey"] = self.ctx.apikey
         endpoint = "/bop"
@@ -3171,11 +3963,21 @@ class CCIEndpoint(AsMixin, Endpoint):
         order="desc",
         prepost="false",
         mic_code=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        adjust=None,
+        date=None,
+        include_ohlc=None,
+        previous_close=None,
     ):
         self.is_indicator = True
         self.meta_name = "cci"
         self.ctx = ctx
         self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
         self.interval = interval
         self.exchange = exchange
         self.country = country
@@ -3189,12 +3991,22 @@ class CCIEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
         self.mic_code = mic_code
+        self.adjust = adjust
+        self.date = date
+        self.include_ohlc = include_ohlc
+        self.previous_close = previous_close
 
     def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
             params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -3222,89 +4034,17 @@ class CCIEndpoint(AsMixin, Endpoint):
         if self.mic_code is not None:
             params["mic_code"] = self.mic_code
 
+        if self.adjust is not None:
+            params["adjust"] = self.adjust
+        if self.date is not None:
+            params["date"] = self.date
+        if self.include_ohlc is not None:
+            params["include_ohlc"] = self.include_ohlc
+        if self.previous_close is not None:
+            params["previous_close"] = self.previous_close
         params["format"] = format
         params["apikey"] = self.ctx.apikey
         endpoint = "/cci"
-
-        if debug:
-            return build_url(self.ctx.base_url, endpoint, params)
-        return self.ctx.http_client.get(endpoint, params=params)
-
-
-class CEILEndpoint(AsMixin, Endpoint):
-    _name = "ceil"
-
-    def __init__(
-        self,
-        ctx,
-        symbol,
-        interval,
-        exchange=None,
-        country=None,
-        type=None,
-        series_type="close",
-        outputsize=30,
-        start_date=None,
-        end_date=None,
-        dp=5,
-        timezone="Exchange",
-        order="desc",
-        prepost="false",
-        mic_code=None,
-    ):
-        self.is_indicator = True
-        self.meta_name = "ceil"
-        self.ctx = ctx
-        self.symbol = symbol
-        self.interval = interval
-        self.exchange = exchange
-        self.country = country
-        self.type = type
-        self.series_type = series_type
-        self.outputsize = outputsize
-        self.start_date = start_date
-        self.end_date = end_date
-        self.dp = dp
-        self.timezone = timezone
-        self.order = order
-        self.prepost = prepost
-        self.mic_code = mic_code
-
-    def execute(self, format="JSON", debug=False):
-
-        params = {}
-        if self.symbol is not None:
-            params["symbol"], self.is_batch = get_symbol(self.symbol)
-        if self.interval is not None:
-            params["interval"] = self.interval
-        if self.exchange is not None:
-            params["exchange"] = self.exchange
-        if self.country is not None:
-            params["country"] = self.country
-        if self.type is not None:
-            params["type"] = self.type
-        if self.series_type is not None:
-            params["series_type"] = self.series_type
-        if self.outputsize is not None:
-            params["outputsize"] = self.outputsize
-        if self.start_date is not None:
-            params["start_date"] = self.start_date
-        if self.end_date is not None:
-            params["end_date"] = self.end_date
-        if self.dp is not None:
-            params["dp"] = self.dp
-        if self.timezone is not None:
-            params["timezone"] = self.timezone
-        if self.order is not None:
-            params["order"] = self.order
-        if self.prepost is not None:
-            params["prepost"] = self.prepost
-        if self.mic_code is not None:
-            params["mic_code"] = self.mic_code
-
-        params["format"] = format
-        params["apikey"] = self.ctx.apikey
-        endpoint = "/ceil"
 
         if debug:
             return build_url(self.ctx.base_url, endpoint, params)
@@ -3332,11 +4072,21 @@ class CMOEndpoint(AsMixin, Endpoint):
         order="desc",
         prepost="false",
         mic_code=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        adjust=None,
+        date=None,
+        include_ohlc=None,
+        previous_close=None,
     ):
         self.is_indicator = True
         self.meta_name = "cmo"
         self.ctx = ctx
         self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
         self.interval = interval
         self.exchange = exchange
         self.country = country
@@ -3351,12 +4101,22 @@ class CMOEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
         self.mic_code = mic_code
+        self.adjust = adjust
+        self.date = date
+        self.include_ohlc = include_ohlc
+        self.previous_close = previous_close
 
     def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
             params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -3386,6 +4146,14 @@ class CMOEndpoint(AsMixin, Endpoint):
         if self.mic_code is not None:
             params["mic_code"] = self.mic_code
 
+        if self.adjust is not None:
+            params["adjust"] = self.adjust
+        if self.date is not None:
+            params["date"] = self.date
+        if self.include_ohlc is not None:
+            params["include_ohlc"] = self.include_ohlc
+        if self.previous_close is not None:
+            params["previous_close"] = self.previous_close
         params["format"] = format
         params["apikey"] = self.ctx.apikey
         endpoint = "/cmo"
@@ -3418,11 +4186,21 @@ class COPPOCKEndpoint(AsMixin, Endpoint):
         order="desc",
         prepost="false",
         mic_code=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        adjust=None,
+        date=None,
+        include_ohlc=None,
+        previous_close=None,
     ):
         self.is_indicator = True
         self.meta_name = "cmo"
         self.ctx = ctx
         self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
         self.interval = interval
         self.exchange = exchange
         self.country = country
@@ -3439,12 +4217,22 @@ class COPPOCKEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
         self.mic_code = mic_code
+        self.adjust = adjust
+        self.date = date
+        self.include_ohlc = include_ohlc
+        self.previous_close = previous_close
 
     def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
             params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -3478,6 +4266,14 @@ class COPPOCKEndpoint(AsMixin, Endpoint):
         if self.mic_code is not None:
             params["mic_code"] = self.mic_code
 
+        if self.adjust is not None:
+            params["adjust"] = self.adjust
+        if self.date is not None:
+            params["date"] = self.date
+        if self.include_ohlc is not None:
+            params["include_ohlc"] = self.include_ohlc
+        if self.previous_close is not None:
+            params["previous_close"] = self.previous_close
         params["format"] = format
         params["apikey"] = self.ctx.apikey
         endpoint = "/coppock"
@@ -3507,11 +4303,21 @@ class CEILEndpoint(AsMixin, Endpoint):
         order="desc",
         prepost="false",
         mic_code=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        adjust=None,
+        date=None,
+        include_ohlc=None,
+        previous_close=None,
     ):
         self.is_indicator = True
         self.meta_name = "ceil"
         self.ctx = ctx
         self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
         self.interval = interval
         self.exchange = exchange
         self.country = country
@@ -3525,12 +4331,22 @@ class CEILEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
         self.mic_code = mic_code
+        self.adjust = adjust
+        self.date = date
+        self.include_ohlc = include_ohlc
+        self.previous_close = previous_close
 
     def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
             params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -3558,6 +4374,14 @@ class CEILEndpoint(AsMixin, Endpoint):
         if self.mic_code is not None:
             params["mic_code"] = self.mic_code
 
+        if self.adjust is not None:
+            params["adjust"] = self.adjust
+        if self.date is not None:
+            params["date"] = self.date
+        if self.include_ohlc is not None:
+            params["include_ohlc"] = self.include_ohlc
+        if self.previous_close is not None:
+            params["previous_close"] = self.previous_close
         params["format"] = format
         params["apikey"] = self.ctx.apikey
         endpoint = "/ceil"
@@ -3588,11 +4412,21 @@ class DEMAEndpoint(AsMixin, Endpoint):
         order="desc",
         prepost="false",
         mic_code=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        adjust=None,
+        date=None,
+        include_ohlc=None,
+        previous_close=None,
     ):
         self.is_indicator = True
         self.meta_name = "dema"
         self.ctx = ctx
         self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
         self.interval = interval
         self.exchange = exchange
         self.country = country
@@ -3607,12 +4441,22 @@ class DEMAEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
         self.mic_code = mic_code
+        self.adjust = adjust
+        self.date = date
+        self.include_ohlc = include_ohlc
+        self.previous_close = previous_close
 
     def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
             params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -3642,6 +4486,14 @@ class DEMAEndpoint(AsMixin, Endpoint):
         if self.mic_code is not None:
             params["mic_code"] = self.mic_code
 
+        if self.adjust is not None:
+            params["adjust"] = self.adjust
+        if self.date is not None:
+            params["date"] = self.date
+        if self.include_ohlc is not None:
+            params["include_ohlc"] = self.include_ohlc
+        if self.previous_close is not None:
+            params["previous_close"] = self.previous_close
         params["format"] = format
         params["apikey"] = self.ctx.apikey
         endpoint = "/dema"
@@ -3671,11 +4523,21 @@ class DXEndpoint(AsMixin, Endpoint):
         order="desc",
         prepost="false",
         mic_code=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        adjust=None,
+        date=None,
+        include_ohlc=None,
+        previous_close=None,
     ):
         self.is_indicator = True
         self.meta_name = "dx"
         self.ctx = ctx
         self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
         self.interval = interval
         self.exchange = exchange
         self.country = country
@@ -3689,12 +4551,22 @@ class DXEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
         self.mic_code = mic_code
+        self.adjust = adjust
+        self.date = date
+        self.include_ohlc = include_ohlc
+        self.previous_close = previous_close
 
     def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
             params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -3722,6 +4594,14 @@ class DXEndpoint(AsMixin, Endpoint):
         if self.mic_code is not None:
             params["mic_code"] = self.mic_code
 
+        if self.adjust is not None:
+            params["adjust"] = self.adjust
+        if self.date is not None:
+            params["date"] = self.date
+        if self.include_ohlc is not None:
+            params["include_ohlc"] = self.include_ohlc
+        if self.previous_close is not None:
+            params["previous_close"] = self.previous_close
         params["format"] = format
         params["apikey"] = self.ctx.apikey
         endpoint = "/dx"
@@ -3752,11 +4632,21 @@ class EMAEndpoint(AsMixin, Endpoint):
         order="desc",
         prepost="false",
         mic_code=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        adjust=None,
+        date=None,
+        include_ohlc=None,
+        previous_close=None,
     ):
         self.is_indicator = True
         self.meta_name = "ema"
         self.ctx = ctx
         self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
         self.interval = interval
         self.exchange = exchange
         self.country = country
@@ -3771,12 +4661,22 @@ class EMAEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
         self.mic_code = mic_code
+        self.adjust = adjust
+        self.date = date
+        self.include_ohlc = include_ohlc
+        self.previous_close = previous_close
 
     def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
             params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -3806,6 +4706,14 @@ class EMAEndpoint(AsMixin, Endpoint):
         if self.mic_code is not None:
             params["mic_code"] = self.mic_code
 
+        if self.adjust is not None:
+            params["adjust"] = self.adjust
+        if self.date is not None:
+            params["date"] = self.date
+        if self.include_ohlc is not None:
+            params["include_ohlc"] = self.include_ohlc
+        if self.previous_close is not None:
+            params["previous_close"] = self.previous_close
         params["format"] = format
         params["apikey"] = self.ctx.apikey
         endpoint = "/ema"
@@ -3835,11 +4743,21 @@ class EXPEndpoint(AsMixin, Endpoint):
         order="desc",
         prepost="false",
         mic_code=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        adjust=None,
+        date=None,
+        include_ohlc=None,
+        previous_close=None,
     ):
         self.is_indicator = True
         self.meta_name = "exp"
         self.ctx = ctx
         self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
         self.interval = interval
         self.exchange = exchange
         self.country = country
@@ -3853,12 +4771,22 @@ class EXPEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
         self.mic_code = mic_code
+        self.adjust = adjust
+        self.date = date
+        self.include_ohlc = include_ohlc
+        self.previous_close = previous_close
 
     def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
             params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -3886,6 +4814,14 @@ class EXPEndpoint(AsMixin, Endpoint):
         if self.mic_code is not None:
             params["mic_code"] = self.mic_code
 
+        if self.adjust is not None:
+            params["adjust"] = self.adjust
+        if self.date is not None:
+            params["date"] = self.date
+        if self.include_ohlc is not None:
+            params["include_ohlc"] = self.include_ohlc
+        if self.previous_close is not None:
+            params["previous_close"] = self.previous_close
         params["format"] = format
         params["apikey"] = self.ctx.apikey
         endpoint = "/exp"
@@ -3915,11 +4851,21 @@ class FLOOREndpoint(AsMixin, Endpoint):
         order="desc",
         prepost="false",
         mic_code=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        adjust=None,
+        date=None,
+        include_ohlc=None,
+        previous_close=None,
     ):
         self.is_indicator = True
         self.meta_name = "floor"
         self.ctx = ctx
         self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
         self.interval = interval
         self.exchange = exchange
         self.country = country
@@ -3933,12 +4879,22 @@ class FLOOREndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
         self.mic_code = mic_code
+        self.adjust = adjust
+        self.date = date
+        self.include_ohlc = include_ohlc
+        self.previous_close = previous_close
 
     def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
             params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -3966,6 +4922,14 @@ class FLOOREndpoint(AsMixin, Endpoint):
         if self.mic_code is not None:
             params["mic_code"] = self.mic_code
 
+        if self.adjust is not None:
+            params["adjust"] = self.adjust
+        if self.date is not None:
+            params["date"] = self.date
+        if self.include_ohlc is not None:
+            params["include_ohlc"] = self.include_ohlc
+        if self.previous_close is not None:
+            params["previous_close"] = self.previous_close
         params["format"] = format
         params["apikey"] = self.ctx.apikey
         endpoint = "/floor"
@@ -3994,11 +4958,21 @@ class HEIKINASHICANDLESEndpoint(AsMixin, Endpoint):
         order="desc",
         prepost="false",
         mic_code=None,
+        adjust=None,
+        date=None,
+        include_ohlc=None,
+        previous_close=None,
+        figi=None,
+        isin=None,
+        cusip=None,
     ):
         self.is_price = True
         self.meta_name = "heikinashicandles"
         self.ctx = ctx
         self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
         self.interval = interval
         self.exchange = exchange
         self.country = country
@@ -4011,12 +4985,22 @@ class HEIKINASHICANDLESEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
         self.mic_code = mic_code
+        self.adjust = adjust
+        self.date = date
+        self.include_ohlc = include_ohlc
+        self.previous_close = previous_close
 
     def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
             params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -4041,6 +5025,14 @@ class HEIKINASHICANDLESEndpoint(AsMixin, Endpoint):
             params["prepost"] = self.prepost
         if self.mic_code is not None:
             params["mic_code"] = self.mic_code
+        if self.adjust is not None:
+            params["adjust"] = self.adjust
+        if self.date is not None:
+            params["date"] = self.date
+        if self.include_ohlc is not None:
+            params["include_ohlc"] = self.include_ohlc
+        if self.previous_close is not None:
+            params["previous_close"] = self.previous_close
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -4070,11 +5062,21 @@ class HLC3Endpoint(AsMixin, Endpoint):
         order="desc",
         prepost="false",
         mic_code=None,
+        adjust=None,
+        date=None,
+        include_ohlc=None,
+        previous_close=None,
+        figi=None,
+        isin=None,
+        cusip=None,
     ):
         self.is_price = True
         self.meta_name = "hlc3"
         self.ctx = ctx
         self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
         self.interval = interval
         self.exchange = exchange
         self.country = country
@@ -4087,12 +5089,22 @@ class HLC3Endpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
         self.mic_code = mic_code
+        self.adjust = adjust
+        self.date = date
+        self.include_ohlc = include_ohlc
+        self.previous_close = previous_close
 
     def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
             params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -4117,6 +5129,14 @@ class HLC3Endpoint(AsMixin, Endpoint):
             params["prepost"] = self.prepost
         if self.mic_code is not None:
             params["mic_code"] = self.mic_code
+        if self.adjust is not None:
+            params["adjust"] = self.adjust
+        if self.date is not None:
+            params["date"] = self.date
+        if self.include_ohlc is not None:
+            params["include_ohlc"] = self.include_ohlc
+        if self.previous_close is not None:
+            params["previous_close"] = self.previous_close
 
         params["format"] = format
         params["apikey"] = self.ctx.apikey
@@ -4147,11 +5167,21 @@ class HT_DCPERIODEndpoint(AsMixin, Endpoint):
         order="desc",
         prepost="false",
         mic_code=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        adjust=None,
+        date=None,
+        include_ohlc=None,
+        previous_close=None,
     ):
         self.is_indicator = True
         self.meta_name = "ht_dcperiod"
         self.ctx = ctx
         self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
         self.interval = interval
         self.exchange = exchange
         self.country = country
@@ -4165,12 +5195,22 @@ class HT_DCPERIODEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
         self.mic_code = mic_code
+        self.adjust = adjust
+        self.date = date
+        self.include_ohlc = include_ohlc
+        self.previous_close = previous_close
 
     def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
             params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -4198,6 +5238,14 @@ class HT_DCPERIODEndpoint(AsMixin, Endpoint):
         if self.mic_code is not None:
             params["mic_code"] = self.mic_code
 
+        if self.adjust is not None:
+            params["adjust"] = self.adjust
+        if self.date is not None:
+            params["date"] = self.date
+        if self.include_ohlc is not None:
+            params["include_ohlc"] = self.include_ohlc
+        if self.previous_close is not None:
+            params["previous_close"] = self.previous_close
         params["format"] = format
         params["apikey"] = self.ctx.apikey
         endpoint = "/ht_dcperiod"
@@ -4227,11 +5275,21 @@ class HT_DCPHASEEndpoint(AsMixin, Endpoint):
         order="desc",
         prepost="false",
         mic_code=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        adjust=None,
+        date=None,
+        include_ohlc=None,
+        previous_close=None,
     ):
         self.is_indicator = True
         self.meta_name = "ht_dcphase"
         self.ctx = ctx
         self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
         self.interval = interval
         self.exchange = exchange
         self.country = country
@@ -4245,12 +5303,22 @@ class HT_DCPHASEEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
         self.mic_code = mic_code
+        self.adjust = adjust
+        self.date = date
+        self.include_ohlc = include_ohlc
+        self.previous_close = previous_close
 
     def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
             params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -4278,6 +5346,14 @@ class HT_DCPHASEEndpoint(AsMixin, Endpoint):
         if self.mic_code is not None:
             params["mic_code"] = self.mic_code
 
+        if self.adjust is not None:
+            params["adjust"] = self.adjust
+        if self.date is not None:
+            params["date"] = self.date
+        if self.include_ohlc is not None:
+            params["include_ohlc"] = self.include_ohlc
+        if self.previous_close is not None:
+            params["previous_close"] = self.previous_close
         params["format"] = format
         params["apikey"] = self.ctx.apikey
         endpoint = "/ht_dcphase"
@@ -4307,11 +5383,21 @@ class HT_PHASOREndpoint(AsMixin, Endpoint):
         order="desc",
         prepost="false",
         mic_code=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        adjust=None,
+        date=None,
+        include_ohlc=None,
+        previous_close=None,
     ):
         self.is_indicator = True
         self.meta_name = "ht_phasor"
         self.ctx = ctx
         self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
         self.interval = interval
         self.exchange = exchange
         self.country = country
@@ -4325,12 +5411,22 @@ class HT_PHASOREndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
         self.mic_code = mic_code
+        self.adjust = adjust
+        self.date = date
+        self.include_ohlc = include_ohlc
+        self.previous_close = previous_close
 
     def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
             params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -4358,6 +5454,14 @@ class HT_PHASOREndpoint(AsMixin, Endpoint):
         if self.mic_code is not None:
             params["mic_code"] = self.mic_code
 
+        if self.adjust is not None:
+            params["adjust"] = self.adjust
+        if self.date is not None:
+            params["date"] = self.date
+        if self.include_ohlc is not None:
+            params["include_ohlc"] = self.include_ohlc
+        if self.previous_close is not None:
+            params["previous_close"] = self.previous_close
         params["format"] = format
         params["apikey"] = self.ctx.apikey
         endpoint = "/ht_phasor"
@@ -4387,11 +5491,21 @@ class HT_SINEEndpoint(AsMixin, Endpoint):
         order="desc",
         prepost="false",
         mic_code=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        adjust=None,
+        date=None,
+        include_ohlc=None,
+        previous_close=None,
     ):
         self.is_indicator = True
         self.meta_name = "ht_sine"
         self.ctx = ctx
         self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
         self.interval = interval
         self.exchange = exchange
         self.country = country
@@ -4405,12 +5519,22 @@ class HT_SINEEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
         self.mic_code = mic_code
+        self.adjust = adjust
+        self.date = date
+        self.include_ohlc = include_ohlc
+        self.previous_close = previous_close
 
     def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
             params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -4438,6 +5562,14 @@ class HT_SINEEndpoint(AsMixin, Endpoint):
         if self.mic_code is not None:
             params["mic_code"] = self.mic_code
 
+        if self.adjust is not None:
+            params["adjust"] = self.adjust
+        if self.date is not None:
+            params["date"] = self.date
+        if self.include_ohlc is not None:
+            params["include_ohlc"] = self.include_ohlc
+        if self.previous_close is not None:
+            params["previous_close"] = self.previous_close
         params["format"] = format
         params["apikey"] = self.ctx.apikey
         endpoint = "/ht_sine"
@@ -4467,11 +5599,21 @@ class HT_TRENDLINEEndpoint(AsMixin, Endpoint):
         order="desc",
         prepost="false",
         mic_code=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        adjust=None,
+        date=None,
+        include_ohlc=None,
+        previous_close=None,
     ):
         self.is_indicator = True
         self.meta_name = "ht_trendline"
         self.ctx = ctx
         self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
         self.interval = interval
         self.exchange = exchange
         self.country = country
@@ -4485,12 +5627,22 @@ class HT_TRENDLINEEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
         self.mic_code = mic_code
+        self.adjust = adjust
+        self.date = date
+        self.include_ohlc = include_ohlc
+        self.previous_close = previous_close
 
     def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
             params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -4518,6 +5670,14 @@ class HT_TRENDLINEEndpoint(AsMixin, Endpoint):
         if self.mic_code is not None:
             params["mic_code"] = self.mic_code
 
+        if self.adjust is not None:
+            params["adjust"] = self.adjust
+        if self.date is not None:
+            params["date"] = self.date
+        if self.include_ohlc is not None:
+            params["include_ohlc"] = self.include_ohlc
+        if self.previous_close is not None:
+            params["previous_close"] = self.previous_close
         params["format"] = format
         params["apikey"] = self.ctx.apikey
         endpoint = "/ht_trendline"
@@ -4547,11 +5707,21 @@ class HT_TRENDMODEEndpoint(AsMixin, Endpoint):
         order="desc",
         prepost="false",
         mic_code=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        adjust=None,
+        date=None,
+        include_ohlc=None,
+        previous_close=None,
     ):
         self.is_indicator = True
         self.meta_name = "ht_trendmode"
         self.ctx = ctx
         self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
         self.interval = interval
         self.exchange = exchange
         self.country = country
@@ -4565,12 +5735,22 @@ class HT_TRENDMODEEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
         self.mic_code = mic_code
+        self.adjust = adjust
+        self.date = date
+        self.include_ohlc = include_ohlc
+        self.previous_close = previous_close
 
     def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
             params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -4598,6 +5778,14 @@ class HT_TRENDMODEEndpoint(AsMixin, Endpoint):
         if self.mic_code is not None:
             params["mic_code"] = self.mic_code
 
+        if self.adjust is not None:
+            params["adjust"] = self.adjust
+        if self.date is not None:
+            params["date"] = self.date
+        if self.include_ohlc is not None:
+            params["include_ohlc"] = self.include_ohlc
+        if self.previous_close is not None:
+            params["previous_close"] = self.previous_close
         params["format"] = format
         params["apikey"] = self.ctx.apikey
         endpoint = "/ht_trendmode"
@@ -4631,11 +5819,21 @@ class ICHIMOKUEndpoint(AsMixin, Endpoint):
         order="desc",
         prepost="false",
         mic_code=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        adjust=None,
+        date=None,
+        include_ohlc=None,
+        previous_close=None,
     ):
         self.is_indicator = True
         self.meta_name = "vwap"
         self.ctx = ctx
         self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
         self.interval = interval
         self.exchange = exchange
         self.country = country
@@ -4653,12 +5851,22 @@ class ICHIMOKUEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
         self.mic_code = mic_code
+        self.adjust = adjust
+        self.date = date
+        self.include_ohlc = include_ohlc
+        self.previous_close = previous_close
 
     def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
             params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -4694,6 +5902,14 @@ class ICHIMOKUEndpoint(AsMixin, Endpoint):
         if self.mic_code is not None:
             params["mic_code"] = self.mic_code
 
+        if self.adjust is not None:
+            params["adjust"] = self.adjust
+        if self.date is not None:
+            params["date"] = self.date
+        if self.include_ohlc is not None:
+            params["include_ohlc"] = self.include_ohlc
+        if self.previous_close is not None:
+            params["previous_close"] = self.previous_close
         params["format"] = format
         params["apikey"] = self.ctx.apikey
         endpoint = "/ichimoku"
@@ -4724,11 +5940,21 @@ class KAMAEndpoint(AsMixin, Endpoint):
         order="desc",
         prepost="false",
         mic_code=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        adjust=None,
+        date=None,
+        include_ohlc=None,
+        previous_close=None,
     ):
         self.is_indicator = True
         self.meta_name = "kama"
         self.ctx = ctx
         self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
         self.interval = interval
         self.exchange = exchange
         self.country = country
@@ -4743,12 +5969,22 @@ class KAMAEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
         self.mic_code = mic_code
+        self.adjust = adjust
+        self.date = date
+        self.include_ohlc = include_ohlc
+        self.previous_close = previous_close
 
     def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
             params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -4778,6 +6014,14 @@ class KAMAEndpoint(AsMixin, Endpoint):
         if self.mic_code is not None:
             params["mic_code"] = self.mic_code
 
+        if self.adjust is not None:
+            params["adjust"] = self.adjust
+        if self.date is not None:
+            params["date"] = self.date
+        if self.include_ohlc is not None:
+            params["include_ohlc"] = self.include_ohlc
+        if self.previous_close is not None:
+            params["previous_close"] = self.previous_close
         params["format"] = format
         params["apikey"] = self.ctx.apikey
         endpoint = "/kama"
@@ -4811,11 +6055,21 @@ class KELTNEREndpoint(AsMixin, Endpoint):
         order="desc",
         prepost="false",
         mic_code=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        adjust=None,
+        date=None,
+        include_ohlc=None,
+        previous_close=None,
     ):
         self.is_indicator = True
         self.meta_name = "keltner"
         self.ctx = ctx
         self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
         self.interval = interval
         self.exchange = exchange
         self.country = country
@@ -4833,12 +6087,22 @@ class KELTNEREndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
         self.mic_code = mic_code
+        self.adjust = adjust
+        self.date = date
+        self.include_ohlc = include_ohlc
+        self.previous_close = previous_close
 
     def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
             params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -4874,6 +6138,14 @@ class KELTNEREndpoint(AsMixin, Endpoint):
         if self.mic_code is not None:
             params["mic_code"] = self.mic_code
 
+        if self.adjust is not None:
+            params["adjust"] = self.adjust
+        if self.date is not None:
+            params["date"] = self.date
+        if self.include_ohlc is not None:
+            params["include_ohlc"] = self.include_ohlc
+        if self.previous_close is not None:
+            params["previous_close"] = self.previous_close
         params["format"] = format
         params["apikey"] = self.ctx.apikey
         endpoint = "/keltner"
@@ -4911,11 +6183,21 @@ class KSTEndpoint(AsMixin, Endpoint):
         order="desc",
         prepost="false",
         mic_code=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        adjust=None,
+        date=None,
+        include_ohlc=None,
+        previous_close=None,
     ):
         self.is_indicator = True
         self.meta_name = "kst"
         self.ctx = ctx
         self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
         self.interval = interval
         self.exchange = exchange
         self.country = country
@@ -4937,12 +6219,22 @@ class KSTEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
         self.mic_code = mic_code
+        self.adjust = adjust
+        self.date = date
+        self.include_ohlc = include_ohlc
+        self.previous_close = previous_close
 
     def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
             params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -4986,6 +6278,14 @@ class KSTEndpoint(AsMixin, Endpoint):
         if self.mic_code is not None:
             params["mic_code"] = self.mic_code
 
+        if self.adjust is not None:
+            params["adjust"] = self.adjust
+        if self.date is not None:
+            params["date"] = self.date
+        if self.include_ohlc is not None:
+            params["include_ohlc"] = self.include_ohlc
+        if self.previous_close is not None:
+            params["previous_close"] = self.previous_close
         params["format"] = format
         params["apikey"] = self.ctx.apikey
         endpoint = "/kst"
@@ -5016,11 +6316,21 @@ class LINEARREGEndpoint(AsMixin, Endpoint):
         order="desc",
         prepost="false",
         mic_code=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        adjust=None,
+        date=None,
+        include_ohlc=None,
+        previous_close=None,
     ):
         self.is_indicator = True
         self.meta_name = "linearreg"
         self.ctx = ctx
         self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
         self.interval = interval
         self.exchange = exchange
         self.country = country
@@ -5035,12 +6345,22 @@ class LINEARREGEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
         self.mic_code = mic_code
+        self.adjust = adjust
+        self.date = date
+        self.include_ohlc = include_ohlc
+        self.previous_close = previous_close
 
     def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
             params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -5070,6 +6390,14 @@ class LINEARREGEndpoint(AsMixin, Endpoint):
         if self.mic_code is not None:
             params["mic_code"] = self.mic_code
 
+        if self.adjust is not None:
+            params["adjust"] = self.adjust
+        if self.date is not None:
+            params["date"] = self.date
+        if self.include_ohlc is not None:
+            params["include_ohlc"] = self.include_ohlc
+        if self.previous_close is not None:
+            params["previous_close"] = self.previous_close
         params["format"] = format
         params["apikey"] = self.ctx.apikey
         endpoint = "/linearreg"
@@ -5100,11 +6428,21 @@ class LINEARREGANGLEEndpoint(AsMixin, Endpoint):
         order="desc",
         prepost="false",
         mic_code=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        adjust=None,
+        date=None,
+        include_ohlc=None,
+        previous_close=None,
     ):
         self.is_indicator = True
         self.meta_name = "linearregangle"
         self.ctx = ctx
         self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
         self.interval = interval
         self.exchange = exchange
         self.country = country
@@ -5119,12 +6457,22 @@ class LINEARREGANGLEEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
         self.mic_code = mic_code
+        self.adjust = adjust
+        self.date = date
+        self.include_ohlc = include_ohlc
+        self.previous_close = previous_close
 
     def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
             params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -5154,6 +6502,14 @@ class LINEARREGANGLEEndpoint(AsMixin, Endpoint):
         if self.mic_code is not None:
             params["mic_code"] = self.mic_code
 
+        if self.adjust is not None:
+            params["adjust"] = self.adjust
+        if self.date is not None:
+            params["date"] = self.date
+        if self.include_ohlc is not None:
+            params["include_ohlc"] = self.include_ohlc
+        if self.previous_close is not None:
+            params["previous_close"] = self.previous_close
         params["format"] = format
         params["apikey"] = self.ctx.apikey
         endpoint = "/linearregangle"
@@ -5184,11 +6540,21 @@ class LINEARREGINTERCEPTEndpoint(AsMixin, Endpoint):
         order="desc",
         prepost="false",
         mic_code=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        adjust=None,
+        date=None,
+        include_ohlc=None,
+        previous_close=None,
     ):
         self.is_indicator = True
         self.meta_name = "linearregintercept"
         self.ctx = ctx
         self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
         self.interval = interval
         self.exchange = exchange
         self.country = country
@@ -5203,12 +6569,22 @@ class LINEARREGINTERCEPTEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
         self.mic_code = mic_code
+        self.adjust = adjust
+        self.date = date
+        self.include_ohlc = include_ohlc
+        self.previous_close = previous_close
 
     def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
             params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -5238,6 +6614,14 @@ class LINEARREGINTERCEPTEndpoint(AsMixin, Endpoint):
         if self.mic_code is not None:
             params["mic_code"] = self.mic_code
 
+        if self.adjust is not None:
+            params["adjust"] = self.adjust
+        if self.date is not None:
+            params["date"] = self.date
+        if self.include_ohlc is not None:
+            params["include_ohlc"] = self.include_ohlc
+        if self.previous_close is not None:
+            params["previous_close"] = self.previous_close
         params["format"] = format
         params["apikey"] = self.ctx.apikey
         endpoint = "/linearregintercept"
@@ -5268,11 +6652,21 @@ class LINEARREGSLOPEEndpoint(AsMixin, Endpoint):
         order="desc",
         prepost="false",
         mic_code=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        adjust=None,
+        date=None,
+        include_ohlc=None,
+        previous_close=None,
     ):
         self.is_indicator = True
         self.meta_name = "linearregslope"
         self.ctx = ctx
         self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
         self.interval = interval
         self.exchange = exchange
         self.country = country
@@ -5287,12 +6681,22 @@ class LINEARREGSLOPEEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
         self.mic_code = mic_code
+        self.adjust = adjust
+        self.date = date
+        self.include_ohlc = include_ohlc
+        self.previous_close = previous_close
 
     def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
             params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -5322,6 +6726,14 @@ class LINEARREGSLOPEEndpoint(AsMixin, Endpoint):
         if self.mic_code is not None:
             params["mic_code"] = self.mic_code
 
+        if self.adjust is not None:
+            params["adjust"] = self.adjust
+        if self.date is not None:
+            params["date"] = self.date
+        if self.include_ohlc is not None:
+            params["include_ohlc"] = self.include_ohlc
+        if self.previous_close is not None:
+            params["previous_close"] = self.previous_close
         params["format"] = format
         params["apikey"] = self.ctx.apikey
         endpoint = "/linearregslope"
@@ -5351,11 +6763,21 @@ class LNEndpoint(AsMixin, Endpoint):
         order="desc",
         prepost="false",
         mic_code=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        adjust=None,
+        date=None,
+        include_ohlc=None,
+        previous_close=None,
     ):
         self.is_indicator = True
         self.meta_name = "ln"
         self.ctx = ctx
         self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
         self.interval = interval
         self.exchange = exchange
         self.country = country
@@ -5369,12 +6791,22 @@ class LNEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
         self.mic_code = mic_code
+        self.adjust = adjust
+        self.date = date
+        self.include_ohlc = include_ohlc
+        self.previous_close = previous_close
 
     def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
             params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -5402,6 +6834,14 @@ class LNEndpoint(AsMixin, Endpoint):
         if self.mic_code is not None:
             params["mic_code"] = self.mic_code
 
+        if self.adjust is not None:
+            params["adjust"] = self.adjust
+        if self.date is not None:
+            params["date"] = self.date
+        if self.include_ohlc is not None:
+            params["include_ohlc"] = self.include_ohlc
+        if self.previous_close is not None:
+            params["previous_close"] = self.previous_close
         params["format"] = format
         params["apikey"] = self.ctx.apikey
         endpoint = "/ln"
@@ -5431,11 +6871,21 @@ class LOG10Endpoint(AsMixin, Endpoint):
         order="desc",
         prepost="false",
         mic_code=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        adjust=None,
+        date=None,
+        include_ohlc=None,
+        previous_close=None,
     ):
         self.is_indicator = True
         self.meta_name = "log10"
         self.ctx = ctx
         self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
         self.interval = interval
         self.exchange = exchange
         self.country = country
@@ -5449,12 +6899,22 @@ class LOG10Endpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
         self.mic_code = mic_code
+        self.adjust = adjust
+        self.date = date
+        self.include_ohlc = include_ohlc
+        self.previous_close = previous_close
 
     def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
             params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -5482,6 +6942,14 @@ class LOG10Endpoint(AsMixin, Endpoint):
         if self.mic_code is not None:
             params["mic_code"] = self.mic_code
 
+        if self.adjust is not None:
+            params["adjust"] = self.adjust
+        if self.date is not None:
+            params["date"] = self.date
+        if self.include_ohlc is not None:
+            params["include_ohlc"] = self.include_ohlc
+        if self.previous_close is not None:
+            params["previous_close"] = self.previous_close
         params["format"] = format
         params["apikey"] = self.ctx.apikey
         endpoint = "/log10"
@@ -5513,11 +6981,21 @@ class MAEndpoint(AsMixin, Endpoint):
         order="desc",
         prepost="false",
         mic_code=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        adjust=None,
+        date=None,
+        include_ohlc=None,
+        previous_close=None,
     ):
         self.is_indicator = True
         self.meta_name = "ma"
         self.ctx = ctx
         self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
         self.interval = interval
         self.exchange = exchange
         self.country = country
@@ -5533,12 +7011,22 @@ class MAEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
         self.mic_code = mic_code
+        self.adjust = adjust
+        self.date = date
+        self.include_ohlc = include_ohlc
+        self.previous_close = previous_close
 
     def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
             params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -5570,6 +7058,14 @@ class MAEndpoint(AsMixin, Endpoint):
         if self.mic_code is not None:
             params["mic_code"] = self.mic_code
 
+        if self.adjust is not None:
+            params["adjust"] = self.adjust
+        if self.date is not None:
+            params["date"] = self.date
+        if self.include_ohlc is not None:
+            params["include_ohlc"] = self.include_ohlc
+        if self.previous_close is not None:
+            params["previous_close"] = self.previous_close
         params["format"] = format
         params["apikey"] = self.ctx.apikey
         endpoint = "/ma"
@@ -5602,11 +7098,21 @@ class MACDEndpoint(AsMixin, Endpoint):
         order="desc",
         prepost="false",
         mic_code=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        adjust=None,
+        date=None,
+        include_ohlc=None,
+        previous_close=None,
     ):
         self.is_indicator = True
         self.meta_name = "macd"
         self.ctx = ctx
         self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
         self.interval = interval
         self.exchange = exchange
         self.country = country
@@ -5623,12 +7129,22 @@ class MACDEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
         self.mic_code = mic_code
+        self.adjust = adjust
+        self.date = date
+        self.include_ohlc = include_ohlc
+        self.previous_close = previous_close
 
     def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
             params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -5662,6 +7178,14 @@ class MACDEndpoint(AsMixin, Endpoint):
         if self.mic_code is not None:
             params["mic_code"] = self.mic_code
 
+        if self.adjust is not None:
+            params["adjust"] = self.adjust
+        if self.date is not None:
+            params["date"] = self.date
+        if self.include_ohlc is not None:
+            params["include_ohlc"] = self.include_ohlc
+        if self.previous_close is not None:
+            params["previous_close"] = self.previous_close
         params["format"] = format
         params["apikey"] = self.ctx.apikey
         endpoint = "/macd"
@@ -5695,11 +7219,21 @@ class MACDSlopeEndpoint(AsMixin, Endpoint):
         order="desc",
         prepost="false",
         mic_code=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        adjust=None,
+        date=None,
+        include_ohlc=None,
+        previous_close=None,
     ):
         self.is_indicator = True
         self.meta_name = "macd_slope"
         self.ctx = ctx
         self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
         self.interval = interval
         self.exchange = exchange
         self.country = country
@@ -5717,12 +7251,22 @@ class MACDSlopeEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
         self.mic_code = mic_code
+        self.adjust = adjust
+        self.date = date
+        self.include_ohlc = include_ohlc
+        self.previous_close = previous_close
 
     def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
             params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -5758,6 +7302,14 @@ class MACDSlopeEndpoint(AsMixin, Endpoint):
         if self.mic_code is not None:
             params["mic_code"] = self.mic_code
 
+        if self.adjust is not None:
+            params["adjust"] = self.adjust
+        if self.date is not None:
+            params["date"] = self.date
+        if self.include_ohlc is not None:
+            params["include_ohlc"] = self.include_ohlc
+        if self.previous_close is not None:
+            params["previous_close"] = self.previous_close
         params["format"] = format
         params["apikey"] = self.ctx.apikey
         endpoint = "/macd_slope"
@@ -5793,11 +7345,21 @@ class MACDEXTEndpoint(AsMixin, Endpoint):
         order="desc",
         prepost="false",
         mic_code=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        adjust=None,
+        date=None,
+        include_ohlc=None,
+        previous_close=None,
     ):
         self.is_indicator = True
         self.meta_name = "macdext"
         self.ctx = ctx
         self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
         self.interval = interval
         self.exchange = exchange
         self.country = country
@@ -5817,12 +7379,22 @@ class MACDEXTEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
         self.mic_code = mic_code
+        self.adjust = adjust
+        self.date = date
+        self.include_ohlc = include_ohlc
+        self.previous_close = previous_close
 
     def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
             params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -5862,6 +7434,14 @@ class MACDEXTEndpoint(AsMixin, Endpoint):
         if self.mic_code is not None:
             params["mic_code"] = self.mic_code
 
+        if self.adjust is not None:
+            params["adjust"] = self.adjust
+        if self.date is not None:
+            params["date"] = self.date
+        if self.include_ohlc is not None:
+            params["include_ohlc"] = self.include_ohlc
+        if self.previous_close is not None:
+            params["previous_close"] = self.previous_close
         params["format"] = format
         params["apikey"] = self.ctx.apikey
         endpoint = "/macdext"
@@ -5893,11 +7473,21 @@ class MAMAEndpoint(AsMixin, Endpoint):
         order="desc",
         prepost="false",
         mic_code=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        adjust=None,
+        date=None,
+        include_ohlc=None,
+        previous_close=None,
     ):
         self.is_indicator = True
         self.meta_name = "mama"
         self.ctx = ctx
         self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
         self.interval = interval
         self.exchange = exchange
         self.country = country
@@ -5913,12 +7503,22 @@ class MAMAEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
         self.mic_code = mic_code
+        self.adjust = adjust
+        self.date = date
+        self.include_ohlc = include_ohlc
+        self.previous_close = previous_close
 
     def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
             params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -5950,6 +7550,14 @@ class MAMAEndpoint(AsMixin, Endpoint):
         if self.mic_code is not None:
             params["mic_code"] = self.mic_code
 
+        if self.adjust is not None:
+            params["adjust"] = self.adjust
+        if self.date is not None:
+            params["date"] = self.date
+        if self.include_ohlc is not None:
+            params["include_ohlc"] = self.include_ohlc
+        if self.previous_close is not None:
+            params["previous_close"] = self.previous_close
         params["format"] = format
         params["apikey"] = self.ctx.apikey
         endpoint = "/mama"
@@ -5980,11 +7588,21 @@ class MAXEndpoint(AsMixin, Endpoint):
         order="desc",
         prepost="false",
         mic_code=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        adjust=None,
+        date=None,
+        include_ohlc=None,
+        previous_close=None,
     ):
         self.is_indicator = True
         self.meta_name = "max"
         self.ctx = ctx
         self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
         self.interval = interval
         self.exchange = exchange
         self.country = country
@@ -5999,12 +7617,22 @@ class MAXEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
         self.mic_code = mic_code
+        self.adjust = adjust
+        self.date = date
+        self.include_ohlc = include_ohlc
+        self.previous_close = previous_close
 
     def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
             params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -6034,6 +7662,14 @@ class MAXEndpoint(AsMixin, Endpoint):
         if self.mic_code is not None:
             params["mic_code"] = self.mic_code
 
+        if self.adjust is not None:
+            params["adjust"] = self.adjust
+        if self.date is not None:
+            params["date"] = self.date
+        if self.include_ohlc is not None:
+            params["include_ohlc"] = self.include_ohlc
+        if self.previous_close is not None:
+            params["previous_close"] = self.previous_close
         params["format"] = format
         params["apikey"] = self.ctx.apikey
         endpoint = "/max"
@@ -6064,11 +7700,21 @@ class MAXINDEXEndpoint(AsMixin, Endpoint):
         order="desc",
         prepost="false",
         mic_code=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        adjust=None,
+        date=None,
+        include_ohlc=None,
+        previous_close=None,
     ):
         self.is_indicator = True
         self.meta_name = "maxindex"
         self.ctx = ctx
         self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
         self.interval = interval
         self.exchange = exchange
         self.country = country
@@ -6083,12 +7729,22 @@ class MAXINDEXEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
         self.mic_code = mic_code
+        self.adjust = adjust
+        self.date = date
+        self.include_ohlc = include_ohlc
+        self.previous_close = previous_close
 
     def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
             params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -6118,6 +7774,14 @@ class MAXINDEXEndpoint(AsMixin, Endpoint):
         if self.mic_code is not None:
             params["mic_code"] = self.mic_code
 
+        if self.adjust is not None:
+            params["adjust"] = self.adjust
+        if self.date is not None:
+            params["date"] = self.date
+        if self.include_ohlc is not None:
+            params["include_ohlc"] = self.include_ohlc
+        if self.previous_close is not None:
+            params["previous_close"] = self.previous_close
         params["format"] = format
         params["apikey"] = self.ctx.apikey
         endpoint = "/maxindex"
@@ -6147,11 +7811,21 @@ class McGinleyDynamicEndpoint(AsMixin, Endpoint):
         order="desc",
         prepost="false",
         mic_code=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        adjust=None,
+        date=None,
+        include_ohlc=None,
+        previous_close=None,
     ):
         self.is_indicator = True
         self.meta_name = "mcginley_dynamic"
         self.ctx = ctx
         self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
         self.interval = interval
         self.exchange = exchange
         self.country = country
@@ -6165,12 +7839,22 @@ class McGinleyDynamicEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
         self.mic_code = mic_code
+        self.adjust = adjust
+        self.date = date
+        self.include_ohlc = include_ohlc
+        self.previous_close = previous_close
 
     def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
             params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -6198,6 +7882,14 @@ class McGinleyDynamicEndpoint(AsMixin, Endpoint):
         if self.mic_code is not None:
             params["mic_code"] = self.mic_code
 
+        if self.adjust is not None:
+            params["adjust"] = self.adjust
+        if self.date is not None:
+            params["date"] = self.date
+        if self.include_ohlc is not None:
+            params["include_ohlc"] = self.include_ohlc
+        if self.previous_close is not None:
+            params["previous_close"] = self.previous_close
         params["format"] = format
         params["apikey"] = self.ctx.apikey
         endpoint = "/mcginley_dynamic"
@@ -6228,11 +7920,21 @@ class MEDPRICEEndpoint(AsMixin, Endpoint):
         order="desc",
         prepost="false",
         mic_code=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        adjust=None,
+        date=None,
+        include_ohlc=None,
+        previous_close=None,
     ):
         self.is_indicator = True
         self.meta_name = "medprice"
         self.ctx = ctx
         self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
         self.interval = interval
         self.exchange = exchange
         self.country = country
@@ -6247,12 +7949,22 @@ class MEDPRICEEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
         self.mic_code = mic_code
+        self.adjust = adjust
+        self.date = date
+        self.include_ohlc = include_ohlc
+        self.previous_close = previous_close
 
     def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
             params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -6282,6 +7994,14 @@ class MEDPRICEEndpoint(AsMixin, Endpoint):
         if self.mic_code is not None:
             params["mic_code"] = self.mic_code
 
+        if self.adjust is not None:
+            params["adjust"] = self.adjust
+        if self.date is not None:
+            params["date"] = self.date
+        if self.include_ohlc is not None:
+            params["include_ohlc"] = self.include_ohlc
+        if self.previous_close is not None:
+            params["previous_close"] = self.previous_close
         params["format"] = format
         params["apikey"] = self.ctx.apikey
         endpoint = "/medprice"
@@ -6311,11 +8031,21 @@ class MFIEndpoint(AsMixin, Endpoint):
         order="desc",
         prepost="false",
         mic_code=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        adjust=None,
+        date=None,
+        include_ohlc=None,
+        previous_close=None,
     ):
         self.is_indicator = True
         self.meta_name = "mfi"
         self.ctx = ctx
         self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
         self.interval = interval
         self.exchange = exchange
         self.country = country
@@ -6329,12 +8059,22 @@ class MFIEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
         self.mic_code = mic_code
+        self.adjust = adjust
+        self.date = date
+        self.include_ohlc = include_ohlc
+        self.previous_close = previous_close
 
     def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
             params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -6362,6 +8102,14 @@ class MFIEndpoint(AsMixin, Endpoint):
         if self.mic_code is not None:
             params["mic_code"] = self.mic_code
 
+        if self.adjust is not None:
+            params["adjust"] = self.adjust
+        if self.date is not None:
+            params["date"] = self.date
+        if self.include_ohlc is not None:
+            params["include_ohlc"] = self.include_ohlc
+        if self.previous_close is not None:
+            params["previous_close"] = self.previous_close
         params["format"] = format
         params["apikey"] = self.ctx.apikey
         endpoint = "/mfi"
@@ -6392,11 +8140,21 @@ class MIDPOINTEndpoint(AsMixin, Endpoint):
         order="desc",
         prepost="false",
         mic_code=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        adjust=None,
+        date=None,
+        include_ohlc=None,
+        previous_close=None,
     ):
         self.is_indicator = True
         self.meta_name = "midpoint"
         self.ctx = ctx
         self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
         self.interval = interval
         self.exchange = exchange
         self.country = country
@@ -6411,12 +8169,22 @@ class MIDPOINTEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
         self.mic_code = mic_code
+        self.adjust = adjust
+        self.date = date
+        self.include_ohlc = include_ohlc
+        self.previous_close = previous_close
 
     def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
             params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -6446,6 +8214,14 @@ class MIDPOINTEndpoint(AsMixin, Endpoint):
         if self.mic_code is not None:
             params["mic_code"] = self.mic_code
 
+        if self.adjust is not None:
+            params["adjust"] = self.adjust
+        if self.date is not None:
+            params["date"] = self.date
+        if self.include_ohlc is not None:
+            params["include_ohlc"] = self.include_ohlc
+        if self.previous_close is not None:
+            params["previous_close"] = self.previous_close
         params["format"] = format
         params["apikey"] = self.ctx.apikey
         endpoint = "/midpoint"
@@ -6475,11 +8251,21 @@ class MIDPRICEEndpoint(AsMixin, Endpoint):
         order="desc",
         prepost="false",
         mic_code=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        adjust=None,
+        date=None,
+        include_ohlc=None,
+        previous_close=None,
     ):
         self.is_indicator = True
         self.meta_name = "midprice"
         self.ctx = ctx
         self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
         self.interval = interval
         self.exchange = exchange
         self.country = country
@@ -6493,12 +8279,22 @@ class MIDPRICEEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
         self.mic_code = mic_code
+        self.adjust = adjust
+        self.date = date
+        self.include_ohlc = include_ohlc
+        self.previous_close = previous_close
 
     def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
             params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -6526,6 +8322,14 @@ class MIDPRICEEndpoint(AsMixin, Endpoint):
         if self.mic_code is not None:
             params["mic_code"] = self.mic_code
 
+        if self.adjust is not None:
+            params["adjust"] = self.adjust
+        if self.date is not None:
+            params["date"] = self.date
+        if self.include_ohlc is not None:
+            params["include_ohlc"] = self.include_ohlc
+        if self.previous_close is not None:
+            params["previous_close"] = self.previous_close
         params["format"] = format
         params["apikey"] = self.ctx.apikey
         endpoint = "/midprice"
@@ -6556,11 +8360,21 @@ class MINEndpoint(AsMixin, Endpoint):
         order="desc",
         prepost="false",
         mic_code=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        adjust=None,
+        date=None,
+        include_ohlc=None,
+        previous_close=None,
     ):
         self.is_indicator = True
         self.meta_name = "min"
         self.ctx = ctx
         self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
         self.interval = interval
         self.exchange = exchange
         self.country = country
@@ -6575,12 +8389,22 @@ class MINEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
         self.mic_code = mic_code
+        self.adjust = adjust
+        self.date = date
+        self.include_ohlc = include_ohlc
+        self.previous_close = previous_close
 
     def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
             params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -6610,6 +8434,14 @@ class MINEndpoint(AsMixin, Endpoint):
         if self.mic_code is not None:
             params["mic_code"] = self.mic_code
 
+        if self.adjust is not None:
+            params["adjust"] = self.adjust
+        if self.date is not None:
+            params["date"] = self.date
+        if self.include_ohlc is not None:
+            params["include_ohlc"] = self.include_ohlc
+        if self.previous_close is not None:
+            params["previous_close"] = self.previous_close
         params["format"] = format
         params["apikey"] = self.ctx.apikey
         endpoint = "/min"
@@ -6640,11 +8472,21 @@ class MININDEXEndpoint(AsMixin, Endpoint):
         order="desc",
         prepost="false",
         mic_code=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        adjust=None,
+        date=None,
+        include_ohlc=None,
+        previous_close=None,
     ):
         self.is_indicator = True
         self.meta_name = "minindex"
         self.ctx = ctx
         self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
         self.interval = interval
         self.exchange = exchange
         self.country = country
@@ -6659,12 +8501,22 @@ class MININDEXEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
         self.mic_code = mic_code
+        self.adjust = adjust
+        self.date = date
+        self.include_ohlc = include_ohlc
+        self.previous_close = previous_close
 
     def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
             params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -6694,6 +8546,14 @@ class MININDEXEndpoint(AsMixin, Endpoint):
         if self.mic_code is not None:
             params["mic_code"] = self.mic_code
 
+        if self.adjust is not None:
+            params["adjust"] = self.adjust
+        if self.date is not None:
+            params["date"] = self.date
+        if self.include_ohlc is not None:
+            params["include_ohlc"] = self.include_ohlc
+        if self.previous_close is not None:
+            params["previous_close"] = self.previous_close
         params["format"] = format
         params["apikey"] = self.ctx.apikey
         endpoint = "/minindex"
@@ -6724,11 +8584,21 @@ class MINMAXEndpoint(AsMixin, Endpoint):
         order="desc",
         prepost="false",
         mic_code=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        adjust=None,
+        date=None,
+        include_ohlc=None,
+        previous_close=None,
     ):
         self.is_indicator = True
         self.meta_name = "minmax"
         self.ctx = ctx
         self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
         self.interval = interval
         self.exchange = exchange
         self.country = country
@@ -6743,12 +8613,22 @@ class MINMAXEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
         self.mic_code = mic_code
+        self.adjust = adjust
+        self.date = date
+        self.include_ohlc = include_ohlc
+        self.previous_close = previous_close
 
     def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
             params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -6778,6 +8658,14 @@ class MINMAXEndpoint(AsMixin, Endpoint):
         if self.mic_code is not None:
             params["mic_code"] = self.mic_code
 
+        if self.adjust is not None:
+            params["adjust"] = self.adjust
+        if self.date is not None:
+            params["date"] = self.date
+        if self.include_ohlc is not None:
+            params["include_ohlc"] = self.include_ohlc
+        if self.previous_close is not None:
+            params["previous_close"] = self.previous_close
         params["format"] = format
         params["apikey"] = self.ctx.apikey
         endpoint = "/minmax"
@@ -6808,11 +8696,21 @@ class MINMAXINDEXEndpoint(AsMixin, Endpoint):
         order="desc",
         prepost="false",
         mic_code=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        adjust=None,
+        date=None,
+        include_ohlc=None,
+        previous_close=None,
     ):
         self.is_indicator = True
         self.meta_name = "minmaxindex"
         self.ctx = ctx
         self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
         self.interval = interval
         self.exchange = exchange
         self.country = country
@@ -6827,12 +8725,22 @@ class MINMAXINDEXEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
         self.mic_code = mic_code
+        self.adjust = adjust
+        self.date = date
+        self.include_ohlc = include_ohlc
+        self.previous_close = previous_close
 
     def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
             params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -6862,6 +8770,14 @@ class MINMAXINDEXEndpoint(AsMixin, Endpoint):
         if self.mic_code is not None:
             params["mic_code"] = self.mic_code
 
+        if self.adjust is not None:
+            params["adjust"] = self.adjust
+        if self.date is not None:
+            params["date"] = self.date
+        if self.include_ohlc is not None:
+            params["include_ohlc"] = self.include_ohlc
+        if self.previous_close is not None:
+            params["previous_close"] = self.previous_close
         params["format"] = format
         params["apikey"] = self.ctx.apikey
         endpoint = "/minmaxindex"
@@ -6891,11 +8807,21 @@ class MINUS_DIEndpoint(AsMixin, Endpoint):
         order="desc",
         prepost="false",
         mic_code=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        adjust=None,
+        date=None,
+        include_ohlc=None,
+        previous_close=None,
     ):
         self.is_indicator = True
         self.meta_name = "minus_di"
         self.ctx = ctx
         self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
         self.interval = interval
         self.exchange = exchange
         self.country = country
@@ -6909,12 +8835,22 @@ class MINUS_DIEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
         self.mic_code = mic_code
+        self.adjust = adjust
+        self.date = date
+        self.include_ohlc = include_ohlc
+        self.previous_close = previous_close
 
     def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
             params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -6942,6 +8878,14 @@ class MINUS_DIEndpoint(AsMixin, Endpoint):
         if self.mic_code is not None:
             params["mic_code"] = self.mic_code
 
+        if self.adjust is not None:
+            params["adjust"] = self.adjust
+        if self.date is not None:
+            params["date"] = self.date
+        if self.include_ohlc is not None:
+            params["include_ohlc"] = self.include_ohlc
+        if self.previous_close is not None:
+            params["previous_close"] = self.previous_close
         params["format"] = format
         params["apikey"] = self.ctx.apikey
         endpoint = "/minus_di"
@@ -6971,11 +8915,21 @@ class MINUS_DMEndpoint(AsMixin, Endpoint):
         order="desc",
         prepost="false",
         mic_code=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        adjust=None,
+        date=None,
+        include_ohlc=None,
+        previous_close=None,
     ):
         self.is_indicator = True
         self.meta_name = "minus_dm"
         self.ctx = ctx
         self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
         self.interval = interval
         self.exchange = exchange
         self.country = country
@@ -6989,12 +8943,22 @@ class MINUS_DMEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
         self.mic_code = mic_code
+        self.adjust = adjust
+        self.date = date
+        self.include_ohlc = include_ohlc
+        self.previous_close = previous_close
 
     def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
             params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -7022,6 +8986,14 @@ class MINUS_DMEndpoint(AsMixin, Endpoint):
         if self.mic_code is not None:
             params["mic_code"] = self.mic_code
 
+        if self.adjust is not None:
+            params["adjust"] = self.adjust
+        if self.date is not None:
+            params["date"] = self.date
+        if self.include_ohlc is not None:
+            params["include_ohlc"] = self.include_ohlc
+        if self.previous_close is not None:
+            params["previous_close"] = self.previous_close
         params["format"] = format
         params["apikey"] = self.ctx.apikey
         endpoint = "/minus_dm"
@@ -7052,11 +9024,21 @@ class MOMEndpoint(AsMixin, Endpoint):
         order="desc",
         prepost="false",
         mic_code=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        adjust=None,
+        date=None,
+        include_ohlc=None,
+        previous_close=None,
     ):
         self.is_indicator = True
         self.meta_name = "mom"
         self.ctx = ctx
         self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
         self.interval = interval
         self.exchange = exchange
         self.country = country
@@ -7071,12 +9053,22 @@ class MOMEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
         self.mic_code = mic_code
+        self.adjust = adjust
+        self.date = date
+        self.include_ohlc = include_ohlc
+        self.previous_close = previous_close
 
     def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
             params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -7106,6 +9098,14 @@ class MOMEndpoint(AsMixin, Endpoint):
         if self.mic_code is not None:
             params["mic_code"] = self.mic_code
 
+        if self.adjust is not None:
+            params["adjust"] = self.adjust
+        if self.date is not None:
+            params["date"] = self.date
+        if self.include_ohlc is not None:
+            params["include_ohlc"] = self.include_ohlc
+        if self.previous_close is not None:
+            params["previous_close"] = self.previous_close
         params["format"] = format
         params["apikey"] = self.ctx.apikey
         endpoint = "/mom"
@@ -7135,11 +9135,21 @@ class NATREndpoint(AsMixin, Endpoint):
         order="desc",
         prepost="false",
         mic_code=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        adjust=None,
+        date=None,
+        include_ohlc=None,
+        previous_close=None,
     ):
         self.is_indicator = True
         self.meta_name = "natr"
         self.ctx = ctx
         self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
         self.interval = interval
         self.exchange = exchange
         self.country = country
@@ -7153,12 +9163,22 @@ class NATREndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
         self.mic_code = mic_code
+        self.adjust = adjust
+        self.date = date
+        self.include_ohlc = include_ohlc
+        self.previous_close = previous_close
 
     def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
             params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -7186,6 +9206,14 @@ class NATREndpoint(AsMixin, Endpoint):
         if self.mic_code is not None:
             params["mic_code"] = self.mic_code
 
+        if self.adjust is not None:
+            params["adjust"] = self.adjust
+        if self.date is not None:
+            params["date"] = self.date
+        if self.include_ohlc is not None:
+            params["include_ohlc"] = self.include_ohlc
+        if self.previous_close is not None:
+            params["previous_close"] = self.previous_close
         params["format"] = format
         params["apikey"] = self.ctx.apikey
         endpoint = "/natr"
@@ -7215,11 +9243,21 @@ class OBVEndpoint(AsMixin, Endpoint):
         order="desc",
         prepost="false",
         mic_code=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        adjust=None,
+        date=None,
+        include_ohlc=None,
+        previous_close=None,
     ):
         self.is_indicator = True
         self.meta_name = "obv"
         self.ctx = ctx
         self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
         self.interval = interval
         self.exchange = exchange
         self.country = country
@@ -7233,12 +9271,22 @@ class OBVEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
         self.mic_code = mic_code
+        self.adjust = adjust
+        self.date = date
+        self.include_ohlc = include_ohlc
+        self.previous_close = previous_close
 
     def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
             params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -7266,6 +9314,14 @@ class OBVEndpoint(AsMixin, Endpoint):
         if self.mic_code is not None:
             params["mic_code"] = self.mic_code
 
+        if self.adjust is not None:
+            params["adjust"] = self.adjust
+        if self.date is not None:
+            params["date"] = self.date
+        if self.include_ohlc is not None:
+            params["include_ohlc"] = self.include_ohlc
+        if self.previous_close is not None:
+            params["previous_close"] = self.previous_close
         params["format"] = format
         params["apikey"] = self.ctx.apikey
         endpoint = "/obv"
@@ -7295,11 +9351,21 @@ class PLUS_DIEndpoint(AsMixin, Endpoint):
         order="desc",
         prepost="false",
         mic_code=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        adjust=None,
+        date=None,
+        include_ohlc=None,
+        previous_close=None,
     ):
         self.is_indicator = True
         self.meta_name = "plus_di"
         self.ctx = ctx
         self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
         self.interval = interval
         self.exchange = exchange
         self.country = country
@@ -7313,12 +9379,22 @@ class PLUS_DIEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
         self.mic_code = mic_code
+        self.adjust = adjust
+        self.date = date
+        self.include_ohlc = include_ohlc
+        self.previous_close = previous_close
 
     def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
             params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -7346,6 +9422,14 @@ class PLUS_DIEndpoint(AsMixin, Endpoint):
         if self.mic_code is not None:
             params["mic_code"] = self.mic_code
 
+        if self.adjust is not None:
+            params["adjust"] = self.adjust
+        if self.date is not None:
+            params["date"] = self.date
+        if self.include_ohlc is not None:
+            params["include_ohlc"] = self.include_ohlc
+        if self.previous_close is not None:
+            params["previous_close"] = self.previous_close
         params["format"] = format
         params["apikey"] = self.ctx.apikey
         endpoint = "/plus_di"
@@ -7375,11 +9459,21 @@ class PLUS_DMEndpoint(AsMixin, Endpoint):
         order="desc",
         prepost="false",
         mic_code=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        adjust=None,
+        date=None,
+        include_ohlc=None,
+        previous_close=None,
     ):
         self.is_indicator = True
         self.meta_name = "plus_dm"
         self.ctx = ctx
         self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
         self.interval = interval
         self.exchange = exchange
         self.country = country
@@ -7393,12 +9487,22 @@ class PLUS_DMEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
         self.mic_code = mic_code
+        self.adjust = adjust
+        self.date = date
+        self.include_ohlc = include_ohlc
+        self.previous_close = previous_close
 
     def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
             params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -7426,6 +9530,14 @@ class PLUS_DMEndpoint(AsMixin, Endpoint):
         if self.mic_code is not None:
             params["mic_code"] = self.mic_code
 
+        if self.adjust is not None:
+            params["adjust"] = self.adjust
+        if self.date is not None:
+            params["date"] = self.date
+        if self.include_ohlc is not None:
+            params["include_ohlc"] = self.include_ohlc
+        if self.previous_close is not None:
+            params["previous_close"] = self.previous_close
         params["format"] = format
         params["apikey"] = self.ctx.apikey
         endpoint = "/plus_dm"
@@ -7458,11 +9570,21 @@ class PPOEndpoint(AsMixin, Endpoint):
         order="desc",
         prepost="false",
         mic_code=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        adjust=None,
+        date=None,
+        include_ohlc=None,
+        previous_close=None,
     ):
         self.is_indicator = True
         self.meta_name = "ppo"
         self.ctx = ctx
         self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
         self.interval = interval
         self.exchange = exchange
         self.country = country
@@ -7479,12 +9601,22 @@ class PPOEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
         self.mic_code = mic_code
+        self.adjust = adjust
+        self.date = date
+        self.include_ohlc = include_ohlc
+        self.previous_close = previous_close
 
     def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
             params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -7518,6 +9650,14 @@ class PPOEndpoint(AsMixin, Endpoint):
         if self.mic_code is not None:
             params["mic_code"] = self.mic_code
 
+        if self.adjust is not None:
+            params["adjust"] = self.adjust
+        if self.date is not None:
+            params["date"] = self.date
+        if self.include_ohlc is not None:
+            params["include_ohlc"] = self.include_ohlc
+        if self.previous_close is not None:
+            params["previous_close"] = self.previous_close
         params["format"] = format
         params["apikey"] = self.ctx.apikey
         endpoint = "/ppo"
@@ -7548,11 +9688,21 @@ class ROCEndpoint(AsMixin, Endpoint):
         order="desc",
         prepost="false",
         mic_code=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        adjust=None,
+        date=None,
+        include_ohlc=None,
+        previous_close=None,
     ):
         self.is_indicator = True
         self.meta_name = "roc"
         self.ctx = ctx
         self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
         self.interval = interval
         self.exchange = exchange
         self.country = country
@@ -7567,12 +9717,22 @@ class ROCEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
         self.mic_code = mic_code
+        self.adjust = adjust
+        self.date = date
+        self.include_ohlc = include_ohlc
+        self.previous_close = previous_close
 
     def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
             params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -7602,6 +9762,14 @@ class ROCEndpoint(AsMixin, Endpoint):
         if self.mic_code is not None:
             params["mic_code"] = self.mic_code
 
+        if self.adjust is not None:
+            params["adjust"] = self.adjust
+        if self.date is not None:
+            params["date"] = self.date
+        if self.include_ohlc is not None:
+            params["include_ohlc"] = self.include_ohlc
+        if self.previous_close is not None:
+            params["previous_close"] = self.previous_close
         params["format"] = format
         params["apikey"] = self.ctx.apikey
         endpoint = "/roc"
@@ -7632,11 +9800,21 @@ class ROCPEndpoint(AsMixin, Endpoint):
         order="desc",
         prepost="false",
         mic_code=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        adjust=None,
+        date=None,
+        include_ohlc=None,
+        previous_close=None,
     ):
         self.is_indicator = True
         self.meta_name = "rocp"
         self.ctx = ctx
         self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
         self.interval = interval
         self.exchange = exchange
         self.country = country
@@ -7651,12 +9829,22 @@ class ROCPEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
         self.mic_code = mic_code
+        self.adjust = adjust
+        self.date = date
+        self.include_ohlc = include_ohlc
+        self.previous_close = previous_close
 
     def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
             params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -7686,6 +9874,14 @@ class ROCPEndpoint(AsMixin, Endpoint):
         if self.mic_code is not None:
             params["mic_code"] = self.mic_code
 
+        if self.adjust is not None:
+            params["adjust"] = self.adjust
+        if self.date is not None:
+            params["date"] = self.date
+        if self.include_ohlc is not None:
+            params["include_ohlc"] = self.include_ohlc
+        if self.previous_close is not None:
+            params["previous_close"] = self.previous_close
         params["format"] = format
         params["apikey"] = self.ctx.apikey
         endpoint = "/rocp"
@@ -7716,11 +9912,21 @@ class ROCREndpoint(AsMixin, Endpoint):
         order="desc",
         prepost="false",
         mic_code=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        adjust=None,
+        date=None,
+        include_ohlc=None,
+        previous_close=None,
     ):
         self.is_indicator = True
         self.meta_name = "rocr"
         self.ctx = ctx
         self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
         self.interval = interval
         self.exchange = exchange
         self.country = country
@@ -7735,12 +9941,22 @@ class ROCREndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
         self.mic_code = mic_code
+        self.adjust = adjust
+        self.date = date
+        self.include_ohlc = include_ohlc
+        self.previous_close = previous_close
 
     def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
             params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -7770,6 +9986,14 @@ class ROCREndpoint(AsMixin, Endpoint):
         if self.mic_code is not None:
             params["mic_code"] = self.mic_code
 
+        if self.adjust is not None:
+            params["adjust"] = self.adjust
+        if self.date is not None:
+            params["date"] = self.date
+        if self.include_ohlc is not None:
+            params["include_ohlc"] = self.include_ohlc
+        if self.previous_close is not None:
+            params["previous_close"] = self.previous_close
         params["format"] = format
         params["apikey"] = self.ctx.apikey
         endpoint = "/rocr"
@@ -7800,11 +10024,21 @@ class ROCR100Endpoint(AsMixin, Endpoint):
         order="desc",
         prepost="false",
         mic_code=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        adjust=None,
+        date=None,
+        include_ohlc=None,
+        previous_close=None,
     ):
         self.is_indicator = True
         self.meta_name = "rocr100"
         self.ctx = ctx
         self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
         self.interval = interval
         self.exchange = exchange
         self.country = country
@@ -7819,12 +10053,22 @@ class ROCR100Endpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
         self.mic_code = mic_code
+        self.adjust = adjust
+        self.date = date
+        self.include_ohlc = include_ohlc
+        self.previous_close = previous_close
 
     def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
             params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -7854,6 +10098,14 @@ class ROCR100Endpoint(AsMixin, Endpoint):
         if self.mic_code is not None:
             params["mic_code"] = self.mic_code
 
+        if self.adjust is not None:
+            params["adjust"] = self.adjust
+        if self.date is not None:
+            params["date"] = self.date
+        if self.include_ohlc is not None:
+            params["include_ohlc"] = self.include_ohlc
+        if self.previous_close is not None:
+            params["previous_close"] = self.previous_close
         params["format"] = format
         params["apikey"] = self.ctx.apikey
         endpoint = "/rocr100"
@@ -7884,11 +10136,21 @@ class RSIEndpoint(AsMixin, Endpoint):
         order="desc",
         prepost="false",
         mic_code=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        adjust=None,
+        date=None,
+        include_ohlc=None,
+        previous_close=None,
     ):
         self.is_indicator = True
         self.meta_name = "rsi"
         self.ctx = ctx
         self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
         self.interval = interval
         self.exchange = exchange
         self.country = country
@@ -7903,12 +10165,22 @@ class RSIEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
         self.mic_code = mic_code
+        self.adjust = adjust
+        self.date = date
+        self.include_ohlc = include_ohlc
+        self.previous_close = previous_close
 
     def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
             params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -7938,6 +10210,14 @@ class RSIEndpoint(AsMixin, Endpoint):
         if self.mic_code is not None:
             params["mic_code"] = self.mic_code
 
+        if self.adjust is not None:
+            params["adjust"] = self.adjust
+        if self.date is not None:
+            params["date"] = self.date
+        if self.include_ohlc is not None:
+            params["include_ohlc"] = self.include_ohlc
+        if self.previous_close is not None:
+            params["previous_close"] = self.previous_close
         params["format"] = format
         params["apikey"] = self.ctx.apikey
         endpoint = "/rsi"
@@ -7967,11 +10247,21 @@ class RVOLEndpoint(AsMixin, Endpoint):
         order="desc",
         prepost="false",
         mic_code=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        adjust=None,
+        date=None,
+        include_ohlc=None,
+        previous_close=None,
     ):
         self.is_indicator = True
         self.meta_name = "rvol"
         self.ctx = ctx
         self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
         self.interval = interval
         self.exchange = exchange
         self.country = country
@@ -7985,12 +10275,22 @@ class RVOLEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
         self.mic_code = mic_code
+        self.adjust = adjust
+        self.date = date
+        self.include_ohlc = include_ohlc
+        self.previous_close = previous_close
 
     def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
             params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -8018,6 +10318,14 @@ class RVOLEndpoint(AsMixin, Endpoint):
         if self.mic_code is not None:
             params["mic_code"] = self.mic_code
 
+        if self.adjust is not None:
+            params["adjust"] = self.adjust
+        if self.date is not None:
+            params["date"] = self.date
+        if self.include_ohlc is not None:
+            params["include_ohlc"] = self.include_ohlc
+        if self.previous_close is not None:
+            params["previous_close"] = self.previous_close
         params["format"] = format
         params["apikey"] = self.ctx.apikey
         endpoint = "/rvol"
@@ -8048,11 +10356,21 @@ class SAREndpoint(AsMixin, Endpoint):
         order="desc",
         prepost="false",
         mic_code=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        adjust=None,
+        date=None,
+        include_ohlc=None,
+        previous_close=None,
     ):
         self.is_indicator = True
         self.meta_name = "sar"
         self.ctx = ctx
         self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
         self.interval = interval
         self.exchange = exchange
         self.country = country
@@ -8067,12 +10385,22 @@ class SAREndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
         self.mic_code = mic_code
+        self.adjust = adjust
+        self.date = date
+        self.include_ohlc = include_ohlc
+        self.previous_close = previous_close
 
     def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
             params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -8102,6 +10430,14 @@ class SAREndpoint(AsMixin, Endpoint):
         if self.mic_code is not None:
             params["mic_code"] = self.mic_code
 
+        if self.adjust is not None:
+            params["adjust"] = self.adjust
+        if self.date is not None:
+            params["date"] = self.date
+        if self.include_ohlc is not None:
+            params["include_ohlc"] = self.include_ohlc
+        if self.previous_close is not None:
+            params["previous_close"] = self.previous_close
         params["format"] = format
         params["apikey"] = self.ctx.apikey
         endpoint = "/sar"
@@ -8132,11 +10468,21 @@ class SMAEndpoint(AsMixin, Endpoint):
         order="desc",
         prepost="false",
         mic_code=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        adjust=None,
+        date=None,
+        include_ohlc=None,
+        previous_close=None,
     ):
         self.is_indicator = True
         self.meta_name = "sma"
         self.ctx = ctx
         self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
         self.interval = interval
         self.exchange = exchange
         self.country = country
@@ -8151,12 +10497,22 @@ class SMAEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
         self.mic_code = mic_code
+        self.adjust = adjust
+        self.date = date
+        self.include_ohlc = include_ohlc
+        self.previous_close = previous_close
 
     def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
             params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -8186,6 +10542,14 @@ class SMAEndpoint(AsMixin, Endpoint):
         if self.mic_code is not None:
             params["mic_code"] = self.mic_code
 
+        if self.adjust is not None:
+            params["adjust"] = self.adjust
+        if self.date is not None:
+            params["date"] = self.date
+        if self.include_ohlc is not None:
+            params["include_ohlc"] = self.include_ohlc
+        if self.previous_close is not None:
+            params["previous_close"] = self.previous_close
         params["format"] = format
         params["apikey"] = self.ctx.apikey
         endpoint = "/sma"
@@ -8215,11 +10579,21 @@ class SQRTEndpoint(AsMixin, Endpoint):
         order="desc",
         prepost="false",
         mic_code=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        adjust=None,
+        date=None,
+        include_ohlc=None,
+        previous_close=None,
     ):
         self.is_indicator = True
         self.meta_name = "sqrt"
         self.ctx = ctx
         self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
         self.interval = interval
         self.exchange = exchange
         self.country = country
@@ -8233,12 +10607,22 @@ class SQRTEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
         self.mic_code = mic_code
+        self.adjust = adjust
+        self.date = date
+        self.include_ohlc = include_ohlc
+        self.previous_close = previous_close
 
     def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
             params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -8266,6 +10650,14 @@ class SQRTEndpoint(AsMixin, Endpoint):
         if self.mic_code is not None:
             params["mic_code"] = self.mic_code
 
+        if self.adjust is not None:
+            params["adjust"] = self.adjust
+        if self.date is not None:
+            params["date"] = self.date
+        if self.include_ohlc is not None:
+            params["include_ohlc"] = self.include_ohlc
+        if self.previous_close is not None:
+            params["previous_close"] = self.previous_close
         params["format"] = format
         params["apikey"] = self.ctx.apikey
         endpoint = "/sqrt"
@@ -8297,11 +10689,21 @@ class STDDEVEndpoint(AsMixin, Endpoint):
         order="desc",
         prepost="false",
         mic_code=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        adjust=None,
+        date=None,
+        include_ohlc=None,
+        previous_close=None,
     ):
         self.is_indicator = True
         self.meta_name = "stddev"
         self.ctx = ctx
         self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
         self.interval = interval
         self.exchange = exchange
         self.country = country
@@ -8317,12 +10719,22 @@ class STDDEVEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
         self.mic_code = mic_code
+        self.adjust = adjust
+        self.date = date
+        self.include_ohlc = include_ohlc
+        self.previous_close = previous_close
 
     def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
             params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -8354,6 +10766,14 @@ class STDDEVEndpoint(AsMixin, Endpoint):
         if self.mic_code is not None:
             params["mic_code"] = self.mic_code
 
+        if self.adjust is not None:
+            params["adjust"] = self.adjust
+        if self.date is not None:
+            params["date"] = self.date
+        if self.include_ohlc is not None:
+            params["include_ohlc"] = self.include_ohlc
+        if self.previous_close is not None:
+            params["previous_close"] = self.previous_close
         params["format"] = format
         params["apikey"] = self.ctx.apikey
         endpoint = "/stddev"
@@ -8387,11 +10807,21 @@ class STOCHEndpoint(AsMixin, Endpoint):
         order="desc",
         prepost="false",
         mic_code=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        adjust=None,
+        date=None,
+        include_ohlc=None,
+        previous_close=None,
     ):
         self.is_indicator = True
         self.meta_name = "stoch"
         self.ctx = ctx
         self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
         self.interval = interval
         self.exchange = exchange
         self.country = country
@@ -8409,12 +10839,22 @@ class STOCHEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
         self.mic_code = mic_code
+        self.adjust = adjust
+        self.date = date
+        self.include_ohlc = include_ohlc
+        self.previous_close = previous_close
 
     def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
             params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -8450,6 +10890,14 @@ class STOCHEndpoint(AsMixin, Endpoint):
         if self.mic_code is not None:
             params["mic_code"] = self.mic_code
 
+        if self.adjust is not None:
+            params["adjust"] = self.adjust
+        if self.date is not None:
+            params["date"] = self.date
+        if self.include_ohlc is not None:
+            params["include_ohlc"] = self.include_ohlc
+        if self.previous_close is not None:
+            params["previous_close"] = self.previous_close
         params["format"] = format
         params["apikey"] = self.ctx.apikey
         endpoint = "/stoch"
@@ -8481,11 +10929,21 @@ class STOCHFEndpoint(AsMixin, Endpoint):
         order="desc",
         prepost="false",
         mic_code=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        adjust=None,
+        date=None,
+        include_ohlc=None,
+        previous_close=None,
     ):
         self.is_indicator = True
         self.meta_name = "stochf"
         self.ctx = ctx
         self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
         self.interval = interval
         self.exchange = exchange
         self.country = country
@@ -8501,12 +10959,22 @@ class STOCHFEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
         self.mic_code = mic_code
+        self.adjust = adjust
+        self.date = date
+        self.include_ohlc = include_ohlc
+        self.previous_close = previous_close
 
     def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
             params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -8538,6 +11006,14 @@ class STOCHFEndpoint(AsMixin, Endpoint):
         if self.mic_code is not None:
             params["mic_code"] = self.mic_code
 
+        if self.adjust is not None:
+            params["adjust"] = self.adjust
+        if self.date is not None:
+            params["date"] = self.date
+        if self.include_ohlc is not None:
+            params["include_ohlc"] = self.include_ohlc
+        if self.previous_close is not None:
+            params["previous_close"] = self.previous_close
         params["format"] = format
         params["apikey"] = self.ctx.apikey
         endpoint = "/stochf"
@@ -8571,11 +11047,17 @@ class STOCHRSIEndpoint(AsMixin, Endpoint):
         order="desc",
         prepost="false",
         mic_code=None,
+        figi=None,
+        isin=None,
+        cusip=None,
     ):
         self.is_indicator = True
         self.meta_name = "stochrsi"
         self.ctx = ctx
         self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
         self.interval = interval
         self.exchange = exchange
         self.country = country
@@ -8599,6 +11081,12 @@ class STOCHRSIEndpoint(AsMixin, Endpoint):
         params = {}
         if self.symbol is not None:
             params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -8664,11 +11152,21 @@ class SuperTrendEndpoint(AsMixin, Endpoint):
         order="desc",
         prepost="false",
         mic_code=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        adjust=None,
+        date=None,
+        include_ohlc=None,
+        previous_close=None,
     ):
         self.is_indicator = True
         self.meta_name = "supertrend"
         self.ctx = ctx
         self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
         self.interval = interval
         self.exchange = exchange
         self.country = country
@@ -8683,12 +11181,22 @@ class SuperTrendEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
         self.mic_code = mic_code
+        self.adjust = adjust
+        self.date = date
+        self.include_ohlc = include_ohlc
+        self.previous_close = previous_close
 
     def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
             params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -8718,6 +11226,14 @@ class SuperTrendEndpoint(AsMixin, Endpoint):
         if self.mic_code is not None:
             params["mic_code"] = self.mic_code
 
+        if self.adjust is not None:
+            params["adjust"] = self.adjust
+        if self.date is not None:
+            params["date"] = self.date
+        if self.include_ohlc is not None:
+            params["include_ohlc"] = self.include_ohlc
+        if self.previous_close is not None:
+            params["previous_close"] = self.previous_close
         params["format"] = format
         params["apikey"] = self.ctx.apikey
         endpoint = "/supertrend"
@@ -8749,11 +11265,21 @@ class T3MAEndpoint(AsMixin, Endpoint):
         order="desc",
         prepost="false",
         mic_code=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        adjust=None,
+        date=None,
+        include_ohlc=None,
+        previous_close=None,
     ):
         self.is_indicator = True
         self.meta_name = "t3ma"
         self.ctx = ctx
         self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
         self.interval = interval
         self.exchange = exchange
         self.country = country
@@ -8769,12 +11295,22 @@ class T3MAEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
         self.mic_code = mic_code
+        self.adjust = adjust
+        self.date = date
+        self.include_ohlc = include_ohlc
+        self.previous_close = previous_close
 
     def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
             params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -8806,6 +11342,14 @@ class T3MAEndpoint(AsMixin, Endpoint):
         if self.mic_code is not None:
             params["mic_code"] = self.mic_code
 
+        if self.adjust is not None:
+            params["adjust"] = self.adjust
+        if self.date is not None:
+            params["date"] = self.date
+        if self.include_ohlc is not None:
+            params["include_ohlc"] = self.include_ohlc
+        if self.previous_close is not None:
+            params["previous_close"] = self.previous_close
         params["format"] = format
         params["apikey"] = self.ctx.apikey
         endpoint = "/t3ma"
@@ -8836,11 +11380,21 @@ class TEMAEndpoint(AsMixin, Endpoint):
         order="desc",
         prepost="false",
         mic_code=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        adjust=None,
+        date=None,
+        include_ohlc=None,
+        previous_close=None,
     ):
         self.is_indicator = True
         self.meta_name = "tema"
         self.ctx = ctx
         self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
         self.interval = interval
         self.exchange = exchange
         self.country = country
@@ -8855,12 +11409,22 @@ class TEMAEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
         self.mic_code = mic_code
+        self.adjust = adjust
+        self.date = date
+        self.include_ohlc = include_ohlc
+        self.previous_close = previous_close
 
     def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
             params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -8890,6 +11454,14 @@ class TEMAEndpoint(AsMixin, Endpoint):
         if self.mic_code is not None:
             params["mic_code"] = self.mic_code
 
+        if self.adjust is not None:
+            params["adjust"] = self.adjust
+        if self.date is not None:
+            params["date"] = self.date
+        if self.include_ohlc is not None:
+            params["include_ohlc"] = self.include_ohlc
+        if self.previous_close is not None:
+            params["previous_close"] = self.previous_close
         params["format"] = format
         params["apikey"] = self.ctx.apikey
         endpoint = "/tema"
@@ -8918,11 +11490,21 @@ class TRANGEEndpoint(AsMixin, Endpoint):
         order="desc",
         prepost="false",
         mic_code=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        adjust=None,
+        date=None,
+        include_ohlc=None,
+        previous_close=None,
     ):
         self.is_indicator = True
         self.meta_name = "trange"
         self.ctx = ctx
         self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
         self.interval = interval
         self.exchange = exchange
         self.country = country
@@ -8935,12 +11517,22 @@ class TRANGEEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
         self.mic_code = mic_code
+        self.adjust = adjust
+        self.date = date
+        self.include_ohlc = include_ohlc
+        self.previous_close = previous_close
 
     def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
             params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -8966,6 +11558,14 @@ class TRANGEEndpoint(AsMixin, Endpoint):
         if self.mic_code is not None:
             params["mic_code"] = self.mic_code
 
+        if self.adjust is not None:
+            params["adjust"] = self.adjust
+        if self.date is not None:
+            params["date"] = self.date
+        if self.include_ohlc is not None:
+            params["include_ohlc"] = self.include_ohlc
+        if self.previous_close is not None:
+            params["previous_close"] = self.previous_close
         params["format"] = format
         params["apikey"] = self.ctx.apikey
         endpoint = "/trange"
@@ -8996,11 +11596,21 @@ class TRIMAEndpoint(AsMixin, Endpoint):
         order="desc",
         prepost="false",
         mic_code=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        adjust=None,
+        date=None,
+        include_ohlc=None,
+        previous_close=None,
     ):
         self.is_indicator = True
         self.meta_name = "trima"
         self.ctx = ctx
         self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
         self.interval = interval
         self.exchange = exchange
         self.country = country
@@ -9015,12 +11625,22 @@ class TRIMAEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
         self.mic_code = mic_code
+        self.adjust = adjust
+        self.date = date
+        self.include_ohlc = include_ohlc
+        self.previous_close = previous_close
 
     def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
             params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -9050,6 +11670,14 @@ class TRIMAEndpoint(AsMixin, Endpoint):
         if self.mic_code is not None:
             params["mic_code"] = self.mic_code
 
+        if self.adjust is not None:
+            params["adjust"] = self.adjust
+        if self.date is not None:
+            params["date"] = self.date
+        if self.include_ohlc is not None:
+            params["include_ohlc"] = self.include_ohlc
+        if self.previous_close is not None:
+            params["previous_close"] = self.previous_close
         params["format"] = format
         params["apikey"] = self.ctx.apikey
         endpoint = "/trima"
@@ -9080,11 +11708,21 @@ class TSFEndpoint(AsMixin, Endpoint):
         order="desc",
         prepost="false",
         mic_code=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        adjust=None,
+        date=None,
+        include_ohlc=None,
+        previous_close=None,
     ):
         self.is_indicator = True
         self.meta_name = "tsf"
         self.ctx = ctx
         self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
         self.interval = interval
         self.exchange = exchange
         self.country = country
@@ -9099,12 +11737,22 @@ class TSFEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
         self.mic_code = mic_code
+        self.adjust = adjust
+        self.date = date
+        self.include_ohlc = include_ohlc
+        self.previous_close = previous_close
 
     def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
             params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -9134,6 +11782,14 @@ class TSFEndpoint(AsMixin, Endpoint):
         if self.mic_code is not None:
             params["mic_code"] = self.mic_code
 
+        if self.adjust is not None:
+            params["adjust"] = self.adjust
+        if self.date is not None:
+            params["date"] = self.date
+        if self.include_ohlc is not None:
+            params["include_ohlc"] = self.include_ohlc
+        if self.previous_close is not None:
+            params["previous_close"] = self.previous_close
         params["format"] = format
         params["apikey"] = self.ctx.apikey
         endpoint = "/tsf"
@@ -9162,11 +11818,21 @@ class TYPPRICEEndpoint(AsMixin, Endpoint):
         order="desc",
         prepost="false",
         mic_code=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        adjust=None,
+        date=None,
+        include_ohlc=None,
+        previous_close=None,
     ):
         self.is_indicator = True
         self.meta_name = "typprice"
         self.ctx = ctx
         self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
         self.interval = interval
         self.exchange = exchange
         self.country = country
@@ -9179,12 +11845,22 @@ class TYPPRICEEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
         self.mic_code = mic_code
+        self.adjust = adjust
+        self.date = date
+        self.include_ohlc = include_ohlc
+        self.previous_close = previous_close
 
     def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
             params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -9210,6 +11886,14 @@ class TYPPRICEEndpoint(AsMixin, Endpoint):
         if self.mic_code is not None:
             params["mic_code"] = self.mic_code
 
+        if self.adjust is not None:
+            params["adjust"] = self.adjust
+        if self.date is not None:
+            params["date"] = self.date
+        if self.include_ohlc is not None:
+            params["include_ohlc"] = self.include_ohlc
+        if self.previous_close is not None:
+            params["previous_close"] = self.previous_close
         params["format"] = format
         params["apikey"] = self.ctx.apikey
         endpoint = "/typprice"
@@ -9241,11 +11925,21 @@ class ULTOSCEndpoint(AsMixin, Endpoint):
         order="desc",
         prepost="false",
         mic_code=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        adjust=None,
+        date=None,
+        include_ohlc=None,
+        previous_close=None,
     ):
         self.is_indicator = True
         self.meta_name = "ultosc"
         self.ctx = ctx
         self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
         self.interval = interval
         self.exchange = exchange
         self.country = country
@@ -9261,12 +11955,22 @@ class ULTOSCEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
         self.mic_code = mic_code
+        self.adjust = adjust
+        self.date = date
+        self.include_ohlc = include_ohlc
+        self.previous_close = previous_close
 
     def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
             params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -9298,6 +12002,14 @@ class ULTOSCEndpoint(AsMixin, Endpoint):
         if self.mic_code is not None:
             params["mic_code"] = self.mic_code
 
+        if self.adjust is not None:
+            params["adjust"] = self.adjust
+        if self.date is not None:
+            params["date"] = self.date
+        if self.include_ohlc is not None:
+            params["include_ohlc"] = self.include_ohlc
+        if self.previous_close is not None:
+            params["previous_close"] = self.previous_close
         params["format"] = format
         params["apikey"] = self.ctx.apikey
         endpoint = "/ultosc"
@@ -9328,11 +12040,21 @@ class VAREndpoint(AsMixin, Endpoint):
         order="desc",
         prepost="false",
         mic_code=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        adjust=None,
+        date=None,
+        include_ohlc=None,
+        previous_close=None,
     ):
         self.is_indicator = True
         self.meta_name = "var"
         self.ctx = ctx
         self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
         self.interval = interval
         self.exchange = exchange
         self.country = country
@@ -9347,12 +12069,22 @@ class VAREndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
         self.mic_code = mic_code
+        self.adjust = adjust
+        self.date = date
+        self.include_ohlc = include_ohlc
+        self.previous_close = previous_close
 
     def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
             params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -9382,6 +12114,14 @@ class VAREndpoint(AsMixin, Endpoint):
         if self.mic_code is not None:
             params["mic_code"] = self.mic_code
 
+        if self.adjust is not None:
+            params["adjust"] = self.adjust
+        if self.date is not None:
+            params["date"] = self.date
+        if self.include_ohlc is not None:
+            params["include_ohlc"] = self.include_ohlc
+        if self.previous_close is not None:
+            params["previous_close"] = self.previous_close
         params["format"] = format
         params["apikey"] = self.ctx.apikey
         endpoint = "/var"
@@ -9410,11 +12150,23 @@ class VWAPEndpoint(AsMixin, Endpoint):
         order="desc",
         prepost="false",
         mic_code=None,
+        sd=None,
+        sd_time_period=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        adjust=None,
+        date=None,
+        include_ohlc=None,
+        previous_close=None,
     ):
         self.is_indicator = True
         self.meta_name = "vwap"
         self.ctx = ctx
         self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
         self.interval = interval
         self.exchange = exchange
         self.country = country
@@ -9427,12 +12179,24 @@ class VWAPEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
         self.mic_code = mic_code
+        self.sd = sd
+        self.sd_time_period = sd_time_period
+        self.adjust = adjust
+        self.date = date
+        self.include_ohlc = include_ohlc
+        self.previous_close = previous_close
 
     def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
             params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -9457,7 +12221,19 @@ class VWAPEndpoint(AsMixin, Endpoint):
             params["prepost"] = self.prepost
         if self.mic_code is not None:
             params["mic_code"] = self.mic_code
+        if self.sd is not None:
+            params["sd"] = self.sd
+        if self.sd_time_period is not None:
+            params["sd_time_period"] = self.sd_time_period
 
+        if self.adjust is not None:
+            params["adjust"] = self.adjust
+        if self.date is not None:
+            params["date"] = self.date
+        if self.include_ohlc is not None:
+            params["include_ohlc"] = self.include_ohlc
+        if self.previous_close is not None:
+            params["previous_close"] = self.previous_close
         params["format"] = format
         params["apikey"] = self.ctx.apikey
         endpoint = "/vwap"
@@ -9486,11 +12262,21 @@ class WCLPRICEEndpoint(AsMixin, Endpoint):
         order="desc",
         prepost="false",
         mic_code=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        adjust=None,
+        date=None,
+        include_ohlc=None,
+        previous_close=None,
     ):
         self.is_indicator = True
         self.meta_name = "wclprice"
         self.ctx = ctx
         self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
         self.interval = interval
         self.exchange = exchange
         self.country = country
@@ -9503,12 +12289,22 @@ class WCLPRICEEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
         self.mic_code = mic_code
+        self.adjust = adjust
+        self.date = date
+        self.include_ohlc = include_ohlc
+        self.previous_close = previous_close
 
     def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
             params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -9534,6 +12330,14 @@ class WCLPRICEEndpoint(AsMixin, Endpoint):
         if self.mic_code is not None:
             params["mic_code"] = self.mic_code
 
+        if self.adjust is not None:
+            params["adjust"] = self.adjust
+        if self.date is not None:
+            params["date"] = self.date
+        if self.include_ohlc is not None:
+            params["include_ohlc"] = self.include_ohlc
+        if self.previous_close is not None:
+            params["previous_close"] = self.previous_close
         params["format"] = format
         params["apikey"] = self.ctx.apikey
         endpoint = "/wclprice"
@@ -9563,11 +12367,21 @@ class WILLREndpoint(AsMixin, Endpoint):
         order="desc",
         prepost="false",
         mic_code=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        adjust=None,
+        date=None,
+        include_ohlc=None,
+        previous_close=None,
     ):
         self.is_indicator = True
         self.meta_name = "willr"
         self.ctx = ctx
         self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
         self.interval = interval
         self.exchange = exchange
         self.country = country
@@ -9581,12 +12395,22 @@ class WILLREndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
         self.mic_code = mic_code
+        self.adjust = adjust
+        self.date = date
+        self.include_ohlc = include_ohlc
+        self.previous_close = previous_close
 
     def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
             params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -9614,6 +12438,14 @@ class WILLREndpoint(AsMixin, Endpoint):
         if self.mic_code is not None:
             params["mic_code"] = self.mic_code
 
+        if self.adjust is not None:
+            params["adjust"] = self.adjust
+        if self.date is not None:
+            params["date"] = self.date
+        if self.include_ohlc is not None:
+            params["include_ohlc"] = self.include_ohlc
+        if self.previous_close is not None:
+            params["previous_close"] = self.previous_close
         params["format"] = format
         params["apikey"] = self.ctx.apikey
         endpoint = "/willr"
@@ -9644,11 +12476,21 @@ class WMAEndpoint(AsMixin, Endpoint):
         order="desc",
         prepost="false",
         mic_code=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        adjust=None,
+        date=None,
+        include_ohlc=None,
+        previous_close=None,
     ):
         self.is_indicator = True
         self.meta_name = "wma"
         self.ctx = ctx
         self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
         self.interval = interval
         self.exchange = exchange
         self.country = country
@@ -9663,12 +12505,22 @@ class WMAEndpoint(AsMixin, Endpoint):
         self.order = order
         self.prepost = prepost
         self.mic_code = mic_code
+        self.adjust = adjust
+        self.date = date
+        self.include_ohlc = include_ohlc
+        self.previous_close = previous_close
 
     def execute(self, format="JSON", debug=False):
 
         params = {}
         if self.symbol is not None:
             params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
         if self.interval is not None:
             params["interval"] = self.interval
         if self.exchange is not None:
@@ -9698,9 +12550,3364 @@ class WMAEndpoint(AsMixin, Endpoint):
         if self.mic_code is not None:
             params["mic_code"] = self.mic_code
 
+        if self.adjust is not None:
+            params["adjust"] = self.adjust
+        if self.date is not None:
+            params["date"] = self.date
+        if self.include_ohlc is not None:
+            params["include_ohlc"] = self.include_ohlc
+        if self.previous_close is not None:
+            params["previous_close"] = self.previous_close
         params["format"] = format
         params["apikey"] = self.ctx.apikey
         endpoint = "/wma"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
+
+
+class ExchangeScheduleEndpoint(AsMixin, Endpoint):
+    _name = "exchange_schedule"
+
+    def __init__(
+        self,
+        ctx,
+        mic_name=None,
+        mic_code=None,
+        country=None,
+        date=None,
+    ):
+        self.ctx = ctx
+        self.mic_name = mic_name
+        self.mic_code = mic_code
+        self.country = country
+        self.date = date
+
+    def execute(self, format="JSON", debug=False):
+        params = {}
+        if self.mic_name is not None:
+            params["mic_name"] = self.mic_name
+        if self.mic_code is not None:
+            params["mic_code"] = self.mic_code
+        if self.country is not None:
+            params["country"] = self.country
+        if self.date is not None:
+            params["date"] = self.date
+
+        params["format"] = format
+        params["apikey"] = self.ctx.apikey
+        endpoint = "/exchange_schedule"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
+
+
+class CountriesEndpoint(AsMixin, Endpoint):
+    _name = "countries"
+
+    def __init__(self, ctx):
+        self.ctx = ctx
+
+    def execute(self, format="JSON", debug=False):
+        params = {}
+
+        params["format"] = format
+        params["apikey"] = self.ctx.apikey
+        endpoint = "/countries"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
+
+
+class CrossListingsEndpoint(AsMixin, Endpoint):
+    _name = "cross_listings"
+
+    def __init__(
+        self,
+        ctx,
+        symbol,
+        exchange=None,
+        mic_code=None,
+        country=None,
+    ):
+        self.ctx = ctx
+        self.symbol = symbol
+        self.exchange = exchange
+        self.mic_code = mic_code
+        self.country = country
+
+    def execute(self, format="JSON", debug=False):
+        params = {}
+        if self.symbol is not None:
+            params["symbol"] = self.symbol
+        if self.exchange is not None:
+            params["exchange"] = self.exchange
+        if self.mic_code is not None:
+            params["mic_code"] = self.mic_code
+        if self.country is not None:
+            params["country"] = self.country
+
+        params["format"] = format
+        params["apikey"] = self.ctx.apikey
+        endpoint = "/cross_listings"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
+
+
+class IntervalsEndpoint(AsMixin, Endpoint):
+    _name = "intervals"
+
+    def __init__(self, ctx):
+        self.ctx = ctx
+
+    def execute(self, format="JSON", debug=False):
+        params = {}
+
+        params["format"] = format
+        params["apikey"] = self.ctx.apikey
+        endpoint = "/intervals"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
+
+
+class InstrumentTypeEndpoint(AsMixin, Endpoint):
+    _name = "instrument_type"
+
+    def __init__(self, ctx):
+        self.ctx = ctx
+
+    def execute(self, format="JSON", debug=False):
+        params = {}
+
+        params["format"] = format
+        params["apikey"] = self.ctx.apikey
+        endpoint = "/instrument_type"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
+
+
+class TimeSeriesCrossEndpoint(AsMixin, Endpoint):
+    _name = "time_series_cross"
+
+    def __init__(
+        self,
+        ctx,
+        base,
+        quote,
+        interval,
+        base_type=None,
+        base_exchange=None,
+        base_mic_code=None,
+        quote_type=None,
+        quote_exchange=None,
+        quote_mic_code=None,
+        outputsize=None,
+        delimiter=None,
+        prepost=None,
+        start_date=None,
+        end_date=None,
+        adjust=None,
+        dp=None,
+        timezone=None,
+    ):
+        self.ctx = ctx
+        self.base = base
+        self.quote = quote
+        self.interval = interval
+        self.base_type = base_type
+        self.base_exchange = base_exchange
+        self.base_mic_code = base_mic_code
+        self.quote_type = quote_type
+        self.quote_exchange = quote_exchange
+        self.quote_mic_code = quote_mic_code
+        self.outputsize = outputsize
+        self.delimiter = delimiter
+        self.prepost = prepost
+        self.start_date = start_date
+        self.end_date = end_date
+        self.adjust = adjust
+        self.dp = dp
+        self.timezone = timezone
+
+    def execute(self, format="JSON", debug=False):
+        params = {}
+        if self.base is not None:
+            params["base"] = self.base
+        if self.quote is not None:
+            params["quote"] = self.quote
+        if self.interval is not None:
+            params["interval"] = self.interval
+        if self.base_type is not None:
+            params["base_type"] = self.base_type
+        if self.base_exchange is not None:
+            params["base_exchange"] = self.base_exchange
+        if self.base_mic_code is not None:
+            params["base_mic_code"] = self.base_mic_code
+        if self.quote_type is not None:
+            params["quote_type"] = self.quote_type
+        if self.quote_exchange is not None:
+            params["quote_exchange"] = self.quote_exchange
+        if self.quote_mic_code is not None:
+            params["quote_mic_code"] = self.quote_mic_code
+        if self.outputsize is not None:
+            params["outputsize"] = self.outputsize
+        if self.delimiter is not None:
+            params["delimiter"] = self.delimiter
+        if self.prepost is not None:
+            params["prepost"] = self.prepost
+        if self.start_date is not None:
+            params["start_date"] = self.start_date
+        if self.end_date is not None:
+            params["end_date"] = self.end_date
+        if self.adjust is not None:
+            params["adjust"] = self.adjust
+        if self.dp is not None:
+            params["dp"] = self.dp
+        if self.timezone is not None:
+            params["timezone"] = self.timezone
+
+        params["format"] = format
+        params["apikey"] = self.ctx.apikey
+        endpoint = "/time_series/cross"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
+
+
+class MarketMoversEndpoint(AsMixin, Endpoint):
+    _name = "market_movers_market"
+
+    def __init__(
+        self,
+        ctx,
+        market,
+        direction=None,
+        outputsize=None,
+        country=None,
+        price_greater_than=None,
+        dp=None,
+    ):
+        self.ctx = ctx
+        self.market = market
+        self.direction = direction
+        self.outputsize = outputsize
+        self.country = country
+        self.price_greater_than = price_greater_than
+        self.dp = dp
+
+    def execute(self, format="JSON", debug=False):
+        params = {}
+        if self.direction is not None:
+            params["direction"] = self.direction
+        if self.outputsize is not None:
+            params["outputsize"] = self.outputsize
+        if self.country is not None:
+            params["country"] = self.country
+        if self.price_greater_than is not None:
+            params["price_greater_than"] = self.price_greater_than
+        if self.dp is not None:
+            params["dp"] = self.dp
+
+        params["format"] = format
+        params["apikey"] = self.ctx.apikey
+        endpoint = "/market_movers/{}".format(self.market)
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
+
+
+class IncomeStatementConsolidatedEndpoint(AsMixin, Endpoint):
+    _name = "income_statement_consolidated"
+
+    def __init__(
+        self,
+        ctx,
+        symbol=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        exchange=None,
+        mic_code=None,
+        country=None,
+        period=None,
+        start_date=None,
+        end_date=None,
+        outputsize=None,
+    ):
+        self.ctx = ctx
+        self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
+        self.exchange = exchange
+        self.mic_code = mic_code
+        self.country = country
+        self.period = period
+        self.start_date = start_date
+        self.end_date = end_date
+        self.outputsize = outputsize
+
+    def execute(self, format="JSON", debug=False):
+        params = {}
+        if self.symbol is not None:
+            params["symbol"] = self.symbol
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
+        if self.exchange is not None:
+            params["exchange"] = self.exchange
+        if self.mic_code is not None:
+            params["mic_code"] = self.mic_code
+        if self.country is not None:
+            params["country"] = self.country
+        if self.period is not None:
+            params["period"] = self.period
+        if self.start_date is not None:
+            params["start_date"] = self.start_date
+        if self.end_date is not None:
+            params["end_date"] = self.end_date
+        if self.outputsize is not None:
+            params["outputsize"] = self.outputsize
+
+        params["format"] = format
+        params["apikey"] = self.ctx.apikey
+        endpoint = "/income_statement/consolidated"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
+
+
+class BalanceSheetConsolidatedEndpoint(AsMixin, Endpoint):
+    _name = "balance_sheet_consolidated"
+
+    def __init__(
+        self,
+        ctx,
+        symbol=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        exchange=None,
+        mic_code=None,
+        country=None,
+        period=None,
+        start_date=None,
+        end_date=None,
+        outputsize=None,
+    ):
+        self.ctx = ctx
+        self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
+        self.exchange = exchange
+        self.mic_code = mic_code
+        self.country = country
+        self.period = period
+        self.start_date = start_date
+        self.end_date = end_date
+        self.outputsize = outputsize
+
+    def execute(self, format="JSON", debug=False):
+        params = {}
+        if self.symbol is not None:
+            params["symbol"] = self.symbol
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
+        if self.exchange is not None:
+            params["exchange"] = self.exchange
+        if self.mic_code is not None:
+            params["mic_code"] = self.mic_code
+        if self.country is not None:
+            params["country"] = self.country
+        if self.period is not None:
+            params["period"] = self.period
+        if self.start_date is not None:
+            params["start_date"] = self.start_date
+        if self.end_date is not None:
+            params["end_date"] = self.end_date
+        if self.outputsize is not None:
+            params["outputsize"] = self.outputsize
+
+        params["format"] = format
+        params["apikey"] = self.ctx.apikey
+        endpoint = "/balance_sheet/consolidated"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
+
+
+class CashFlowConsolidatedEndpoint(AsMixin, Endpoint):
+    _name = "cash_flow_consolidated"
+
+    def __init__(
+        self,
+        ctx,
+        symbol=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        exchange=None,
+        mic_code=None,
+        country=None,
+        period=None,
+        start_date=None,
+        end_date=None,
+        outputsize=None,
+    ):
+        self.ctx = ctx
+        self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
+        self.exchange = exchange
+        self.mic_code = mic_code
+        self.country = country
+        self.period = period
+        self.start_date = start_date
+        self.end_date = end_date
+        self.outputsize = outputsize
+
+    def execute(self, format="JSON", debug=False):
+        params = {}
+        if self.symbol is not None:
+            params["symbol"] = self.symbol
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
+        if self.exchange is not None:
+            params["exchange"] = self.exchange
+        if self.mic_code is not None:
+            params["mic_code"] = self.mic_code
+        if self.country is not None:
+            params["country"] = self.country
+        if self.period is not None:
+            params["period"] = self.period
+        if self.start_date is not None:
+            params["start_date"] = self.start_date
+        if self.end_date is not None:
+            params["end_date"] = self.end_date
+        if self.outputsize is not None:
+            params["outputsize"] = self.outputsize
+
+        params["format"] = format
+        params["apikey"] = self.ctx.apikey
+        endpoint = "/cash_flow/consolidated"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
+
+
+class MarketCapEndpoint(AsMixin, Endpoint):
+    _name = "market_cap"
+
+    def __init__(
+        self,
+        ctx,
+        symbol=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        exchange=None,
+        mic_code=None,
+        country=None,
+        start_date=None,
+        end_date=None,
+        page=None,
+        outputsize=None,
+    ):
+        self.ctx = ctx
+        self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
+        self.exchange = exchange
+        self.mic_code = mic_code
+        self.country = country
+        self.start_date = start_date
+        self.end_date = end_date
+        self.page = page
+        self.outputsize = outputsize
+
+    def execute(self, format="JSON", debug=False):
+        params = {}
+        if self.symbol is not None:
+            params["symbol"] = self.symbol
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
+        if self.exchange is not None:
+            params["exchange"] = self.exchange
+        if self.mic_code is not None:
+            params["mic_code"] = self.mic_code
+        if self.country is not None:
+            params["country"] = self.country
+        if self.start_date is not None:
+            params["start_date"] = self.start_date
+        if self.end_date is not None:
+            params["end_date"] = self.end_date
+        if self.page is not None:
+            params["page"] = self.page
+        if self.outputsize is not None:
+            params["outputsize"] = self.outputsize
+
+        params["format"] = format
+        params["apikey"] = self.ctx.apikey
+        endpoint = "/market_cap"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
+
+
+class PressReleasesEndpoint(AsMixin, Endpoint):
+    _name = "press_releases"
+
+    def __init__(
+        self,
+        ctx,
+        symbol=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        exchange=None,
+        mic_code=None,
+        start_date=None,
+        end_date=None,
+        timezone=None,
+        language=None,
+        outputsize=None,
+    ):
+        self.ctx = ctx
+        self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
+        self.exchange = exchange
+        self.mic_code = mic_code
+        self.start_date = start_date
+        self.end_date = end_date
+        self.timezone = timezone
+        self.language = language
+        self.outputsize = outputsize
+
+    def execute(self, format="JSON", debug=False):
+        params = {}
+        if self.symbol is not None:
+            params["symbol"] = self.symbol
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
+        if self.exchange is not None:
+            params["exchange"] = self.exchange
+        if self.mic_code is not None:
+            params["mic_code"] = self.mic_code
+        if self.start_date is not None:
+            params["start_date"] = self.start_date
+        if self.end_date is not None:
+            params["end_date"] = self.end_date
+        if self.timezone is not None:
+            params["timezone"] = self.timezone
+        if self.language is not None:
+            params["language"] = self.language
+        if self.outputsize is not None:
+            params["outputsize"] = self.outputsize
+
+        params["format"] = format
+        params["apikey"] = self.ctx.apikey
+        endpoint = "/press_releases"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
+
+
+class LastChangeEndpoint(AsMixin, Endpoint):
+    _name = "last_change_endpoint"
+
+    def __init__(
+        self,
+        ctx,
+        endpoint,
+        start_date=None,
+        symbol=None,
+        exchange=None,
+        mic_code=None,
+        country=None,
+        page=None,
+        outputsize=None,
+    ):
+        self.ctx = ctx
+        self.endpoint = endpoint
+        self.start_date = start_date
+        self.symbol = symbol
+        self.exchange = exchange
+        self.mic_code = mic_code
+        self.country = country
+        self.page = page
+        self.outputsize = outputsize
+
+    def execute(self, format="JSON", debug=False):
+        params = {}
+        if self.start_date is not None:
+            params["start_date"] = self.start_date
+        if self.symbol is not None:
+            params["symbol"] = self.symbol
+        if self.exchange is not None:
+            params["exchange"] = self.exchange
+        if self.mic_code is not None:
+            params["mic_code"] = self.mic_code
+        if self.country is not None:
+            params["country"] = self.country
+        if self.page is not None:
+            params["page"] = self.page
+        if self.outputsize is not None:
+            params["outputsize"] = self.outputsize
+
+        params["format"] = format
+        params["apikey"] = self.ctx.apikey
+        endpoint = "/last_change/{}".format(self.endpoint)
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
+
+
+class AnalystRatingsLightEndpoint(AsMixin, Endpoint):
+    _name = "analyst_ratings_light"
+
+    def __init__(
+        self,
+        ctx,
+        symbol=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        exchange=None,
+        rating_change=None,
+        outputsize=None,
+        country=None,
+    ):
+        self.ctx = ctx
+        self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
+        self.exchange = exchange
+        self.rating_change = rating_change
+        self.outputsize = outputsize
+        self.country = country
+
+    def execute(self, format="JSON", debug=False):
+        params = {}
+        if self.symbol is not None:
+            params["symbol"] = self.symbol
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
+        if self.exchange is not None:
+            params["exchange"] = self.exchange
+        if self.rating_change is not None:
+            params["rating_change"] = self.rating_change
+        if self.outputsize is not None:
+            params["outputsize"] = self.outputsize
+        if self.country is not None:
+            params["country"] = self.country
+
+        params["format"] = format
+        params["apikey"] = self.ctx.apikey
+        endpoint = "/analyst_ratings/light"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
+
+
+class AnalystRatingsUSEquitiesEndpoint(AsMixin, Endpoint):
+    _name = "analyst_ratings_us_equities"
+
+    def __init__(
+        self,
+        ctx,
+        symbol=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        exchange=None,
+        rating_change=None,
+        outputsize=None,
+    ):
+        self.ctx = ctx
+        self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
+        self.exchange = exchange
+        self.rating_change = rating_change
+        self.outputsize = outputsize
+
+    def execute(self, format="JSON", debug=False):
+        params = {}
+        if self.symbol is not None:
+            params["symbol"] = self.symbol
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
+        if self.exchange is not None:
+            params["exchange"] = self.exchange
+        if self.rating_change is not None:
+            params["rating_change"] = self.rating_change
+        if self.outputsize is not None:
+            params["outputsize"] = self.outputsize
+
+        params["format"] = format
+        params["apikey"] = self.ctx.apikey
+        endpoint = "/analyst_ratings/us_equities"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
+
+
+class EarningsEstimateEndpoint(AsMixin, Endpoint):
+    _name = "earnings_estimate"
+
+    def __init__(
+        self,
+        ctx,
+        symbol=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        country=None,
+        exchange=None,
+    ):
+        self.ctx = ctx
+        self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
+        self.country = country
+        self.exchange = exchange
+
+    def execute(self, format="JSON", debug=False):
+        params = {}
+        if self.symbol is not None:
+            params["symbol"] = self.symbol
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
+        if self.country is not None:
+            params["country"] = self.country
+        if self.exchange is not None:
+            params["exchange"] = self.exchange
+
+        params["format"] = format
+        params["apikey"] = self.ctx.apikey
+        endpoint = "/earnings_estimate"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
+
+
+class RevenueEstimateEndpoint(AsMixin, Endpoint):
+    _name = "revenue_estimate"
+
+    def __init__(
+        self,
+        ctx,
+        symbol=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        country=None,
+        exchange=None,
+        dp=None,
+    ):
+        self.ctx = ctx
+        self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
+        self.country = country
+        self.exchange = exchange
+        self.dp = dp
+
+    def execute(self, format="JSON", debug=False):
+        params = {}
+        if self.symbol is not None:
+            params["symbol"] = self.symbol
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
+        if self.country is not None:
+            params["country"] = self.country
+        if self.exchange is not None:
+            params["exchange"] = self.exchange
+        if self.dp is not None:
+            params["dp"] = self.dp
+
+        params["format"] = format
+        params["apikey"] = self.ctx.apikey
+        endpoint = "/revenue_estimate"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
+
+
+class EPSTrendEndpoint(AsMixin, Endpoint):
+    _name = "eps_trend"
+
+    def __init__(
+        self,
+        ctx,
+        symbol=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        country=None,
+        exchange=None,
+    ):
+        self.ctx = ctx
+        self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
+        self.country = country
+        self.exchange = exchange
+
+    def execute(self, format="JSON", debug=False):
+        params = {}
+        if self.symbol is not None:
+            params["symbol"] = self.symbol
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
+        if self.country is not None:
+            params["country"] = self.country
+        if self.exchange is not None:
+            params["exchange"] = self.exchange
+
+        params["format"] = format
+        params["apikey"] = self.ctx.apikey
+        endpoint = "/eps_trend"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
+
+
+class EPSRevisionsEndpoint(AsMixin, Endpoint):
+    _name = "eps_revisions"
+
+    def __init__(
+        self,
+        ctx,
+        symbol=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        country=None,
+        exchange=None,
+    ):
+        self.ctx = ctx
+        self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
+        self.country = country
+        self.exchange = exchange
+
+    def execute(self, format="JSON", debug=False):
+        params = {}
+        if self.symbol is not None:
+            params["symbol"] = self.symbol
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
+        if self.country is not None:
+            params["country"] = self.country
+        if self.exchange is not None:
+            params["exchange"] = self.exchange
+
+        params["format"] = format
+        params["apikey"] = self.ctx.apikey
+        endpoint = "/eps_revisions"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
+
+
+class GrowthEstimatesEndpoint(AsMixin, Endpoint):
+    _name = "growth_estimates"
+
+    def __init__(
+        self,
+        ctx,
+        symbol=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        country=None,
+        exchange=None,
+    ):
+        self.ctx = ctx
+        self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
+        self.country = country
+        self.exchange = exchange
+
+    def execute(self, format="JSON", debug=False):
+        params = {}
+        if self.symbol is not None:
+            params["symbol"] = self.symbol
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
+        if self.country is not None:
+            params["country"] = self.country
+        if self.exchange is not None:
+            params["exchange"] = self.exchange
+
+        params["format"] = format
+        params["apikey"] = self.ctx.apikey
+        endpoint = "/growth_estimates"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
+
+
+class PriceTargetEndpoint(AsMixin, Endpoint):
+    _name = "price_target"
+
+    def __init__(
+        self,
+        ctx,
+        symbol=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        country=None,
+        exchange=None,
+    ):
+        self.ctx = ctx
+        self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
+        self.country = country
+        self.exchange = exchange
+
+    def execute(self, format="JSON", debug=False):
+        params = {}
+        if self.symbol is not None:
+            params["symbol"] = self.symbol
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
+        if self.country is not None:
+            params["country"] = self.country
+        if self.exchange is not None:
+            params["exchange"] = self.exchange
+
+        params["format"] = format
+        params["apikey"] = self.ctx.apikey
+        endpoint = "/price_target"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
+
+
+class RecommendationsEndpoint(AsMixin, Endpoint):
+    _name = "recommendations"
+
+    def __init__(
+        self,
+        ctx,
+        symbol=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        country=None,
+        exchange=None,
+    ):
+        self.ctx = ctx
+        self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
+        self.country = country
+        self.exchange = exchange
+
+    def execute(self, format="JSON", debug=False):
+        params = {}
+        if self.symbol is not None:
+            params["symbol"] = self.symbol
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
+        if self.country is not None:
+            params["country"] = self.country
+        if self.exchange is not None:
+            params["exchange"] = self.exchange
+
+        params["format"] = format
+        params["apikey"] = self.ctx.apikey
+        endpoint = "/recommendations"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
+
+
+class DirectHoldersEndpoint(AsMixin, Endpoint):
+    _name = "direct_holders"
+
+    def __init__(
+        self,
+        ctx,
+        symbol=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        exchange=None,
+        mic_code=None,
+        country=None,
+    ):
+        self.ctx = ctx
+        self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
+        self.exchange = exchange
+        self.mic_code = mic_code
+        self.country = country
+
+    def execute(self, format="JSON", debug=False):
+        params = {}
+        if self.symbol is not None:
+            params["symbol"] = self.symbol
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
+        if self.exchange is not None:
+            params["exchange"] = self.exchange
+        if self.mic_code is not None:
+            params["mic_code"] = self.mic_code
+        if self.country is not None:
+            params["country"] = self.country
+
+        params["format"] = format
+        params["apikey"] = self.ctx.apikey
+        endpoint = "/direct_holders"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
+
+
+class EdgarFilingsArchiveEndpoint(AsMixin, Endpoint):
+    _name = "edgar_filings_archive"
+
+    def __init__(
+        self,
+        ctx,
+        symbol=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        exchange=None,
+        mic_code=None,
+        country=None,
+        form_type=None,
+        filled_from=None,
+        filled_to=None,
+        page=None,
+        page_size=None,
+    ):
+        self.ctx = ctx
+        self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
+        self.exchange = exchange
+        self.mic_code = mic_code
+        self.country = country
+        self.form_type = form_type
+        self.filled_from = filled_from
+        self.filled_to = filled_to
+        self.page = page
+        self.page_size = page_size
+
+    def execute(self, format="JSON", debug=False):
+        params = {}
+        if self.symbol is not None:
+            params["symbol"] = self.symbol
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
+        if self.exchange is not None:
+            params["exchange"] = self.exchange
+        if self.mic_code is not None:
+            params["mic_code"] = self.mic_code
+        if self.country is not None:
+            params["country"] = self.country
+        if self.form_type is not None:
+            params["form_type"] = self.form_type
+        if self.filled_from is not None:
+            params["filled_from"] = self.filled_from
+        if self.filled_to is not None:
+            params["filled_to"] = self.filled_to
+        if self.page is not None:
+            params["page"] = self.page
+        if self.page_size is not None:
+            params["page_size"] = self.page_size
+
+        params["format"] = format
+        params["apikey"] = self.ctx.apikey
+        endpoint = "/edgar_filings/archive"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
+
+
+class SanctionsEndpoint(AsMixin, Endpoint):
+    _name = "sanctions_source"
+
+    def __init__(
+        self,
+        ctx,
+        source,
+    ):
+        self.ctx = ctx
+        self.source = source
+
+    def execute(self, format="JSON", debug=False):
+        params = {}
+
+        params["format"] = format
+        params["apikey"] = self.ctx.apikey
+        endpoint = "/sanctions/{}".format(self.source)
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
+
+
+class TaxInfoEndpoint(AsMixin, Endpoint):
+    _name = "tax_info"
+
+    def __init__(
+        self,
+        ctx,
+        symbol=None,
+        isin=None,
+        figi=None,
+        cusip=None,
+        exchange=None,
+        mic_code=None,
+    ):
+        self.ctx = ctx
+        self.symbol = symbol
+        self.isin = isin
+        self.figi = figi
+        self.cusip = cusip
+        self.exchange = exchange
+        self.mic_code = mic_code
+
+    def execute(self, format="JSON", debug=False):
+        params = {}
+        if self.symbol is not None:
+            params["symbol"] = self.symbol
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
+        if self.exchange is not None:
+            params["exchange"] = self.exchange
+        if self.mic_code is not None:
+            params["mic_code"] = self.mic_code
+
+        params["format"] = format
+        params["apikey"] = self.ctx.apikey
+        endpoint = "/tax_info"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
+
+
+class ETFsDetailedListEndpoint(AsMixin, Endpoint):
+    _name = "etfs_list"
+
+    def __init__(
+        self,
+        ctx,
+        symbol=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        cik=None,
+        country=None,
+        fund_family=None,
+        fund_type=None,
+        page=None,
+        outputsize=None,
+    ):
+        self.ctx = ctx
+        self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
+        self.cik = cik
+        self.country = country
+        self.fund_family = fund_family
+        self.fund_type = fund_type
+        self.page = page
+        self.outputsize = outputsize
+
+    def execute(self, format="JSON", debug=False):
+        params = {}
+        if self.symbol is not None:
+            params["symbol"] = self.symbol
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
+        if self.cik is not None:
+            params["cik"] = self.cik
+        if self.country is not None:
+            params["country"] = self.country
+        if self.fund_family is not None:
+            params["fund_family"] = self.fund_family
+        if self.fund_type is not None:
+            params["fund_type"] = self.fund_type
+        if self.page is not None:
+            params["page"] = self.page
+        if self.outputsize is not None:
+            params["outputsize"] = self.outputsize
+
+        params["format"] = format
+        params["apikey"] = self.ctx.apikey
+        endpoint = "/etfs/list"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
+
+
+class ETFsTypeEndpoint(AsMixin, Endpoint):
+    _name = "etfs_type"
+
+    def __init__(
+        self,
+        ctx,
+        country=None,
+        fund_type=None,
+    ):
+        self.ctx = ctx
+        self.country = country
+        self.fund_type = fund_type
+
+    def execute(self, format="JSON", debug=False):
+        params = {}
+        if self.country is not None:
+            params["country"] = self.country
+        if self.fund_type is not None:
+            params["fund_type"] = self.fund_type
+
+        params["format"] = format
+        params["apikey"] = self.ctx.apikey
+        endpoint = "/etfs/type"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
+
+
+class ETFsFamilyEndpoint(AsMixin, Endpoint):
+    _name = "etfs_family"
+
+    def __init__(
+        self,
+        ctx,
+        country=None,
+        fund_family=None,
+    ):
+        self.ctx = ctx
+        self.country = country
+        self.fund_family = fund_family
+
+    def execute(self, format="JSON", debug=False):
+        params = {}
+        if self.country is not None:
+            params["country"] = self.country
+        if self.fund_family is not None:
+            params["fund_family"] = self.fund_family
+
+        params["format"] = format
+        params["apikey"] = self.ctx.apikey
+        endpoint = "/etfs/family"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
+
+
+class ETFsWorldEndpoint(AsMixin, Endpoint):
+    _name = "etfs_world"
+
+    def __init__(
+        self,
+        ctx,
+        symbol=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        country=None,
+        dp=None,
+    ):
+        self.ctx = ctx
+        self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
+        self.country = country
+        self.dp = dp
+
+    def execute(self, format="JSON", debug=False):
+        params = {}
+        if self.symbol is not None:
+            params["symbol"] = self.symbol
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
+        if self.country is not None:
+            params["country"] = self.country
+        if self.dp is not None:
+            params["dp"] = self.dp
+
+        params["format"] = format
+        params["apikey"] = self.ctx.apikey
+        endpoint = "/etfs/world"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
+
+
+class ETFsWorldSummaryEndpoint(AsMixin, Endpoint):
+    _name = "etfs_world_summary"
+
+    def __init__(
+        self,
+        ctx,
+        symbol=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        country=None,
+        dp=None,
+    ):
+        self.ctx = ctx
+        self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
+        self.country = country
+        self.dp = dp
+
+    def execute(self, format="JSON", debug=False):
+        params = {}
+        if self.symbol is not None:
+            params["symbol"] = self.symbol
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
+        if self.country is not None:
+            params["country"] = self.country
+        if self.dp is not None:
+            params["dp"] = self.dp
+
+        params["format"] = format
+        params["apikey"] = self.ctx.apikey
+        endpoint = "/etfs/world/summary"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
+
+
+class ETFsWorldCompositionEndpoint(AsMixin, Endpoint):
+    _name = "etfs_world_composition"
+
+    def __init__(
+        self,
+        ctx,
+        symbol=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        country=None,
+        dp=None,
+    ):
+        self.ctx = ctx
+        self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
+        self.country = country
+        self.dp = dp
+
+    def execute(self, format="JSON", debug=False):
+        params = {}
+        if self.symbol is not None:
+            params["symbol"] = self.symbol
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
+        if self.country is not None:
+            params["country"] = self.country
+        if self.dp is not None:
+            params["dp"] = self.dp
+
+        params["format"] = format
+        params["apikey"] = self.ctx.apikey
+        endpoint = "/etfs/world/composition"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
+
+
+class ETFsWorldPerformanceEndpoint(AsMixin, Endpoint):
+    _name = "etfs_world_performance"
+
+    def __init__(
+        self,
+        ctx,
+        symbol=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        country=None,
+        dp=None,
+    ):
+        self.ctx = ctx
+        self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
+        self.country = country
+        self.dp = dp
+
+    def execute(self, format="JSON", debug=False):
+        params = {}
+        if self.symbol is not None:
+            params["symbol"] = self.symbol
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
+        if self.country is not None:
+            params["country"] = self.country
+        if self.dp is not None:
+            params["dp"] = self.dp
+
+        params["format"] = format
+        params["apikey"] = self.ctx.apikey
+        endpoint = "/etfs/world/performance"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
+
+
+class ETFsWorldRiskEndpoint(AsMixin, Endpoint):
+    _name = "etfs_world_risk"
+
+    def __init__(
+        self,
+        ctx,
+        symbol=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        country=None,
+        dp=None,
+    ):
+        self.ctx = ctx
+        self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
+        self.country = country
+        self.dp = dp
+
+    def execute(self, format="JSON", debug=False):
+        params = {}
+        if self.symbol is not None:
+            params["symbol"] = self.symbol
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
+        if self.country is not None:
+            params["country"] = self.country
+        if self.dp is not None:
+            params["dp"] = self.dp
+
+        params["format"] = format
+        params["apikey"] = self.ctx.apikey
+        endpoint = "/etfs/world/risk"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
+
+
+class MutualFundsListEndpoint(AsMixin, Endpoint):
+    _name = "mutual_funds_list"
+
+    def __init__(
+        self,
+        ctx,
+        symbol=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        cik=None,
+        country=None,
+        fund_family=None,
+        fund_type=None,
+        performance_rating=None,
+        risk_rating=None,
+        page=None,
+        outputsize=None,
+    ):
+        self.ctx = ctx
+        self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
+        self.cik = cik
+        self.country = country
+        self.fund_family = fund_family
+        self.fund_type = fund_type
+        self.performance_rating = performance_rating
+        self.risk_rating = risk_rating
+        self.page = page
+        self.outputsize = outputsize
+
+    def execute(self, format="JSON", debug=False):
+        params = {}
+        if self.symbol is not None:
+            params["symbol"] = self.symbol
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
+        if self.cik is not None:
+            params["cik"] = self.cik
+        if self.country is not None:
+            params["country"] = self.country
+        if self.fund_family is not None:
+            params["fund_family"] = self.fund_family
+        if self.fund_type is not None:
+            params["fund_type"] = self.fund_type
+        if self.performance_rating is not None:
+            params["performance_rating"] = self.performance_rating
+        if self.risk_rating is not None:
+            params["risk_rating"] = self.risk_rating
+        if self.page is not None:
+            params["page"] = self.page
+        if self.outputsize is not None:
+            params["outputsize"] = self.outputsize
+
+        params["format"] = format
+        params["apikey"] = self.ctx.apikey
+        endpoint = "/mutual_funds/list"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
+
+
+class MutualFundsTypeEndpoint(AsMixin, Endpoint):
+    _name = "mutual_funds_type"
+
+    def __init__(
+        self,
+        ctx,
+        fund_type=None,
+        country=None,
+    ):
+        self.ctx = ctx
+        self.fund_type = fund_type
+        self.country = country
+
+    def execute(self, format="JSON", debug=False):
+        params = {}
+        if self.fund_type is not None:
+            params["fund_type"] = self.fund_type
+        if self.country is not None:
+            params["country"] = self.country
+
+        params["format"] = format
+        params["apikey"] = self.ctx.apikey
+        endpoint = "/mutual_funds/type"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
+
+
+class MutualFundsFamilyEndpoint(AsMixin, Endpoint):
+    _name = "mutual_funds_family"
+
+    def __init__(
+        self,
+        ctx,
+        fund_family=None,
+        country=None,
+    ):
+        self.ctx = ctx
+        self.fund_family = fund_family
+        self.country = country
+
+    def execute(self, format="JSON", debug=False):
+        params = {}
+        if self.fund_family is not None:
+            params["fund_family"] = self.fund_family
+        if self.country is not None:
+            params["country"] = self.country
+
+        params["format"] = format
+        params["apikey"] = self.ctx.apikey
+        endpoint = "/mutual_funds/family"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
+
+
+class MutualFundsWorldEndpoint(AsMixin, Endpoint):
+    _name = "mutual_funds_world"
+
+    def __init__(
+        self,
+        ctx,
+        symbol=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        country=None,
+        dp=None,
+    ):
+        self.ctx = ctx
+        self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
+        self.country = country
+        self.dp = dp
+
+    def execute(self, format="JSON", debug=False):
+        params = {}
+        if self.symbol is not None:
+            params["symbol"] = self.symbol
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
+        if self.country is not None:
+            params["country"] = self.country
+        if self.dp is not None:
+            params["dp"] = self.dp
+
+        params["format"] = format
+        params["apikey"] = self.ctx.apikey
+        endpoint = "/mutual_funds/world"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
+
+
+class MutualFundsWorldSummaryEndpoint(AsMixin, Endpoint):
+    _name = "mutual_funds_world_summary"
+
+    def __init__(
+        self,
+        ctx,
+        symbol=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        country=None,
+        dp=None,
+    ):
+        self.ctx = ctx
+        self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
+        self.country = country
+        self.dp = dp
+
+    def execute(self, format="JSON", debug=False):
+        params = {}
+        if self.symbol is not None:
+            params["symbol"] = self.symbol
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
+        if self.country is not None:
+            params["country"] = self.country
+        if self.dp is not None:
+            params["dp"] = self.dp
+
+        params["format"] = format
+        params["apikey"] = self.ctx.apikey
+        endpoint = "/mutual_funds/world/summary"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
+
+
+class MutualFundsWorldCompositionEndpoint(AsMixin, Endpoint):
+    _name = "mutual_funds_world_composition"
+
+    def __init__(
+        self,
+        ctx,
+        symbol=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        country=None,
+        dp=None,
+    ):
+        self.ctx = ctx
+        self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
+        self.country = country
+        self.dp = dp
+
+    def execute(self, format="JSON", debug=False):
+        params = {}
+        if self.symbol is not None:
+            params["symbol"] = self.symbol
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
+        if self.country is not None:
+            params["country"] = self.country
+        if self.dp is not None:
+            params["dp"] = self.dp
+
+        params["format"] = format
+        params["apikey"] = self.ctx.apikey
+        endpoint = "/mutual_funds/world/composition"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
+
+
+class MutualFundsWorldPurchaseInfoEndpoint(AsMixin, Endpoint):
+    _name = "mutual_funds_world_purchase_info"
+
+    def __init__(
+        self,
+        ctx,
+        symbol=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        country=None,
+        dp=None,
+    ):
+        self.ctx = ctx
+        self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
+        self.country = country
+        self.dp = dp
+
+    def execute(self, format="JSON", debug=False):
+        params = {}
+        if self.symbol is not None:
+            params["symbol"] = self.symbol
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
+        if self.country is not None:
+            params["country"] = self.country
+        if self.dp is not None:
+            params["dp"] = self.dp
+
+        params["format"] = format
+        params["apikey"] = self.ctx.apikey
+        endpoint = "/mutual_funds/world/purchase_info"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
+
+
+class MutualFundsWorldPerformanceEndpoint(AsMixin, Endpoint):
+    _name = "mutual_funds_world_performance"
+
+    def __init__(
+        self,
+        ctx,
+        symbol=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        country=None,
+        dp=None,
+    ):
+        self.ctx = ctx
+        self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
+        self.country = country
+        self.dp = dp
+
+    def execute(self, format="JSON", debug=False):
+        params = {}
+        if self.symbol is not None:
+            params["symbol"] = self.symbol
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
+        if self.country is not None:
+            params["country"] = self.country
+        if self.dp is not None:
+            params["dp"] = self.dp
+
+        params["format"] = format
+        params["apikey"] = self.ctx.apikey
+        endpoint = "/mutual_funds/world/performance"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
+
+
+class MutualFundsWorldRiskEndpoint(AsMixin, Endpoint):
+    _name = "mutual_funds_world_risk"
+
+    def __init__(
+        self,
+        ctx,
+        symbol=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        country=None,
+        dp=None,
+    ):
+        self.ctx = ctx
+        self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
+        self.country = country
+        self.dp = dp
+
+    def execute(self, format="JSON", debug=False):
+        params = {}
+        if self.symbol is not None:
+            params["symbol"] = self.symbol
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
+        if self.country is not None:
+            params["country"] = self.country
+        if self.dp is not None:
+            params["dp"] = self.dp
+
+        params["format"] = format
+        params["apikey"] = self.ctx.apikey
+        endpoint = "/mutual_funds/world/risk"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
+
+
+class MutualFundsWorldRatingsEndpoint(AsMixin, Endpoint):
+    _name = "mutual_funds_world_ratings"
+
+    def __init__(
+        self,
+        ctx,
+        symbol=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        country=None,
+        dp=None,
+    ):
+        self.ctx = ctx
+        self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
+        self.country = country
+        self.dp = dp
+
+    def execute(self, format="JSON", debug=False):
+        params = {}
+        if self.symbol is not None:
+            params["symbol"] = self.symbol
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
+        if self.country is not None:
+            params["country"] = self.country
+        if self.dp is not None:
+            params["dp"] = self.dp
+
+        params["format"] = format
+        params["apikey"] = self.ctx.apikey
+        endpoint = "/mutual_funds/world/ratings"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
+
+
+class MutualFundsWorldSustainabilityEndpoint(AsMixin, Endpoint):
+    _name = "mutual_funds_world_sustainability"
+
+    def __init__(
+        self,
+        ctx,
+        symbol=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        country=None,
+        dp=None,
+    ):
+        self.ctx = ctx
+        self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
+        self.country = country
+        self.dp = dp
+
+    def execute(self, format="JSON", debug=False):
+        params = {}
+        if self.symbol is not None:
+            params["symbol"] = self.symbol
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
+        if self.country is not None:
+            params["country"] = self.country
+        if self.dp is not None:
+            params["dp"] = self.dp
+
+        params["format"] = format
+        params["apikey"] = self.ctx.apikey
+        endpoint = "/mutual_funds/world/sustainability"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
+
+
+
+class ADDEndpoint(AsMixin, Endpoint):
+    _name = "add"
+
+    def __init__(
+        self,
+        ctx,
+        symbol,
+        interval,
+        exchange=None,
+        country=None,
+        type=None,
+        series_type_1="open",
+        series_type_2="close",
+        outputsize=30,
+        start_date=None,
+        end_date=None,
+        dp=5,
+        timezone="Exchange",
+        order="desc",
+        prepost="false",
+        mic_code=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        adjust=None,
+        date=None,
+        include_ohlc=None,
+        previous_close=None,
+    ):
+        self.is_indicator = True
+        self.meta_name = "add"
+        self.ctx = ctx
+        self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
+        self.interval = interval
+        self.exchange = exchange
+        self.country = country
+        self.type = type
+        self.series_type_1 = series_type_1
+        self.series_type_2 = series_type_2
+        self.outputsize = outputsize
+        self.start_date = start_date
+        self.end_date = end_date
+        self.dp = dp
+        self.timezone = timezone
+        self.order = order
+        self.prepost = prepost
+        self.mic_code = mic_code
+        self.adjust = adjust
+        self.date = date
+        self.include_ohlc = include_ohlc
+        self.previous_close = previous_close
+
+    def execute(self, format="JSON", debug=False):
+
+        params = {}
+        if self.symbol is not None:
+            params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
+        if self.interval is not None:
+            params["interval"] = self.interval
+        if self.exchange is not None:
+            params["exchange"] = self.exchange
+        if self.country is not None:
+            params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
+        if self.series_type_1 is not None:
+            params["series_type_1"] = self.series_type_1
+        if self.series_type_2 is not None:
+            params["series_type_2"] = self.series_type_2
+        if self.outputsize is not None:
+            params["outputsize"] = self.outputsize
+        if self.start_date is not None:
+            params["start_date"] = self.start_date
+        if self.end_date is not None:
+            params["end_date"] = self.end_date
+        if self.dp is not None:
+            params["dp"] = self.dp
+        if self.timezone is not None:
+            params["timezone"] = self.timezone
+        if self.order is not None:
+            params["order"] = self.order
+        if self.prepost is not None:
+            params["prepost"] = self.prepost
+        if self.mic_code is not None:
+            params["mic_code"] = self.mic_code
+
+        if self.adjust is not None:
+            params["adjust"] = self.adjust
+        if self.date is not None:
+            params["date"] = self.date
+        if self.include_ohlc is not None:
+            params["include_ohlc"] = self.include_ohlc
+        if self.previous_close is not None:
+            params["previous_close"] = self.previous_close
+        params["format"] = format
+        params["apikey"] = self.ctx.apikey
+        endpoint = "/add"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
+
+
+class SUBEndpoint(AsMixin, Endpoint):
+    _name = "sub"
+
+    def __init__(
+        self,
+        ctx,
+        symbol,
+        interval,
+        exchange=None,
+        country=None,
+        type=None,
+        series_type_1="open",
+        series_type_2="close",
+        outputsize=30,
+        start_date=None,
+        end_date=None,
+        dp=5,
+        timezone="Exchange",
+        order="desc",
+        prepost="false",
+        mic_code=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        adjust=None,
+        date=None,
+        include_ohlc=None,
+        previous_close=None,
+    ):
+        self.is_indicator = True
+        self.meta_name = "sub"
+        self.ctx = ctx
+        self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
+        self.interval = interval
+        self.exchange = exchange
+        self.country = country
+        self.type = type
+        self.series_type_1 = series_type_1
+        self.series_type_2 = series_type_2
+        self.outputsize = outputsize
+        self.start_date = start_date
+        self.end_date = end_date
+        self.dp = dp
+        self.timezone = timezone
+        self.order = order
+        self.prepost = prepost
+        self.mic_code = mic_code
+        self.adjust = adjust
+        self.date = date
+        self.include_ohlc = include_ohlc
+        self.previous_close = previous_close
+
+    def execute(self, format="JSON", debug=False):
+
+        params = {}
+        if self.symbol is not None:
+            params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
+        if self.interval is not None:
+            params["interval"] = self.interval
+        if self.exchange is not None:
+            params["exchange"] = self.exchange
+        if self.country is not None:
+            params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
+        if self.series_type_1 is not None:
+            params["series_type_1"] = self.series_type_1
+        if self.series_type_2 is not None:
+            params["series_type_2"] = self.series_type_2
+        if self.outputsize is not None:
+            params["outputsize"] = self.outputsize
+        if self.start_date is not None:
+            params["start_date"] = self.start_date
+        if self.end_date is not None:
+            params["end_date"] = self.end_date
+        if self.dp is not None:
+            params["dp"] = self.dp
+        if self.timezone is not None:
+            params["timezone"] = self.timezone
+        if self.order is not None:
+            params["order"] = self.order
+        if self.prepost is not None:
+            params["prepost"] = self.prepost
+        if self.mic_code is not None:
+            params["mic_code"] = self.mic_code
+
+        if self.adjust is not None:
+            params["adjust"] = self.adjust
+        if self.date is not None:
+            params["date"] = self.date
+        if self.include_ohlc is not None:
+            params["include_ohlc"] = self.include_ohlc
+        if self.previous_close is not None:
+            params["previous_close"] = self.previous_close
+        params["format"] = format
+        params["apikey"] = self.ctx.apikey
+        endpoint = "/sub"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
+
+
+class MULTEndpoint(AsMixin, Endpoint):
+    _name = "mult"
+
+    def __init__(
+        self,
+        ctx,
+        symbol,
+        interval,
+        exchange=None,
+        country=None,
+        type=None,
+        series_type_1="open",
+        series_type_2="close",
+        outputsize=30,
+        start_date=None,
+        end_date=None,
+        dp=5,
+        timezone="Exchange",
+        order="desc",
+        prepost="false",
+        mic_code=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        adjust=None,
+        date=None,
+        include_ohlc=None,
+        previous_close=None,
+    ):
+        self.is_indicator = True
+        self.meta_name = "mult"
+        self.ctx = ctx
+        self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
+        self.interval = interval
+        self.exchange = exchange
+        self.country = country
+        self.type = type
+        self.series_type_1 = series_type_1
+        self.series_type_2 = series_type_2
+        self.outputsize = outputsize
+        self.start_date = start_date
+        self.end_date = end_date
+        self.dp = dp
+        self.timezone = timezone
+        self.order = order
+        self.prepost = prepost
+        self.mic_code = mic_code
+        self.adjust = adjust
+        self.date = date
+        self.include_ohlc = include_ohlc
+        self.previous_close = previous_close
+
+    def execute(self, format="JSON", debug=False):
+
+        params = {}
+        if self.symbol is not None:
+            params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
+        if self.interval is not None:
+            params["interval"] = self.interval
+        if self.exchange is not None:
+            params["exchange"] = self.exchange
+        if self.country is not None:
+            params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
+        if self.series_type_1 is not None:
+            params["series_type_1"] = self.series_type_1
+        if self.series_type_2 is not None:
+            params["series_type_2"] = self.series_type_2
+        if self.outputsize is not None:
+            params["outputsize"] = self.outputsize
+        if self.start_date is not None:
+            params["start_date"] = self.start_date
+        if self.end_date is not None:
+            params["end_date"] = self.end_date
+        if self.dp is not None:
+            params["dp"] = self.dp
+        if self.timezone is not None:
+            params["timezone"] = self.timezone
+        if self.order is not None:
+            params["order"] = self.order
+        if self.prepost is not None:
+            params["prepost"] = self.prepost
+        if self.mic_code is not None:
+            params["mic_code"] = self.mic_code
+
+        if self.adjust is not None:
+            params["adjust"] = self.adjust
+        if self.date is not None:
+            params["date"] = self.date
+        if self.include_ohlc is not None:
+            params["include_ohlc"] = self.include_ohlc
+        if self.previous_close is not None:
+            params["previous_close"] = self.previous_close
+        params["format"] = format
+        params["apikey"] = self.ctx.apikey
+        endpoint = "/mult"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
+
+
+class DIVEndpoint(AsMixin, Endpoint):
+    _name = "div"
+
+    def __init__(
+        self,
+        ctx,
+        symbol,
+        interval,
+        exchange=None,
+        country=None,
+        type=None,
+        series_type_1="open",
+        series_type_2="close",
+        outputsize=30,
+        start_date=None,
+        end_date=None,
+        dp=5,
+        timezone="Exchange",
+        order="desc",
+        prepost="false",
+        mic_code=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        adjust=None,
+        date=None,
+        include_ohlc=None,
+        previous_close=None,
+    ):
+        self.is_indicator = True
+        self.meta_name = "div"
+        self.ctx = ctx
+        self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
+        self.interval = interval
+        self.exchange = exchange
+        self.country = country
+        self.type = type
+        self.series_type_1 = series_type_1
+        self.series_type_2 = series_type_2
+        self.outputsize = outputsize
+        self.start_date = start_date
+        self.end_date = end_date
+        self.dp = dp
+        self.timezone = timezone
+        self.order = order
+        self.prepost = prepost
+        self.mic_code = mic_code
+        self.adjust = adjust
+        self.date = date
+        self.include_ohlc = include_ohlc
+        self.previous_close = previous_close
+
+    def execute(self, format="JSON", debug=False):
+
+        params = {}
+        if self.symbol is not None:
+            params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
+        if self.interval is not None:
+            params["interval"] = self.interval
+        if self.exchange is not None:
+            params["exchange"] = self.exchange
+        if self.country is not None:
+            params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
+        if self.series_type_1 is not None:
+            params["series_type_1"] = self.series_type_1
+        if self.series_type_2 is not None:
+            params["series_type_2"] = self.series_type_2
+        if self.outputsize is not None:
+            params["outputsize"] = self.outputsize
+        if self.start_date is not None:
+            params["start_date"] = self.start_date
+        if self.end_date is not None:
+            params["end_date"] = self.end_date
+        if self.dp is not None:
+            params["dp"] = self.dp
+        if self.timezone is not None:
+            params["timezone"] = self.timezone
+        if self.order is not None:
+            params["order"] = self.order
+        if self.prepost is not None:
+            params["prepost"] = self.prepost
+        if self.mic_code is not None:
+            params["mic_code"] = self.mic_code
+
+        if self.adjust is not None:
+            params["adjust"] = self.adjust
+        if self.date is not None:
+            params["date"] = self.date
+        if self.include_ohlc is not None:
+            params["include_ohlc"] = self.include_ohlc
+        if self.previous_close is not None:
+            params["previous_close"] = self.previous_close
+        params["format"] = format
+        params["apikey"] = self.ctx.apikey
+        endpoint = "/div"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
+
+
+class SUMEndpoint(AsMixin, Endpoint):
+    _name = "sum"
+
+    def __init__(
+        self,
+        ctx,
+        symbol,
+        interval,
+        exchange=None,
+        country=None,
+        type=None,
+        series_type="close",
+        time_period=9,
+        outputsize=30,
+        start_date=None,
+        end_date=None,
+        dp=5,
+        timezone="Exchange",
+        order="desc",
+        prepost="false",
+        mic_code=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        adjust=None,
+        date=None,
+        include_ohlc=None,
+        previous_close=None,
+    ):
+        self.is_indicator = True
+        self.meta_name = "sum"
+        self.ctx = ctx
+        self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
+        self.interval = interval
+        self.exchange = exchange
+        self.country = country
+        self.type = type
+        self.series_type = series_type
+        self.time_period = time_period
+        self.outputsize = outputsize
+        self.start_date = start_date
+        self.end_date = end_date
+        self.dp = dp
+        self.timezone = timezone
+        self.order = order
+        self.prepost = prepost
+        self.mic_code = mic_code
+        self.adjust = adjust
+        self.date = date
+        self.include_ohlc = include_ohlc
+        self.previous_close = previous_close
+
+    def execute(self, format="JSON", debug=False):
+
+        params = {}
+        if self.symbol is not None:
+            params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
+        if self.interval is not None:
+            params["interval"] = self.interval
+        if self.exchange is not None:
+            params["exchange"] = self.exchange
+        if self.country is not None:
+            params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
+        if self.series_type is not None:
+            params["series_type"] = self.series_type
+        if self.time_period is not None:
+            params["time_period"] = self.time_period
+        if self.outputsize is not None:
+            params["outputsize"] = self.outputsize
+        if self.start_date is not None:
+            params["start_date"] = self.start_date
+        if self.end_date is not None:
+            params["end_date"] = self.end_date
+        if self.dp is not None:
+            params["dp"] = self.dp
+        if self.timezone is not None:
+            params["timezone"] = self.timezone
+        if self.order is not None:
+            params["order"] = self.order
+        if self.prepost is not None:
+            params["prepost"] = self.prepost
+        if self.mic_code is not None:
+            params["mic_code"] = self.mic_code
+
+        if self.adjust is not None:
+            params["adjust"] = self.adjust
+        if self.date is not None:
+            params["date"] = self.date
+        if self.include_ohlc is not None:
+            params["include_ohlc"] = self.include_ohlc
+        if self.previous_close is not None:
+            params["previous_close"] = self.previous_close
+        params["format"] = format
+        params["apikey"] = self.ctx.apikey
+        endpoint = "/sum"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
+
+
+class AVGEndpoint(AsMixin, Endpoint):
+    _name = "avg"
+
+    def __init__(
+        self,
+        ctx,
+        symbol,
+        interval,
+        exchange=None,
+        country=None,
+        type=None,
+        series_type="close",
+        time_period=9,
+        outputsize=30,
+        start_date=None,
+        end_date=None,
+        dp=5,
+        timezone="Exchange",
+        order="desc",
+        prepost="false",
+        mic_code=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        adjust=None,
+        date=None,
+        include_ohlc=None,
+        previous_close=None,
+    ):
+        self.is_indicator = True
+        self.meta_name = "avg"
+        self.ctx = ctx
+        self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
+        self.interval = interval
+        self.exchange = exchange
+        self.country = country
+        self.type = type
+        self.series_type = series_type
+        self.time_period = time_period
+        self.outputsize = outputsize
+        self.start_date = start_date
+        self.end_date = end_date
+        self.dp = dp
+        self.timezone = timezone
+        self.order = order
+        self.prepost = prepost
+        self.mic_code = mic_code
+        self.adjust = adjust
+        self.date = date
+        self.include_ohlc = include_ohlc
+        self.previous_close = previous_close
+
+    def execute(self, format="JSON", debug=False):
+
+        params = {}
+        if self.symbol is not None:
+            params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
+        if self.interval is not None:
+            params["interval"] = self.interval
+        if self.exchange is not None:
+            params["exchange"] = self.exchange
+        if self.country is not None:
+            params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
+        if self.series_type is not None:
+            params["series_type"] = self.series_type
+        if self.time_period is not None:
+            params["time_period"] = self.time_period
+        if self.outputsize is not None:
+            params["outputsize"] = self.outputsize
+        if self.start_date is not None:
+            params["start_date"] = self.start_date
+        if self.end_date is not None:
+            params["end_date"] = self.end_date
+        if self.dp is not None:
+            params["dp"] = self.dp
+        if self.timezone is not None:
+            params["timezone"] = self.timezone
+        if self.order is not None:
+            params["order"] = self.order
+        if self.prepost is not None:
+            params["prepost"] = self.prepost
+        if self.mic_code is not None:
+            params["mic_code"] = self.mic_code
+
+        if self.adjust is not None:
+            params["adjust"] = self.adjust
+        if self.date is not None:
+            params["date"] = self.date
+        if self.include_ohlc is not None:
+            params["include_ohlc"] = self.include_ohlc
+        if self.previous_close is not None:
+            params["previous_close"] = self.previous_close
+        params["format"] = format
+        params["apikey"] = self.ctx.apikey
+        endpoint = "/avg"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
+
+
+class CRSIEndpoint(AsMixin, Endpoint):
+    _name = "crsi"
+
+    def __init__(
+        self,
+        ctx,
+        symbol,
+        interval,
+        exchange=None,
+        country=None,
+        type=None,
+        series_type="close",
+        rsi_period=3,
+        up_down_length=2,
+        percent_rank_period=100,
+        outputsize=30,
+        start_date=None,
+        end_date=None,
+        dp=5,
+        timezone="Exchange",
+        order="desc",
+        prepost="false",
+        mic_code=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        adjust=None,
+        date=None,
+        include_ohlc=None,
+        previous_close=None,
+    ):
+        self.is_indicator = True
+        self.meta_name = "crsi"
+        self.ctx = ctx
+        self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
+        self.interval = interval
+        self.exchange = exchange
+        self.country = country
+        self.type = type
+        self.series_type = series_type
+        self.rsi_period = rsi_period
+        self.up_down_length = up_down_length
+        self.percent_rank_period = percent_rank_period
+        self.outputsize = outputsize
+        self.start_date = start_date
+        self.end_date = end_date
+        self.dp = dp
+        self.timezone = timezone
+        self.order = order
+        self.prepost = prepost
+        self.mic_code = mic_code
+        self.adjust = adjust
+        self.date = date
+        self.include_ohlc = include_ohlc
+        self.previous_close = previous_close
+
+    def execute(self, format="JSON", debug=False):
+
+        params = {}
+        if self.symbol is not None:
+            params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
+        if self.interval is not None:
+            params["interval"] = self.interval
+        if self.exchange is not None:
+            params["exchange"] = self.exchange
+        if self.country is not None:
+            params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
+        if self.series_type is not None:
+            params["series_type"] = self.series_type
+        if self.rsi_period is not None:
+            params["rsi_period"] = self.rsi_period
+        if self.up_down_length is not None:
+            params["up_down_length"] = self.up_down_length
+        if self.percent_rank_period is not None:
+            params["percent_rank_period"] = self.percent_rank_period
+        if self.outputsize is not None:
+            params["outputsize"] = self.outputsize
+        if self.start_date is not None:
+            params["start_date"] = self.start_date
+        if self.end_date is not None:
+            params["end_date"] = self.end_date
+        if self.dp is not None:
+            params["dp"] = self.dp
+        if self.timezone is not None:
+            params["timezone"] = self.timezone
+        if self.order is not None:
+            params["order"] = self.order
+        if self.prepost is not None:
+            params["prepost"] = self.prepost
+        if self.mic_code is not None:
+            params["mic_code"] = self.mic_code
+
+        if self.adjust is not None:
+            params["adjust"] = self.adjust
+        if self.date is not None:
+            params["date"] = self.date
+        if self.include_ohlc is not None:
+            params["include_ohlc"] = self.include_ohlc
+        if self.previous_close is not None:
+            params["previous_close"] = self.previous_close
+        params["format"] = format
+        params["apikey"] = self.ctx.apikey
+        endpoint = "/crsi"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
+
+
+class CORRELEndpoint(AsMixin, Endpoint):
+    _name = "correl"
+
+    def __init__(
+        self,
+        ctx,
+        symbol,
+        interval,
+        exchange=None,
+        country=None,
+        type=None,
+        series_type_1="open",
+        series_type_2="close",
+        time_period=9,
+        outputsize=30,
+        start_date=None,
+        end_date=None,
+        dp=5,
+        timezone="Exchange",
+        order="desc",
+        prepost="false",
+        mic_code=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        adjust=None,
+        date=None,
+        include_ohlc=None,
+        previous_close=None,
+    ):
+        self.is_indicator = True
+        self.meta_name = "correl"
+        self.ctx = ctx
+        self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
+        self.interval = interval
+        self.exchange = exchange
+        self.country = country
+        self.type = type
+        self.series_type_1 = series_type_1
+        self.series_type_2 = series_type_2
+        self.time_period = time_period
+        self.outputsize = outputsize
+        self.start_date = start_date
+        self.end_date = end_date
+        self.dp = dp
+        self.timezone = timezone
+        self.order = order
+        self.prepost = prepost
+        self.mic_code = mic_code
+        self.adjust = adjust
+        self.date = date
+        self.include_ohlc = include_ohlc
+        self.previous_close = previous_close
+
+    def execute(self, format="JSON", debug=False):
+
+        params = {}
+        if self.symbol is not None:
+            params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
+        if self.interval is not None:
+            params["interval"] = self.interval
+        if self.exchange is not None:
+            params["exchange"] = self.exchange
+        if self.country is not None:
+            params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
+        if self.series_type_1 is not None:
+            params["series_type_1"] = self.series_type_1
+        if self.series_type_2 is not None:
+            params["series_type_2"] = self.series_type_2
+        if self.time_period is not None:
+            params["time_period"] = self.time_period
+        if self.outputsize is not None:
+            params["outputsize"] = self.outputsize
+        if self.start_date is not None:
+            params["start_date"] = self.start_date
+        if self.end_date is not None:
+            params["end_date"] = self.end_date
+        if self.dp is not None:
+            params["dp"] = self.dp
+        if self.timezone is not None:
+            params["timezone"] = self.timezone
+        if self.order is not None:
+            params["order"] = self.order
+        if self.prepost is not None:
+            params["prepost"] = self.prepost
+        if self.mic_code is not None:
+            params["mic_code"] = self.mic_code
+
+        if self.adjust is not None:
+            params["adjust"] = self.adjust
+        if self.date is not None:
+            params["date"] = self.date
+        if self.include_ohlc is not None:
+            params["include_ohlc"] = self.include_ohlc
+        if self.previous_close is not None:
+            params["previous_close"] = self.previous_close
+        params["format"] = format
+        params["apikey"] = self.ctx.apikey
+        endpoint = "/correl"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
+
+
+class DPOEndpoint(AsMixin, Endpoint):
+    _name = "dpo"
+
+    def __init__(
+        self,
+        ctx,
+        symbol,
+        interval,
+        exchange=None,
+        country=None,
+        type=None,
+        series_type="close",
+        time_period=9,
+        centered="false",
+        outputsize=30,
+        start_date=None,
+        end_date=None,
+        dp=5,
+        timezone="Exchange",
+        order="desc",
+        prepost="false",
+        mic_code=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        adjust=None,
+        date=None,
+        include_ohlc=None,
+        previous_close=None,
+    ):
+        self.is_indicator = True
+        self.meta_name = "dpo"
+        self.ctx = ctx
+        self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
+        self.interval = interval
+        self.exchange = exchange
+        self.country = country
+        self.type = type
+        self.series_type = series_type
+        self.time_period = time_period
+        self.centered = centered
+        self.outputsize = outputsize
+        self.start_date = start_date
+        self.end_date = end_date
+        self.dp = dp
+        self.timezone = timezone
+        self.order = order
+        self.prepost = prepost
+        self.mic_code = mic_code
+        self.adjust = adjust
+        self.date = date
+        self.include_ohlc = include_ohlc
+        self.previous_close = previous_close
+
+    def execute(self, format="JSON", debug=False):
+
+        params = {}
+        if self.symbol is not None:
+            params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
+        if self.interval is not None:
+            params["interval"] = self.interval
+        if self.exchange is not None:
+            params["exchange"] = self.exchange
+        if self.country is not None:
+            params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
+        if self.series_type is not None:
+            params["series_type"] = self.series_type
+        if self.time_period is not None:
+            params["time_period"] = self.time_period
+        if self.centered is not None:
+            params["centered"] = self.centered
+        if self.outputsize is not None:
+            params["outputsize"] = self.outputsize
+        if self.start_date is not None:
+            params["start_date"] = self.start_date
+        if self.end_date is not None:
+            params["end_date"] = self.end_date
+        if self.dp is not None:
+            params["dp"] = self.dp
+        if self.timezone is not None:
+            params["timezone"] = self.timezone
+        if self.order is not None:
+            params["order"] = self.order
+        if self.prepost is not None:
+            params["prepost"] = self.prepost
+        if self.mic_code is not None:
+            params["mic_code"] = self.mic_code
+
+        if self.adjust is not None:
+            params["adjust"] = self.adjust
+        if self.date is not None:
+            params["date"] = self.date
+        if self.include_ohlc is not None:
+            params["include_ohlc"] = self.include_ohlc
+        if self.previous_close is not None:
+            params["previous_close"] = self.previous_close
+        params["format"] = format
+        params["apikey"] = self.ctx.apikey
+        endpoint = "/dpo"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
+
+
+class SAREXTEndpoint(AsMixin, Endpoint):
+    _name = "sarext"
+
+    def __init__(
+        self,
+        ctx,
+        symbol,
+        interval,
+        exchange=None,
+        country=None,
+        type=None,
+        start_value=0,
+        offset_on_reverse=0,
+        acceleration_limit_long=0.02,
+        acceleration_long=0.02,
+        acceleration_max_long=0.2,
+        acceleration_limit_short=0.02,
+        acceleration_short=0.02,
+        acceleration_max_short=0.2,
+        outputsize=30,
+        start_date=None,
+        end_date=None,
+        dp=5,
+        timezone="Exchange",
+        order="desc",
+        prepost="false",
+        mic_code=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        adjust=None,
+        date=None,
+        include_ohlc=None,
+        previous_close=None,
+    ):
+        self.is_indicator = True
+        self.meta_name = "sarext"
+        self.ctx = ctx
+        self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
+        self.interval = interval
+        self.exchange = exchange
+        self.country = country
+        self.type = type
+        self.start_value = start_value
+        self.offset_on_reverse = offset_on_reverse
+        self.acceleration_limit_long = acceleration_limit_long
+        self.acceleration_long = acceleration_long
+        self.acceleration_max_long = acceleration_max_long
+        self.acceleration_limit_short = acceleration_limit_short
+        self.acceleration_short = acceleration_short
+        self.acceleration_max_short = acceleration_max_short
+        self.outputsize = outputsize
+        self.start_date = start_date
+        self.end_date = end_date
+        self.dp = dp
+        self.timezone = timezone
+        self.order = order
+        self.prepost = prepost
+        self.mic_code = mic_code
+        self.adjust = adjust
+        self.date = date
+        self.include_ohlc = include_ohlc
+        self.previous_close = previous_close
+
+    def execute(self, format="JSON", debug=False):
+
+        params = {}
+        if self.symbol is not None:
+            params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
+        if self.interval is not None:
+            params["interval"] = self.interval
+        if self.exchange is not None:
+            params["exchange"] = self.exchange
+        if self.country is not None:
+            params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
+        if self.start_value is not None:
+            params["start_value"] = self.start_value
+        if self.offset_on_reverse is not None:
+            params["offset_on_reverse"] = self.offset_on_reverse
+        if self.acceleration_limit_long is not None:
+            params["acceleration_limit_long"] = self.acceleration_limit_long
+        if self.acceleration_long is not None:
+            params["acceleration_long"] = self.acceleration_long
+        if self.acceleration_max_long is not None:
+            params["acceleration_max_long"] = self.acceleration_max_long
+        if self.acceleration_limit_short is not None:
+            params["acceleration_limit_short"] = self.acceleration_limit_short
+        if self.acceleration_short is not None:
+            params["acceleration_short"] = self.acceleration_short
+        if self.acceleration_max_short is not None:
+            params["acceleration_max_short"] = self.acceleration_max_short
+        if self.outputsize is not None:
+            params["outputsize"] = self.outputsize
+        if self.start_date is not None:
+            params["start_date"] = self.start_date
+        if self.end_date is not None:
+            params["end_date"] = self.end_date
+        if self.dp is not None:
+            params["dp"] = self.dp
+        if self.timezone is not None:
+            params["timezone"] = self.timezone
+        if self.order is not None:
+            params["order"] = self.order
+        if self.prepost is not None:
+            params["prepost"] = self.prepost
+        if self.mic_code is not None:
+            params["mic_code"] = self.mic_code
+
+        if self.adjust is not None:
+            params["adjust"] = self.adjust
+        if self.date is not None:
+            params["date"] = self.date
+        if self.include_ohlc is not None:
+            params["include_ohlc"] = self.include_ohlc
+        if self.previous_close is not None:
+            params["previous_close"] = self.previous_close
+        params["format"] = format
+        params["apikey"] = self.ctx.apikey
+        endpoint = "/sarext"
+
+        if debug:
+            return build_url(self.ctx.base_url, endpoint, params)
+        return self.ctx.http_client.get(endpoint, params=params)
+
+
+class SUPERTREND_HEIKINASHICANDLESEndpoint(AsMixin, Endpoint):
+    _name = "supertrend_heikinashicandles"
+
+    def __init__(
+        self,
+        ctx,
+        symbol,
+        interval,
+        exchange=None,
+        country=None,
+        type=None,
+        period=10,
+        multiplier=3,
+        outputsize=30,
+        start_date=None,
+        end_date=None,
+        dp=5,
+        timezone="Exchange",
+        order="desc",
+        prepost="false",
+        mic_code=None,
+        figi=None,
+        isin=None,
+        cusip=None,
+        adjust=None,
+        date=None,
+        include_ohlc=None,
+        previous_close=None,
+    ):
+        self.is_indicator = True
+        self.meta_name = "supertrend_heikinashicandles"
+        self.ctx = ctx
+        self.symbol = symbol
+        self.figi = figi
+        self.isin = isin
+        self.cusip = cusip
+        self.interval = interval
+        self.exchange = exchange
+        self.country = country
+        self.type = type
+        self.period = period
+        self.multiplier = multiplier
+        self.outputsize = outputsize
+        self.start_date = start_date
+        self.end_date = end_date
+        self.dp = dp
+        self.timezone = timezone
+        self.order = order
+        self.prepost = prepost
+        self.mic_code = mic_code
+        self.adjust = adjust
+        self.date = date
+        self.include_ohlc = include_ohlc
+        self.previous_close = previous_close
+
+    def execute(self, format="JSON", debug=False):
+
+        params = {}
+        if self.symbol is not None:
+            params["symbol"], self.is_batch = get_symbol(self.symbol)
+        if self.figi is not None:
+            params["figi"] = self.figi
+        if self.isin is not None:
+            params["isin"] = self.isin
+        if self.cusip is not None:
+            params["cusip"] = self.cusip
+        if self.interval is not None:
+            params["interval"] = self.interval
+        if self.exchange is not None:
+            params["exchange"] = self.exchange
+        if self.country is not None:
+            params["country"] = self.country
+        if self.type is not None:
+            params["type"] = self.type
+        if self.period is not None:
+            params["period"] = self.period
+        if self.multiplier is not None:
+            params["multiplier"] = self.multiplier
+        if self.outputsize is not None:
+            params["outputsize"] = self.outputsize
+        if self.start_date is not None:
+            params["start_date"] = self.start_date
+        if self.end_date is not None:
+            params["end_date"] = self.end_date
+        if self.dp is not None:
+            params["dp"] = self.dp
+        if self.timezone is not None:
+            params["timezone"] = self.timezone
+        if self.order is not None:
+            params["order"] = self.order
+        if self.prepost is not None:
+            params["prepost"] = self.prepost
+        if self.mic_code is not None:
+            params["mic_code"] = self.mic_code
+
+        if self.adjust is not None:
+            params["adjust"] = self.adjust
+        if self.date is not None:
+            params["date"] = self.date
+        if self.include_ohlc is not None:
+            params["include_ohlc"] = self.include_ohlc
+        if self.previous_close is not None:
+            params["previous_close"] = self.previous_close
+        params["format"] = format
+        params["apikey"] = self.ctx.apikey
+        endpoint = "/supertrend_heikinashicandles"
 
         if debug:
             return build_url(self.ctx.base_url, endpoint, params)

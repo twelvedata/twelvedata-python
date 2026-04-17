@@ -8,6 +8,43 @@ __all__ = ("AsJsonMixin", "AsCsvMixin", "AsPandasMixin", "AsUrlMixin", "AsMixin"
 
 
 class AsJsonMixin(object):
+    # Top-level response keys that may carry the payload, derived from the
+    # OpenAPI response schemas. Checked in order; the first one that is
+    # present and truthy is returned. Must be an explicit ordered list —
+    # iterating ``json.items()`` would make the result depend on
+    # server-side key ordering.
+    _JSON_PAYLOAD_KEYS = (
+        "values",                 # time series & technical indicators
+        "data",                   # reference-data lists, batch, tax_info
+        "result",                 # bonds, funds, etfs/list, mutual_funds/list, ...
+        "earnings",               # /earnings, /earnings_calendar
+        "balance_sheet",          # /balance_sheet, /balance_sheet/consolidated
+        "cash_flow",              # /cash_flow, /cash_flow/consolidated
+        "income_statement",       # /income_statement, /income_statement/consolidated
+        "statistics",             # /statistics
+        "dividends",              # /dividends
+        "splits",                 # /splits
+        "earnings_estimate",      # /earnings_estimate
+        "eps_revision",           # /eps_revisions
+        "eps_trend",              # /eps_trend
+        "growth_estimates",       # /growth_estimates
+        "revenue_estimate",       # /revenue_estimate
+        "price_target",           # /price_target
+        "ratings",                # /analyst_ratings/*
+        "trends",                 # /recommendations (primary payload)
+        "rating",                 # /recommendations (single-value payload)
+        "direct_holders",         # /direct_holders
+        "fund_holders",           # /fund_holders
+        "institutional_holders",  # /institutional_holders
+        "insider_transactions",   # /insider_transactions
+        "key_executives",         # /key_executives
+        "market_cap",             # /market_cap
+        "press_releases",         # /press_releases
+        "etf",                    # /etfs/world, /etfs/world/*
+        "mutual_fund",            # /mutual_funds/world, /mutual_funds/world/*
+        "sanctions",              # /sanctions/{source}
+    )
+
     def as_json(self):
         resp = self.execute(format="JSON")
         json = resp.json()
@@ -17,7 +54,11 @@ class AsJsonMixin(object):
             if 'result' in json and isinstance(json['result'], dict) and 'list' in json['result'] \
                     and isinstance(json['result']['list'], list):
                 return json['result']['list']
-            return json.get("data") or json.get("values") or json.get("earnings") or []
+            for key in self._JSON_PAYLOAD_KEYS:
+                value = json.get(key)
+                if value:
+                    return value
+            return []
         return json
 
     def as_raw_json(self):
