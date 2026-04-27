@@ -171,12 +171,14 @@ With batch requests up to 120 symbols might be returned per single API call. The
 ```python
 # 1. Pass instruments symbols as a string delimited by comma (,)
 ts = td.time_series(
-    symbol="V, RY, AUD/CAD, BTC/USD:Huobi"
+    symbol="V, RY, AUD/CAD, BTC/USD",
+    interval="1day",
 )
 
 # 2. Pass as a list of symbols 
 ts = td.time_series(
-    symbol=["V", "RY", "AUD/CAD", "BTC/USD:Huobi"]
+    symbol=["V", "RY", "AUD/CAD", "BTC/USD"],
+    interval="1day",
 )
 ```
 

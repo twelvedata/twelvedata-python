@@ -60,7 +60,7 @@ class CandlestickRender(ChartRender):
 
         if self.volume and self.volume in df:
             volume_colors = [
-                COLOR_UP if i != 0 and df[closes][i] > df[opens][i] else COLOR_DOWN
+                COLOR_UP if i != 0 and df[closes].iloc[i] > df[opens].iloc[i] else COLOR_DOWN
                 for i in range(len(df[closes]))
             ]
 

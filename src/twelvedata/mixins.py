@@ -1,6 +1,12 @@
 # coding: utf-8
 
 import csv
+from .exceptions import (
+    BadRequestError,
+    InternalServerError,
+    InvalidApiKeyError,
+    TwelveDataError,
+)
 from .utils import convert_collection_to_pandas, convert_collection_to_pandas_multi_index, convert_pandas_to_plotly
 
 
@@ -50,15 +56,16 @@ class AsJsonMixin(object):
         json = resp.json()
         if hasattr(self, 'is_batch') and self.is_batch:
             return json
-        if isinstance(json, dict) and json.get("status") == "ok":
-            if 'result' in json and isinstance(json['result'], dict) and 'list' in json['result'] \
-                    and isinstance(json['result']['list'], list):
-                return json['result']['list']
-            for key in self._JSON_PAYLOAD_KEYS:
-                value = json.get(key)
-                if value:
-                    return value
-            return []
+        if not isinstance(json, dict):
+            return json
+        if json.get("status") == "error":
+            return json
+        if 'result' in json and isinstance(json['result'], dict) and 'list' in json['result'] \
+                and isinstance(json['result']['list'], list):
+            return json['result']['list']
+        for key in self._JSON_PAYLOAD_KEYS:
+            if key in json:
+                return json[key]
         return json
 
     def as_raw_json(self):
@@ -79,6 +86,109 @@ class AsCsvMixin(object):
         return resp.text
 
 
+# Strategy -> (kind, index_field). kind in {"datetime", "date", "grouped", "flat", "single"}.
+# Endpoints not listed and without `is_indicator` fall through to ("flat", None) — a plain
+# DataFrame with no forced index. Technical indicators are routed to the "datetime" strategy
+# via the `is_indicator` flag set in utils.patch_endpoints_meta.
+_PANDAS_STRATEGIES = {
+    # explicit anchors for the datetime path (behavior unchanged)
+    "time_series":                       ("datetime", "datetime"),
+    "time_series_cross":                 ("datetime", "datetime"),
+    "quote":                             ("datetime", "datetime"),
+    "eod":                               ("datetime", "datetime"),
+    "exchange_rate":                     ("single", None),
+    "currency_conversion":               ("single", None),
+    "earliest_timestamp":                ("datetime", "datetime"),
+    "press_releases":                    ("datetime", "datetime"),
+    "edgar_filings_archive":             ("date", "filed_at"),
+
+    # date-indexed lists of records
+    "splits":                            ("date", "date"),
+    "dividends":                         ("date", "ex_date"),
+    "earnings":                          ("date", "date"),
+    "splits_calendar":                   ("date", "date"),
+    "dividends_calendar":                ("date", "ex_date"),
+    "balance_sheet":                     ("date", "fiscal_date"),
+    "balance_sheet_consolidated":        ("date", "fiscal_date"),
+    "cash_flow":                         ("date", "fiscal_date"),
+    "cash_flow_consolidated":            ("date", "fiscal_date"),
+    "income_statement":                  ("date", "fiscal_date"),
+    "income_statement_consolidated":     ("date", "fiscal_date"),
+    "earnings_estimate":                 ("date", "date"),
+    "revenue_estimate":                  ("date", "date"),
+    "eps_trend":                         ("date", "date"),
+    "eps_revisions":                     ("date", "date"),
+    "market_cap":                        ("date", "date"),
+    "analyst_ratings_light":             ("date", "date"),
+    "analyst_ratings_us_equities":       ("date", "date"),
+    "insider_transactions":              ("date", "date_reported"),
+    "institutional_holders":             ("date", "date_reported"),
+    "fund_holders":                      ("date", "date_reported"),
+    "direct_holders":                    ("date", "date_reported"),
+
+    # dict[date_str -> list[record]] — flatten then date-index
+    "earnings_calendar":                 ("grouped", "date"),
+    "ipo_calendar":                      ("grouped", "date"),
+
+    # list of records, no temporal key
+    "stocks":                            ("flat", None),
+    "stock_exchanges":                   ("flat", None),
+    "forex_pairs":                       ("flat", None),
+    "cryptocurrencies":                  ("flat", None),
+    "etfs":                              ("flat", None),
+    "indices":                           ("flat", None),
+    "funds":                             ("flat", None),
+    "bonds":                             ("flat", None),
+    "commodities":                       ("flat", None),
+    "exchanges":                         ("flat", None),
+    "cryptocurrency_exchanges":          ("flat", None),
+    "exchange_schedule":                 ("flat", None),
+    "countries":                         ("flat", None),
+    "cross_listings":                    ("flat", None),
+    "intervals":                         ("flat", None),
+    "instrument_type":                   ("flat", None),
+    "symbol_search":                     ("flat", None),
+    "technical_indicators":              ("flat", None),
+    "market_state":                      ("flat", None),
+    "market_movers_market":              ("flat", None),
+    "last_change_endpoint":              ("flat", None),
+    "sanctions_source":                  ("flat", None),
+    "etfs_list":                         ("flat", None),
+    "etfs_type":                         ("flat", None),
+    "etfs_family":                       ("flat", None),
+    "mutual_funds_list":                 ("flat", None),
+    "mutual_funds_type":                 ("flat", None),
+    "mutual_funds_family":               ("flat", None),
+    "key_executives":                    ("flat", None),
+    "options_expiration":                ("flat", None),
+    "options_chain":                     ("flat", None),
+
+    # single-record / metadata payload — wrap in 1-row DataFrame
+    "profile":                           ("single", None),
+    "statistics":                        ("single", None),
+    "logo":                              ("single", None),
+    "tax_info":                          ("single", None),
+    "recommendations":                   ("single", None),
+    "price_target":                      ("single", None),
+    "growth_estimates":                  ("single", None),
+    "price":                             ("single", None),
+    "api_usage":                         ("single", None),
+    "etfs_world":                        ("single", None),
+    "etfs_world_summary":                ("single", None),
+    "etfs_world_composition":            ("single", None),
+    "etfs_world_performance":            ("single", None),
+    "etfs_world_risk":                   ("single", None),
+    "mutual_funds_world":                ("single", None),
+    "mutual_funds_world_summary":        ("single", None),
+    "mutual_funds_world_composition":    ("single", None),
+    "mutual_funds_world_performance":    ("single", None),
+    "mutual_funds_world_risk":           ("single", None),
+    "mutual_funds_world_ratings":        ("single", None),
+    "mutual_funds_world_purchase_info":  ("single", None),
+    "mutual_funds_world_sustainability": ("single", None),
+}
+
+
 class AsPandasMixin(object):
     def as_pandas(self, **kwargs):
         import pandas as pd
@@ -86,21 +196,60 @@ class AsPandasMixin(object):
         assert hasattr(self, "as_json")
 
         data = self.as_json()
-        if hasattr(self, "is_batch") and self.is_batch:
-            df = convert_collection_to_pandas_multi_index(data)
-        elif hasattr(self, "method") and self.method == "earnings":
-            df = self.create_basic_df(data, pd, index_column="date", **kwargs)
-        elif hasattr(self, "method") and self.method == "earnings_calendar":
-            modified_data = []
-            for date, row in data.items():
-                for earning in row:
-                    earning["date"] = date
-                    modified_data.append(earning)
 
-            df = self.create_basic_df(modified_data, pd, index_column="date", **kwargs)
+        if isinstance(data, dict) and data.get("status") == "error":
+            code = data.get("code")
+            message = data.get("message", "API error")
+            if code == 401:
+                raise InvalidApiKeyError(message)
+            if code == 400:
+                raise BadRequestError(message)
+            if isinstance(code, int) and code >= 500:
+                raise InternalServerError(message)
+            raise TwelveDataError(message)
+
+        if getattr(self, "is_batch", False):
+            return convert_collection_to_pandas_multi_index(data)
+
+        if not data:
+            return pd.DataFrame()
+
+        if getattr(self, "is_indicator", False):
+            kind, index_field = ("datetime", "datetime")
         else:
-            df = self.create_basic_df(data, pd, **kwargs)
+            kind, index_field = _PANDAS_STRATEGIES.get(
+                getattr(self, "_name", "") or "", ("flat", None)
+            )
 
+        if kind == "datetime":
+            return self.create_basic_df(data, pd, index_column="datetime", **kwargs)
+        if kind == "date":
+            return self.create_basic_df(data, pd, index_column=index_field, **kwargs)
+        if kind == "grouped":
+            rows = []
+            for key, items in (data or {}).items():
+                for item in items:
+                    item[index_field] = key
+                    rows.append(item)
+            return self.create_basic_df(rows, pd, index_column=index_field, **kwargs)
+        if kind == "single":
+            if isinstance(data, list):
+                rows = data
+            elif isinstance(data, dict):
+                rows = [data]
+            else:
+                rows = [{"value": data}]
+            return pd.DataFrame(rows)
+
+        # "flat" (default): list of records, no temporal index
+        if isinstance(data, list) and data and not isinstance(data[0], dict):
+            return pd.DataFrame({"value": data})
+        df = convert_collection_to_pandas(data, **kwargs)
+        for col in df.columns:
+            try:
+                df[col] = pd.to_numeric(df[col])
+            except (ValueError, TypeError):
+                pass
         return df
 
     @staticmethod

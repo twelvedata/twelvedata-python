@@ -48,6 +48,7 @@ docs/_build/*
 cover/*
 MANIFEST
 .claude/
+.env
 
 # Per-project virtualenvs
 .venv*/
