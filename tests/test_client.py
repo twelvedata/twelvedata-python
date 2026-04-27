@@ -2,10 +2,12 @@
 # coding: utf-8
 
 import json
+import os
 import pytest
 from requests import Response
 from unittest.mock import patch, MagicMock, PropertyMock
 
+import pandas as pd
 from matplotlib import pyplot as plt
 from twelvedata import TDClient
 from twelvedata.http_client import DefaultHttpClient
@@ -15,6 +17,12 @@ from twelvedata.exceptions import (
     InvalidApiKeyError,
     TwelveDataError,
 )
+
+try:
+    from dotenv import load_dotenv
+    load_dotenv()
+except ImportError:
+    pass
 
 
 _cache = {}
@@ -54,7 +62,7 @@ def _fake_json_resp(json_content):
 
 def _init_client():
     return TDClient(
-        "demo",
+        os.environ.get("TWELVEDATA_API_KEY", "demo"),
         http_client=CachedHttpClient(API_URL),
     )
 
@@ -73,6 +81,7 @@ def test_get_stocks_list():
     td = _init_client()
     assert td.get_stocks_list(exchange='NASDAQ').as_json()
     td.get_stocks_list(exchange='NASDAQ').as_csv()
+    assert not td.get_stocks_list(exchange='NASDAQ').as_pandas().empty
     td.get_stocks_list(exchange='NASDAQ').as_url()
 
 
@@ -80,6 +89,7 @@ def test_get_stock_exchanges_list():
     td = _init_client()
     assert td.get_stock_exchanges_list().as_json()
     td.get_stock_exchanges_list().as_csv()
+    assert not td.get_stock_exchanges_list().as_pandas().empty
     td.get_stock_exchanges_list().as_url()
 
 
@@ -87,6 +97,7 @@ def test_get_forex_pairs_list():
     td = _init_client()
     assert td.get_forex_pairs_list().as_json()
     td.get_forex_pairs_list().as_csv()
+    assert not td.get_forex_pairs_list().as_pandas().empty
     td.get_forex_pairs_list().as_url()
 
 
@@ -94,6 +105,7 @@ def test_get_cryptocurrencies_list():
     td = _init_client()
     assert td.get_cryptocurrencies_list().as_json()
     td.get_cryptocurrencies_list().as_csv()
+    assert not td.get_cryptocurrencies_list().as_pandas().empty
     td.get_cryptocurrencies_list().as_url()
 
 
@@ -103,6 +115,7 @@ def test_get_funds_list():
     l = td.get_funds_list(**params).as_json()
     assert len(l) > 0
     td.get_funds_list(**params).as_csv()
+    assert not td.get_funds_list(**params).as_pandas().empty
     td.get_funds_list(**params).as_url()
 
 
@@ -111,23 +124,27 @@ def test_get_bonds_list():
     l = td.get_bonds_list().as_json()
     assert len(l) > 0
     td.get_bonds_list().as_csv()
+    assert not td.get_bonds_list().as_pandas().empty
     td.get_bonds_list().as_url()
 
 
 def test_get_commodities_list():
     td = _init_client()
     assert '/commodities' in td.get_commodities_list().as_url()
+    assert not td.get_commodities_list().as_pandas().empty
 
 
 def test_get_cryptocurrency_exchanges_list():
     td = _init_client()
     assert '/cryptocurrency_exchanges' in td.get_cryptocurrency_exchanges_list().as_url()
+    assert not td.get_cryptocurrency_exchanges_list().as_pandas().empty
 
 
 def test_get_etf_list():
     td = _init_client()
     assert td.get_etf_list().as_json()
     td.get_etf_list().as_csv()
+    assert not td.get_etf_list().as_pandas().empty
     td.get_etf_list().as_url()
 
 
@@ -135,12 +152,14 @@ def test_get_indices_list():
     td = _init_client()
     assert td.get_indices_list().as_json()
     td.get_indices_list().as_csv()
+    assert not td.get_indices_list().as_pandas().empty
     td.get_indices_list().as_url()
 
 
 def test_get_technical_indicators_list():
     td = _init_client()
     assert td.get_technical_indicators_list().as_json()
+    assert not td.get_technical_indicators_list().as_pandas().empty
     td.get_technical_indicators_list().as_url()
 
 
@@ -148,160 +167,203 @@ def test_get_exchanges_list():
     td = _init_client()
     assert td.get_exchanges_list().as_json()
     td.get_exchanges_list().as_csv()
+    assert not td.get_exchanges_list().as_pandas().empty
     td.get_exchanges_list().as_url()
 
 
 def test_symbol_search():
     td = _init_client()
     assert td.symbol_search().as_json()
+    assert not td.symbol_search().as_pandas().empty
     td.symbol_search().as_url()
 
 
 def test_earliest_timestamp():
     td = _init_client()
     assert td.get_earliest_timestamp(symbol="AAPL", interval="1day").as_json()
+    df = td.get_earliest_timestamp(symbol="AAPL", interval="1day").as_pandas()
+    assert isinstance(df.index, pd.DatetimeIndex)
     td.get_earliest_timestamp(symbol="AAPL", interval="1day").as_url()
 
 
 def test_market_state():
     td = _init_client()
     assert td.get_market_state().as_json()
+    assert not td.get_market_state().as_pandas().empty
     td.get_market_state().as_url()
 
 
 def test_exchange_rate():
     td = _init_client()
     assert td.exchange_rate(symbol="EUR/USD").as_json()
+    assert len(td.exchange_rate(symbol="EUR/USD").as_pandas()) >= 1
     td.exchange_rate(symbol="EUR/USD").as_url()
 
 
 def test_currency_conversion():
     td = _init_client()
     assert td.currency_conversion(symbol="EUR/USD", amount=100).as_json()
+    assert len(td.currency_conversion(symbol="EUR/USD", amount=100).as_pandas()) >= 1
     td.currency_conversion(symbol="EUR/USD", amount=100).as_url()
 
 
 def test_quote():
     td = _init_client()
     assert td.quote(symbol="AAPL").as_json()
+    df = td.quote(symbol="AAPL").as_pandas()
+    assert isinstance(df.index, pd.DatetimeIndex)
     td.quote(symbol="AAPL").as_url()
 
 
 def test_price():
     td = _init_client()
     assert td.price(symbol="AAPL").as_json()
+    assert len(td.price(symbol="AAPL").as_pandas()) >= 1
     td.price(symbol="AAPL").as_url()
 
 
 def test_eod():
     td = _init_client()
     assert td.eod(symbol="AAPL").as_json()
+    df = td.eod(symbol="AAPL").as_pandas()
+    assert isinstance(df.index, pd.DatetimeIndex)
     td.eod(symbol="AAPL").as_url()
 
 
 def test_api_usage():
     td = _init_client()
     assert td.api_usage().as_json()
+    assert len(td.api_usage().as_pandas()) >= 1
     td.api_usage().as_url()
 
 
 def test_logo():
     td = _init_client()
     assert td.get_logo(symbol="AAPL").as_json()
+    assert len(td.get_logo(symbol="AAPL").as_pandas()) >= 1
     td.get_logo(symbol="AAPL").as_url()
 
 
 def test_profile():
     td = _init_client()
     assert td.get_profile(symbol="AAPL").as_json()
+    assert len(td.get_profile(symbol="AAPL").as_pandas()) >= 1
     td.get_profile(symbol="AAPL").as_url()
 
 
 def test_dividends():
     td = _init_client()
     assert td.get_dividends(symbol="AAPL").as_json()
+    df = td.get_dividends(symbol="AAPL").as_pandas()
+    assert isinstance(df.index, pd.DatetimeIndex)
     td.get_dividends(symbol="AAPL").as_url()
 
 
 def test_dividends_calendar():
     td = _init_client()
     assert td.get_dividends_calendar(symbol="AAPL").as_json()
+    df = td.get_dividends_calendar(symbol="AAPL").as_pandas()
+    assert isinstance(df.index, pd.DatetimeIndex)
     td.get_dividends_calendar(symbol="AAPL").as_url()
 
 
 def test_splits():
     td = _init_client()
     assert td.get_splits(symbol="AAPL").as_json()
+    df = td.get_splits(symbol="AAPL").as_pandas()
+    assert isinstance(df.index, pd.DatetimeIndex)
     td.get_splits(symbol="AAPL").as_url()
 
 
 def test_splits_calendar():
     td = _init_client()
     assert td.get_splits_calendar(symbol="AAPL").as_json()
+    df = td.get_splits_calendar(symbol="AAPL").as_pandas()
+    assert isinstance(df.index, pd.DatetimeIndex)
     td.get_splits_calendar(symbol="AAPL").as_url()
 
 
 def test_get_earnings_calendar():
     td = _init_client()
     assert '/earnings_calendar' in td.get_earnings_calendar().as_url()
+    df = td.get_earnings_calendar().as_pandas()
+    assert isinstance(df.index, pd.DatetimeIndex)
 
 
 def test_get_ipo_calendar():
     td = _init_client()
     assert '/ipo_calendar' in td.get_ipo_calendar().as_url()
+    df = td.get_ipo_calendar().as_pandas()
+    assert isinstance(df.index, pd.DatetimeIndex)
 
 
 def test_earnings():
     td = _init_client()
     assert td.get_earnings(symbol="AAPL").as_json()
+    df = td.get_earnings(symbol="AAPL").as_pandas()
+    assert isinstance(df.index, pd.DatetimeIndex)
     td.get_earnings(symbol="AAPL").as_url()
 
 
 def test_statistics():
     td = _init_client()
     assert td.get_statistics(symbol="AAPL").as_json()
+    assert len(td.get_statistics(symbol="AAPL").as_pandas()) >= 1
     td.get_statistics(symbol="AAPL").as_url()
 
 
 def test_insider_transactions():
     td = _init_client()
     assert td.get_insider_transactions(symbol="AAPL").as_json()
+    df = td.get_insider_transactions(symbol="AAPL").as_pandas()
+    assert isinstance(df.index, pd.DatetimeIndex)
     td.get_insider_transactions(symbol="AAPL").as_url()
 
 
 def test_income_statement():
     td = _init_client()
     assert td.get_income_statement(symbol="AAPL").as_json()
+    df = td.get_income_statement(symbol="AAPL").as_pandas()
+    assert isinstance(df.index, pd.DatetimeIndex)
     td.get_income_statement(symbol="AAPL").as_url()
 
 
 def test_balance_sheet():
     td = _init_client()
     assert td.get_balance_sheet(symbol="AAPL").as_json()
+    df = td.get_balance_sheet(symbol="AAPL").as_pandas()
+    assert isinstance(df.index, pd.DatetimeIndex)
     td.get_balance_sheet(symbol="AAPL").as_url()
 
 
 def test_cash_flow():
     td = _init_client()
     assert td.get_cash_flow(symbol="AAPL").as_json()
+    df = td.get_cash_flow(symbol="AAPL").as_pandas()
+    assert isinstance(df.index, pd.DatetimeIndex)
     td.get_cash_flow(symbol="AAPL").as_url()
 
 
 def test_key_executives():
     td = _init_client()
     assert td.get_key_executives(symbol="AAPL").as_json()
+    assert not td.get_key_executives(symbol="AAPL").as_pandas().empty
     td.get_key_executives(symbol="AAPL").as_url()
 
 
 def test_institutional_holders():
     td = _init_client()
     assert td.get_institutional_holders(symbol="AAPL").as_json()
+    df = td.get_institutional_holders(symbol="AAPL").as_pandas()
+    assert isinstance(df.index, pd.DatetimeIndex)
     td.get_institutional_holders(symbol="AAPL").as_url()
 
 
 def test_fund_holders():
     td = _init_client()
     assert td.get_fund_holders(symbol="AAPL").as_json()
+    df = td.get_fund_holders(symbol="AAPL").as_pandas()
+    assert isinstance(df.index, pd.DatetimeIndex)
     td.get_fund_holders(symbol="AAPL").as_url()
 
 
@@ -1485,30 +1547,35 @@ def test_price_threads_identifiers():
 def test_get_exchange_schedule():
     td = _init_client()
     assert '/exchange_schedule' in td.get_exchange_schedule(country='United States').as_url()
+    assert not td.get_exchange_schedule(country='United States').as_pandas().empty
 
 
 def test_get_countries():
     td = _init_client()
     assert '/countries' in td.get_countries().as_url()
     assert td.get_countries().as_json()
+    assert not td.get_countries().as_pandas().empty
 
 
 def test_get_cross_listings():
     td = _init_client()
     assert '/cross_listings?symbol=AAPL' in td.get_cross_listings(symbol='AAPL').as_url()
     assert td.get_cross_listings(symbol='AAPL').as_json()
+    assert not td.get_cross_listings(symbol='AAPL').as_pandas().empty
 
 
 def test_get_intervals():
     td = _init_client()
     assert '/intervals' in td.get_intervals().as_url()
     assert td.get_intervals().as_json()
+    assert not td.get_intervals().as_pandas().empty
 
 
 def test_get_instrument_type():
     td = _init_client()
     assert '/instrument_type' in td.get_instrument_type().as_url()
     assert td.get_instrument_type().as_json()
+    assert not td.get_instrument_type().as_pandas().empty
 
 
 # ---------------------------------------------------------------------------
@@ -1522,6 +1589,8 @@ def test_time_series_cross():
     assert 'quote=EUR' in url
     assert 'interval=1day' in url
     assert td.time_series_cross(base='USD', quote='EUR', interval='1day').as_json()
+    df = td.time_series_cross(base='USD', quote='EUR', interval='1day').as_pandas()
+    assert isinstance(df.index, pd.DatetimeIndex)
 
 
 def test_get_market_movers():
@@ -1529,6 +1598,7 @@ def test_get_market_movers():
     url = td.get_market_movers(market='stocks', direction='gainers').as_url()
     assert '/market_movers/stocks' in url
     assert 'direction=gainers' in url
+    assert not td.get_market_movers(market='stocks', direction='gainers').as_pandas().empty
 
 
 # ---------------------------------------------------------------------------
@@ -1540,6 +1610,8 @@ def test_get_income_statement_consolidated():
     url = td.get_income_statement_consolidated(symbol='AAPL', figi='F', isin='I', cusip='C').as_url()
     assert 'figi=F' in url and 'isin=I' in url and 'cusip=C' in url
     assert td.get_income_statement_consolidated(symbol='AAPL', figi='F', isin='I', cusip='C').as_json()
+    df = td.get_income_statement_consolidated(symbol='AAPL').as_pandas()
+    assert isinstance(df.index, pd.DatetimeIndex)
 
 
 def test_get_balance_sheet_consolidated():
@@ -1547,6 +1619,8 @@ def test_get_balance_sheet_consolidated():
     url = td.get_balance_sheet_consolidated(symbol='AAPL', figi='F', isin='I', cusip='C').as_url()
     assert 'figi=F' in url and 'isin=I' in url and 'cusip=C' in url
     assert td.get_balance_sheet_consolidated(symbol='AAPL', figi='F', isin='I', cusip='C').as_json()
+    df = td.get_balance_sheet_consolidated(symbol='AAPL').as_pandas()
+    assert isinstance(df.index, pd.DatetimeIndex)
 
 
 def test_get_cash_flow_consolidated():
@@ -1554,6 +1628,8 @@ def test_get_cash_flow_consolidated():
     url = td.get_cash_flow_consolidated(symbol='AAPL', figi='F', isin='I', cusip='C').as_url()
     assert 'figi=F' in url and 'isin=I' in url and 'cusip=C' in url
     assert td.get_cash_flow_consolidated(symbol='AAPL', figi='F', isin='I', cusip='C').as_json()
+    df = td.get_cash_flow_consolidated(symbol='AAPL').as_pandas()
+    assert isinstance(df.index, pd.DatetimeIndex)
 
 
 def test_get_market_cap():
@@ -1561,6 +1637,8 @@ def test_get_market_cap():
     url = td.get_market_cap(symbol='AAPL', figi='F', isin='I', cusip='C').as_url()
     assert 'figi=F' in url and 'isin=I' in url and 'cusip=C' in url
     assert td.get_market_cap(symbol='AAPL', figi='F', isin='I', cusip='C').as_json()
+    df = td.get_market_cap(symbol='AAPL').as_pandas()
+    assert isinstance(df.index, pd.DatetimeIndex)
 
 
 def test_get_press_releases():
@@ -1568,6 +1646,8 @@ def test_get_press_releases():
     url = td.get_press_releases(symbol='AAPL', figi='F', isin='I', cusip='C').as_url()
     assert 'figi=F' in url and 'isin=I' in url and 'cusip=C' in url
     assert td.get_press_releases(symbol='AAPL', figi='F', isin='I', cusip='C').as_json()
+    df = td.get_press_releases(symbol='AAPL').as_pandas()
+    assert isinstance(df.index, pd.DatetimeIndex)
 
 
 def test_get_last_change():
@@ -1575,7 +1655,8 @@ def test_get_last_change():
     url = td.get_last_change(endpoint='logo', symbol='AAPL').as_url()
     assert '/last_change/logo' in url
     assert 'symbol=AAPL' in url
-    assert td.get_last_change(endpoint='logo', symbol='AAPL').as_json()
+    assert td.get_last_change(endpoint='logo', symbol='AAPL').as_json() is not None
+    td.get_last_change(endpoint='logo', symbol='AAPL').as_pandas()
 
 
 # ---------------------------------------------------------------------------
@@ -1587,6 +1668,8 @@ def test_get_analyst_ratings_light():
     url = td.get_analyst_ratings_light(symbol='AAPL', figi='F', isin='I', cusip='C').as_url()
     assert 'figi=F' in url and 'isin=I' in url and 'cusip=C' in url
     assert td.get_analyst_ratings_light(symbol='AAPL', figi='F', isin='I', cusip='C').as_json()
+    df = td.get_analyst_ratings_light(symbol='AAPL').as_pandas()
+    assert isinstance(df.index, pd.DatetimeIndex)
 
 
 def test_get_analyst_ratings_us_equities():
@@ -1594,6 +1677,8 @@ def test_get_analyst_ratings_us_equities():
     url = td.get_analyst_ratings_us_equities(symbol='AAPL', figi='F', isin='I', cusip='C').as_url()
     assert 'figi=F' in url and 'isin=I' in url and 'cusip=C' in url
     assert td.get_analyst_ratings_us_equities(symbol='AAPL', figi='F', isin='I', cusip='C').as_json()
+    df = td.get_analyst_ratings_us_equities(symbol='AAPL').as_pandas()
+    assert isinstance(df.index, pd.DatetimeIndex)
 
 
 def test_get_earnings_estimate():
@@ -1601,6 +1686,8 @@ def test_get_earnings_estimate():
     url = td.get_earnings_estimate(symbol='AAPL', figi='F', isin='I', cusip='C').as_url()
     assert 'figi=F' in url and 'isin=I' in url and 'cusip=C' in url
     assert td.get_earnings_estimate(symbol='AAPL', figi='F', isin='I', cusip='C').as_json()
+    df = td.get_earnings_estimate(symbol='AAPL').as_pandas()
+    assert isinstance(df.index, pd.DatetimeIndex)
 
 
 def test_get_revenue_estimate():
@@ -1608,6 +1695,8 @@ def test_get_revenue_estimate():
     url = td.get_revenue_estimate(symbol='AAPL', figi='F', isin='I', cusip='C').as_url()
     assert 'figi=F' in url and 'isin=I' in url and 'cusip=C' in url
     assert td.get_revenue_estimate(symbol='AAPL', figi='F', isin='I', cusip='C').as_json()
+    df = td.get_revenue_estimate(symbol='AAPL').as_pandas()
+    assert isinstance(df.index, pd.DatetimeIndex)
 
 
 def test_get_eps_trend():
@@ -1615,6 +1704,8 @@ def test_get_eps_trend():
     url = td.get_eps_trend(symbol='AAPL', figi='F', isin='I', cusip='C').as_url()
     assert 'figi=F' in url and 'isin=I' in url and 'cusip=C' in url
     assert td.get_eps_trend(symbol='AAPL', figi='F', isin='I', cusip='C').as_json()
+    df = td.get_eps_trend(symbol='AAPL').as_pandas()
+    assert isinstance(df.index, pd.DatetimeIndex)
 
 
 def test_get_eps_revisions():
@@ -1622,6 +1713,8 @@ def test_get_eps_revisions():
     url = td.get_eps_revisions(symbol='AAPL', figi='F', isin='I', cusip='C').as_url()
     assert 'figi=F' in url and 'isin=I' in url and 'cusip=C' in url
     assert td.get_eps_revisions(symbol='AAPL', figi='F', isin='I', cusip='C').as_json()
+    df = td.get_eps_revisions(symbol='AAPL').as_pandas()
+    assert isinstance(df.index, pd.DatetimeIndex)
 
 
 def test_get_growth_estimates():
@@ -1629,6 +1722,7 @@ def test_get_growth_estimates():
     url = td.get_growth_estimates(symbol='AAPL', figi='F', isin='I', cusip='C').as_url()
     assert 'figi=F' in url and 'isin=I' in url and 'cusip=C' in url
     assert td.get_growth_estimates(symbol='AAPL', figi='F', isin='I', cusip='C').as_json()
+    assert len(td.get_growth_estimates(symbol='AAPL').as_pandas()) >= 1
 
 
 def test_get_price_target():
@@ -1636,6 +1730,7 @@ def test_get_price_target():
     url = td.get_price_target(symbol='AAPL', figi='F', isin='I', cusip='C').as_url()
     assert 'figi=F' in url and 'isin=I' in url and 'cusip=C' in url
     assert td.get_price_target(symbol='AAPL', figi='F', isin='I', cusip='C').as_json()
+    assert len(td.get_price_target(symbol='AAPL').as_pandas()) >= 1
 
 
 def test_get_recommendations():
@@ -1643,6 +1738,7 @@ def test_get_recommendations():
     url = td.get_recommendations(symbol='AAPL', figi='F', isin='I', cusip='C').as_url()
     assert 'figi=F' in url and 'isin=I' in url and 'cusip=C' in url
     assert td.get_recommendations(symbol='AAPL', figi='F', isin='I', cusip='C').as_json()
+    assert len(td.get_recommendations(symbol='AAPL').as_pandas()) >= 1
 
 
 # ---------------------------------------------------------------------------
@@ -1653,7 +1749,8 @@ def test_get_direct_holders():
     td = _init_client()
     url = td.get_direct_holders(symbol='AAPL', figi='F', isin='I', cusip='C').as_url()
     assert 'figi=F' in url and 'isin=I' in url and 'cusip=C' in url
-    assert td.get_direct_holders(symbol='AAPL', figi='F', isin='I', cusip='C').as_json()
+    assert td.get_direct_holders(symbol='AAPL', figi='F', isin='I', cusip='C').as_json() is not None
+    td.get_direct_holders(symbol='AAPL').as_pandas()
 
 
 def test_get_edgar_filings_archive():
@@ -1662,17 +1759,39 @@ def test_get_edgar_filings_archive():
     assert '/edgar_filings/archive' in url
     assert 'form_type=10-K' in url
     assert td.get_edgar_filings_archive(symbol='AAPL', form_type='10-K').as_json()
+    df = td.get_edgar_filings_archive(symbol='AAPL', form_type='10-K').as_pandas()
+    assert isinstance(df.index, pd.DatetimeIndex)
 
 
 def test_get_sanctions():
     td = _init_client()
     assert '/sanctions/ofac' in td.get_sanctions(source='ofac').as_url()
+    assert not td.get_sanctions(source='ofac').as_pandas().empty
 
 
 def test_get_tax_info():
     td = _init_client()
     assert '/tax_info' in td.get_tax_info(symbol='AAPL').as_url()
     assert td.get_tax_info(symbol='AAPL').as_json()
+    assert len(td.get_tax_info(symbol='AAPL').as_pandas()) >= 1
+
+
+# ---------------------------------------------------------------------------
+# Options endpoints (deprecated)
+# ---------------------------------------------------------------------------
+
+def test_get_options_expiration():
+    td = _init_client()
+    with pytest.warns(FutureWarning):
+        ep = td.get_options_expiration(symbol='AAPL')
+    assert '/options/expiration' in ep.as_url()
+
+
+def test_get_options_chain():
+    td = _init_client()
+    with pytest.warns(FutureWarning):
+        ep = td.get_options_chain(symbol='AAPL')
+    assert '/options/chain' in ep.as_url()
 
 
 # ---------------------------------------------------------------------------
@@ -1684,6 +1803,7 @@ def test_get_etfs_world():
     url = td.get_etfs_world(symbol='VOO', figi='F', isin='I', cusip='C').as_url()
     assert 'figi=F' in url and 'isin=I' in url and 'cusip=C' in url
     assert td.get_etfs_world(symbol='VOO', figi='F', isin='I', cusip='C').as_json()
+    assert len(td.get_etfs_world(symbol='VOO').as_pandas()) >= 1
 
 
 def test_get_etfs_world_summary():
@@ -1691,6 +1811,7 @@ def test_get_etfs_world_summary():
     url = td.get_etfs_world_summary(symbol='VOO', figi='F', isin='I', cusip='C').as_url()
     assert 'figi=F' in url and 'isin=I' in url and 'cusip=C' in url
     assert td.get_etfs_world_summary(symbol='VOO', figi='F', isin='I', cusip='C').as_json()
+    assert len(td.get_etfs_world_summary(symbol='VOO').as_pandas()) >= 1
 
 
 def test_get_etfs_world_composition():
@@ -1698,6 +1819,7 @@ def test_get_etfs_world_composition():
     url = td.get_etfs_world_composition(symbol='VOO', figi='F', isin='I', cusip='C').as_url()
     assert 'figi=F' in url and 'isin=I' in url and 'cusip=C' in url
     assert td.get_etfs_world_composition(symbol='VOO', figi='F', isin='I', cusip='C').as_json()
+    assert len(td.get_etfs_world_composition(symbol='VOO').as_pandas()) >= 1
 
 
 def test_get_etfs_world_performance():
@@ -1705,6 +1827,7 @@ def test_get_etfs_world_performance():
     url = td.get_etfs_world_performance(symbol='VOO', figi='F', isin='I', cusip='C').as_url()
     assert 'figi=F' in url and 'isin=I' in url and 'cusip=C' in url
     assert td.get_etfs_world_performance(symbol='VOO', figi='F', isin='I', cusip='C').as_json()
+    assert len(td.get_etfs_world_performance(symbol='VOO').as_pandas()) >= 1
 
 
 def test_get_etfs_world_risk():
@@ -1712,24 +1835,28 @@ def test_get_etfs_world_risk():
     url = td.get_etfs_world_risk(symbol='VOO', figi='F', isin='I', cusip='C').as_url()
     assert 'figi=F' in url and 'isin=I' in url and 'cusip=C' in url
     assert td.get_etfs_world_risk(symbol='VOO', figi='F', isin='I', cusip='C').as_json()
+    assert len(td.get_etfs_world_risk(symbol='VOO').as_pandas()) >= 1
 
 
 def test_get_etfs_list():
     td = _init_client()
     assert '/etfs/list' in td.get_etfs_list(symbol='VOO').as_url()
     assert td.get_etfs_list(symbol='VOO').as_json()
+    assert not td.get_etfs_list(symbol='VOO').as_pandas().empty
 
 
 def test_get_etfs_type():
     td = _init_client()
     assert '/etfs/type' in td.get_etfs_type(country='US').as_url()
     assert td.get_etfs_type(country='US').as_json()
+    assert not td.get_etfs_type(country='US').as_pandas().empty
 
 
 def test_get_etfs_family():
     td = _init_client()
     assert '/etfs/family' in td.get_etfs_family(country='US').as_url()
     assert td.get_etfs_family(country='US').as_json()
+    assert not td.get_etfs_family(country='US').as_pandas().empty
 
 
 # ---------------------------------------------------------------------------
@@ -1741,6 +1868,7 @@ def test_get_mutual_funds_world():
     url = td.get_mutual_funds_world(symbol='VFIAX', figi='F', isin='I', cusip='C').as_url()
     assert 'figi=F' in url and 'isin=I' in url and 'cusip=C' in url
     assert td.get_mutual_funds_world(symbol='VFIAX', figi='F', isin='I', cusip='C').as_json()
+    assert len(td.get_mutual_funds_world(symbol='VFIAX').as_pandas()) >= 1
 
 
 def test_get_mutual_funds_world_summary():
@@ -1748,6 +1876,7 @@ def test_get_mutual_funds_world_summary():
     url = td.get_mutual_funds_world_summary(symbol='VFIAX', figi='F', isin='I', cusip='C').as_url()
     assert 'figi=F' in url and 'isin=I' in url and 'cusip=C' in url
     assert td.get_mutual_funds_world_summary(symbol='VFIAX', figi='F', isin='I', cusip='C').as_json()
+    assert len(td.get_mutual_funds_world_summary(symbol='VFIAX').as_pandas()) >= 1
 
 
 def test_get_mutual_funds_world_composition():
@@ -1755,6 +1884,7 @@ def test_get_mutual_funds_world_composition():
     url = td.get_mutual_funds_world_composition(symbol='VFIAX', figi='F', isin='I', cusip='C').as_url()
     assert 'figi=F' in url and 'isin=I' in url and 'cusip=C' in url
     assert td.get_mutual_funds_world_composition(symbol='VFIAX', figi='F', isin='I', cusip='C').as_json()
+    assert len(td.get_mutual_funds_world_composition(symbol='VFIAX').as_pandas()) >= 1
 
 
 def test_get_mutual_funds_world_purchase_info():
@@ -1762,6 +1892,7 @@ def test_get_mutual_funds_world_purchase_info():
     url = td.get_mutual_funds_world_purchase_info(symbol='VFIAX', figi='F', isin='I', cusip='C').as_url()
     assert 'figi=F' in url and 'isin=I' in url and 'cusip=C' in url
     assert td.get_mutual_funds_world_purchase_info(symbol='VFIAX', figi='F', isin='I', cusip='C').as_json()
+    assert len(td.get_mutual_funds_world_purchase_info(symbol='VFIAX').as_pandas()) >= 1
 
 
 def test_get_mutual_funds_world_performance():
@@ -1769,6 +1900,7 @@ def test_get_mutual_funds_world_performance():
     url = td.get_mutual_funds_world_performance(symbol='VFIAX', figi='F', isin='I', cusip='C').as_url()
     assert 'figi=F' in url and 'isin=I' in url and 'cusip=C' in url
     assert td.get_mutual_funds_world_performance(symbol='VFIAX', figi='F', isin='I', cusip='C').as_json()
+    assert len(td.get_mutual_funds_world_performance(symbol='VFIAX').as_pandas()) >= 1
 
 
 def test_get_mutual_funds_world_risk():
@@ -1776,6 +1908,7 @@ def test_get_mutual_funds_world_risk():
     url = td.get_mutual_funds_world_risk(symbol='VFIAX', figi='F', isin='I', cusip='C').as_url()
     assert 'figi=F' in url and 'isin=I' in url and 'cusip=C' in url
     assert td.get_mutual_funds_world_risk(symbol='VFIAX', figi='F', isin='I', cusip='C').as_json()
+    assert len(td.get_mutual_funds_world_risk(symbol='VFIAX').as_pandas()) >= 1
 
 
 def test_get_mutual_funds_world_ratings():
@@ -1783,6 +1916,7 @@ def test_get_mutual_funds_world_ratings():
     url = td.get_mutual_funds_world_ratings(symbol='VFIAX', figi='F', isin='I', cusip='C').as_url()
     assert 'figi=F' in url and 'isin=I' in url and 'cusip=C' in url
     assert td.get_mutual_funds_world_ratings(symbol='VFIAX', figi='F', isin='I', cusip='C').as_json()
+    assert len(td.get_mutual_funds_world_ratings(symbol='VFIAX').as_pandas()) >= 1
 
 
 def test_get_mutual_funds_world_sustainability():
@@ -1790,24 +1924,28 @@ def test_get_mutual_funds_world_sustainability():
     url = td.get_mutual_funds_world_sustainability(symbol='VFIAX', figi='F', isin='I', cusip='C').as_url()
     assert 'figi=F' in url and 'isin=I' in url and 'cusip=C' in url
     assert td.get_mutual_funds_world_sustainability(symbol='VFIAX', figi='F', isin='I', cusip='C').as_json()
+    assert len(td.get_mutual_funds_world_sustainability(symbol='VFIAX').as_pandas()) >= 1
 
 
 def test_get_mutual_funds_list():
     td = _init_client()
     assert '/mutual_funds/list' in td.get_mutual_funds_list(symbol='VFIAX').as_url()
     assert td.get_mutual_funds_list(symbol='VFIAX').as_json()
+    assert not td.get_mutual_funds_list(symbol='VFIAX').as_pandas().empty
 
 
 def test_get_mutual_funds_type():
     td = _init_client()
     assert '/mutual_funds/type' in td.get_mutual_funds_type(country='US').as_url()
     assert td.get_mutual_funds_type(country='US').as_json()
+    assert not td.get_mutual_funds_type(country='US').as_pandas().empty
 
 
 def test_get_mutual_funds_family():
     td = _init_client()
     assert '/mutual_funds/family' in td.get_mutual_funds_family(country='US').as_url()
     assert td.get_mutual_funds_family(country='US').as_json()
+    assert not td.get_mutual_funds_family(country='US').as_pandas().empty
 
 
 # ---------------------------------------------------------------------------
@@ -1945,3 +2083,101 @@ def test_with_rvol():
     td = _init_client()
     url = _indicator_url(td, 'with_rvol')
     assert '/rvol' in url
+
+
+# ---------------------------------------------------------------------------
+# Error response handling: API returns {"status": "error", ...} with HTTP 200.
+# DefaultHttpClient.get raises before reaching as_json/as_pandas, but we want
+# the exception to propagate cleanly through both serializers.
+# ---------------------------------------------------------------------------
+
+class _PatcherGroup:
+    def __init__(self, patchers):
+        self._patchers = patchers
+
+    def stop(self):
+        for p in self._patchers:
+            p.stop()
+
+
+def _error_client(error_code, message='error message'):
+    # Skip the metadata fetch on TDClient construction so the Session.get patch
+    # below isn't intercepted by it. Patch the binding in twelvedata.client
+    # (where it's imported), not twelvedata.utils, and stop both patchers in the
+    # caller's finally so module-global state isn't mutated.
+    body = {'status': 'error', 'code': error_code, 'message': message}
+    fake_resp = _fake_json_resp(body)
+    session_patcher = patch('twelvedata.http_client.Session.get', return_value=fake_resp)
+    meta_patcher = patch('twelvedata.client.patch_endpoints_meta', lambda ctx: None)
+    session_patcher.start()
+    meta_patcher.start()
+    td = TDClient('demo', http_client=DefaultHttpClient(API_URL))
+    return _PatcherGroup([session_patcher, meta_patcher]), td
+
+
+def test_as_json_propagates_invalid_api_key_error():
+    patcher, td = _error_client(401)
+    try:
+        with pytest.raises(InvalidApiKeyError):
+            td.get_splits(symbol='AAPL').as_json()
+    finally:
+        patcher.stop()
+
+
+def test_as_pandas_propagates_invalid_api_key_error():
+    patcher, td = _error_client(401)
+    try:
+        with pytest.raises(InvalidApiKeyError):
+            td.get_splits(symbol='AAPL').as_pandas()
+    finally:
+        patcher.stop()
+
+
+def test_as_json_propagates_bad_request_error():
+    patcher, td = _error_client(400)
+    try:
+        with pytest.raises(BadRequestError):
+            td.get_dividends(symbol='AAPL').as_json()
+    finally:
+        patcher.stop()
+
+
+def test_as_pandas_propagates_bad_request_error():
+    patcher, td = _error_client(400)
+    try:
+        with pytest.raises(BadRequestError):
+            td.get_balance_sheet(symbol='AAPL').as_pandas()
+    finally:
+        patcher.stop()
+
+
+def test_as_json_propagates_internal_server_error():
+    patcher, td = _error_client(500)
+    try:
+        with pytest.raises(InternalServerError):
+            td.time_series(symbol='AAPL', interval='1day').as_json()
+    finally:
+        patcher.stop()
+
+
+def test_as_pandas_propagates_generic_error():
+    patcher, td = _error_client(429, message='rate limit exceeded')
+    try:
+        with pytest.raises(TwelveDataError):
+            td.quote(symbol='AAPL').as_pandas()
+    finally:
+        patcher.stop()
+
+
+def test_as_json_returns_error_dict_when_http_client_does_not_raise():
+    # Custom http_client that does not raise on JSON-level errors — exercises the
+    # `if json.get("status") == "error": return json` branch in AsJsonMixin.
+    error_payload = {'status': 'error', 'code': 400, 'message': 'bad symbol'}
+    fake_resp = _fake_json_resp(error_payload)
+
+    class PassthroughHttpClient(DefaultHttpClient):
+        def get(self, *args, **kwargs):
+            return fake_resp
+
+    td = TDClient('demo', http_client=PassthroughHttpClient(API_URL))
+    assert td.get_splits(symbol='AAPL').as_json() == error_payload
